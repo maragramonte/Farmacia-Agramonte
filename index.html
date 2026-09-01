@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.">
+<title>Farmàcia Agramonte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@300;400;500;600&display=swap">
+
+<style>
+  /* ---------------------------------------------------------------
+     Farmàcia Agramonte — landing
+     Paleta y tipografía tomadas del diseño original (Diseño del boceto.png).
+     Tema único e intencionado: la identidad de marca se ve igual para todos.
+     --------------------------------------------------------------- */
+  :root {
+    --tinta:        #2a1d12;
+    --tinta-honda:  #1e140c;
+    --tinta-clara:  #3d2c1c;
+    --crema:        #f5f0e6;
+    --crema-2:      #eae2d2;
+    --crema-3:      #e0d6c2;
+    --oro:          #c9a055;
+    --oro-claro:    #e0c285;
+    --texto:        #3a2c1f;
+    --texto-tenue:  #6e5d4b;
+    --sobre-tinta:  #f0e8db;
+    --tenue-tinta:  #b6a48c;
+
+    --ancho: 1120px;
+    --display: "Playfair Display", "Iowan Old Style", Georgia, serif;
+    --cuerpo: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--crema);
+    color: var(--texto);
+    font-family: var(--cuerpo);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  :where(a, button):focus-visible {
+    outline: 2px solid var(--oro);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .contenedor { width: min(100% - 3rem, var(--ancho)); margin-inline: auto; }
+
+  .etiqueta {
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ---------- Cabecera ---------- */
+  .cabecera {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--tinta);
+    border-bottom: 1px solid rgba(201,160,85,.22);
+  }
+  .cabecera .contenedor {
+    display: flex; align-items: center; gap: 2rem;
+    min-height: 76px;
+  }
+  .marca {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--oro-claro);
+    letter-spacing: .01em;
+    margin-right: auto;
+  }
+  .nav { display: flex; gap: 2.25rem; }
+  .nav a {
+    font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
+    font-weight: 600; color: var(--sobre-tinta);
+    padding-block: .35rem;
+    border-bottom: 1px solid transparent;
+    transition: color .18s ease, border-color .18s ease;
+  }
+  .nav a:hover { color: var(--oro-claro); border-bottom-color: var(--oro); }
+  .nav a[aria-current="page"] { color: var(--oro); }
+
+  .boton {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: var(--oro); color: var(--tinta);
+    font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    padding: .8rem 1.5rem;
+    border: 0; cursor: pointer;
+    transition: background .18s ease, transform .18s ease;
+  }
+  .boton:hover { background: var(--oro-claro); transform: translateY(-1px); }
+  .boton svg { width: 17px; height: 17px; flex: none; }
+
+  /* ---------- Hero ---------- */
+  .hero { background: var(--tinta); color: var(--sobre-tinta); }
+  .hero .contenedor {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem;
+    align-items: center;
+    padding-block: 4.5rem 5rem;
+  }
+  .lugar {
+    display: inline-block;
+    border: 1px solid rgba(201,160,85,.5);
+    color: var(--oro-claro);
+    padding: .45rem 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5.2vw, 4rem);
+    line-height: 1.06;
+    color: var(--sobre-tinta);
+    margin-bottom: 1.9rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--oro); display: block; }
+
+  .microcopia {
+    border-left: 2px solid var(--oro);
+    padding-left: 1.15rem;
+    margin-bottom: 2.25rem;
+    color: var(--tenue-tinta);
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+  .microcopia strong { color: var(--sobre-tinta); font-weight: 400; }
+
+  /* Ilustración: hueco para la foto real del mostrador.
+     Dibujada en SVG para que la página funcione sin depender de imágenes. */
+  .escaparate {
+    position: relative;
+    aspect-ratio: 4 / 3.4;
+    background: linear-gradient(160deg, #3b2a1a, #241811);
+    border: 1px solid rgba(201,160,85,.2);
+    overflow: hidden;
+  }
+  .escaparate svg { width: 100%; height: 100%; display: block; }
+  .nota-foto {
+    position: absolute; left: 0; bottom: 0;
+    background: rgba(30,20,12,.82);
+    color: var(--tenue-tinta);
+    font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: .5rem .85rem;
+  }
+
+  /* ---------- Categorías ---------- */
+  .seccion { padding-block: 4.5rem; }
+  .seccion h2 {
+    font-size: clamp(1.55rem, 2.6vw, 2rem);
+    margin-bottom: 2rem;
+  }
+  .pastillas { display: flex; flex-wrap: wrap; gap: .9rem; }
+  .pastilla {
+    display: inline-flex; align-items: center; gap: .6rem;
+    border: 1px solid var(--crema-3);
+    border-radius: 999px;
+    padding: .75rem 1.4rem;
+    font-size: .92rem;
+    background: transparent;
+    transition: border-color .18s ease, background .18s ease, transform .18s ease;
+  }
+  .pastilla:hover { border-color: var(--oro); background: var(--crema-2); transform: translateY(-2px); }
+  .pastilla svg { width: 19px; height: 19px; stroke: var(--oro); fill: none; stroke-width: 1.4; }
+
+  .filete { border: 0; border-top: 1px solid var(--crema-3); margin: 0; }
+
+  /* ---------- Por qué elegirnos ---------- */
+  .valores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .valor { display: flex; gap: 1.1rem; padding-inline: 2rem; }
+  .valor:first-child { padding-left: 0; }
+  .valor:last-child { padding-right: 0; }
+  .valor + .valor { border-left: 1px solid var(--crema-3); }
+  .valor svg { width: 38px; height: 38px; flex: none; stroke: var(--oro); fill: none; stroke-width: 1.2; }
+  .valor h3 { font-family: var(--cuerpo); font-size: 1rem; font-weight: 600; margin-bottom: .35rem; }
+  .valor p { color: var(--texto-tenue); font-size: .93rem; }
+
+  /* ---------- Blog ---------- */
+  .consejos { background: var(--crema-2); padding: 3rem; }
+  .consejos-cabecera {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .consejos h2 { margin: 0; }
+  .enlace-todos {
+    font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    color: var(--texto-tenue);
+    transition: color .18s ease;
+  }
+  .enlace-todos:hover { color: var(--oro); }
+
+  .rejilla-blog { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.5rem; }
+  .destacado { display: grid; grid-template-columns: 1fr 1fr; background: var(--crema); }
+  .destacado .cuerpo { padding: 1.75rem; display: flex; flex-direction: column; }
+  .destacado h3 { font-size: 1.4rem; line-height: 1.25; margin-bottom: .7rem; }
+  .destacado p { color: var(--texto-tenue); font-size: .93rem; margin-bottom: 1.25rem; }
+
+  .secundarios { display: grid; gap: 1.5rem; align-content: start; }
+  .secundario { display: grid; grid-template-columns: 148px 1fr; background: var(--crema); }
+  .secundario .cuerpo { padding: 1.2rem 1.4rem; display: flex; flex-direction: column; justify-content: center; }
+  .secundario h3 { font-size: 1.08rem; line-height: 1.3; margin-bottom: .6rem; }
+
+  .eyebrow { color: var(--oro); margin-bottom: .6rem; }
+  .leer {
+    margin-top: auto;
+    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    color: var(--texto);
+    transition: color .18s ease;
+  }
+  .leer:hover { color: var(--oro); }
+  .leer span { transition: transform .18s ease; display: inline-block; }
+  .leer:hover span { transform: translateX(3px); }
+
+  /* Huecos de imagen del blog */
+  .hueco {
+    background:
+      radial-gradient(120% 90% at 30% 20%, rgba(201,160,85,.16), transparent 60%),
+      linear-gradient(150deg, var(--crema-3), #cdbfa6);
+    display: grid; place-items: center;
+    min-height: 150px;
+  }
+  .hueco svg { width: 40px; height: 40px; stroke: rgba(58,44,31,.4); fill: none; stroke-width: 1.1; }
+
+  /* ---------- Barra de datos ---------- */
+  .datos {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    background: var(--crema-2);
+    padding: 2.5rem 3rem;
+  }
+  .dato { display: flex; gap: .9rem; }
+  .dato svg { width: 26px; height: 26px; flex: none; stroke: var(--oro); fill: none; stroke-width: 1.3; }
+  .dato h3 { font-family: var(--cuerpo); font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
+  .dato p, .dato a { font-size: .89rem; color: var(--texto-tenue); }
+  .dato a:hover { color: var(--oro); }
+  .dato dl { margin: 0; font-size: .89rem; color: var(--texto-tenue); }
+  .dato dt { font-weight: 600; color: var(--texto); }
+  .dato dd { margin: 0 0 .45rem; font-variant-numeric: tabular-nums; }
+
+  /* ---------- Pie ---------- */
+  .pie { background: var(--tinta); color: var(--tenue-tinta); padding-block: 3.5rem 0; }
+  .pie-rejilla {
+    display: grid; grid-template-columns: 1.6fr 1fr 1.1fr 1.2fr; gap: 2.5rem;
+    align-items: start;
+    padding-bottom: 3rem;
+  }
+  .pie h3 { font-family: var(--display); font-size: 1.35rem; color: var(--oro-claro); margin-bottom: .8rem; }
+  .pie h4 { font-family: var(--display); font-size: 1rem; color: var(--oro); margin: 0 0 .9rem; font-weight: 500; }
+  .pie p { font-size: .9rem; max-width: 32ch; }
+  .pie ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+  .pie li a { font-size: .89rem; transition: color .18s ease; }
+  .pie li a:hover { color: var(--oro-claro); }
+  .sociales { display: flex; gap: 1rem; margin-top: 1.4rem; }
+  .sociales a { display: grid; place-items: center; width: 22px; height: 22px; transition: color .18s ease; }
+  .sociales a:hover { color: var(--oro); }
+  .sociales svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+
+  .monograma {
+    width: 62px; height: 62px; margin-bottom: 1rem; border-radius: 50%;
+    border: 1px solid rgba(201,160,85,.55);
+    display: grid; place-items: center;
+    font-family: var(--display); font-size: 1.7rem; color: var(--oro);
+  }
+
+  .pie-legal {
+    border-top: 1px solid rgba(201,160,85,.18);
+    padding-block: 1.4rem;
+    text-align: center;
+    font-size: .8rem;
+  }
+
+  /* ---------- Adaptación a pantallas pequeñas ---------- */
+  @media (max-width: 900px) {
+    .hero .contenedor { grid-template-columns: 1fr; gap: 2.5rem; padding-block: 3rem; }
+    .nav { display: none; }
+    .valores { grid-template-columns: 1fr; gap: 2rem; }
+    .valor { padding-inline: 0; }
+    .valor + .valor { border-left: 0; border-top: 1px solid var(--crema-3); padding-top: 2rem; }
+    .rejilla-blog { grid-template-columns: 1fr; }
+    .destacado { grid-template-columns: 1fr; }
+    .datos { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
+    .consejos { padding: 2rem; }
+    .pie-rejilla { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .datos { grid-template-columns: 1fr; }
+    .secundario { grid-template-columns: 1fr; }
+    .pie-rejilla { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<header class="cabecera">
+  <div class="contenedor">
+    <span class="marca">Farmàcia Agramonte</span>
+    <nav class="nav" aria-label="Principal">
+      <a href="#inicio" aria-current="page">Inicio</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+      Pedir
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <div class="contenedor">
+      <div>
+        <span class="lugar etiqueta">El Born, Barcelona</span>
+        <h1>Consejo de siempre,<em>de tu barrio</em></h1>
+        <div class="microcopia">
+          <p><strong>Envíanos la receta</strong> o el nombre del producto.</p>
+          <p>Lo preparamos y te avisamos.</p>
+          <p>Vienes a buscarlo cuando quieras.</p>
+        </div>
+        <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+          Enviar por WhatsApp
+        </a>
+      </div>
+
+      <div class="escaparate">
+        <svg viewBox="0 0 400 340" role="img" aria-label="Ilustración del mostrador de la farmacia con las estanterías de botes">
+          <defs>
+            <linearGradient id="madera" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4a3521"/><stop offset="1" stop-color="#2c1e12"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="340" fill="url(#madera)"/>
+          <!-- Estanterías con botes -->
+          <g stroke="#c9a055" stroke-opacity=".55" fill="none">
+            <line x1="30" y1="96"  x2="370" y2="96"  stroke-width="2"/>
+            <line x1="30" y1="164" x2="370" y2="164" stroke-width="2"/>
+            <line x1="30" y1="232" x2="370" y2="232" stroke-width="2"/>
+          </g>
+          <g fill="#e6dcc8" fill-opacity=".82">
+            <!--
+              Cada fila: botes de botica. Se generan por posición fija para que
+              el dibujo sea estable y no dependa de JavaScript.
+            -->
+            <g>
+              <rect x="42"  y="60" width="20" height="36" rx="3"/><rect x="74"  y="64" width="20" height="32" rx="3"/>
+              <rect x="106" y="58" width="20" height="38" rx="3"/><rect x="138" y="64" width="20" height="32" rx="3"/>
+              <rect x="170" y="60" width="20" height="36" rx="3"/><rect x="202" y="62" width="20" height="34" rx="3"/>
+              <rect x="234" y="58" width="20" height="38" rx="3"/><rect x="266" y="64" width="20" height="32" rx="3"/>
+              <rect x="298" y="60" width="20" height="36" rx="3"/><rect x="330" y="62" width="20" height="34" rx="3"/>
+            </g>
+            <g>
+              <rect x="42"  y="130" width="20" height="34" rx="3"/><rect x="74"  y="126" width="20" height="38" rx="3"/>
+              <rect x="106" y="132" width="20" height="32" rx="3"/><rect x="138" y="128" width="20" height="36" rx="3"/>
+              <rect x="170" y="130" width="20" height="34" rx="3"/><rect x="202" y="126" width="20" height="38" rx="3"/>
+              <rect x="234" y="132" width="20" height="32" rx="3"/><rect x="266" y="128" width="20" height="36" rx="3"/>
+              <rect x="298" y="130" width="20" height="34" rx="3"/><rect x="330" y="126" width="20" height="38" rx="3"/>
+            </g>
+            <g>
+              <rect x="42"  y="198" width="20" height="34" rx="3"/><rect x="74"  y="194" width="20" height="38" rx="3"/>
+              <rect x="106" y="200" width="20" height="32" rx="3"/><rect x="138" y="196" width="20" height="36" rx="3"/>
+              <rect x="170" y="198" width="20" height="34" rx="3"/><rect x="202" y="194" width="20" height="38" rx="3"/>
+              <rect x="234" y="200" width="20" height="32" rx="3"/><rect x="266" y="196" width="20" height="36" rx="3"/>
+              <rect x="298" y="198" width="20" height="34" rx="3"/><rect x="330" y="194" width="20" height="38" rx="3"/>
+            </g>
+          </g>
+          <!-- Mostrador de mármol -->
+          <rect x="20" y="258" width="360" height="14" rx="3" fill="#d9cfba"/>
+          <rect x="34" y="272" width="332" height="68" fill="#3a2918"/>
+          <g stroke="#c9a055" stroke-opacity=".35" fill="none" stroke-width="1.5">
+            <rect x="58" y="288" width="80" height="42" rx="2"/>
+            <rect x="160" y="288" width="80" height="42" rx="2"/>
+            <rect x="262" y="288" width="80" height="42" rx="2"/>
+          </g>
+          <!-- Sello: desde 1890 -->
+          <g transform="translate(330,54)">
+            <circle r="40" fill="#241811" stroke="#c9a055" stroke-width="1.5"/>
+            <circle r="33" fill="none" stroke="#c9a055" stroke-opacity=".45"/>
+            <path id="arcoSello" d="M 0,-25 A 25,25 0 0 1 0,25 A 25,25 0 0 1 0,-25" fill="none"/>
+            <text fill="#c9a055" font-family="Karla, sans-serif" font-size="7.5" letter-spacing="2.4">
+              <textPath href="#arcoSello" startOffset="6%">DESDE · FARMÀCIA AGRAMONTE ·</textPath>
+            </text>
+            <text y="7" text-anchor="middle" fill="#e0c285" font-family="Playfair Display, serif" font-size="19">1890</text>
+          </g>
+        </svg>
+        <span class="nota-foto">Ilustración provisional — sustituir por la foto del mostrador</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion contenedor" id="categorias">
+    <h2>¿Qué estás buscando?</h2>
+    <div class="pastillas">
+      <a class="pastilla" href="#categorias">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+        Medicamentos
+      </a>
+      <a class="pastilla" href="#categorias">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4v4l2 3v11H8V9l2-3Z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+        Dermocosmética
+      </a>
+      <a class="pastilla" href="#categorias">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/><path d="M9 15c1.8 1.4 4.2 1.4 6 0"/></svg>
+        Bebés
+      </a>
+      <a class="pastilla" href="#categorias">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg>
+        Salud íntima
+      </a>
+      <a class="pastilla" href="#categorias">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c4 3 7 5.5 7 9a7 7 0 0 1-14 0c0-3.5 3-6 7-9Z"/></svg>
+        Vitaminas
+      </a>
+      <a class="pastilla" href="#categorias">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
+        Ortopedia
+      </a>
+    </div>
+  </section>
+
+  <hr class="filete">
+
+  <section class="seccion contenedor">
+    <h2>¿Por qué elegir Farmàcia Agramonte?</h2>
+    <div class="valores">
+      <div class="valor">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 14h24a12 12 0 0 1-12 12A12 12 0 0 1 8 14Z"/><line x1="20" y1="26" x2="20" y2="33"/><line x1="13" y1="33" x2="27" y2="33"/><line x1="24" y1="8" x2="16" y2="14"/></svg>
+        <div>
+          <h3>Atención personalizada</h3>
+          <p>Te escuchamos y te aconsejamos según tus necesidades.</p>
+        </div>
+      </div>
+      <div class="valor">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M16 6h8v6l4 6v16H12V18l4-6Z"/><line x1="12" y1="24" x2="28" y2="24"/></svg>
+        <div>
+          <h3>Experiencia y confianza</h3>
+          <p>Más de 130 años al servicio de nuestro barrio.</p>
+        </div>
+      </div>
+      <div class="valor">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 34s-10-7.6-10-15a10 10 0 0 1 20 0c0 7.4-10 15-10 15Z"/><circle cx="20" cy="19" r="4"/></svg>
+        <div>
+          <h3>Cercanía y calidad</h3>
+          <p>Productos seleccionados y un trato humano, de tú a tú.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contenedor" id="blog" style="padding-bottom:4.5rem">
+    <div class="consejos">
+      <div class="consejos-cabecera">
+        <h2>Consejos de tu farmacéutico</h2>
+        <a class="enlace-todos" href="#blog">Ver todos los artículos →</a>
+      </div>
+
+      <div class="rejilla-blog">
+        <article class="destacado">
+          <div class="hueco">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg>
+          </div>
+          <div class="cuerpo">
+            <span class="eyebrow etiqueta">Artículo destacado</span>
+            <h3>Cómo cuidar tu piel en primavera</h3>
+            <p>Consejos para proteger y reparar tu piel durante los meses de más sol.</p>
+            <a class="leer" href="#blog">Leer más <span>→</span></a>
+          </div>
+        </article>
+
+        <div class="secundarios">
+          <article class="secundario">
+            <div class="hueco">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 3.5 6 6 6 9a6 6 0 0 1-12 0c0-3 2.5-5.5 6-9Z"/></svg>
+            </div>
+            <div class="cuerpo">
+              <h3>Hidratación: el gesto más importante</h3>
+              <a class="leer" href="#blog">Leer más <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="secundario">
+            <div class="hueco">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>
+            </div>
+            <div class="cuerpo">
+              <h3>Vitaminas que te ayudan a mantener tus defensas</h3>
+              <a class="leer" href="#blog">Leer más <span>→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contenedor" id="contacto" style="padding-bottom:4.5rem">
+    <div class="datos">
+      <div class="dato">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div>
+          <h3>Horario</h3>
+          <dl>
+            <dt>Lunes a Sábado</dt>
+            <dd>9:00 – 14:30</dd>
+            <dd>16:00 – 20:30</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="dato">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.4-7-10a7 7 0 0 1 14 0c0 4.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.5"/></svg>
+        <div>
+          <h3>Dónde estamos</h3>
+          <p>Plaça de la Llana, 11<br>08003 Barcelona<br>El Born</p>
+        </div>
+      </div>
+      <div class="dato">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4Z"/></svg>
+        <div>
+          <h3>Contacto</h3>
+          <p><a href="tel:+34933195921">933 19 59 21</a><br>
+             <a href="mailto:farmacia.lallana@gmail.com">farmacia.lallana@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="dato">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+        <div>
+          <h3>Pedir por WhatsApp</h3>
+          <p>Envíanos tu receta o consulta y te responderemos.</p>
+          <p style="margin-top:.5rem"><a class="leer" href="https://wa.me/34661192472" target="_blank" rel="noopener">Escríbenos <span>→</span></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-rejilla">
+      <div>
+        <div class="monograma" aria-hidden="true">A</div>
+        <h3>Farmàcia Agramonte</h3>
+        <p>Desde 1890 cuidando de tu salud en el corazón de Barcelona.</p>
+        <div class="sociales">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8.8c0-.5.4-.8 1-.8Z"/></svg></a>
+          <a href="https://wa.me/34661192472" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5Z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#categorias">Categorías</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Atención al cliente</h4>
+        <ul>
+          <li><a href="#">Cuenta de usuario</a></li>
+          <li><a href="#">Carrito de compra</a></li>
+          <li><a href="#">Finalizar compra</a></li>
+          <li><a href="#">Lista de deseos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Información</h4>
+        <ul>
+          <li><a href="#">Aviso Copyright</a></li>
+          <li><a href="#">Aviso LOPD</a></li>
+          <li><a href="#">Formas de pago</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Política de cookies</a></li>
+          <li><a href="#">Política de envíos</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pie-legal">© 2026 Farmàcia Agramonte. Todos los derechos reservados.</div>
+</footer>
+
+</body>
+</html>
