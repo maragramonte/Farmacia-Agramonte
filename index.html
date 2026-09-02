@@ -5,6 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.">
 <title>Farmàcia Agramonte</title>
+<link rel="canonical" href="https://maragramonte.github.io/Farm-cia-Agramonte/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2a1d12">
+
+<!-- Tarjeta al compartir el enlace (WhatsApp, Facebook, LinkedIn...).
+     La imagen se regenera con: python herramientas/tarjeta-social.py -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Farmàcia Agramonte">
+<meta property="og:title" content="Farmàcia Agramonte — consejo de siempre, de tu barrio">
+<meta property="og:description" content="Farmacia en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envíanos tu receta por WhatsApp, la preparamos y te avisamos.">
+<meta property="og:url" content="https://maragramonte.github.io/Farm-cia-Agramonte/">
+<meta property="og:image" content="https://maragramonte.github.io/Farm-cia-Agramonte/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Farmàcia Agramonte — consejo de siempre, de tu barrio">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@300;400;500;600&display=swap">
@@ -273,9 +291,20 @@
 
   .pie-legal {
     border-top: 1px solid rgba(201,160,85,.18);
-    padding-block: 1.4rem;
+    padding: 1.4rem 1.5rem;
     text-align: center;
     font-size: .8rem;
+  }
+  .pie-legal p + p { margin-top: .4rem; color: var(--tenue-tinta); }
+
+  /* Dato que todavía falta. Se ve a la legua para que no se publique la
+     página dándolo por bueno. Al rellenarlo, quitar también el <span>. */
+  .pendiente {
+    background: #f6e3bd;
+    color: var(--tinta);
+    padding: .05rem .4rem;
+    font-weight: 600;
+    letter-spacing: .04em;
   }
 
   /* ---------- Adaptación a pantallas pequeñas ---------- */
@@ -301,6 +330,46 @@
     * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   }
 </style>
+
+<!-- Datos estructurados: es lo que lee Google para mostrar la ficha de la
+     farmacia (dirección, teléfono y horario) en los resultados y en Maps. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Pharmacy",
+  "name": "Farmàcia Agramonte",
+  "url": "https://maragramonte.github.io/Farm-cia-Agramonte/",
+  "image": "https://maragramonte.github.io/Farm-cia-Agramonte/og.png",
+  "description": "Farmacia de barrio en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envía tu receta por WhatsApp, la preparamos y te avisamos.",
+  "foundingDate": "1890",
+  "telephone": "+34933195921",
+  "email": "farmacia.lallana@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Plaça de la Llana, 11",
+    "postalCode": "08003",
+    "addressLocality": "Barcelona",
+    "addressRegion": "Barcelona",
+    "addressCountry": "ES"
+  },
+  "areaServed": "El Born, Barcelona",
+  "currenciesAccepted": "EUR",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "14:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "16:00",
+      "closes": "20:30"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header class="cabecera">
@@ -555,8 +624,12 @@
         <h3>Farmàcia Agramonte</h3>
         <p>Desde 1890 cuidando de tu salud en el corazón de Barcelona.</p>
         <div class="sociales">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8.8c0-.5.4-.8 1-.8Z"/></svg></a>
+          <!-- Instagram y Facebook: descomentar poniendo la URL real del perfil.
+               Un icono que enlaza a "#" no lleva a ninguna parte, así que
+               mientras no haya perfil es mejor no enseñarlo.
+          <a href="https://instagram.com/PERFIL" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://facebook.com/PERFIL" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8.8c0-.5.4-.8 1-.8Z"/></svg></a>
+          -->
           <a href="https://wa.me/34661192472" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.2A8.5 8.5 0 1 1 21 11.5Z"/></svg></a>
         </div>
       </div>
@@ -573,29 +646,38 @@
 
       <div>
         <h4>Atención al cliente</h4>
+        <!-- Cuenta, carrito, checkout y lista de deseos son de la tienda, que
+             todavía no existe. Vuelven aquí cuando haya catálogo; mientras
+             tanto, esta columna lleva a las formas reales de contactar. -->
         <ul>
-          <li><a href="#">Cuenta de usuario</a></li>
-          <li><a href="#">Carrito de compra</a></li>
-          <li><a href="#">Finalizar compra</a></li>
-          <li><a href="#">Lista de deseos</a></li>
+          <li><a href="https://wa.me/34661192472" target="_blank" rel="noopener">Pedir por WhatsApp</a></li>
+          <li><a href="tel:+34933195921">Llamar a la farmacia</a></li>
+          <li><a href="mailto:farmacia.lallana@gmail.com">Escribir un correo</a></li>
+          <li><a href="#contacto">Horario y dirección</a></li>
         </ul>
       </div>
 
       <div>
         <h4>Información</h4>
+        <!-- Formas de pago, devoluciones y envíos describen una tienda en línea
+             que aún no hay; se añadirán con el catálogo. El aviso de copyright
+             y el de LOPD están dentro del aviso legal y de la privacidad. -->
         <ul>
-          <li><a href="#">Aviso Copyright</a></li>
-          <li><a href="#">Aviso LOPD</a></li>
-          <li><a href="#">Formas de pago</a></li>
-          <li><a href="#">Devoluciones</a></li>
-          <li><a href="#">Política de cookies</a></li>
-          <li><a href="#">Política de envíos</a></li>
-          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+          <li><a href="cookies.html">Política de cookies</a></li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="pie-legal">© 2026 Farmàcia Agramonte. Todos los derechos reservados.</div>
+  <div class="pie-legal">
+    <!-- TODO: sustituir PENDIENTE por el nombre del farmacéutico titular y su
+         número de colegiado del COFB. En España es obligatorio identificarlos. -->
+    <p>Farmacéutico titular: <span class="pendiente">PENDIENTE</span> ·
+       Nº de colegiado: <span class="pendiente">PENDIENTE</span> ·
+       Col·legi de Farmacèutics de Barcelona</p>
+    <p>© 2026 Farmàcia Agramonte. Todos los derechos reservados.</p>
+  </div>
 </footer>
 
 </body>

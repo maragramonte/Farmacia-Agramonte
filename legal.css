@@ -1,0 +1,124 @@
+/* ---------------------------------------------------------------
+   Farmàcia Agramonte — hoja de estilo de las páginas de texto legal
+   (aviso legal, privacidad y cookies).
+
+   La landing lleva su CSS dentro del propio index.html porque es una
+   página única. Estas tres comparten maquetación, así que el estilo
+   vive aquí en lugar de repetirse tres veces.
+   --------------------------------------------------------------- */
+:root {
+  --tinta:       #2a1d12;
+  --crema:       #f5f0e6;
+  --oro:         #c9a055;
+  --oro-claro:   #e0c285;
+  --texto:       #3a2c1f;
+  --texto-tenue: #6e5d4b;
+  --sobre-tinta: #f0e8db;
+
+  --ancho: 760px;
+  --display: "Playfair Display", "Iowan Old Style", Georgia, serif;
+  --cuerpo: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--crema);
+  color: var(--texto);
+  font-family: var(--cuerpo);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
+
+.contenedor { width: min(100% - 3rem, var(--ancho)); margin-inline: auto; }
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  background: var(--tinta);
+  border-bottom: 1px solid rgba(201, 160, 85, .22);
+}
+.cabecera .contenedor {
+  display: flex; align-items: center; gap: 1.5rem;
+  min-height: 76px;
+}
+.marca {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  color: var(--oro-claro);
+  text-decoration: none;
+  margin-right: auto;
+}
+.volver {
+  font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
+  font-weight: 600; color: var(--sobre-tinta); text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.volver:hover { color: var(--oro-claro); border-bottom-color: var(--oro); }
+
+/* ---------- Texto ---------- */
+main { padding-block: 4rem 5rem; }
+
+h1 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin: 0 0 .4rem;
+  text-wrap: balance;
+}
+.actualizado {
+  font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--texto-tenue);
+  margin: 0 0 3rem;
+}
+
+h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: 1.4rem;
+  margin: 3rem 0 .75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(42, 29, 18, .12);
+}
+h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+
+p, li { margin: 0 0 1rem; }
+ul { padding-left: 1.2rem; }
+
+dl.ficha { margin: 0; }
+dl.ficha div {
+  display: grid; grid-template-columns: 12rem 1fr; gap: 1rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid rgba(42, 29, 18, .1);
+}
+dl.ficha dt {
+  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600; color: var(--texto-tenue);
+  padding-top: .2rem;
+}
+dl.ficha dd { margin: 0; }
+
+@media (max-width: 620px) {
+  dl.ficha div { grid-template-columns: 1fr; gap: .15rem; }
+}
+
+/* Dato que todavía no tenemos. Se ve a la legua para que nadie publique
+   la página dándolo por bueno. */
+.pendiente {
+  background: #f6e3bd;
+  border-bottom: 1px solid var(--oro);
+  padding: .1rem .45rem;
+  font-size: .92em;
+}
+
+/* ---------- Pie ---------- */
+.pie-legal {
+  background: var(--tinta);
+  color: rgba(240, 232, 219, .55);
+  text-align: center;
+  font-size: .8rem;
+  padding: 2rem 1.5rem;
+}
+.pie-legal a { color: var(--oro-claro); }
