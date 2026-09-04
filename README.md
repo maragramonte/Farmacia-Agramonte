@@ -87,7 +87,7 @@ servir.bat          Doble clic para lo mismo, en Windows
 favicon.svg         Icono de la pestaña: el monograma en oro sobre tinta
 og.png              Imagen que se ve al compartir el enlace (1200×630)
 robots.txt          Permite indexar y apunta al sitemap
-sitemap.xml         Las cuatro páginas, para los buscadores
+sitemap.xml         Las catorce páginas, para los buscadores
 .nojekyll           Le dice a GitHub Pages que sirva los ficheros tal cual
 
 LICENSE             Qué se puede hacer con este código y qué no
@@ -238,11 +238,11 @@ con el JSON y avisa si sobra o falta alguna.
 1. Productos reales con sus precios, en el JSON.
 2. Fotos, en una carpeta `fotos/`.
 3. Quitar `"plantilla": true` de cada categoría, y con ello el aviso amarillo.
-4. Quitar el `noindex` de `herramientas/catalogo.py` y añadir las diez páginas
-   a `sitemap.xml`.
 
-Mientras tanto la portada ya las enlaza, así que **un visitante cualquiera llega
-a ellas**. El aviso amarillo es lo único que le dice que no son de verdad.
+Las páginas ya están enlazadas desde la portada, en `sitemap.xml` y sin
+`noindex`, así que **un visitante cualquiera llega a ellas y Google puede
+indexarlas**. El aviso amarillo es lo único que dice que no son de verdad.
+Mientras el precio siga siendo `00,00 €`, eso se lee como «gratis».
 
 ## Decisiones de diseño
 
@@ -291,11 +291,12 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
-- **Catálogo y venta en línea.** Están las **diez categorías** montadas y
-  enlazadas desde la portada, pero sus productos y sus precios **son
-  inventados** y están marcados como tales: quien entre hoy en la web llega a
-  ellas y ve la franja amarilla. Siguen con `noindex`, para que Google no
-  indexe precios que no son. **Esto es lo más urgente de la lista.** Las diez categorías de la
+- **Catálogo y venta en línea.** Están las **diez categorías** montadas,
+  enlazadas desde la portada y **en el sitemap, sin `noindex`**: Google puede
+  indexarlas. Pero sus productos y sus precios **son inventados** y están
+  marcados como tales, y el precio de ejemplo es `00,00 €`, que se lee como
+  gratis. Un precio expuesto al público es una oferta. **Esto es, con
+  diferencia, lo más urgente de todo el proyecto.** Las diez categorías de la
   portada siguen siendo atajos a WhatsApp: no hay fichas reales, ni precios, ni
   carrito. Antes de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a

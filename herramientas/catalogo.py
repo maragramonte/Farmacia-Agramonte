@@ -24,6 +24,7 @@ from urllib.parse import quote
 RAIZ = Path(__file__).resolve().parent.parent
 DATOS = Path(__file__).resolve().parent / "catalogo-datos.json"
 
+BASE = "https://maragramonte.github.io/Farmacia-Agramonte/"
 WHATSAPP = "34661192472"
 TELEFONO_ENLACE = "+34933195921"
 TELEFONO_VISIBLE = "933 19 59 21"
@@ -163,17 +164,11 @@ def cuerpo_categoria(c, icono):
 def pagina(c, categorias):
     icono = ICONOS[c["icono"]]
     es_plantilla = c.get("plantilla", False)
-    # Las diez llevan noindex, incluida la de medicamentos. La portada ya las
-    # enlaza, así que un visitante llega; lo que no queremos es que Google
-    # indexe precios inventados y los enseñe en sus resultados durante meses.
-    # Al poner los productos de verdad: se quita esto y entran las diez en
-    # sitemap.xml a la vez.
-    noindex = """<!-- noindex mientras los productos sean de ejemplo. La portada ya enlaza
-     estas páginas, pero no interesa que Google indexe precios inventados. Al
-     poner los reales, quitar esto en herramientas/catalogo.py y añadir las
-     páginas a sitemap.xml. -->
-<meta name="robots" content="noindex, nofollow">
-"""
+    # Sin noindex: las diez se indexan. Decisión de la farmacia, tomada sabiendo
+    # que lo que Google recoge son los precios de ejemplo y que un precio
+    # expuesto al público es una oferta. Al poner los reales esto no cambia.
+    canonical = '<link rel="canonical" href="%scatalogo-%s.html">' % (BASE, c["id"])
+
     coletilla = " (plantilla)" if es_plantilla else ""
 
     return """<!DOCTYPE html>
@@ -184,7 +179,8 @@ def pagina(c, categorias):
 <!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
      python herramientas/catalogo.py. Los productos están en
      herramientas/catalogo-datos.json. -->
-%s<meta name="description" content="%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
+%s
+<meta name="description" content="%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
 <title>%s%s — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
@@ -241,7 +237,7 @@ def pagina(c, categorias):
 
 </body>
 </html>
-""" % (noindex, escapa(c["nombre"]), escapa(c["nombre"]), coletilla,
+""" % (canonical, escapa(c["nombre"]), escapa(c["nombre"]), coletilla,
        WHATSAPP, ICONO_WHATSAPP,
        aviso_plantilla() if es_plantilla else "",
        escapa(c["nombre"]), escapa(c["nombre"]), escapa(c["intro"]),
