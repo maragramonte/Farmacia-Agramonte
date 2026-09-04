@@ -33,9 +33,15 @@ así que para comprobar cambios es mejor el servidor.
 ## Publicarla en internet
 
 El repositorio ya está en GitHub, y GitHub Pages publica gratis cualquier
-repositorio con un `index.html` en la raíz. **No hace falta hosting de pago, ni
-agencia, ni panel de control.** Son cuatro clics, una sola vez:
+repositorio **público** con un `index.html` en la raíz. **No hace falta hosting
+de pago, ni agencia, ni panel de control.** Son cuatro clics, una sola vez:
 
+0. **El repositorio tiene que ser público.** Ahora mismo es privado, y en los
+   repositorios privados Pages es una función de pago: por eso la dirección de
+   abajo responde 404. Se cambia en Settings → General → Danger Zone →
+   *Change repository visibility* → **Public**. La web es pública de todos
+   modos; lo único que pasa a verse además es el código, que no guarda ninguna
+   contraseña ni dato de nadie.
 1. Sube los cambios: `git add -A`, `git commit -m "..."`, `git push`.
 2. En GitHub, entra en el repositorio → pestaña **Settings** → **Pages**.
 3. En *Source*, elige **Deploy from a branch**; luego rama `main` y carpeta
@@ -61,10 +67,11 @@ Dos apuntes:
 
 ```
 index.html          La landing completa (HTML + CSS + iconos SVG en línea)
+404.html            Lo que se ve al abrir una dirección que no existe
 aviso-legal.html    Titular, datos profesionales y condiciones de uso
 privacidad.html     Qué datos se tratan, para qué y con qué base legal
 cookies.html        No hay cookies; se explica la única petición externa
-legal.css           Estilo compartido de esas tres páginas de texto
+legal.css           Estilo compartido de esas páginas de texto y del 404
 
 servir.py           Servidor local (sólo necesita Python)
 servir.bat          Doble clic para lo mismo, en Windows
@@ -85,9 +92,13 @@ diseno/
 ## Secciones de la landing
 
 Cabecera fija con acceso directo a WhatsApp · hero con la propuesta («envíanos
-la receta, la preparamos y te avisamos») · seis categorías de producto · tres
-motivos para elegir la farmacia · consejos del farmacéutico · datos de contacto
-y horario · pie con enlaces legales e información de contacto.
+la receta, la preparamos y te avisamos») · seis categorías de producto, cada una
+abre WhatsApp con la consulta ya escrita · tres motivos para elegir la farmacia ·
+datos de contacto y horario · pie con enlaces legales e información de contacto.
+
+En el móvil el menú no se esconde: la cabecera pasa a dos filas y los enlaces
+quedan en una tira que se desliza si no caben. Las anclas se paran por debajo de
+la cabecera, que va fija, para que el título de la sección no quede tapado.
 
 ## Datos de la farmacia
 
@@ -134,8 +145,13 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
   identificarlos, así que esto va primero.
 - **NIF y razón social del titular**, en `aviso-legal.html` y `privacidad.html`.
 - **Fotos.** El hero lleva una ilustración provisional del mostrador, dibujada
-  en SVG y con un aviso encima. Los tres huecos del blog son bloques con
-  textura. Hay que sustituirlos por las fotos reales.
+  en SVG y con un aviso encima. Hay que sustituirla por la foto real.
+- **Blog.** Los tres artículos («Cómo cuidar tu piel en primavera» y los otros
+  dos) eran texto de relleno y sus «Leer más» no llevaban a ninguna parte, así
+  que la sección salió de la página: un consejo de salud firmado por el
+  farmacéutico que nadie ha escrito no debe publicarse. El CSS sigue en su
+  sitio y la maquetación está en el historial (`git show 9ef1f72:index.html`),
+  lista para volver en cuanto haya un artículo de verdad.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.

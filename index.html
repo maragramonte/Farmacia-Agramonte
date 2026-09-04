@@ -47,12 +47,28 @@
     --sobre-tinta:  #f0e8db;
     --tenue-tinta:  #b6a48c;
 
+    /* Oro para texto pequeño sobre crema. El de marca se queda en 2,1:1 de
+       contraste y no hay quien lo lea; este da 5,6:1 sobre --crema y 4,9:1
+       sobre --crema-2 (el fondo de la tarjeta de contacto), así que cumple la
+       AA en los dos sin salirse del tono. Sobre tinta el bueno sigue
+       siendo --oro. */
+    --oro-hondo:    #7a5a21;
+
     --ancho: 1120px;
+    /* Lo que mide la cabecera fija, más un respiro. Las anclas se paran ahí. */
+    --alto-cabecera: 96px;
     --display: "Playfair Display", "Iowan Old Style", Georgia, serif;
     --cuerpo: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
+
+  /* La cabecera va fija arriba, así que al saltar a una sección hay que
+     detenerse por debajo de ella o el título queda tapado. */
+  html {
+    scroll-padding-top: var(--alto-cabecera);
+    scroll-behavior: smooth;
+  }
 
   body {
     margin: 0;
@@ -90,7 +106,7 @@
     border-bottom: 1px solid rgba(201,160,85,.22);
   }
   .cabecera .contenedor {
-    display: flex; align-items: center; gap: 2rem;
+    display: flex; align-items: center; flex-wrap: wrap; gap: .4rem 2rem;
     min-height: 76px;
   }
   .marca {
@@ -193,6 +209,10 @@
 
   .filete { border: 0; border-top: 1px solid var(--crema-3); margin: 0; }
 
+  .apunte { margin-top: 1.4rem; color: var(--texto-tenue); font-size: .93rem; max-width: 60ch; }
+  .apunte a { border-bottom: 1px solid var(--crema-3); }
+  .apunte a:hover { color: var(--oro-hondo); border-bottom-color: var(--oro); }
+
   /* ---------- Por qué elegirnos ---------- */
   .valores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
   .valor { display: flex; gap: 1.1rem; padding-inline: 2rem; }
@@ -203,7 +223,7 @@
   .valor h3 { font-family: var(--cuerpo); font-size: 1rem; font-weight: 600; margin-bottom: .35rem; }
   .valor p { color: var(--texto-tenue); font-size: .93rem; }
 
-  /* ---------- Blog ---------- */
+  /* ---------- Blog (la sección está fuera del HTML hasta que haya artículos) ---------- */
   .consejos { background: var(--crema-2); padding: 3rem; }
   .consejos-cabecera {
     display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem;
@@ -215,7 +235,7 @@
     color: var(--texto-tenue);
     transition: color .18s ease;
   }
-  .enlace-todos:hover { color: var(--oro); }
+  .enlace-todos:hover { color: var(--oro-hondo); }
 
   .rejilla-blog { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.5rem; }
   .destacado { display: grid; grid-template-columns: 1fr 1fr; background: var(--crema); }
@@ -228,14 +248,14 @@
   .secundario .cuerpo { padding: 1.2rem 1.4rem; display: flex; flex-direction: column; justify-content: center; }
   .secundario h3 { font-size: 1.08rem; line-height: 1.3; margin-bottom: .6rem; }
 
-  .eyebrow { color: var(--oro); margin-bottom: .6rem; }
+  .eyebrow { color: var(--oro-hondo); margin-bottom: .6rem; }
   .leer {
     margin-top: auto;
     font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
     color: var(--texto);
     transition: color .18s ease;
   }
-  .leer:hover { color: var(--oro); }
+  .leer:hover { color: var(--oro-hondo); }
   .leer span { transition: transform .18s ease; display: inline-block; }
   .leer:hover span { transform: translateX(3px); }
 
@@ -259,7 +279,7 @@
   .dato svg { width: 26px; height: 26px; flex: none; stroke: var(--oro); fill: none; stroke-width: 1.3; }
   .dato h3 { font-family: var(--cuerpo); font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
   .dato p, .dato a { font-size: .89rem; color: var(--texto-tenue); }
-  .dato a:hover { color: var(--oro); }
+  .dato a:hover { color: var(--oro-hondo); }
   .dato dl { margin: 0; font-size: .89rem; color: var(--texto-tenue); }
   .dato dt { font-weight: 600; color: var(--texto); }
   .dato dd { margin: 0 0 .45rem; font-variant-numeric: tabular-nums; }
@@ -309,8 +329,24 @@
 
   /* ---------- Adaptación a pantallas pequeñas ---------- */
   @media (max-width: 900px) {
+    /* La cabecera pasa a dos filas: marca y botón arriba, el menú debajo en una
+       tira que se desliza si no cabe. Antes el menú se ocultaba del todo y en el
+       móvil no había manera de llegar a las secciones. */
+    :root { --alto-cabecera: 116px; }
+    .cabecera .contenedor { min-height: 60px; padding-block: .55rem; }
+    .marca { font-size: 1.25rem; }
+    .nav {
+      order: 3; width: 100%;
+      gap: 1.5rem;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+      padding-bottom: .15rem;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a { white-space: nowrap; }
+
     .hero .contenedor { grid-template-columns: 1fr; gap: 2.5rem; padding-block: 3rem; }
-    .nav { display: none; }
     .valores { grid-template-columns: 1fr; gap: 2rem; }
     .valor { padding-inline: 0; }
     .valor + .valor { border-left: 0; border-top: 1px solid var(--crema-3); padding-top: 2rem; }
@@ -321,13 +357,25 @@
     .pie-rejilla { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
-    .datos { grid-template-columns: 1fr; }
+    /* Con 3rem de aire a los lados, en una pantalla de 320px el contenido se
+       queda sin sitio y la cabecera se desborda. */
+    :root { --alto-cabecera: 120px; }
+    .contenedor { width: min(100% - 2rem, var(--ancho)); }
+    /* En 320px la marca y el botón suman más que el ancho disponible si el
+       hueco entre ellos sigue siendo de 2rem, y el botón se cae de fila. */
+    .cabecera .contenedor { gap: .4rem 1rem; }
+    .marca { font-size: 1.12rem; }
+    .cabecera .boton { padding: .7rem 1.05rem; letter-spacing: .1em; }
+    .seccion { padding-block: 3rem; }
+    .consejos { padding: 1.5rem; }
+    .datos { grid-template-columns: 1fr; padding: 1.75rem 1.5rem; }
     .secundario { grid-template-columns: 1fr; }
     .pie-rejilla { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    html { scroll-behavior: auto; }
   }
 </style>
 
@@ -378,7 +426,7 @@
     <nav class="nav" aria-label="Principal">
       <a href="#inicio" aria-current="page">Inicio</a>
       <a href="#categorias">Categorías</a>
-      <a href="#blog">Blog</a>
+      <!-- Blog: vuelve al menú cuando haya un artículo escrito de verdad. -->
       <a href="#contacto">Contacto</a>
     </nav>
     <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
@@ -474,31 +522,36 @@
   <section class="seccion contenedor" id="categorias">
     <h2>¿Qué estás buscando?</h2>
     <div class="pastillas">
-      <a class="pastilla" href="#categorias">
+      <a class="pastilla" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20medicamento." target="_blank" rel="noopener" aria-label="Preguntar por un medicamento por WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
         Medicamentos
       </a>
-      <a class="pastilla" href="#categorias">
+      <a class="pastilla" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20dermocosm%C3%A9tica." target="_blank" rel="noopener" aria-label="Preguntar por dermocosmética por WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4v4l2 3v11H8V9l2-3Z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
         Dermocosmética
       </a>
-      <a class="pastilla" href="#categorias">
+      <a class="pastilla" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20productos%20para%20beb%C3%A9s." target="_blank" rel="noopener" aria-label="Preguntar por productos para bebés por WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/><path d="M9 15c1.8 1.4 4.2 1.4 6 0"/></svg>
         Bebés
       </a>
-      <a class="pastilla" href="#categorias">
+      <a class="pastilla" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20salud%20%C3%ADntima." target="_blank" rel="noopener" aria-label="Preguntar por salud íntima por WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg>
         Salud íntima
       </a>
-      <a class="pastilla" href="#categorias">
+      <a class="pastilla" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20vitaminas." target="_blank" rel="noopener" aria-label="Preguntar por vitaminas por WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c4 3 7 5.5 7 9a7 7 0 0 1-14 0c0-3.5 3-6 7-9Z"/></svg>
         Vitaminas
       </a>
-      <a class="pastilla" href="#categorias">
+      <a class="pastilla" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20ortopedia." target="_blank" rel="noopener" aria-label="Preguntar por ortopedia por WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
         Ortopedia
       </a>
     </div>
+    <!-- Antes las seis pastillas enlazaban a "#categorias", es decir, a la
+         sección que las contiene: no llevaban a ninguna parte. Hasta que haya
+         catálogo, abren WhatsApp con la consulta ya escrita. -->
+    <p class="apunte">Pulsa una y se abre WhatsApp con la consulta ya escrita.
+      Si lo prefieres, llámanos al <a href="tel:+34933195921">933 19 59 21</a>.</p>
   </section>
 
   <hr class="filete">
@@ -530,50 +583,14 @@
     </div>
   </section>
 
-  <section class="contenedor" id="blog" style="padding-bottom:4.5rem">
-    <div class="consejos">
-      <div class="consejos-cabecera">
-        <h2>Consejos de tu farmacéutico</h2>
-        <a class="enlace-todos" href="#blog">Ver todos los artículos →</a>
-      </div>
-
-      <div class="rejilla-blog">
-        <article class="destacado">
-          <div class="hueco">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg>
-          </div>
-          <div class="cuerpo">
-            <span class="eyebrow etiqueta">Artículo destacado</span>
-            <h3>Cómo cuidar tu piel en primavera</h3>
-            <p>Consejos para proteger y reparar tu piel durante los meses de más sol.</p>
-            <a class="leer" href="#blog">Leer más <span>→</span></a>
-          </div>
-        </article>
-
-        <div class="secundarios">
-          <article class="secundario">
-            <div class="hueco">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 3.5 6 6 6 9a6 6 0 0 1-12 0c0-3 2.5-5.5 6-9Z"/></svg>
-            </div>
-            <div class="cuerpo">
-              <h3>Hidratación: el gesto más importante</h3>
-              <a class="leer" href="#blog">Leer más <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="secundario">
-            <div class="hueco">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>
-            </div>
-            <div class="cuerpo">
-              <h3>Vitaminas que te ayudan a mantener tus defensas</h3>
-              <a class="leer" href="#blog">Leer más <span>→</span></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Aquí iba la sección de consejos: tres artículos que no existen, con
+       cinco enlaces "Leer más" que volvían a esta misma página. Una foto
+       provisional con su aviso encima es honesta; un consejo de salud firmado
+       por el farmacéutico que nadie ha escrito, no. Vuelve en cuanto haya un
+       artículo de verdad; la maquetación está en el historial:
+       git show 9ef1f72:index.html
+       El CSS (.consejos, .rejilla-blog, .destacado, .secundario, .hueco) sigue
+       en su sitio esperándola. -->
 
   <section class="contenedor" id="contacto" style="padding-bottom:4.5rem">
     <div class="datos">
@@ -639,7 +656,6 @@
         <ul>
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#categorias">Categorías</a></li>
-          <li><a href="#blog">Blog</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
