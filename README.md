@@ -107,8 +107,9 @@ repositorio ya no hace esa función.
 ## Secciones de la landing
 
 Cabecera fija con acceso directo a WhatsApp · hero con la propuesta («envíanos
-la receta, la preparamos y te avisamos») · doce categorías de producto, cada una
-abre WhatsApp con la consulta ya escrita · tres motivos para elegir la farmacia ·
+la receta, la preparamos y te avisamos») · diez categorías de producto que no se
+solapan entre sí, cada una abre WhatsApp con la consulta ya escrita · tres
+motivos para elegir la farmacia ·
 datos de contacto y horario · pie con enlaces legales e información de contacto.
 
 En el móvil el menú no se esconde: la cabecera pasa a dos filas y los enlaces
@@ -144,6 +145,36 @@ trabajo no es esconderlo, es el derecho de autor —automático, sin registrar
 nada— y el hecho de que lo copiable es la maqueta, no el negocio: el nombre, la
 licencia de oficina de farmacia, la Plaça de la Llana y la ficha de Google no
 se clonan.
+
+## Las categorías
+
+Son diez y **no se solapan**, que es la única condición que importa si algún día
+cuelga de ellas un catálogo: si dos cajones valen para el mismo producto, nadie
+sabe dónde buscarlo ni dónde guardarlo.
+
+| Categoría | Qué recoge |
+|---|---|
+| Medicamentos | Sin receta y encargos de receta, siempre para recoger en el mostrador |
+| Cosmética facial | Cremas, limpiadores, tratamientos de rostro |
+| Cosmética corporal | Cuerpo, manos, higiene |
+| Solares | Fotoprotección, adulta e infantil |
+| Cabello | Champús, anticaída, cuero cabelludo |
+| Bebé e infantil | Pañal, lactancia, higiene y cuidado del niño |
+| Salud íntima | Higiene íntima, anticoncepción, menopausia |
+| Nutrición y vitaminas | Complementos alimenticios y nutrición específica |
+| Fitoterapia | Plantas medicinales y derivados |
+| Ortopedia | Vendajes, plantillas, ayudas técnicas |
+
+Tres decisiones que conviene no deshacer sin pensarlo:
+
+- **«Dermocosmética» ya no está** como categoría suelta: era el paraguas de
+  facial, corporal, solares y cabello, así que convivir con ellas creaba cuatro
+  solapamientos. Se parte en facial y corporal, que es donde iban sus productos.
+- **Bebés e infantil van juntas**, y las **vitaminas dentro de nutrición**: eran
+  la misma estantería partida en dos.
+- **«Fitoterapia», no «medicina natural».** Lo segundo atribuye propiedades
+  medicinales a productos que no son medicamentos, y eso choca con las normas de
+  declaraciones de salud de los complementos alimenticios.
 
 ## Decisiones de diseño
 
@@ -192,7 +223,7 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
-- **Catálogo y venta en línea.** Las doce categorías son de momento atajos a
+- **Catálogo y venta en línea.** Las diez categorías son de momento atajos a
   WhatsApp: no hay fichas de producto, ni precios, ni carrito. Antes de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a
   distancia** sin notificarlo a la autoridad sanitaria, aparecer en el registro
