@@ -67,6 +67,12 @@
   padding: .3rem .6rem;
 }
 
+/* Cuando el producto ya tiene foto de verdad: fuera el degradado y fuera el
+   rótulo de «Foto pendiente». El generador pone esta clase solo. */
+.foto-real { background: var(--crema-2); }
+.foto-real img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.foto-real::after { content: none; }
+
 .producto .cuerpo { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
 .producto h2 { font-family: var(--cuerpo); font-size: 1rem; font-weight: 600; line-height: 1.35; margin-bottom: .4rem; }
 .resumen { font-size: .88rem; color: var(--texto-tenue); margin-bottom: .8rem; }

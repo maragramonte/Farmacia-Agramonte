@@ -77,8 +77,7 @@ privacidad.html     Qué datos se tratan, para qué y con qué base legal
 cookies.html        No hay cookies; se explica la única petición externa
 legal.css           Estilo compartido de esas páginas de texto y del 404
 
-catalogo-solares.html            PLANTILLA de catálogo, Solares de muestra
-catalogo-cosmetica-facial.html   La misma, con cosmética facial
+catalogo-*.html     Las diez categorías. SE GENERAN, no se editan a mano
 catalogo.css        Lo propio del catálogo: aviso, tira y rejilla de fichas
 marca.css           Paleta, cabecera, botón y pie: la identidad compartida
 
@@ -102,7 +101,9 @@ tipografias/
   LICENCIA-playfairdisplay.txt     La OFL exige distribuirla con la fuente
 
 herramientas/
-  tarjeta-social.py Regenera og.png si cambia el lema o los datos
+  catalogo.py           Escribe las diez catalogo-*.html
+  catalogo-datos.json   Los productos y los precios. Se edita ESTE
+  tarjeta-social.py     Regenera og.png si cambia el lema o los datos
 ```
 
 El boceto y el diseño visual (`diseno/`) están ignorados por git y viven sólo
@@ -183,15 +184,32 @@ Tres decisiones que conviene no deshacer sin pensarlo:
 
 ## La plantilla del catálogo
 
-Hay dos páginas de muestra, **Solares** y **Cosmética facial**, para ver cómo
-quedaría una categoría y cómo se navega de una a otra. Las dos son parafarmacia
-pura, así que sirven para ver la maqueta sin rozar el régimen de venta a
-distancia ni el de publicidad de medicamentos.
+Están las **diez categorías**, una página cada una. Nueve llevan seis productos
+de muestra; **Medicamentos no lleva ninguno**, y eso es deliberado: enseñar
+medicamentos en un catálogo es publicidad de medicamentos, que la ley prohíbe al
+público para los de receta y sólo permite con advertencias obligatorias para el
+resto. Su página explica en su lugar cómo se encarga una receta.
+
+**Las páginas se generan.** No se editan a mano:
+
+```
+python herramientas/catalogo.py
+```
+
+Lee `herramientas/catalogo-datos.json` y escribe las diez `catalogo-*.html`. Es
+lo mismo que hace `tarjeta-social.py` con `og.png`: la web sigue siendo estática
+y no se ejecuta nada al visitarla, sólo cuando cambian los productos. Existe por
+una razón concreta: la tira de categorías que va arriba las lista todas, así que
+añadir una obligaba a tocar las diez a mano, y eso es una errata esperando a
+ocurrir.
+
+Para cambiar productos, precios o fotos se edita **el JSON**, y se vuelve a
+ejecutar el script. Dos comodidades: si un producto no tiene `precio`, sale el
+hueco en amarillo, y en cuanto lo escribes se pinta normal; igual con `foto`.
 
 El estilo va en dos hojas: `marca.css` con la identidad compartida —paleta,
 cabecera, botón y pie— y `catalogo.css` con lo que sólo existe aquí. Hay que
-cargar `marca.css` primero. Se separaron al montar la segunda categoría, para no
-copiar la paleta una cuarta vez.
+cargar `marca.css` primero.
 
 Tres cosas que hay que entender antes de tocarla:
 
@@ -208,14 +226,17 @@ Tres cosas que hay que entender antes de tocarla:
   texto porque todavía no tienen página, y ya aprendimos en la portada que un
   enlace que no lleva a ninguna parte es peor que no tenerlo.
 
-Para añadir un producto se copia un bloque `<article class="producto">` y se
-cambian nombre, resumen, formato, precio y el texto del enlace de WhatsApp.
+Para añadir un producto o una categoría se edita el JSON y se ejecuta el
+script. La tira se rehace sola en las diez páginas.
 
-Para una categoría nueva se copia una de las dos páginas enteras y se cambian el
-título, la introducción y los productos. **Y hay que acordarse de la tira**: la
-categoría nueva pasa de `<span>` a `<a>` en *todas* las páginas de catálogo, no
-sólo en la suya. Con dos se lleva a mano; a partir de cinco o seis conviene
-generar esa tira en lugar de copiarla.
+**Lo que falta para que esto deje de ser una maqueta**, por orden:
+
+1. Productos reales con sus precios, en el JSON.
+2. Fotos, en una carpeta `fotos/`.
+3. Quitar `"plantilla": true` de cada categoría, y con ello el aviso amarillo.
+4. Quitar el `noindex` de `herramientas/catalogo.py` y añadir las diez páginas
+   a `sitemap.xml`.
+5. Enlazar las categorías desde la portada, que hoy llevan a WhatsApp.
 
 ## Decisiones de diseño
 
@@ -264,9 +285,9 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
-- **Catálogo y venta en línea.** Hay **dos plantillas**, Solares y cosmética
-  facial, para ver cómo quedaría. Sus productos y sus precios **son inventados**
-  y están marcados como tales. Las diez categorías de la
+- **Catálogo y venta en línea.** Están las **diez categorías** montadas, pero
+  sus productos y sus precios **son inventados** y están marcados como tales.
+  Ninguna está enlazada desde la web ni indexada. Las diez categorías de la
   portada siguen siendo atajos a WhatsApp: no hay fichas reales, ni precios, ni
   carrito. Antes de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a

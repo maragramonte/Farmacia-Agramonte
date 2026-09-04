@@ -1,0 +1,170 @@
+{
+  "_leeme": [
+    "Los productos y los precios de este fichero SON INVENTADOS. Están para ver",
+    "la maquetación. Al sustituirlos por los reales, quita también la clave",
+    "'plantilla': true de cada categoría y desaparecerá el aviso amarillo.",
+    "",
+    "Cada producto admite: nombre, resumen, formato, precio y consulta.",
+    "  - precio: si falta, sale el hueco en amarillo. Al escribirlo ('12,95 €')",
+    "    se pinta normal.",
+    "  - foto: si falta, sale el recuadro con 'Foto pendiente'. Al poner el",
+    "    nombre de un fichero de fotos/ se pinta la foto.",
+    "  - consulta: lo que se escribe solo en WhatsApp al pulsar Preguntar.",
+    "",
+    "Después de editar, ejecuta:  python herramientas/catalogo.py"
+  ],
+
+  "categorias": [
+    {
+      "id": "medicamentos",
+      "nombre": "Medicamentos",
+      "icono": "capsula",
+      "plantilla": false,
+      "intro": "Aquí no hay lista de productos, y es a propósito.",
+      "sin_productos": {
+        "titulo": "Los medicamentos se encargan, no se compran por internet",
+        "parrafos": [
+          "La ley no permite anunciar al público los medicamentos que necesitan receta, y los que no la necesitan sólo pueden anunciarse con advertencias obligatorias. Por eso esta página no lleva catálogo: sería publicidad de medicamentos, que es otra cosa distinta a enseñar una crema.",
+          "Lo que sí puedes hacer es encargarlos. Envíanos la receta o el nombre de lo que buscas por WhatsApp o por teléfono, lo preparamos y te avisamos cuando esté. La dispensación y la comprobación de la receta se hacen en el mostrador, como manda la normativa y como conviene: es donde podemos preguntarte si tomas algo más.",
+          "Ante cualquier síntoma que preocupe, lo primero es el médico. Lo que hacemos aquí es consejo farmacéutico, no diagnóstico."
+        ]
+      },
+      "productos": []
+    },
+    {
+      "id": "cosmetica-facial",
+      "nombre": "Cosmética facial",
+      "icono": "espejo",
+      "plantilla": true,
+      "intro": "Limpieza, hidratación y cuidado del rostro. Si no sabes por dónde empezar o tu piel se ha vuelto reactiva, cuéntanoslo: media consulta se resuelve sabiendo qué te estás poniendo ya.",
+      "productos": [
+        { "nombre": "Limpiador facial en gel", "resumen": "Para la limpieza diaria de mañana y noche. No reseca.", "formato": "Gel · 200 ml", "consulta": "un limpiador facial" },
+        { "nombre": "Agua micelar", "resumen": "Retira el maquillaje sin frotar. También para pieles sensibles.", "formato": "Solución · 400 ml", "consulta": "un agua micelar" },
+        { "nombre": "Sérum con vitamina C", "resumen": "Se aplica por la mañana, antes de la hidratante. Unas gotas bastan.", "formato": "Sérum · 30 ml", "consulta": "un sérum con vitamina C" },
+        { "nombre": "Crema hidratante de día", "resumen": "Textura ligera, se absorbe rápido. Para piel normal y mixta.", "formato": "Crema · 50 ml", "consulta": "una crema hidratante de día" },
+        { "nombre": "Contorno de ojos", "resumen": "Para la zona más fina de la cara. Con aplicador de metal frío.", "formato": "Crema · 15 ml", "consulta": "un contorno de ojos" },
+        { "nombre": "Crema de noche", "resumen": "Más rica que la de día, para usar sobre la piel ya limpia.", "formato": "Crema · 50 ml", "consulta": "una crema de noche" }
+      ]
+    },
+    {
+      "id": "cosmetica-corporal",
+      "nombre": "Cosmética corporal",
+      "icono": "bote",
+      "plantilla": true,
+      "intro": "Cuerpo, manos e higiene diaria. La piel del cuerpo pide menos que la de la cara, pero la pide todos los días.",
+      "productos": [
+        { "nombre": "Crema hidratante corporal", "resumen": "Para después de la ducha, sobre la piel aún húmeda.", "formato": "Crema · 400 ml", "consulta": "una crema hidratante corporal" },
+        { "nombre": "Gel de baño para piel atópica", "resumen": "Sin jabón ni perfume. Para pieles que se irritan con facilidad.", "formato": "Gel · 500 ml", "consulta": "un gel de baño para piel atópica" },
+        { "nombre": "Crema de manos", "resumen": "De bolsillo, para las manos que se lavan muchas veces al día.", "formato": "Crema · 75 ml", "consulta": "una crema de manos" },
+        { "nombre": "Crema de pies", "resumen": "Más densa, para talones y zonas de roce.", "formato": "Crema · 100 ml", "consulta": "una crema de pies" },
+        { "nombre": "Aceite corporal", "resumen": "Se aplica con masaje. Deja la piel flexible.", "formato": "Aceite · 200 ml", "consulta": "un aceite corporal" },
+        { "nombre": "Desodorante sin alcohol", "resumen": "Para axilas sensibles o recién depiladas.", "formato": "Roll-on · 50 ml", "consulta": "un desodorante sin alcohol" }
+      ]
+    },
+    {
+      "id": "solares",
+      "nombre": "Solares",
+      "icono": "sol",
+      "plantilla": true,
+      "intro": "Fotoprotección para la cara, el cuerpo y los niños. Si dudas entre dos factores o tienes la piel reactiva, pregúntanos: es de las cosas que mejor se resuelven hablando.",
+      "productos": [
+        { "nombre": "Fotoprotector facial SPF 50+", "resumen": "Textura fluida, sin perfume. Para uso diario, también bajo el maquillaje.", "formato": "Fluido · 50 ml", "consulta": "un fotoprotector facial SPF 50+" },
+        { "nombre": "Leche solar corporal SPF 30", "resumen": "Se extiende fácil y no deja rastro blanco. Resistente al agua.", "formato": "Loción · 200 ml", "consulta": "una leche solar corporal" },
+        { "nombre": "Fotoprotector infantil SPF 50+", "resumen": "En espray, para pieles sensibles. Pensado para aplicar con prisa.", "formato": "Espray · 200 ml", "consulta": "un fotoprotector infantil" },
+        { "nombre": "Stick labial SPF 50", "resumen": "Para el labio y las zonas que siempre se olvidan: nariz, orejas, cicatrices.", "formato": "Stick · 4 g", "consulta": "un stick labial con protección" },
+        { "nombre": "Fotoprotector con color SPF 50+", "resumen": "Unifica el tono mientras protege. Acabado mate.", "formato": "Compacto · 10 g", "consulta": "un fotoprotector con color" },
+        { "nombre": "After sun con aloe", "resumen": "Calma y rehidrata después del sol. Sensación de frío al aplicarlo.", "formato": "Gel · 200 ml", "consulta": "un after sun" }
+      ]
+    },
+    {
+      "id": "cabello",
+      "nombre": "Cabello",
+      "icono": "peine",
+      "plantilla": true,
+      "intro": "Champús, tratamientos y cuidado del cuero cabelludo. Si se te cae más de lo normal, cuéntanos desde cuándo: eso orienta mucho.",
+      "productos": [
+        { "nombre": "Champú anticaída", "resumen": "De uso frecuente. Se deja actuar un par de minutos.", "formato": "Champú · 200 ml", "consulta": "un champú anticaída" },
+        { "nombre": "Champú anticaspa", "resumen": "Para descamación y picor. Dos o tres veces por semana.", "formato": "Champú · 200 ml", "consulta": "un champú anticaspa" },
+        { "nombre": "Ampollas para el cabello", "resumen": "Tratamiento en cura, sobre el cuero cabelludo limpio.", "formato": "Caja de 12 ampollas", "consulta": "unas ampollas para el cabello" },
+        { "nombre": "Acondicionador sin aclarado", "resumen": "Para desenredar sin apelmazar. Se aplica en medios y puntas.", "formato": "Crema · 150 ml", "consulta": "un acondicionador sin aclarado" },
+        { "nombre": "Champú de uso frecuente", "resumen": "Suave, para lavados diarios.", "formato": "Champú · 400 ml", "consulta": "un champú de uso frecuente" },
+        { "nombre": "Loción para el cuero cabelludo", "resumen": "Sin aclarado, para aplicar por la noche.", "formato": "Loción · 100 ml", "consulta": "una loción para el cuero cabelludo" }
+      ]
+    },
+    {
+      "id": "bebe-e-infantil",
+      "nombre": "Bebé e infantil",
+      "icono": "cara",
+      "plantilla": true,
+      "intro": "Pañal, baño e higiene del bebé y del niño. Si es tu primer hijo, pregunta sin reparo: nos lo preguntan todos.",
+      "productos": [
+        { "nombre": "Crema de pañal", "resumen": "Capa protectora en cada cambio. Textura espesa.", "formato": "Pomada · 100 ml", "consulta": "una crema de pañal" },
+        { "nombre": "Gel-champú para bebé", "resumen": "Uno para todo, sin lágrimas. Para el baño diario.", "formato": "Gel · 500 ml", "consulta": "un gel-champú para bebé" },
+        { "nombre": "Suero fisiológico monodosis", "resumen": "Para la higiene nasal y ocular. Un envase por uso.", "formato": "Caja de 30 monodosis", "consulta": "suero fisiológico monodosis" },
+        { "nombre": "Termómetro digital", "resumen": "Lectura rápida, punta flexible.", "formato": "Unidad", "consulta": "un termómetro digital" },
+        { "nombre": "Chupete de silicona", "resumen": "Varias tallas según la edad. Pregunta cuál toca.", "formato": "Unidad", "consulta": "un chupete de silicona" },
+        { "nombre": "Leche corporal infantil", "resumen": "Hidratación diaria después del baño.", "formato": "Loción · 300 ml", "consulta": "una leche corporal infantil" }
+      ]
+    },
+    {
+      "id": "salud-intima",
+      "nombre": "Salud íntima",
+      "icono": "corazon",
+      "plantilla": true,
+      "intro": "Higiene, anticoncepción y cuidado íntimo. Se puede preguntar con discreción: por WhatsApp, por teléfono o en el mostrador, apartados del resto.",
+      "productos": [
+        { "nombre": "Gel de higiene íntima", "resumen": "De uso diario, con pH adaptado a la zona.", "formato": "Gel · 250 ml", "consulta": "un gel de higiene íntima" },
+        { "nombre": "Preservativos", "resumen": "Varios tamaños y texturas. Pregunta sin problema.", "formato": "Caja de 12", "consulta": "preservativos" },
+        { "nombre": "Lubricante de base acuosa", "resumen": "Compatible con preservativo.", "formato": "Gel · 75 ml", "consulta": "un lubricante" },
+        { "nombre": "Óvulos hidratantes", "resumen": "Para la sequedad vaginal. Aplicación por la noche.", "formato": "Caja de 10", "consulta": "unos óvulos hidratantes" },
+        { "nombre": "Compresas de algodón", "resumen": "Sin plásticos ni perfume. Varias absorciones.", "formato": "Paquete", "consulta": "compresas de algodón" },
+        { "nombre": "Test de embarazo", "resumen": "Resultado en pocos minutos. Se puede hacer aquí si lo prefieres.", "formato": "Unidad", "consulta": "un test de embarazo" }
+      ]
+    },
+    {
+      "id": "nutricion-y-vitaminas",
+      "nombre": "Nutrición y vitaminas",
+      "icono": "manzana",
+      "plantilla": true,
+      "intro": "Complementos alimenticios y nutrición específica. No sustituyen a una dieta variada ni a lo que te haya dicho tu médico: si tomas medicación, dínoslo antes, porque algunos se llevan mal entre sí.",
+      "productos": [
+        { "nombre": "Vitamina D en gotas", "resumen": "Dosificación en gotas. Sigue siempre la pauta indicada.", "formato": "Gotas · 10 ml", "consulta": "vitamina D en gotas" },
+        { "nombre": "Complejo de vitamina B", "resumen": "Una toma al día, con el desayuno.", "formato": "60 cápsulas", "consulta": "un complejo de vitamina B" },
+        { "nombre": "Magnesio", "resumen": "En comprimidos. Pregunta por la forma que mejor te siente.", "formato": "90 comprimidos", "consulta": "magnesio" },
+        { "nombre": "Omega 3", "resumen": "Perlas de aceite de pescado. Guardar en sitio fresco.", "formato": "60 perlas", "consulta": "omega 3" },
+        { "nombre": "Probióticos", "resumen": "En sobres, para disolver. Mantener refrigerado.", "formato": "30 sobres", "consulta": "probióticos" },
+        { "nombre": "Hierro con vitamina C", "resumen": "Se absorbe mejor en ayunas. Puede teñir las heces.", "formato": "30 comprimidos", "consulta": "hierro con vitamina C" }
+      ]
+    },
+    {
+      "id": "fitoterapia",
+      "nombre": "Fitoterapia",
+      "icono": "hoja",
+      "plantilla": true,
+      "intro": "Plantas medicinales, infusiones y derivados. Que sea natural no quiere decir que sea inocuo: hay plantas que interfieren con medicamentos, así que pregúntanos antes si tomas algo.",
+      "productos": [
+        { "nombre": "Infusión de manzanilla", "resumen": "En bolsitas. La de toda la vida.", "formato": "20 bolsitas", "consulta": "infusión de manzanilla" },
+        { "nombre": "Infusión de tila", "resumen": "En bolsitas, para tomar caliente.", "formato": "20 bolsitas", "consulta": "infusión de tila" },
+        { "nombre": "Aceite esencial de árbol de té", "resumen": "Uso tópico y diluido. Nunca puro sobre la piel.", "formato": "Aceite · 10 ml", "consulta": "aceite esencial de árbol de té" },
+        { "nombre": "Jarabe de própolis", "resumen": "Con miel. No apto para menores de un año.", "formato": "Jarabe · 150 ml", "consulta": "jarabe de própolis" },
+        { "nombre": "Cápsulas de cardo mariano", "resumen": "Complemento alimenticio. Una toma al día.", "formato": "60 cápsulas", "consulta": "cápsulas de cardo mariano" },
+        { "nombre": "Gel de aloe vera", "resumen": "Para después del sol o pequeñas rozaduras.", "formato": "Gel · 200 ml", "consulta": "gel de aloe vera" }
+      ]
+    },
+    {
+      "id": "ortopedia",
+      "nombre": "Ortopedia",
+      "icono": "cruz",
+      "plantilla": true,
+      "intro": "Vendajes, sujeciones y ayudas técnicas. Casi todo va por talla: si puedes, pásate a que te midamos, que acertar a ojo sale caro.",
+      "productos": [
+        { "nombre": "Tobillera elástica", "resumen": "Sujeción ligera para esguinces ya en recuperación.", "formato": "Tallas S a XL", "consulta": "una tobillera elástica" },
+        { "nombre": "Muñequera con férula", "resumen": "Inmoviliza la muñeca dejando libres los dedos.", "formato": "Derecha o izquierda", "consulta": "una muñequera con férula" },
+        { "nombre": "Plantillas de gel", "resumen": "Amortiguan el talón. Se recortan a la medida.", "formato": "Par · tallas 35 a 46", "consulta": "unas plantillas de gel" },
+        { "nombre": "Faja lumbar", "resumen": "Sujeción de la zona baja de la espalda.", "formato": "Tallas S a XXL", "consulta": "una faja lumbar" },
+        { "nombre": "Media de compresión", "resumen": "Varias compresiones. Conviene medir la pierna antes.", "formato": "Par · según medida", "consulta": "medias de compresión" },
+        { "nombre": "Collarín cervical blando", "resumen": "Uso limitado en el tiempo y con indicación médica.", "formato": "Tallas S a L", "consulta": "un collarín cervical" }
+      ]
+    }
+  ]
+}
