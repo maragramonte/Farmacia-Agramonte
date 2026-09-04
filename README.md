@@ -169,7 +169,7 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
   dos) eran texto de relleno y sus «Leer más» no llevaban a ninguna parte, así
   que la sección salió de la página: un consejo de salud firmado por el
   farmacéutico que nadie ha escrito no debe publicarse. El CSS sigue en su
-  sitio y la maquetación está en el historial (`git show 9ef1f72:index.html`),
+  sitio y la maquetación está en el historial (`git show 4bd4d10:index.html`),
   lista para volver en cuanto haya un artículo de verdad.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
