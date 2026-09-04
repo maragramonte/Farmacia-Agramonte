@@ -49,18 +49,19 @@ de pago, ni agencia, ni panel de control.** Son cuatro clics, una sola vez:
 3. En *Source*, elige **Deploy from a branch**; luego rama `main` y carpeta
    `/ (root)`. Guarda.
 4. Espera un par de minutos. La web queda en:
-   `https://maragramonte.github.io/Farm-cia-Agramonte/`
+   `https://maragramonte.github.io/Farmacia-Agramonte/`
 
 A partir de ahí, **cada `git push` republica la web sola**. No hay más pasos.
 
 Dos apuntes:
 
-- La URL sale del nombre del repositorio, y ahora mismo es `Farm-cia-Agramonte`
-  porque GitHub no admitió la `à` de *Farmàcia*. Renombrando el repositorio a
-  `farmacia-agramonte` (Settings → General → Repository name) la dirección queda
-  mucho mejor. Si lo haces, hay que **actualizar la URL** en `index.html`
-  (`canonical`, `og:url`, `og:image` y el JSON-LD), en `robots.txt` y en
-  `sitemap.xml`.
+- La URL sale del nombre del repositorio, que ahora es `Farmacia-Agramonte`.
+  Si se vuelve a renombrar (Settings → General → Repository name), hay que
+  **actualizar la dirección en seis sitios**: en `index.html` el `canonical`,
+  el `og:url`, el `og:image` y el `url` y el `image` del JSON-LD; y además
+  `robots.txt` y `sitemap.xml`. GitHub redirige el nombre viejo, pero una web
+  que se anuncia a sí misma con una dirección que ya no es la suya confunde a
+  los buscadores.
 - Cuando haya un dominio propio (`farmaciaagramonte.com` o similar), se apunta
   a GitHub Pages desde el registrador y se añade un fichero `CNAME` en la raíz
   con el dominio dentro. El único gasto sería el dominio, unos 12 €/año.

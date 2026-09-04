@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://maragramonte.github.io/Farm-cia-Agramonte/sitemap.xml
+Sitemap: https://maragramonte.github.io/Farmacia-Agramonte/sitemap.xml
