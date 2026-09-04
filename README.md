@@ -77,6 +77,9 @@ privacidad.html     Qué datos se tratan, para qué y con qué base legal
 cookies.html        No hay cookies; se explica la única petición externa
 legal.css           Estilo compartido de esas páginas de texto y del 404
 
+catalogo.html       PLANTILLA del catálogo, con Solares como muestra
+catalogo.css        Estilo del catálogo
+
 servir.py           Servidor local (sólo necesita Python)
 servir.bat          Doble clic para lo mismo, en Windows
 
@@ -176,6 +179,32 @@ Tres decisiones que conviene no deshacer sin pensarlo:
   medicinales a productos que no son medicamentos, y eso choca con las normas de
   declaraciones de salud de los complementos alimenticios.
 
+## La plantilla del catálogo
+
+`catalogo.html` enseña cómo quedaría una categoría. Está montada con **Solares**
+porque es parafarmacia pura: sirve para ver la maqueta sin rozar el régimen de
+venta a distancia ni el de publicidad de medicamentos.
+
+Tres cosas que hay que entender antes de tocarla:
+
+- **Los datos son inventados.** Seis productos genéricos, sin marca, y los
+  precios en amarillo como todo lo que aún no es real. Un aviso grande arriba lo
+  dice. La página lleva `noindex`, no está en `sitemap.xml` y no la enlaza
+  ninguna otra: aun así **cualquiera que sepa la URL puede abrirla**, así que no
+  la enseñes sin ese aviso ni la des por buena hasta poner productos reales.
+- **Es un escaparate, no una tienda.** El botón de cada ficha abre WhatsApp; no
+  hay carrito ni pago. Eso es deliberado: mientras no se pueda comprar desde
+  aquí, la web sigue fuera del régimen de venta a distancia y el aviso legal
+  actual sigue siendo cierto.
+- **Sólo la categoría actual es un enlace** en la tira de arriba. Las demás son
+  texto porque todavía no tienen página, y ya aprendimos en la portada que un
+  enlace que no lleva a ninguna parte es peor que no tenerlo.
+
+Para añadir un producto se copia un bloque `<article class="producto">` y se
+cambian nombre, resumen, formato, precio y el texto del enlace de WhatsApp. Para
+una categoría nueva, se copia el fichero entero, se cambia el título, la tira y
+los productos, y se enlaza desde la portada.
+
 ## Decisiones de diseño
 
 La paleta y las tipografías salen del diseño visual: tinta `#2a1d12`, crema
@@ -223,8 +252,11 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
-- **Catálogo y venta en línea.** Las diez categorías son de momento atajos a
-  WhatsApp: no hay fichas de producto, ni precios, ni carrito. Antes de vender
+- **Catálogo y venta en línea.** Hay una **plantilla** en `catalogo.html`, con
+  Solares de muestra, para ver cómo quedaría. Sus seis productos y sus precios
+  **son inventados** y están marcados como tales. Las diez categorías de la
+  portada siguen siendo atajos a WhatsApp: no hay fichas reales, ni precios, ni
+  carrito. Antes de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a
   distancia** sin notificarlo a la autoridad sanitaria, aparecer en el registro
   DISTAFARMA de la AEMPS y mostrar el logotipo europeo; y los de receta no
