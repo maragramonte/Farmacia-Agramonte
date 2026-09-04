@@ -114,7 +114,7 @@ repositorio ya no hace esa función.
 
 Cabecera fija con acceso directo a WhatsApp · hero con la propuesta («envíanos
 la receta, la preparamos y te avisamos») · diez categorías de producto que no se
-solapan entre sí, cada una abre WhatsApp con la consulta ya escrita · tres
+solapan entre sí, **cada una lleva a su página de catálogo** · tres
 motivos para elegir la farmacia ·
 datos de contacto y horario · pie con enlaces legales e información de contacto.
 
@@ -229,6 +229,10 @@ Tres cosas que hay que entender antes de tocarla:
 Para añadir un producto o una categoría se edita el JSON y se ejecuta el
 script. La tira se rehace sola en las diez páginas.
 
+Las pastillas de la portada llevan a estas páginas. Esa lista está escrita a
+mano en `index.html`, así que el generador comprueba al ejecutarse que coincide
+con el JSON y avisa si sobra o falta alguna.
+
 **Lo que falta para que esto deje de ser una maqueta**, por orden:
 
 1. Productos reales con sus precios, en el JSON.
@@ -236,7 +240,9 @@ script. La tira se rehace sola en las diez páginas.
 3. Quitar `"plantilla": true` de cada categoría, y con ello el aviso amarillo.
 4. Quitar el `noindex` de `herramientas/catalogo.py` y añadir las diez páginas
    a `sitemap.xml`.
-5. Enlazar las categorías desde la portada, que hoy llevan a WhatsApp.
+
+Mientras tanto la portada ya las enlaza, así que **un visitante cualquiera llega
+a ellas**. El aviso amarillo es lo único que le dice que no son de verdad.
 
 ## Decisiones de diseño
 
@@ -285,9 +291,11 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
-- **Catálogo y venta en línea.** Están las **diez categorías** montadas, pero
-  sus productos y sus precios **son inventados** y están marcados como tales.
-  Ninguna está enlazada desde la web ni indexada. Las diez categorías de la
+- **Catálogo y venta en línea.** Están las **diez categorías** montadas y
+  enlazadas desde la portada, pero sus productos y sus precios **son
+  inventados** y están marcados como tales: quien entre hoy en la web llega a
+  ellas y ve la franja amarilla. Siguen con `noindex`, para que Google no
+  indexe precios que no son. **Esto es lo más urgente de la lista.** Las diez categorías de la
   portada siguen siendo atajos a WhatsApp: no hay fichas reales, ni precios, ni
   carrito. Antes de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a

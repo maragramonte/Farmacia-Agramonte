@@ -17,6 +17,7 @@ El HTML generado NO se edita a mano: se pierde al volver a ejecutar esto.
 """
 
 import json
+import re
 from pathlib import Path
 from urllib.parse import quote
 
@@ -162,12 +163,14 @@ def cuerpo_categoria(c, icono):
 def pagina(c, categorias):
     icono = ICONOS[c["icono"]]
     es_plantilla = c.get("plantilla", False)
-    # noindex en las diez, no sólo en las que llevan datos inventados: mientras
-    # el catálogo no esté enlazado desde la web ni en sitemap.xml, no tiene
-    # sentido que Google encuentre páginas sueltas. Al publicarlo de verdad se
-    # quita de aquí y entran las diez a la vez.
-    noindex = """<!-- noindex mientras el catálogo no esté terminado ni enlazado desde la
-     web. Al publicarlo, quitar esto en herramientas/catalogo.py y añadir las
+    # Las diez llevan noindex, incluida la de medicamentos. La portada ya las
+    # enlaza, así que un visitante llega; lo que no queremos es que Google
+    # indexe precios inventados y los enseñe en sus resultados durante meses.
+    # Al poner los productos de verdad: se quita esto y entran las diez en
+    # sitemap.xml a la vez.
+    noindex = """<!-- noindex mientras los productos sean de ejemplo. La portada ya enlaza
+     estas páginas, pero no interesa que Google indexe precios inventados. Al
+     poner los reales, quitar esto en herramientas/catalogo.py y añadir las
      páginas a sitemap.xml. -->
 <meta name="robots" content="noindex, nofollow">
 """
@@ -253,6 +256,17 @@ def main():
     faltan = [c["icono"] for c in categorias if c["icono"] not in ICONOS]
     if faltan:
         raise SystemExit("Iconos que no existen en ICONOS: %s" % faltan)
+
+    # La portada enlaza las categorías a mano, así que aquí se comprueba que no
+    # se hayan descuadrado: una categoría nueva en el JSON que nadie enlace, o
+    # un enlace de la portada a una página que ya no se genera.
+    portada = (RAIZ / "index.html").read_text(encoding="utf-8")
+    enlazadas = set(re.findall(r'href="catalogo-([a-z0-9-]+)\.html"', portada))
+    definidas = {c["id"] for c in categorias}
+    if definidas - enlazadas:
+        print("  AVISO: sin enlazar desde la portada: %s" % sorted(definidas - enlazadas))
+    if enlazadas - definidas:
+        print("  AVISO: la portada enlaza páginas que no se generan: %s" % sorted(enlazadas - definidas))
 
     escritas = 0
     for c in categorias:
