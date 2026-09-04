@@ -107,7 +107,7 @@ repositorio ya no hace esa función.
 ## Secciones de la landing
 
 Cabecera fija con acceso directo a WhatsApp · hero con la propuesta («envíanos
-la receta, la preparamos y te avisamos») · seis categorías de producto, cada una
+la receta, la preparamos y te avisamos») · doce categorías de producto, cada una
 abre WhatsApp con la consulta ya escrita · tres motivos para elegir la farmacia ·
 datos de contacto y horario · pie con enlaces legales e información de contacto.
 
@@ -192,6 +192,15 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
+- **Catálogo y venta en línea.** Las doce categorías son de momento atajos a
+  WhatsApp: no hay fichas de producto, ni precios, ni carrito. Antes de vender
+  hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a
+  distancia** sin notificarlo a la autoridad sanitaria, aparecer en el registro
+  DISTAFARMA de la AEMPS y mostrar el logotipo europeo; y los de receta no
+  pueden venderse a distancia nunca. El resto de categorías son parafarmacia y
+  no tienen esa limitación. Y dos, que en cuanto haya carrito hay que **cambiar
+  el aviso legal**, que hoy dice que esto no es una tienda, y añadir condiciones
+  de venta, desistimiento de catorce días, envíos y formas de pago.
 - **Tienda.** Cuenta de usuario, carrito, checkout, formas de pago, devoluciones
   y envíos están comentados en el pie a la espera del catálogo. Buscador,
   productos destacados y CMS quedaron fuera de esta primera versión por lo
