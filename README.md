@@ -77,8 +77,10 @@ privacidad.html     Qué datos se tratan, para qué y con qué base legal
 cookies.html        No hay cookies; se explica la única petición externa
 legal.css           Estilo compartido de esas páginas de texto y del 404
 
-catalogo.html       PLANTILLA del catálogo, con Solares como muestra
-catalogo.css        Estilo del catálogo
+catalogo-solares.html            PLANTILLA de catálogo, Solares de muestra
+catalogo-cosmetica-facial.html   La misma, con cosmética facial
+catalogo.css        Lo propio del catálogo: aviso, tira y rejilla de fichas
+marca.css           Paleta, cabecera, botón y pie: la identidad compartida
 
 servir.py           Servidor local (sólo necesita Python)
 servir.bat          Doble clic para lo mismo, en Windows
@@ -181,9 +183,15 @@ Tres decisiones que conviene no deshacer sin pensarlo:
 
 ## La plantilla del catálogo
 
-`catalogo.html` enseña cómo quedaría una categoría. Está montada con **Solares**
-porque es parafarmacia pura: sirve para ver la maqueta sin rozar el régimen de
-venta a distancia ni el de publicidad de medicamentos.
+Hay dos páginas de muestra, **Solares** y **Cosmética facial**, para ver cómo
+quedaría una categoría y cómo se navega de una a otra. Las dos son parafarmacia
+pura, así que sirven para ver la maqueta sin rozar el régimen de venta a
+distancia ni el de publicidad de medicamentos.
+
+El estilo va en dos hojas: `marca.css` con la identidad compartida —paleta,
+cabecera, botón y pie— y `catalogo.css` con lo que sólo existe aquí. Hay que
+cargar `marca.css` primero. Se separaron al montar la segunda categoría, para no
+copiar la paleta una cuarta vez.
 
 Tres cosas que hay que entender antes de tocarla:
 
@@ -201,9 +209,13 @@ Tres cosas que hay que entender antes de tocarla:
   enlace que no lleva a ninguna parte es peor que no tenerlo.
 
 Para añadir un producto se copia un bloque `<article class="producto">` y se
-cambian nombre, resumen, formato, precio y el texto del enlace de WhatsApp. Para
-una categoría nueva, se copia el fichero entero, se cambia el título, la tira y
-los productos, y se enlaza desde la portada.
+cambian nombre, resumen, formato, precio y el texto del enlace de WhatsApp.
+
+Para una categoría nueva se copia una de las dos páginas enteras y se cambian el
+título, la introducción y los productos. **Y hay que acordarse de la tira**: la
+categoría nueva pasa de `<span>` a `<a>` en *todas* las páginas de catálogo, no
+sólo en la suya. Con dos se lleva a mano; a partir de cinco o seis conviene
+generar esa tira en lugar de copiarla.
 
 ## Decisiones de diseño
 
@@ -252,9 +264,9 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
-- **Catálogo y venta en línea.** Hay una **plantilla** en `catalogo.html`, con
-  Solares de muestra, para ver cómo quedaría. Sus seis productos y sus precios
-  **son inventados** y están marcados como tales. Las diez categorías de la
+- **Catálogo y venta en línea.** Hay **dos plantillas**, Solares y cosmética
+  facial, para ver cómo quedaría. Sus productos y sus precios **son inventados**
+  y están marcados como tales. Las diez categorías de la
   portada siguen siendo atajos a WhatsApp: no hay fichas reales, ni precios, ni
   carrito. Antes de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a

@@ -1,76 +1,15 @@
 /* ---------------------------------------------------------------
-   Farmàcia Agramonte — hoja de estilo del catálogo
+   Farmàcia Agramonte — lo propio de las páginas de catálogo
 
-   OJO: la paleta y las tipografías están declaradas también en
-   index.html y en legal.css. Son ya tres copias. Al cambiar un color hay
-   que tocarlo en los tres sitios, y en cuanto exista una segunda página
-   de catálogo conviene sacarlas a un marca.css compartido.
+   La paleta, la cabecera, el botón y el pie viven en marca.css, que hay
+   que cargar ANTES que esta hoja. Aquí sólo está lo que existe en el
+   catálogo y en ningún otro sitio: el aviso de plantilla, la tira de
+   categorías y la rejilla de fichas.
    --------------------------------------------------------------- */
-:root {
-  --tinta:        #2a1d12;
-  --crema:        #f5f0e6;
-  --crema-2:      #eae2d2;
-  --crema-3:      #e0d6c2;
-  --oro:          #c9a055;
-  --oro-claro:    #e0c285;
-  --oro-hondo:    #7a5a21;
-  --texto:        #3a2c1f;
-  --texto-tenue:  #6e5d4b;
-  --sobre-tinta:  #f0e8db;
-  --tenue-tinta:  #b6a48c;
-
-  --ancho: 1120px;
-  --alto-cabecera: 96px;
-  --display: "Playfair Display", "Iowan Old Style", Georgia, serif;
-  --cuerpo: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-top: var(--alto-cabecera); scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--crema);
-  color: var(--texto);
-  font-family: var(--cuerpo);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
-p { margin: 0; }
-a { color: inherit; text-decoration: none; }
-:where(a, button):focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; border-radius: 2px; }
-
-.contenedor { width: min(100% - 3rem, var(--ancho)); margin-inline: auto; }
-
-/* ---------- Cabecera, la misma que la portada ---------- */
-.cabecera { position: sticky; top: 0; z-index: 20; background: var(--tinta); border-bottom: 1px solid rgba(201,160,85,.22); }
-.cabecera .contenedor { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem 2rem; min-height: 76px; }
-.marca { font-family: var(--display); font-size: 1.5rem; color: var(--oro-claro); margin-right: auto; }
-.nav { display: flex; gap: 2.25rem; }
-.nav a {
-  font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
-  color: var(--sobre-tinta); padding-block: .35rem;
-  border-bottom: 1px solid transparent;
-  transition: color .18s ease, border-color .18s ease;
-}
-.nav a:hover { color: var(--oro-claro); border-bottom-color: var(--oro); }
-.nav a[aria-current="page"] { color: var(--oro); }
-
-.boton {
-  display: inline-flex; align-items: center; gap: .6rem;
-  background: var(--oro); color: var(--tinta);
-  font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-  padding: .8rem 1.5rem; border: 0; cursor: pointer;
-  transition: background .18s ease, transform .18s ease;
-}
-.boton:hover { background: var(--oro-claro); transform: translateY(-1px); }
-.boton svg { width: 17px; height: 17px; flex: none; }
 
 /* ---------- El aviso de que esto es una plantilla ----------
    Va en amarillo y arriba del todo, como las marcas .pendiente del resto
-   del sitio: nadie debe confundir esta página con el catálogo real. */
+   del sitio: nadie debe confundir estas páginas con el catálogo real. */
 .aviso-plantilla { background: #f6e3bd; border-bottom: 2px solid var(--oro); color: var(--tinta); }
 .aviso-plantilla .contenedor { padding-block: 1rem; display: flex; gap: 1rem; align-items: flex-start; }
 .aviso-plantilla svg { width: 22px; height: 22px; flex: none; stroke: var(--tinta); fill: none; stroke-width: 1.6; margin-top: .2rem; }
@@ -89,11 +28,14 @@ a { color: inherit; text-decoration: none; }
 .portada-categoria p { color: var(--texto-tenue); max-width: 62ch; }
 
 /* ---------- Tira de categorías ----------
-   Sólo la actual es un enlace. Las demás son texto: no tienen página
-   todavía y un enlace que no lleva a ninguna parte es peor que ninguno. */
+   Son enlaces las que ya tienen página. Las demás van en texto: un enlace
+   que no lleva a ninguna parte es peor que no tenerlo. */
 .tira { display: flex; flex-wrap: wrap; gap: .6rem; padding-bottom: .8rem; }
 .tira a, .tira span { border: 1px solid var(--crema-3); border-radius: 999px; padding: .5rem 1rem; font-size: .86rem; }
+.tira a { transition: border-color .18s ease, color .18s ease; }
+.tira a:hover { border-color: var(--oro); color: var(--oro-hondo); }
 .tira a[aria-current="page"] { background: var(--tinta); border-color: var(--tinta); color: var(--sobre-tinta); }
+.tira a[aria-current="page"]:hover { color: var(--sobre-tinta); }
 /* Sin opacity: al 70% este gris se queda en 3,0:1 de contraste y no cumple la
    AA. La categoría activa ya se distingue de sobra por ir en tinta rellena. */
 .tira span { color: var(--texto-tenue); }
@@ -132,9 +74,6 @@ a { color: inherit; text-decoration: none; }
 .precio { font-size: 1.15rem; margin-top: auto; margin-bottom: .9rem; font-variant-numeric: tabular-nums; }
 .producto .boton { width: 100%; justify-content: center; padding: .7rem 1rem; }
 
-/* Dato que todavía no es real. Se ve a la legua a propósito. */
-.pendiente { background: #f6e3bd; color: var(--tinta); padding: .05rem .4rem; font-weight: 600; letter-spacing: .04em; }
-
 /* ---------- Cierre ---------- */
 .cierre { background: var(--crema-2); padding: 2rem; margin-bottom: 3.5rem; }
 .cierre h2 { font-size: 1.3rem; margin-bottom: .6rem; }
@@ -143,31 +82,7 @@ a { color: inherit; text-decoration: none; }
 .cierre a { border-bottom: 1px solid var(--crema-3); }
 .cierre a:hover { color: var(--oro-hondo); }
 
-/* ---------- Pie ---------- */
-.pie { background: var(--tinta); color: var(--tenue-tinta); }
-.pie .contenedor { padding-block: 2.25rem; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; font-size: .85rem; }
-.pie a { border-bottom: 1px solid rgba(201,160,85,.3); }
-.pie a:hover { color: var(--oro-claro); }
-
-/* ---------- Adaptación a pantallas pequeñas ---------- */
-@media (max-width: 900px) {
-  :root { --alto-cabecera: 116px; }
-  .cabecera .contenedor { min-height: 60px; padding-block: .55rem; }
-  .marca { font-size: 1.25rem; }
-  .nav {
-    order: 3; width: 100%; gap: 1.5rem;
-    overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
-    padding-bottom: .15rem;
-  }
-  .nav::-webkit-scrollbar { display: none; }
-  .nav a { white-space: nowrap; }
-}
 @media (max-width: 560px) {
-  :root { --alto-cabecera: 120px; }
-  .contenedor { width: min(100% - 2rem, var(--ancho)); }
-  .cabecera .contenedor { gap: .4rem 1rem; }
-  .marca { font-size: 1.12rem; }
-  .cabecera .boton { padding: .7rem 1.05rem; letter-spacing: .1em; }
   /* Dos por fila en el móvil: la ficha sigue siendo legible y la categoría
      entera se recorre en un par de pantallas en lugar de diez. */
   .productos { grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -176,9 +91,4 @@ a { color: inherit; text-decoration: none; }
   .resumen { display: none; }
   .producto .boton { font-size: .68rem; letter-spacing: .08em; padding: .65rem .5rem; }
   .cierre { padding: 1.5rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-  html { scroll-behavior: auto; }
 }

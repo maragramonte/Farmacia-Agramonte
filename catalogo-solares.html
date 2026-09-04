@@ -14,6 +14,7 @@
 <link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tipografias.css">
+<link rel="stylesheet" href="marca.css">
 <link rel="stylesheet" href="catalogo.css">
 </head>
 <body>
@@ -61,13 +62,13 @@
     </p>
   </div>
 
-  <!-- Sólo la categoría actual es un enlace. Las demás son texto porque todavía
-       no tienen página, y un enlace que no lleva a ninguna parte es peor que
-       no tenerlo: eso ya lo aprendimos con las pastillas de la portada. -->
+  <!-- Son enlaces las categorías que ya tienen página. Las demás van en texto,
+       porque un enlace que no lleva a ninguna parte es peor que no tenerlo:
+       eso ya lo aprendimos con las pastillas de la portada. -->
   <nav class="tira" aria-label="Categorías del catálogo">
-    <a href="catalogo.html" aria-current="page">Solares</a>
+    <a href="catalogo-solares.html" aria-current="page">Solares</a>
+    <a href="catalogo-cosmetica-facial.html">Cosmética facial</a>
     <span>Medicamentos</span>
-    <span>Cosmética facial</span>
     <span>Cosmética corporal</span>
     <span>Cabello</span>
     <span>Bebé e infantil</span>
@@ -76,7 +77,7 @@
     <span>Fitoterapia</span>
     <span>Ortopedia</span>
   </nav>
-  <p class="nota-tira">Las demás categorías tendrán su página cuando haya productos que poner en ellas.</p>
+  <p class="nota-tira">Las categorías en gris tendrán su página cuando haya productos que poner en ellas.</p>
 
   <div class="productos">
 
