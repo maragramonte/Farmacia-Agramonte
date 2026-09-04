@@ -7,9 +7,11 @@
 <title>Política de privacidad — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Karla:wght@300;400;500;600&display=swap">
+<!-- Tipografías propias, servidas desde este mismo repositorio. Antes se
+     pedían a Google Fonts, que era la única petición externa de la web. -->
+<link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="legal.css">
 </head>
 <body>
@@ -116,33 +118,24 @@
 
   <h2>Datos que salen de Europa</h2>
   <p>
-    Dos cosas de las que usamos están en manos de empresas estadounidenses, así
-    que hay datos que salen del Espacio Económico Europeo:
+    Sólo hay un caso, y depende de ti: <strong>WhatsApp</strong>, que es de Meta
+    Platforms Ireland. Si nos escribes por ahí, tu número y el contenido del
+    mensaje —incluida la receta, si la envías— pasan por su servicio, con las
+    transferencias internacionales que Meta declara en su propia política de
+    privacidad y sobre las que la farmacia no tiene ningún control. Meta declara
+    acogerse para ello a los mecanismos que exige el RGPD; conviene comprobarlo
+    en su política, que es de quien depende.
   </p>
-  <ul>
-    <li>
-      <strong>WhatsApp</strong>, de Meta Platforms Ireland. Si nos escribes por
-      ahí, tu número y el contenido del mensaje —incluida la receta, si la
-      envías— pasan por su servicio, con las transferencias internacionales que
-      Meta declara en su propia política de privacidad, sobre las que la
-      farmacia no tiene ningún control. Si prefieres evitarlo, llámanos o
-      tráelo al mostrador: es igual de válido y no sale de aquí.
-    </li>
-    <li>
-      <strong>Google Fonts.</strong> La web carga sus tipografías desde los
-      servidores de Google, así que al visitarla tu navegador le hace una
-      petición y Google puede registrar tu dirección IP. Es la única petición a
-      un tercero que hace la página, y no instala ninguna cookie. Se elimina
-      alojando las tipografías nosotros mismos; está anotado como mejora
-      pendiente y, cuando se haga, la web dejará de pedirle nada a nadie.
-    </li>
-  </ul>
   <p>
-    Para esas transferencias, cada una de las dos declara acogerse a los
-    mecanismos que exige el RGPD —la decisión de adecuación entre la Unión
-    Europea y Estados Unidos, o cláusulas contractuales tipo—, y lo detalla en
-    su propia política de privacidad, que es donde conviene comprobarlo.
-    Fuera de esas dos, ningún dato tuyo sale de España.
+    Si prefieres evitarlo, <strong>llámanos al teléfono o tráelo al
+    mostrador</strong>: es igual de válido y no sale de aquí.
+  </p>
+  <p>
+    Visitar esta web, en cambio, no manda nada a ninguna parte. La página no
+    hace ni una sola petición a servidores ajenos: hasta las tipografías se
+    sirven desde nuestro propio alojamiento. Antes se pedían a Google Fonts, lo
+    que hacía llegar tu dirección IP a Google por el mero hecho de entrar; eso
+    ya no pasa.
   </p>
 
   <h2>Nada se decide con algoritmos</h2>

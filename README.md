@@ -71,6 +71,7 @@ Dos apuntes:
 ```
 index.html          La landing completa (HTML + CSS + iconos SVG en línea)
 404.html            Lo que se ve al abrir una dirección que no existe
+tipografias.css     Declara las tipografías propias (@font-face)
 aviso-legal.html    Titular, datos profesionales y condiciones de uso
 privacidad.html     Qué datos se tratan, para qué y con qué base legal
 cookies.html        No hay cookies; se explica la única petición externa
@@ -86,6 +87,14 @@ sitemap.xml         Las cuatro páginas, para los buscadores
 .nojekyll           Le dice a GitHub Pages que sirva los ficheros tal cual
 
 LICENSE             Qué se puede hacer con este código y qué no
+
+tipografias/
+  playfair-display-variable.woff2  Los títulos. Fuente variable: un solo
+                                   fichero cubre del peso 400 al 500
+  playfair-display-cursiva.woff2   La itálica de «de tu barrio»
+  karla-variable.woff2             El texto, del 400 al 600
+  LICENCIA-karla.txt               SIL Open Font License 1.1
+  LICENCIA-playfairdisplay.txt     La OFL exige distribuirla con la fuente
 
 herramientas/
   tarjeta-social.py Regenera og.png si cambia el lema o los datos
@@ -147,8 +156,17 @@ igual para todo el mundo, así que la página fija sus colores explícitamente e
 lugar de seguir la preferencia del sistema.
 
 **No hace falta ninguna clave de API.** Las opiniones de Google, que sí la
-necesitarían, quedaron fuera igual que en el diseño acabado. La única petición a
-un tercero son las tipografías de Google Fonts.
+necesitarían, quedaron fuera igual que en el diseño acabado.
+
+Y **la web no hace ninguna petición externa**: las tipografías se sirven desde
+`tipografias/`, no desde Google Fonts. Son de licencia libre (OFL), así que
+redistribuirlas es legal siempre que viaje con ellas su licencia, y por eso
+están los dos `LICENCIA-*.txt`. Sólo se incluye el subconjunto latino, que cubre
+todo el texto del sitio; y como Playfair Display y Karla son fuentes variables,
+un único fichero por familia cubre todos los pesos: 82 KB en total en lugar de
+los 144 KB que ocuparían sueltos. Al dejar de pedirle nada a Google, las
+políticas de privacidad y de cookies se simplificaron: ya no hay ninguna
+transferencia de datos por el mero hecho de visitar la página.
 
 Los datos que todavía no tenemos —el nombre del farmacéutico titular, su número
 de colegiado, el NIF— aparecen marcados en amarillo con la clase `.pendiente`.
@@ -174,10 +192,6 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
 - **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
-- **Alojar las tipografías** en el propio repositorio en lugar de pedirlas a
-  Google Fonts. Son de licencia libre (OFL), así que se pueden descargar y
-  servir desde aquí. Con eso la web deja de hacer ninguna petición externa y las
-  políticas de privacidad y cookies se simplifican.
 - **Tienda.** Cuenta de usuario, carrito, checkout, formas de pago, devoluciones
   y envíos están comentados en el pie a la espera del catálogo. Buscador,
   productos destacados y CMS quedaron fuera de esta primera versión por lo

@@ -7,9 +7,11 @@
 <title>Página no encontrada — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Karla:wght@300;400;500;600&display=swap">
+<!-- Tipografías propias, servidas desde este mismo repositorio. Antes se
+     pedían a Google Fonts, que era la única petición externa de la web. -->
+<link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tipografias.css">
 <!-- GitHub Pages sirve esta página cuando la dirección no existe. Las rutas van
      relativas, no con "/" delante: en Pages el sitio cuelga de
      /Farmacia-Agramonte/, así que "/legal.css" apuntaría fuera de la web. -->

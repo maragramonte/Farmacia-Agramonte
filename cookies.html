@@ -7,9 +7,11 @@
 <title>Política de cookies — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Karla:wght@300;400;500;600&display=swap">
+<!-- Tipografías propias, servidas desde este mismo repositorio. Antes se
+     pedían a Google Fonts, que era la única petición externa de la web. -->
+<link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="legal.css">
 </head>
 <body>
@@ -36,17 +38,17 @@
     consentir. La página es HTML y CSS estáticos, sin JavaScript de seguimiento.
   </p>
 
-  <h2>La única petición externa</h2>
+  <h2>Ni una sola petición a terceros</h2>
   <p>
-    Al cargar la página, tu navegador pide las tipografías —Playfair Display y
-    Karla— a los servidores de Google Fonts. Esa petición <strong>no instala
-    cookies</strong>, pero sí llega a Google con tu dirección IP y los datos
-    básicos de tu navegador, como cualquier petición en internet.
+    Al abrir esta página, tu navegador no le pide nada a nadie más que a
+    nosotros. Ni analítica, ni mapas incrustados, ni vídeos, ni tipografías de
+    fuera: <strong>las letras que estás leyendo se sirven desde este mismo
+    sitio</strong>, no desde los servidores de Google.
   </p>
   <p>
-    Se puede eliminar descargando las tipografías y sirviéndolas desde nuestro
-    propio alojamiento. Está anotado como mejora pendiente; cuando se haga, la
-    web dejará de pedirle nada a nadie.
+    Antes sí se pedían a Google Fonts, y eso bastaba para que tu dirección IP
+    llegara a Google sin que tú hicieras nada. Ya no ocurre. Nadie ajeno a la
+    farmacia se entera de que has entrado aquí.
   </p>
 
   <h2>Al salir de esta web</h2>

@@ -1,0 +1,49 @@
+/* ---------------------------------------------------------------
+   Farmàcia Agramonte — tipografías alojadas aquí mismo
+
+   Antes se pedían a Google Fonts. Eso hacía que el navegador de quien
+   entrara en la web mandase su dirección IP a Google, que es la única
+   razón por la que la política de privacidad tenía que hablar de
+   transferencias de datos fuera de Europa. Sirviéndolas nosotros, la
+   página no le pide nada a nadie: ni una sola petición externa.
+
+   Son de licencia libre (SIL Open Font License 1.1), así que se pueden
+   redistribuir. El texto completo de las dos licencias está en
+   tipografias/, como la propia licencia exige.
+
+   Playfair Display y Karla son fuentes VARIABLES: un mismo fichero
+   cubre todo el rango de pesos, así que 400 y 500 —o 400 y 600— no
+   son dos descargas, sino una. De ahí que basten tres ficheros.
+
+   Sólo se incluye el subconjunto latino. El texto de la web cabe
+   entero en él; los únicos caracteres que se salen son las flechas
+   ← y →, que ya antes se dibujaban con la tipografía del sistema.
+   --------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 500;              /* variable: cubre el rango de una vez */
+  font-display: swap;
+  src: url(tipografias/playfair-display-variable.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* La itálica de «de tu barrio», en el titular. */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(tipografias/playfair-display-cursiva.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400 600;              /* 400 el texto, 600 las mayusculillas */
+  font-display: swap;
+  src: url(tipografias/karla-variable.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
