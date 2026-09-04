@@ -1,7 +1,9 @@
 # Farmàcia Agramonte — web
 
 Landing de la Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona),
-maquetada a partir del boceto y del diseño visual que están en `diseno/`.
+maquetada a partir del boceto y del diseño visual, que se guardan **fuera del
+repositorio**: son lo único que no ve quien visita la web, así que no viajan
+con ella.
 
 Es una web **estática**: HTML y CSS, sin dependencias, sin proceso de
 compilación y sin servidor de aplicación. No hace falta contratar a nadie ni
@@ -82,12 +84,15 @@ robots.txt          Permite indexar y apunta al sitemap
 sitemap.xml         Las cuatro páginas, para los buscadores
 .nojekyll           Le dice a GitHub Pages que sirva los ficheros tal cual
 
+LICENSE             Qué se puede hacer con este código y qué no
+
 herramientas/
   tarjeta-social.py Regenera og.png si cambia el lema o los datos
-diseno/
-  01-wireframe.png       Bloques de la página y qué depende de datos reales
-  02-diseno-visual.png   El diseño acabado del que sale la maquetación
 ```
+
+El boceto y el diseño visual (`diseno/`) están ignorados por git y viven sólo
+en el ordenador. Conviene tener una copia de seguridad aparte, porque el
+repositorio ya no hace esa función.
 
 ## Secciones de la landing
 
@@ -116,6 +121,19 @@ que es lo que lee Google para montar la ficha de la farmacia en los resultados
 de búsqueda y en Maps: dirección, teléfono y los dos tramos de horario. Si
 cambia un horario o un teléfono, hay que tocarlo **en los dos sitios**: en el
 texto visible y en ese bloque `<script type="application/ld+json">`.
+
+## Derechos
+
+El código, los textos y el diseño son de la farmacia: `LICENSE` dice qué se
+puede hacer con ellos y qué no. No es una licencia libre.
+
+Que el repositorio sea público no regala nada: una web estática se descarga
+entera en el navegador de quien la abre, con su HTML y su CSS, así que eso es
+copiable de todos modos y lo es en cualquier web del mundo. Lo que protege el
+trabajo no es esconderlo, es el derecho de autor —automático, sin registrar
+nada— y el hecho de que lo copiable es la maqueta, no el negocio: el nombre, la
+licencia de oficina de farmacia, la Plaça de la Llana y la ficha de Google no
+se clonan.
 
 ## Decisiones de diseño
 
