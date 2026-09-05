@@ -135,6 +135,33 @@ def formato_html(p):
     return escapa(p["formato"])
 
 
+def resumen_html(p):
+    """La línea que explica el producto, o la marca amarilla si no está.
+
+    Un export del programa de gestión trae nombres y formatos, no frases: por
+    eso esto puede faltar y hay que verlo. Igual que el formato."""
+    if not p.get("resumen"):
+        return '<span class="pendiente">Resumen pendiente</span>'
+    return escapa(p["resumen"])
+
+
+def consulta_de(p):
+    """Lo que se escribe solo en el WhatsApp al pulsar Preguntar.
+
+    Si el JSON no la trae, se saca del nombre. Sale un poco más seca que una
+    escrita a mano —«el La Roche-Posay Anthelios...»— pero un mensaje algo tieso
+    es mejor que cuarenta productos sin botón que funcione."""
+    return p.get("consulta") or p["nombre"]
+
+
+def descripcion_meta(p):
+    """La meta description de la ficha. Se salta lo que falte, que si no queda
+    un doble espacio o una frase que empieza por la nada."""
+    trozos = [t for t in (p.get("resumen"), p.get("formato")) if t]
+    return "%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)." % (
+        " ".join(trozos) if trozos else p["nombre"])
+
+
 def foto_de(c, p):
     """La foto del producto dentro de fotos/, o None si todavía no la hay.
 
@@ -190,8 +217,8 @@ def ficha(c, p, icono):
       </div>
     </article>""" % (
         foto_html(c, p, icono), escapa(ruta_producto(c, p)), escapa(p["nombre"]),
-        escapa(p["resumen"]), formato_html(p), precio_html(p, " " * 8),
-        escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]))
+        resumen_html(p), formato_html(p), precio_html(p, " " * 8),
+        escapa(enlace_whatsapp(consulta_de(p))), escapa(consulta_de(p)))
 
 
 def aviso_plantilla():
@@ -418,8 +445,8 @@ def pagina_producto(c, p):
 %s%s""" % (
         c["id"], escapa(c["nombre"]), escapa(p["nombre"]),
         foto_html(c, p, icono), escapa(p["nombre"]), formato_html(p),
-        escapa(p["resumen"]), precio_html(p, " " * 6),
-        escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]), ICONO_WHATSAPP,
+        resumen_html(p), precio_html(p, " " * 6),
+        escapa(enlace_whatsapp(consulta_de(p))), escapa(consulta_de(p)), ICONO_WHATSAPP,
         TELEFONO_ENLACE, TELEFONO_VISIBLE,
         secciones, otros_de(c, p))
 
@@ -431,8 +458,7 @@ def pagina_producto(c, p):
     # firmado nadie. Al quitar "plantilla": true del JSON se indexan solas.
     return documento(
         titulo="%s%s — %s — Farmàcia Agramonte" % (p["nombre"], coletilla, c["nombre"]),
-        descripcion="%s %s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)." % (
-            p["resumen"], p.get("formato", "")),
+        descripcion=descripcion_meta(p),
         ruta=ruta_producto(c, p),
         contenido=contenido,
         es_plantilla=es_plantilla,

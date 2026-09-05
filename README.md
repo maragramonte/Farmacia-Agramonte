@@ -104,8 +104,9 @@ tipografias/
   LICENCIA-playfairdisplay.txt     La OFL exige distribuirla con la fuente
 
 herramientas/
-  catalogo.py           Escribe las diez catalogo-*.html
+  catalogo.py           Escribe las catalogo-*.html
   catalogo-datos.json   Los productos. Se edita ESTE
+  importar.py           Vuelca un export en CSV al JSON de arriba
   tarjeta-social.py     Regenera og.png si cambia el lema o los datos
 ```
 
@@ -259,6 +260,46 @@ si sirve de plantilla al escribir los de verdad.
 El **formato** sí lleva marca amarilla cuando falta: todo producto tiene uno, y
 no tenerlo es una ficha a medias. Es lo contrario que el precio, que no lleva
 marca porque no es que falte, es que no se publica.
+
+### Importar desde el programa de gestión
+
+Meter cuarenta productos a mano en el JSON es la misma errata esperando a
+ocurrir que llevó a generar las páginas en vez de copiarlas. Para eso está
+`herramientas/importar.py`, que lee un CSV exportado de Farmatic, Unycop,
+Nixfarma o el que sea:
+
+```
+python herramientas/importar.py export.csv                    mira y no toca
+python herramientas/importar.py export.csv --mapa mapa.json
+python herramientas/importar.py export.csv --mapa mapa.json --escribir
+```
+
+Sin `--mapa` no escribe nada en el catálogo: dice qué columnas ha reconocido,
+lista las familias que trae el CSV y deja al lado un `mapa-catalogo.json` con
+esas familias sin asignar. Se rellena a mano —qué familia va a qué categoría—
+y se vuelve a ejecutar. Sin `--escribir` tampoco toca nada: sólo cuenta qué
+haría. Adivina la codificación (los export de un Windows español suelen salir
+en cp1252) y el separador (suele ser `;`, no `,`), y dice cuál ha usado para
+que se note si ha adivinado mal. Si no acierta con alguna columna, se le fuerza
+con `--columna formato=PRESENTACION`.
+
+**Cinco cosas que no hace, y todas a propósito:**
+
+- **No toca los precios.** Aunque el CSV traiga el PVP, se ignora: ya está
+  decidido que no se publican.
+- **No escribe resúmenes.** Un export trae nombres, no frases. Los productos
+  entran sin resumen y salen con la marca amarilla hasta que alguien lo
+  escriba.
+- **No toca `plantilla`.** Una categoría que era plantilla lo sigue siendo
+  después de importar, así que nada se publica hasta que alguien lo mira y lo
+  quita a mano.
+- **No importa a Medicamentos.** Si el mapa manda algo ahí, para y lo dice.
+- **No borra las páginas** de los productos que desaparezcan. Eso lo avisa
+  `catalogo.py`, con el `git rm` ya escrito.
+
+Quita los productos repetidos —en un export es normal que el mismo artículo
+salga dos veces— y, si el CSV trae el laboratorio en una columna aparte, lo
+pone delante del nombre salvo que ya estuviera dentro.
 
 ### Las fotos
 
