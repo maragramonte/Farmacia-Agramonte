@@ -124,8 +124,10 @@
 .otros { padding-block: 2.25rem 3rem; }
 .otros h2 { font-size: 1.15rem; margin-bottom: 1rem; }
 .otros ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; }
-.otros a { display: block; height: 100%; background: #fbf8f2; border: 1px solid var(--crema-3); padding: .85rem 1rem; transition: border-color .18s ease; }
-.otros a:hover { border-color: var(--oro); }
+/* Acotado a los de la lista: si no, el «Ver toda la categoría» de abajo se
+   pinta como una tarjeta más y parece un producto que no existe. */
+.otros li a { display: block; height: 100%; background: #fbf8f2; border: 1px solid var(--crema-3); padding: .85rem 1rem; transition: border-color .18s ease; }
+.otros li a:hover { border-color: var(--oro); }
 .otros strong { display: block; font-size: .92rem; font-weight: 600; line-height: 1.35; margin-bottom: .3rem; }
 .otros small { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--oro-hondo); }
 .otros .volver { display: inline-block; margin-top: 1.2rem; font-size: .88rem; border-bottom: 1px solid var(--crema-3); }
