@@ -11,3 +11,7 @@ Desktop.ini
 # unico que no ve quien visita la web, y es lo que haria falta para rehacer el
 # trabajo. Copia de seguridad aparte, que aqui git ya no lo guarda.
 diseno/
+
+# Python. Lo crea importar herramientas/catalogo.py, cosa que se hace al
+# comprobar cosas del catalogo sin generarlo entero.
+__pycache__/

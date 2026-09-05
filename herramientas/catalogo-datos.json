@@ -53,44 +53,20 @@
       "id": "cosmetica-facial",
       "nombre": "Cosmética facial",
       "icono": "espejo",
-      "plantilla": true,
+      "plantilla": false,
       "intro": "Limpieza, hidratación y cuidado del rostro. Si no sabes por dónde empezar o tu piel se ha vuelto reactiva, cuéntanoslo: media consulta se resuelve sabiendo qué te estás poniendo ya.",
       "productos": [
         {
-          "nombre": "Limpiador facial en gel",
-          "resumen": "Para la limpieza diaria de mañana y noche. No reseca.",
-          "formato": "Gel · 200 ml",
-          "consulta": "un limpiador facial"
+          "id": "hydrance-aqua-gel",
+          "nombre": "Avène Hydrance Aqua-gel",
+          "resumen": "Hidratante en gel para piel deshidratada. Ligera y de absorción rápida. No lleva filtro solar.",
+          "consulta": "el Avène Hydrance Aqua-gel"
         },
         {
-          "nombre": "Agua micelar",
-          "resumen": "Retira el maquillaje sin frotar. También para pieles sensibles.",
-          "formato": "Solución · 400 ml",
-          "consulta": "un agua micelar"
-        },
-        {
-          "nombre": "Sérum con vitamina C",
-          "resumen": "Se aplica por la mañana, antes de la hidratante. Unas gotas bastan.",
-          "formato": "Sérum · 30 ml",
-          "consulta": "un sérum con vitamina C"
-        },
-        {
-          "nombre": "Crema hidratante de día",
-          "resumen": "Textura ligera, se absorbe rápido. Para piel normal y mixta.",
-          "formato": "Crema · 50 ml",
-          "consulta": "una crema hidratante de día"
-        },
-        {
-          "nombre": "Contorno de ojos",
-          "resumen": "Para la zona más fina de la cara. Con aplicador de metal frío.",
-          "formato": "Crema · 15 ml",
-          "consulta": "un contorno de ojos"
-        },
-        {
-          "nombre": "Crema de noche",
-          "resumen": "Más rica que la de día, para usar sobre la piel ya limpia.",
-          "formato": "Crema · 50 ml",
-          "consulta": "una crema de noche"
+          "id": "hydraphase-intense-ligera-spf20",
+          "nombre": "La Roche-Posay Hydraphase Intense Ligera SPF 20",
+          "resumen": "Hidratante ligera con ácido hialurónico y agua termal, con un filtro solar bajo para el día a día. No sustituye a un fotoprotector.",
+          "consulta": "la Hydraphase Intense Ligera SPF 20"
         }
       ]
     },
@@ -143,142 +119,27 @@
       "id": "solares",
       "nombre": "Solares",
       "icono": "sol",
-      "plantilla": true,
+      "plantilla": false,
       "intro": "Fotoprotección para la cara, el cuerpo y los niños. Si dudas entre dos factores o tienes la piel reactiva, pregúntanos: es de las cosas que mejor se resuelven hablando.",
       "productos": [
         {
-          "nombre": "Fotoprotector facial SPF 50+",
-          "resumen": "Textura fluida, sin perfume. Para uso diario, también bajo el maquillaje.",
-          "formato": "Fluido · 50 ml",
-          "consulta": "un fotoprotector facial SPF 50+",
-          "descripcion": [
-            "Protección muy alta para la cara, todos los días del año y no sólo en verano: la radiación que envejece la piel atraviesa las nubes y el cristal.",
-            "La textura es fluida y mate, así que no da brillos ni hace bolas debajo del maquillaje. Sin perfume, que es lo que más suele molestar a las pieles reactivas."
-          ],
-          "modo_empleo": [
-            "Aplícalo por la mañana sobre la cara limpia y seca, antes del maquillaje.",
-            "Dos dedos de producto, el índice y el corazón, es la cantidad que cubre cara y cuello. Con menos, la protección real baja mucho.",
-            "Repite cada dos horas si estás al aire libre, y siempre después de bañarte o sudar."
-          ],
-          "composicion": [
-            "Filtros solares orgánicos y minerales, glicerina y vitamina E. Sin perfume, sin alcohol y sin aceites."
-          ],
-          "advertencias": [
-            "Evita el contorno de los ojos. Si entra, aclara con agua abundante.",
-            "Ningún fotoprotector protege del todo: con el sol del mediodía, sombra y ropa.",
-            "No lo uses en menores de seis meses: a esa edad lo que toca es no exponerlos al sol."
-          ]
+          "id": "anthelios-age-correct-spf50",
+          "nombre": "La Roche-Posay Anthelios Age Correct SPF 50",
+          "resumen": "Fotoprotección diaria para el rostro, con tratamiento antiedad. Textura de crema, para la rutina de la mañana.",
+          "formato": "Tubo · 50 ml",
+          "consulta": "el Anthelios Age Correct SPF 50"
         },
         {
-          "nombre": "Leche solar corporal SPF 30",
-          "resumen": "Se extiende fácil y no deja rastro blanco. Resistente al agua.",
-          "formato": "Loción · 200 ml",
-          "consulta": "una leche solar corporal",
-          "descripcion": [
-            "Protección media para el cuerpo en el día a día del verano: la playa, la terraza, un paseo largo.",
-            "Se extiende fácil y no deja rastro blanco ni pegajoso, que es justo lo que hace que la gente acabe echándose menos de la que necesita."
-          ],
-          "modo_empleo": [
-            "Extiéndelo sobre la piel seca unos veinte minutos antes de salir.",
-            "Para un adulto hacen falta unas seis cucharaditas para todo el cuerpo. No te olvides de los empeines, las orejas y la nuca.",
-            "Repite cada dos horas, y después de cada baño aunque sea resistente al agua."
-          ],
-          "composicion": [
-            "Filtros solares orgánicos, manteca de karité y glicerina. Resistente al agua."
-          ],
-          "advertencias": [
-            "SPF 30 es protección media. Si tienes la piel muy clara o vas a estar horas al sol, mejor un 50+.",
-            "Resistente al agua no quiere decir que aguante: al salir del baño hay que repetir.",
-            "No lo apliques sobre piel irritada, quemada o recién depilada."
-          ]
+          "id": "anthelios-dermopediatrics-spf50-spray",
+          "nombre": "La Roche-Posay Anthelios Dermo-Pediatrics SPF 50+ espray",
+          "resumen": "Muy alta protección para rostro y cuerpo, pensada para la piel sensible de los niños. En espray, para aplicar con prisa.",
+          "consulta": "el Anthelios Dermo-Pediatrics SPF 50+ en espray"
         },
         {
-          "nombre": "Fotoprotector infantil SPF 50+",
-          "resumen": "En espray, para pieles sensibles. Pensado para aplicar con prisa.",
-          "formato": "Espray · 200 ml",
-          "consulta": "un fotoprotector infantil",
-          "descripcion": [
-            "Protección muy alta para la piel de los niños, que se quema antes y con menos sol que la de un adulto.",
-            "Va en espray porque a esa edad la crema se pone de pie y con prisa. Pensado para pieles sensibles: sin perfume."
-          ],
-          "modo_empleo": [
-            "Pulveriza a unos diez centímetros y extiéndelo después con la mano: el espray reparte, pero no cubre solo.",
-            "Para la cara, échalo primero en tu mano y aplícalo desde ahí. Nunca directamente.",
-            "Repite cada dos horas y después de cada baño."
-          ],
-          "composicion": [
-            "Filtros minerales y orgánicos, glicerina y agua termal. Sin perfume ni alcohol."
-          ],
-          "advertencias": [
-            "No se recomienda en menores de seis meses: a esa edad lo que toca es no exponerlos al sol.",
-            "No lo pulverices cerca de la cara ni donde el niño pueda respirarlo.",
-            "Entre las doce y las cuatro, sombra, gorra y camiseta. La crema es lo último, no lo primero."
-          ]
-        },
-        {
-          "nombre": "Stick labial SPF 50",
-          "resumen": "Para el labio y las zonas que siempre se olvidan: nariz, orejas, cicatrices.",
-          "formato": "Stick · 4 g",
-          "consulta": "un stick labial con protección",
-          "descripcion": [
-            "El labio casi no tiene melanina que lo defienda y casi nadie le echa crema, así que es de las primeras zonas que se queman.",
-            "La barra sirve además para todo lo que siempre se olvida: la nariz, las orejas, las entradas del pelo y las cicatrices recientes."
-          ],
-          "modo_empleo": [
-            "Pásalo por el labio y por esas zonas pequeñas antes de salir.",
-            "Repite cada dos horas, y también después de comer, beber o bañarte."
-          ],
-          "composicion": [
-            "Filtros solares, cera de abeja, manteca de karité y vitamina E."
-          ],
-          "advertencias": [
-            "Una herida o una costra en el labio que no cura en dos semanas la tiene que ver el médico.",
-            "Es de uso personal: no lo compartas."
-          ]
-        },
-        {
-          "nombre": "Fotoprotector con color SPF 50+",
-          "resumen": "Unifica el tono mientras protege. Acabado mate.",
-          "formato": "Compacto · 10 g",
-          "consulta": "un fotoprotector con color",
-          "descripcion": [
-            "Protección muy alta y color en el mismo gesto, con acabado mate. Unifica el tono sin llegar a tapar como lo haría una base de maquillaje.",
-            "Suele ser el que funciona con quien no se pone fotoprotector porque no quiere llevar dos capas en la cara."
-          ],
-          "modo_empleo": [
-            "Sobre la cara limpia, extiéndelo desde el centro hacia fuera hasta cubrir toda la piel.",
-            "Para que el factor sea el de la etiqueta hace falta una capa generosa. Si sólo lo usas para retocar, ponte antes un fotoprotector sin color.",
-            "Retócalo cada dos horas si estás al aire libre."
-          ],
-          "composicion": [
-            "Filtros minerales y orgánicos, óxido de zinc, pigmentos minerales y vitamina E."
-          ],
-          "advertencias": [
-            "El tono se elige en el mostrador: en una pantalla no se ve el color de verdad.",
-            "Sobre acné activo o piel irritada, pregúntanos antes de usarlo."
-          ]
-        },
-        {
-          "nombre": "After sun con aloe",
-          "resumen": "Calma y rehidrata después del sol. Sensación de frío al aplicarlo.",
-          "formato": "Gel · 200 ml",
-          "consulta": "un after sun",
-          "descripcion": [
-            "Calma y devuelve el agua que la piel pierde después de un día de sol. El frío que se nota al aplicarlo es del gel, no del producto haciendo efecto.",
-            "No es un tratamiento para quemaduras: es el cuidado de después, para una piel que ha estado al sol dentro de lo razonable."
-          ],
-          "modo_empleo": [
-            "Después de la ducha, sobre la piel todavía algo húmeda, extiéndelo sin frotar.",
-            "Puedes repetirlo tantas veces como quieras a lo largo del día."
-          ],
-          "composicion": [
-            "Aloe vera, pantenol y glicerina. Sin alcohol."
-          ],
-          "advertencias": [
-            "Con ampollas, fiebre, escalofríos o mareo eso es una quemadura solar de las que hay que enseñar al médico. No la trates en casa.",
-            "No lo apliques sobre heridas abiertas.",
-            "Quemarse una vez cuenta: el daño se acumula aunque la rojez se vaya."
-          ]
+          "id": "cleanance-solaire-spf50",
+          "nombre": "Avène Cleanance Solaire SPF 50+",
+          "resumen": "Fotoprotector sin aceites para piel grasa o con tendencia al acné. Acabado mate, no deja sensación grasa.",
+          "consulta": "el Avène Cleanance Solaire SPF 50+"
         }
       ]
     },

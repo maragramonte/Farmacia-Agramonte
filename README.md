@@ -90,7 +90,7 @@ fotos/              Las fotos de los productos. Hoy vacía: ver su LEEME.txt
 favicon.svg         Icono de la pestaña: el monograma en oro sobre tinta
 og.png              Imagen que se ve al compartir el enlace (1200×630)
 robots.txt          Permite indexar y apunta al sitemap
-sitemap.xml         Las catorce páginas, para los buscadores
+sitemap.xml         Las diecinueve páginas indexables, para los buscadores
 .nojekyll           Le dice a GitHub Pages que sirva los ficheros tal cual
 
 LICENSE             Qué se puede hacer con este código y qué no
@@ -185,10 +185,13 @@ Tres decisiones que conviene no deshacer sin pensarlo:
   medicinales a productos que no son medicamentos, y eso choca con las normas de
   declaraciones de salud de los complementos alimenticios.
 
-## La plantilla del catálogo
+## El catálogo
 
-Están las **diez categorías**, una página cada una. Nueve llevan seis productos
-de muestra; **Medicamentos no lleva ninguno**, y eso es deliberado: enseñar
+Están las **diez categorías**, una página cada una, y dentro una ficha por
+producto. **Dos ya tienen productos reales** —Solares y Cosmética facial, cinco
+entre las dos— y están publicadas sin aviso y sin `noindex`. Las otras siete
+siguen con seis productos de muestra y su franja amarilla. **Medicamentos no
+lleva ninguno**, y eso es deliberado: enseñar
 medicamentos en un catálogo es publicidad de medicamentos, que la ley prohíbe al
 público para los de receta y sólo permite con advertencias obligatorias para el
 resto. Su página explica en su lugar cómo se encarga una receta.
@@ -206,7 +209,7 @@ catalogo-<id>.html              la rejilla de tarjetas de la categoría
 catalogo-<id>-<producto>.html   la ficha de cada uno de sus productos
 ```
 
-Hoy son 10 páginas de categoría y 54 fichas. Es lo mismo que hace
+Hoy son 10 páginas de categoría y 47 fichas. Es lo mismo que hace
 `tarjeta-social.py` con `og.png`: la web sigue siendo estática y no se ejecuta
 nada al visitarla, sólo cuando cambian los productos. Existe por una razón
 concreta: la tira de categorías que va arriba las lista todas, así que añadir
@@ -248,9 +251,14 @@ epígrafes que salen del JSON:
 
 **Los cuatro son opcionales y el que falta no se pinta.** Es a propósito: en una
 farmacia esto es consejo de salud y lo firma la casa, así que una ficha corta es
-mejor que un epígrafe rellenado a ojo. Hoy sólo **Solares** los trae, como
-muestra; las otras ocho categorías generan fichas con lo que ya había —nombre,
-resumen, formato y precio— y sin epígrafes.
+mejor que un epígrafe rellenado a ojo. **Ahora mismo no los trae ninguno**: los
+que tenía Solares eran de muestra y se fueron con sus productos inventados. Hay
+un ejemplo montado en `git show b215896:herramientas/catalogo-datos.json`, por
+si sirve de plantilla al escribir los de verdad.
+
+El **formato** sí lleva marca amarilla cuando falta: todo producto tiene uno, y
+no tenerlo es una ficha a medias. Es lo contrario que el precio, que no lleva
+marca porque no es que falte, es que no se publica.
 
 ### Las fotos
 
@@ -296,14 +304,12 @@ cargar `marca.css` primero.
 
 Tres cosas que hay que entender antes de tocarla:
 
-- **Los datos son inventados.** Seis productos genéricos, sin marca. Un aviso
-  grande arriba lo
-  dice, en la página de categoría y en cada ficha. **Las categorías están
-  enlazadas desde la portada, en `sitemap.xml` y sin `noindex`**, así que
-  cualquiera llega a ellas y Google puede indexarlas; las fichas de producto,
-  sólo mientras sean plantilla, van con `noindex`. Aun así, **cualquiera que
-  sepa la URL puede abrir una**: no las des por buenas hasta poner productos
-  reales.
+- **Siete categorías siguen inventadas.** Seis productos genéricos cada una,
+  sin marca, con el aviso grande arriba en la página y en cada ficha, y con
+  `noindex` en las fichas. **Las diez páginas de categoría están enlazadas
+  desde la portada, en `sitemap.xml` y sin `noindex`**, así que cualquiera
+  llega a ellas y Google puede indexarlas. No las des por buenas hasta poner
+  productos reales.
 - **Es un escaparate, no una tienda.** El botón de la tarjeta y el de la ficha
   abren WhatsApp; no hay carrito ni pago. Eso es deliberado: mientras no se
   pueda comprar desde aquí, la web sigue fuera del régimen de venta a distancia
@@ -324,11 +330,14 @@ con el JSON y avisa si sobra o falta alguna.
 
 1. Productos reales, en el JSON. Sin precios: eso ya está decidido.
 2. Las fotos, en `fotos/`. La carpeta y el mecanismo ya están; falta meterlas.
-3. Los epígrafes de cada ficha, escritos por quien pueda firmarlos. Hoy sólo
-   los tiene Solares, y también son de muestra.
-4. Quitar `"plantilla": true` de cada categoría: con ello se va el aviso
+3. Los formatos que faltan: cuatro de los cinco productos reales están sin él
+   y salen con la marca amarilla.
+4. Los epígrafes de cada ficha, escritos por quien pueda firmarlos. Hoy no los
+   tiene ninguno.
+5. Quitar `"plantilla": true` de las siete que quedan: con ello se va el aviso
    amarillo y sus fichas dejan de llevar `noindex`.
-5. Meter esas fichas en `sitemap.xml`. El script dice cuáles faltan.
+6. Meter esas fichas en `sitemap.xml`, y borrar las páginas de los productos
+   que hayan salido. El script dice cuáles faltan y cuáles sobran.
 
 Las páginas de categoría ya están enlazadas desde la portada, en `sitemap.xml` y
 sin `noindex`, así que **un visitante cualquiera llega a ellas y Google puede
@@ -383,10 +392,10 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
   no lleva a ninguna parte es peor que no tenerlo.
 - **Catálogo y venta en línea.** Están las **diez categorías** montadas,
   enlazadas desde la portada y **en el sitemap, sin `noindex`**: Google puede
-  indexarlas. Pero sus productos **son inventados** y están marcados como
-  tales. **Esto es, con diferencia, lo más urgente de todo el proyecto.** Cada
-  producto tiene ya su ficha —54 en total, con `noindex` mientras sean
-  plantilla—, pero lo que cuentan no existe. Precios no hay y no va a haberlos,
+  indexarlas. **Dos ya tienen productos reales**, Solares y Cosmética facial,
+  con cinco productos entre ambas y sus cinco fichas indexadas; **las otras
+  siete siguen inventadas** y marcadas como tales. Acabar de llenarlas es, con
+  diferencia, lo más urgente del proyecto. Precios no hay y no va a haberlos,
   que está decidido; carrito tampoco. Antes de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a
   distancia** sin notificarlo a la autoridad sanitaria, aparecer en el registro

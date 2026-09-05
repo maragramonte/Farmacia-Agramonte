@@ -124,6 +124,17 @@ def precio_html(p, sangria):
     return '\n%s<p class="precio">%s</p>' % (sangria, escapa(p["precio"]))
 
 
+def formato_html(p):
+    """El envase y el contenido, o la marca amarilla si todavía no se saben.
+
+    Aquí el amarillo sí toca, al revés que con el precio: todo producto tiene un
+    formato, así que no tenerlo es una ficha a medias y hay que verlo. El precio
+    no lleva marca porque no falta, es que no se publica."""
+    if not p.get("formato"):
+        return '<span class="pendiente">Formato pendiente</span>'
+    return escapa(p["formato"])
+
+
 def foto_de(c, p):
     """La foto del producto dentro de fotos/, o None si todavía no la hay.
 
@@ -179,7 +190,7 @@ def ficha(c, p, icono):
       </div>
     </article>""" % (
         foto_html(c, p, icono), escapa(ruta_producto(c, p)), escapa(p["nombre"]),
-        escapa(p["resumen"]), escapa(p["formato"]), precio_html(p, " " * 8),
+        escapa(p["resumen"]), formato_html(p), precio_html(p, " " * 8),
         escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]))
 
 
@@ -265,7 +276,7 @@ def otros_de(c, actual):
         return ""
     puntos = "\n".join(
         '      <li><a href="%s"><strong>%s</strong><small>%s</small></a></li>'
-        % (escapa(ruta_producto(c, p)), escapa(p["nombre"]), escapa(p["formato"]))
+        % (escapa(ruta_producto(c, p)), escapa(p["nombre"]), formato_html(p))
         for p in resto)
     return """  <section class="otros">
     <h2>Más de %s</h2>
@@ -406,7 +417,7 @@ def pagina_producto(c, p):
 
 %s%s""" % (
         c["id"], escapa(c["nombre"]), escapa(p["nombre"]),
-        foto_html(c, p, icono), escapa(p["nombre"]), escapa(p["formato"]),
+        foto_html(c, p, icono), escapa(p["nombre"]), formato_html(p),
         escapa(p["resumen"]), precio_html(p, " " * 6),
         escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]), ICONO_WHATSAPP,
         TELEFONO_ENLACE, TELEFONO_VISIBLE,
@@ -421,7 +432,7 @@ def pagina_producto(c, p):
     return documento(
         titulo="%s%s — %s — Farmàcia Agramonte" % (p["nombre"], coletilla, c["nombre"]),
         descripcion="%s %s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)." % (
-            p["resumen"], p["formato"]),
+            p["resumen"], p.get("formato", "")),
         ruta=ruta_producto(c, p),
         contenido=contenido,
         es_plantilla=es_plantilla,
@@ -471,6 +482,21 @@ def comprueba_fotos(categorias):
     print("  fotos puestas: %d de %d productos" % (puestas, total))
 
 
+def comprueba_huerfanas(escritas):
+    """Avisa de las catalogo-*.html que este script ya no genera.
+
+    Al quitar un producto del JSON, su página se queda en el disco: nadie la
+    enlaza, pero sigue publicada, sigue en Google si llegó a entrar y sigue
+    diciendo lo que decía. No las borro solo —un borrado en cadena por una
+    errata en el JSON sería peor— pero hay que verlas."""
+    hay = {p.name for p in RAIZ.glob("catalogo-*.html")}
+    sobran = sorted(hay - set(escritas))
+    if sobran:
+        print("  AVISO: %d páginas que ya no se generan y siguen en el disco."
+              % len(sobran))
+        print("         Bórralas con: git rm %s" % " ".join(sobran))
+
+
 def comprueba_urls_unicas(categorias):
     """Dos productos que den la misma URL se pisarían el fichero en silencio."""
     for c in categorias:
@@ -497,15 +523,17 @@ def main():
     comprueba_portada(categorias)
     comprueba_fotos(categorias)
 
-    paginas, fichas, indexables = 0, 0, []
+    paginas, fichas, indexables, escritas = 0, 0, [], []
     for c in categorias:
         destino = RAIZ / ("catalogo-%s.html" % c["id"])
         destino.write_text(pagina(c, categorias), encoding="utf-8")
+        escritas.append(destino.name)
         paginas += 1
 
         for p in c["productos"]:
             ruta = ruta_producto(c, p)
             (RAIZ / ruta).write_text(pagina_producto(c, p), encoding="utf-8")
+            escritas.append(ruta)
             fichas += 1
             if not c.get("plantilla", False):
                 indexables.append(ruta)
@@ -514,6 +542,7 @@ def main():
         print("  %-38s %s" % (destino.name,
                               "%d fichas" % cuantos if cuantos else "sin lista de productos"))
 
+    comprueba_huerfanas(escritas)
     comprueba_sitemap(indexables)
     print("\n%d páginas de categoría y %d fichas de producto escritas desde %s"
           % (paginas, fichas, DATOS.name))
