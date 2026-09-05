@@ -4,10 +4,15 @@ Escribe las páginas del catálogo a partir de herramientas/catalogo-datos.json.
 
     python herramientas/catalogo.py
 
-Genera un catalogo-<id>.html por cada categoría del JSON. Existe por una razón
-muy concreta: la tira de categorías que va arriba de cada página tiene que
-listarlas todas, así que añadir una obligaba a tocar las diez a mano. Con diez
-páginas eso es una errata esperando a ocurrir.
+Genera dos cosas por cada categoría del JSON:
+
+    catalogo-<id>.html              la rejilla de tarjetas de la categoría.
+    catalogo-<id>-<producto>.html   la ficha de cada uno de sus productos.
+
+Existe por una razón muy concreta: la tira de categorías que va arriba de cada
+página tiene que listarlas todas, así que añadir una obligaba a tocar las diez a
+mano. Ahora que además hay una ficha por producto, escribir esto a mano sería
+una errata esperando a ocurrir.
 
 La web sigue siendo estática: esto no se ejecuta al visitarla, sólo cuando
 cambian los productos. Igual que herramientas/tarjeta-social.py con og.png.
@@ -18,6 +23,7 @@ El HTML generado NO se edita a mano: se pierde al volver a ejecutar esto.
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 from urllib.parse import quote
 
@@ -42,6 +48,17 @@ ICONOS = {
     "hoja":    '<path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/>',
     "cruz":    '<line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/>',
 }
+
+# Las secciones de la ficha, en el orden en que se leen, y con qué se pinta
+# cada una. Todas son opcionales: si el producto no trae la clave en el JSON, la
+# sección no aparece. Una ficha corta es mejor que un epígrafe vacío, y mucho
+# mejor que un epígrafe inventado, que aquí además sería un consejo de salud.
+SECCIONES = [
+    ("descripcion",  "Para qué es",    "p"),
+    ("modo_empleo",  "Modo de empleo", "ol"),
+    ("composicion",  "Composición",    "p"),
+    ("advertencias", "Advertencias",   "ul"),
+]
 
 ICONO_WHATSAPP = (
     '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 '
@@ -68,6 +85,35 @@ def enlace_whatsapp(consulta):
     return "https://wa.me/%s?text=%s" % (WHATSAPP, quote(texto, safe=""))
 
 
+def slug_producto(p):
+    """La parte de la URL que identifica al producto dentro de su categoría.
+
+    Se saca del nombre, pero el JSON puede fijarla con "id". Hace falta poder:
+    renombrar un producto le cambiaría la URL, y una URL que ya está en Google
+    no se cambia a la ligera."""
+    if p.get("id"):
+        return p["id"]
+    t = unicodedata.normalize("NFKD", p["nombre"])
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    return re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-")
+
+
+def ruta_producto(c, p):
+    return "catalogo-%s-%s.html" % (c["id"], slug_producto(p))
+
+
+def precio_html(p):
+    return ('<span class="pendiente">00,00 €</span>' if not p.get("precio")
+            else escapa(p["precio"]))
+
+
+def foto_html(p, icono):
+    if p.get("foto"):
+        return ('<div class="foto foto-real"><img src="fotos/%s" alt="%s" loading="lazy"></div>'
+                % (escapa(p["foto"]), escapa(p["nombre"])))
+    return '<div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true">%s</svg></div>' % icono
+
+
 def tira(categorias, actual):
     """La tira de arriba. Con página propia van como enlace; el resto, en texto."""
     filas = []
@@ -82,25 +128,24 @@ def tira(categorias, actual):
     return "\n".join(orden)
 
 
-def ficha(p, icono):
-    precio = ('<span class="pendiente">00,00 €</span>' if not p.get("precio")
-              else escapa(p["precio"]))
-    if p.get("foto"):
-        foto = ('<div class="foto foto-real"><img src="fotos/%s" alt="%s" loading="lazy"></div>'
-                % (escapa(p["foto"]), escapa(p["nombre"])))
-    else:
-        foto = '<div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true">%s</svg></div>' % icono
+def ficha(c, p, icono):
+    """Una tarjeta de la rejilla.
+
+    El título lleva a la ficha del producto. El botón sigue yendo a WhatsApp,
+    que es como se pide de verdad: quien ya sabe lo que quiere no tiene por qué
+    dar un rodeo por la ficha."""
     return """    <article class="producto">
       %s
       <div class="cuerpo">
-        <h2>%s</h2>
+        <h2><a href="%s">%s</a></h2>
         <p class="resumen">%s</p>
         <p class="formato">%s</p>
         <p class="precio">%s</p>
         <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">Preguntar</a>
       </div>
     </article>""" % (
-        foto, escapa(p["nombre"]), escapa(p["resumen"]), escapa(p["formato"]), precio,
+        foto_html(p, icono), escapa(ruta_producto(c, p)), escapa(p["nombre"]),
+        escapa(p["resumen"]), escapa(p["formato"]), precio_html(p),
         escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]))
 
 
@@ -145,7 +190,7 @@ def cuerpo_categoria(c, icono):
     En ese segundo caso no se añade además el cierre de «cómo se pide»: diría
     lo mismo dos veces seguidas. El teléfono se mete aquí en su lugar."""
     if c["productos"]:
-        fichas = "\n\n".join(ficha(p, icono) for p in c["productos"])
+        fichas = "\n\n".join(ficha(c, p, icono) for p in c["productos"])
         return ('  <div class="productos">\n\n%s\n\n  </div>\n' % fichas) + "\n" + CIERRE_PEDIDO
 
     sp = c["sin_productos"]
@@ -161,16 +206,49 @@ def cuerpo_categoria(c, icono):
 """ % (escapa(sp["titulo"]), parrafos, WHATSAPP, TELEFONO_ENLACE, TELEFONO_VISIBLE)
 
 
-def pagina(c, categorias):
-    icono = ICONOS[c["icono"]]
-    es_plantilla = c.get("plantilla", False)
-    # Sin noindex: las diez se indexan. Decisión de la farmacia, tomada sabiendo
-    # que lo que Google recoge son los precios de ejemplo y que un precio
-    # expuesto al público es una oferta. Al poner los reales esto no cambia.
-    canonical = '<link rel="canonical" href="%scatalogo-%s.html">' % (BASE, c["id"])
+def seccion(p, clave, titulo, envoltura):
+    """Un epígrafe de la ficha, o nada si el producto no trae ese dato."""
+    textos = p.get(clave)
+    if not textos:
+        return ""
+    if envoltura == "p":
+        interior = "\n".join("    <p>%s</p>" % escapa(t) for t in textos)
+    else:
+        puntos = "\n".join("      <li>%s</li>" % escapa(t) for t in textos)
+        interior = "    <%s>\n%s\n    </%s>" % (envoltura, puntos, envoltura)
+    # Las advertencias se marcan aparte: es lo único de la ficha que hay que
+    # leer sí o sí, y no debe leerse como un párrafo más.
+    extra = " detalle-advertencias" if clave == "advertencias" else ""
+    return '  <section class="detalle%s">\n    <h2>%s</h2>\n%s\n  </section>\n\n' % (
+        extra, escapa(titulo), interior)
 
-    coletilla = " (plantilla)" if es_plantilla else ""
 
+def otros_de(c, actual):
+    """El resto de la categoría, al pie de la ficha. Sin foto y sin precio: es
+    un índice para seguir mirando, no otra rejilla de tarjetas."""
+    resto = [p for p in c["productos"] if slug_producto(p) != slug_producto(actual)]
+    if not resto:
+        return ""
+    puntos = "\n".join(
+        '      <li><a href="%s"><strong>%s</strong><small>%s</small></a></li>'
+        % (escapa(ruta_producto(c, p)), escapa(p["nombre"]), escapa(p["formato"]))
+        for p in resto)
+    return """  <section class="otros">
+    <h2>Más de %s</h2>
+    <ul>
+%s
+    </ul>
+    <a class="volver" href="catalogo-%s.html">Ver toda la categoría</a>
+  </section>
+""" % (escapa(c["nombre"]), puntos, c["id"])
+
+
+def documento(titulo, descripcion, ruta, contenido, es_plantilla, noindex=False):
+    """El esqueleto que comparten la página de categoría y la ficha de producto:
+    cabeza, cabecera, aviso, <main> y pie. Lo de dentro de <main> lo pone quien
+    llama. Nació al montar las fichas, para no tener dos copias de la cabecera
+    que se separasen a la primera de cambio."""
+    robots = '<meta name="robots" content="noindex">\n' if noindex else ""
     return """<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -179,9 +257,9 @@ def pagina(c, categorias):
 <!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
      python herramientas/catalogo.py. Los productos están en
      herramientas/catalogo-datos.json. -->
-%s
-<meta name="description" content="%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
-<title>%s%s — Farmàcia Agramonte</title>
+%s<link rel="canonical" href="%s%s">
+<meta name="description" content="%s">
+<title>%s</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
 <!-- Tipografías propias, servidas desde este mismo repositorio. -->
@@ -209,18 +287,6 @@ def pagina(c, categorias):
 </header>
 %s
 <main class="contenedor">
-
-  <p class="migas"><a href="index.html">Inicio</a> › <a href="index.html#categorias">Categorías</a> › %s</p>
-
-  <div class="portada-categoria">
-    <h1>%s</h1>
-    <p>%s</p>
-  </div>
-
-  <nav class="tira" aria-label="Categorías del catálogo">
-%s
-  </nav>
-
 %s
 </main>
 
@@ -237,12 +303,134 @@ def pagina(c, categorias):
 
 </body>
 </html>
-""" % (canonical, escapa(c["nombre"]), escapa(c["nombre"]), coletilla,
+""" % (robots, BASE, ruta, escapa(descripcion), escapa(titulo),
        WHATSAPP, ICONO_WHATSAPP,
        aviso_plantilla() if es_plantilla else "",
-       escapa(c["nombre"]), escapa(c["nombre"]), escapa(c["intro"]),
-       tira(categorias, c["id"]),
-       cuerpo_categoria(c, icono))
+       contenido)
+
+
+def pagina(c, categorias):
+    """La página de una categoría: portada, tira y rejilla."""
+    icono = ICONOS[c["icono"]]
+    es_plantilla = c.get("plantilla", False)
+    coletilla = " (plantilla)" if es_plantilla else ""
+
+    contenido = """
+  <p class="migas"><a href="index.html">Inicio</a> › <a href="index.html#categorias">Categorías</a> › %s</p>
+
+  <div class="portada-categoria">
+    <h1>%s</h1>
+    <p>%s</p>
+  </div>
+
+  <nav class="tira" aria-label="Categorías del catálogo">
+%s
+  </nav>
+
+%s""" % (escapa(c["nombre"]), escapa(c["nombre"]), escapa(c["intro"]),
+         tira(categorias, c["id"]), cuerpo_categoria(c, icono))
+
+    # Sin noindex: las diez se indexan. Decisión de la farmacia, tomada sabiendo
+    # que lo que Google recoge son los precios de ejemplo y que un precio
+    # expuesto al público es una oferta. Al poner los reales esto no cambia.
+    return documento(
+        titulo="%s%s — Farmàcia Agramonte" % (c["nombre"], coletilla),
+        descripcion="%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)." % c["nombre"],
+        ruta="catalogo-%s.html" % c["id"],
+        contenido=contenido,
+        es_plantilla=es_plantilla)
+
+
+def pagina_producto(c, p):
+    """La ficha de un producto: foto, datos, epígrafes y el resto de la categoría."""
+    icono = ICONOS[c["icono"]]
+    es_plantilla = c.get("plantilla", False)
+    coletilla = " (plantilla)" if es_plantilla else ""
+
+    secciones = "".join(seccion(p, clave, titulo, env) for clave, titulo, env in SECCIONES)
+
+    contenido = """
+  <p class="migas"><a href="index.html">Inicio</a> › <a href="index.html#categorias">Categorías</a> › <a href="catalogo-%s.html">%s</a> › %s</p>
+
+  <div class="ficha-producto">
+    %s
+    <div class="datos">
+      <h1>%s</h1>
+      <p class="formato">%s</p>
+      <p class="resumen">%s</p>
+      <p class="precio">%s</p>
+      <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">
+        %s
+        Preguntar por WhatsApp
+      </a>
+      <p class="nota-consejo">
+        Esto es un escaparate, no una tienda: no se compra desde aquí. Nos
+        preguntas por WhatsApp o al <a href="tel:%s">%s</a>, lo preparamos y lo
+        recoges en el mostrador, que es donde además podemos aconsejarte.
+      </p>
+    </div>
+  </div>
+
+%s%s""" % (
+        c["id"], escapa(c["nombre"]), escapa(p["nombre"]),
+        foto_html(p, icono), escapa(p["nombre"]), escapa(p["formato"]),
+        escapa(p["resumen"]), precio_html(p),
+        escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]), ICONO_WHATSAPP,
+        TELEFONO_ENLACE, TELEFONO_VISIBLE,
+        secciones, otros_de(c, p))
+
+    # Mientras la categoría sea plantilla, sus fichas van con noindex y fuera del
+    # sitemap. Que las diez páginas de categoría se indexen fue una decisión
+    # tomada a sabiendas; una ficha inventada por producto es otra cosa: son
+    # decenas de páginas flacas, con un precio de ejemplo que se lee como gratis
+    # y —en cuanto se rellenen los epígrafes— con texto de salud que no ha
+    # firmado nadie. Al quitar "plantilla": true del JSON se indexan solas.
+    return documento(
+        titulo="%s%s — %s — Farmàcia Agramonte" % (p["nombre"], coletilla, c["nombre"]),
+        descripcion="%s %s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)." % (
+            p["resumen"], p["formato"]),
+        ruta=ruta_producto(c, p),
+        contenido=contenido,
+        es_plantilla=es_plantilla,
+        noindex=es_plantilla)
+
+
+def comprueba_portada(categorias):
+    """La portada enlaza las categorías a mano, así que aquí se comprueba que no
+    se hayan descuadrado: una categoría nueva en el JSON que nadie enlace, o un
+    enlace de la portada a una página que ya no se genera."""
+    portada = (RAIZ / "index.html").read_text(encoding="utf-8")
+    enlazadas = set(re.findall(r'href="catalogo-([a-z0-9-]+)\.html"', portada))
+    definidas = {c["id"] for c in categorias}
+    if definidas - enlazadas:
+        print("  AVISO: sin enlazar desde la portada: %s" % sorted(definidas - enlazadas))
+    if enlazadas - definidas:
+        print("  AVISO: la portada enlaza páginas que no se generan: %s" % sorted(enlazadas - definidas))
+
+
+def comprueba_sitemap(indexables):
+    """El sitemap está escrito a mano. Mientras una categoría sea plantilla sus
+    fichas llevan noindex y no pintan nada ahí; en cuanto deje de serlo sí, y son
+    decenas. Mejor que avise el script a descubrirlo tarde."""
+    mapa = (RAIZ / "sitemap.xml").read_text(encoding="utf-8")
+    faltan = sorted(r for r in indexables if (BASE + r) not in mapa)
+    if faltan:
+        print("  AVISO: %d fichas indexables que no están en sitemap.xml: %s%s"
+              % (len(faltan), ", ".join(faltan[:4]), " …" if len(faltan) > 4 else ""))
+
+
+def comprueba_urls_unicas(categorias):
+    """Dos productos que den la misma URL se pisarían el fichero en silencio."""
+    for c in categorias:
+        vistos = {}
+        for p in c["productos"]:
+            s = slug_producto(p)
+            if s in vistos:
+                raise SystemExit(
+                    'En %s, «%s» y «%s» dan la misma URL (%s). Ponle una clave "id" '
+                    "distinta a uno de los dos en el JSON."
+                    % (c["id"], vistos[s], p["nombre"], ruta_producto(c, p)))
+            vistos[s] = p["nombre"]
 
 
 def main():
@@ -253,26 +441,29 @@ def main():
     if faltan:
         raise SystemExit("Iconos que no existen en ICONOS: %s" % faltan)
 
-    # La portada enlaza las categorías a mano, así que aquí se comprueba que no
-    # se hayan descuadrado: una categoría nueva en el JSON que nadie enlace, o
-    # un enlace de la portada a una página que ya no se genera.
-    portada = (RAIZ / "index.html").read_text(encoding="utf-8")
-    enlazadas = set(re.findall(r'href="catalogo-([a-z0-9-]+)\.html"', portada))
-    definidas = {c["id"] for c in categorias}
-    if definidas - enlazadas:
-        print("  AVISO: sin enlazar desde la portada: %s" % sorted(definidas - enlazadas))
-    if enlazadas - definidas:
-        print("  AVISO: la portada enlaza páginas que no se generan: %s" % sorted(enlazadas - definidas))
+    comprueba_urls_unicas(categorias)
+    comprueba_portada(categorias)
 
-    escritas = 0
+    paginas, fichas, indexables = 0, 0, []
     for c in categorias:
         destino = RAIZ / ("catalogo-%s.html" % c["id"])
         destino.write_text(pagina(c, categorias), encoding="utf-8")
+        paginas += 1
+
+        for p in c["productos"]:
+            ruta = ruta_producto(c, p)
+            (RAIZ / ruta).write_text(pagina_producto(c, p), encoding="utf-8")
+            fichas += 1
+            if not c.get("plantilla", False):
+                indexables.append(ruta)
+
         cuantos = len(c["productos"])
         print("  %-38s %s" % (destino.name,
-                              "%d productos" % cuantos if cuantos else "sin lista de productos"))
-        escritas += 1
-    print("\n%d páginas escritas desde %s" % (escritas, DATOS.name))
+                              "%d fichas" % cuantos if cuantos else "sin lista de productos"))
+
+    comprueba_sitemap(indexables)
+    print("\n%d páginas de categoría y %d fichas de producto escritas desde %s"
+          % (paginas, fichas, DATOS.name))
 
 
 if __name__ == "__main__":

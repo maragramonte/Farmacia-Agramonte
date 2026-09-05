@@ -75,10 +75,61 @@
 
 .producto .cuerpo { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
 .producto h2 { font-family: var(--cuerpo); font-size: 1rem; font-weight: 600; line-height: 1.35; margin-bottom: .4rem; }
+/* El título es el enlace a la ficha del producto. Va subrayado en tenue para
+   que se vea que lo es: dentro de una tarjeta que ya reacciona al pasar por
+   encima, un enlace sin marca no se distingue del texto. */
+.producto h2 a { border-bottom: 1px solid var(--crema-3); transition: color .18s ease, border-color .18s ease; }
+.producto h2 a:hover { color: var(--oro-hondo); border-bottom-color: var(--oro); }
 .resumen { font-size: .88rem; color: var(--texto-tenue); margin-bottom: .8rem; }
 .formato { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--oro-hondo); font-weight: 600; margin-bottom: .9rem; }
 .precio { font-size: 1.15rem; margin-top: auto; margin-bottom: .9rem; font-variant-numeric: tabular-nums; }
 .producto .boton { width: 100%; justify-content: center; padding: .7rem 1rem; }
+
+/* ---------- Ficha de producto ----------
+   La página de un producto: la foto a un lado y los datos al otro, y debajo
+   los epígrafes que traiga el JSON. El generador no pinta el epígrafe que no
+   tiene datos, así que aquí no hay estados vacíos que cubrir. */
+.ficha-producto {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 2.5rem; align-items: start; padding-bottom: 2.5rem;
+}
+/* Cuadrada, no 4/3 como en la rejilla: aquí la foto es el asunto y no una
+   miniatura, y la columna de datos es la que manda en el alto. */
+.ficha-producto .foto { aspect-ratio: 1 / 1; border: 1px solid var(--crema-3); }
+.ficha-producto .foto svg { width: 64px; height: 64px; }
+.ficha-producto h1 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin-bottom: .55rem; }
+
+.datos .resumen { font-size: 1rem; max-width: 52ch; margin-bottom: 1.3rem; }
+/* El margen automático de arriba es de la tarjeta, que empuja el precio al pie
+   de la columna. Aquí el precio va donde le toca leerse. */
+.datos .precio { font-size: 1.55rem; margin-top: 0; margin-bottom: 1.3rem; }
+.nota-consejo { font-size: .85rem; color: var(--texto-tenue); max-width: 52ch; margin-top: 1.2rem; }
+.nota-consejo a { border-bottom: 1px solid var(--crema-3); }
+.nota-consejo a:hover { color: var(--oro-hondo); }
+
+.detalle { border-top: 1px solid var(--crema-3); padding-block: 1.6rem; max-width: 70ch; }
+.detalle h2 { font-size: 1.15rem; margin-bottom: .7rem; }
+.detalle p, .detalle li { color: var(--texto-tenue); }
+.detalle p + p { margin-top: .6rem; }
+.detalle ol, .detalle ul { margin: 0; padding-left: 1.3rem; display: grid; gap: .45rem; }
+/* Las advertencias son lo único de la ficha que hay que leer sí o sí, así que
+   no pueden leerse como un párrafo más. */
+.detalle-advertencias { border-left: 3px solid var(--oro); padding-left: 1.4rem; }
+/* Una categoría de un solo producto no lleva el bloque de «Más de», y sin él
+   la última sección se quedaría pegada al pie. */
+.detalle:last-child { padding-bottom: 3.5rem; }
+
+/* ---------- El resto de la categoría, al pie de la ficha ----------
+   Sin foto y sin precio: es un índice para seguir mirando, no otra rejilla. */
+.otros { padding-block: 2.25rem 3rem; }
+.otros h2 { font-size: 1.15rem; margin-bottom: 1rem; }
+.otros ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; }
+.otros a { display: block; height: 100%; background: #fbf8f2; border: 1px solid var(--crema-3); padding: .85rem 1rem; transition: border-color .18s ease; }
+.otros a:hover { border-color: var(--oro); }
+.otros strong { display: block; font-size: .92rem; font-weight: 600; line-height: 1.35; margin-bottom: .3rem; }
+.otros small { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--oro-hondo); }
+.otros .volver { display: inline-block; margin-top: 1.2rem; font-size: .88rem; border-bottom: 1px solid var(--crema-3); }
+.otros .volver:hover { color: var(--oro-hondo); }
 
 /* ---------- Cierre ---------- */
 .cierre { background: var(--crema-2); padding: 2rem; margin-bottom: 3.5rem; }
@@ -88,13 +139,22 @@
 .cierre a { border-bottom: 1px solid var(--crema-3); }
 .cierre a:hover { color: var(--oro-hondo); }
 
+@media (max-width: 820px) {
+  /* La foto encima de los datos. Debajo de este ancho las dos columnas dejan
+     el nombre del producto partido en cuatro líneas. */
+  .ficha-producto { grid-template-columns: 1fr; gap: 1.5rem; }
+  .ficha-producto .foto { max-width: 380px; }
+}
+
 @media (max-width: 560px) {
-  /* Dos por fila en el móvil: la ficha sigue siendo legible y la categoría
+  /* Dos por fila en el móvil: la tarjeta sigue siendo legible y la categoría
      entera se recorre en un par de pantallas en lugar de diez. */
   .productos { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .producto .cuerpo { padding: .9rem .9rem 1.1rem; }
   .producto h2 { font-size: .92rem; }
-  .resumen { display: none; }
+  /* Sólo en la tarjeta: en la ficha del producto el resumen es lo que se lee
+     primero y ahí tiene que quedarse. */
+  .producto .resumen { display: none; }
   .producto .boton { font-size: .68rem; letter-spacing: .08em; padding: .65rem .5rem; }
   .cierre { padding: 1.5rem; }
 }

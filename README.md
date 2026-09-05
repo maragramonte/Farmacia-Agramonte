@@ -77,8 +77,9 @@ privacidad.html     Qué datos se tratan, para qué y con qué base legal
 cookies.html        No hay cookies; se explica la única petición externa
 legal.css           Estilo compartido de esas páginas de texto y del 404
 
-catalogo-*.html     Las diez categorías. SE GENERAN, no se editan a mano
-catalogo.css        Lo propio del catálogo: aviso, tira y rejilla de fichas
+catalogo-*.html     Las diez categorías y las fichas de sus productos.
+                    SE GENERAN, no se editan a mano
+catalogo.css        Lo propio del catálogo: aviso, tira, rejilla y ficha
 marca.css           Paleta, cabecera, botón y pie: la identidad compartida
 
 servir.py           Servidor local (sólo necesita Python)
@@ -196,16 +197,57 @@ resto. Su página explica en su lugar cómo se encarga una receta.
 python herramientas/catalogo.py
 ```
 
-Lee `herramientas/catalogo-datos.json` y escribe las diez `catalogo-*.html`. Es
-lo mismo que hace `tarjeta-social.py` con `og.png`: la web sigue siendo estática
-y no se ejecuta nada al visitarla, sólo cuando cambian los productos. Existe por
-una razón concreta: la tira de categorías que va arriba las lista todas, así que
-añadir una obligaba a tocar las diez a mano, y eso es una errata esperando a
-ocurrir.
+Lee `herramientas/catalogo-datos.json` y escribe dos cosas:
+
+```
+catalogo-<id>.html              la rejilla de tarjetas de la categoría
+catalogo-<id>-<producto>.html   la ficha de cada uno de sus productos
+```
+
+Hoy son 10 páginas de categoría y 54 fichas. Es lo mismo que hace
+`tarjeta-social.py` con `og.png`: la web sigue siendo estática y no se ejecuta
+nada al visitarla, sólo cuando cambian los productos. Existe por una razón
+concreta: la tira de categorías que va arriba las lista todas, así que añadir
+una obligaba a tocar las diez a mano, y eso es una errata esperando a ocurrir.
+Con una ficha por producto, escribirlas a mano ya no es ni discutible.
 
 Para cambiar productos, precios o fotos se edita **el JSON**, y se vuelve a
 ejecutar el script. Dos comodidades: si un producto no tiene `precio`, sale el
 hueco en amarillo, y en cuanto lo escribes se pinta normal; igual con `foto`.
+
+### La ficha de producto
+
+La tarjeta de la rejilla lleva al título enlazado; el botón «Preguntar» sigue
+yendo directo a WhatsApp, que quien ya sabe lo que quiere no tiene por qué dar
+un rodeo. La ficha repite foto, formato, precio y botón, y debajo cuatro
+epígrafes que salen del JSON:
+
+| Clave | Epígrafe | Se pinta como |
+|---|---|---|
+| `descripcion` | Para qué es | párrafos |
+| `modo_empleo` | Modo de empleo | lista numerada |
+| `composicion` | Composición | párrafos |
+| `advertencias` | Advertencias | lista, y en un recuadro aparte |
+
+**Los cuatro son opcionales y el que falta no se pinta.** Es a propósito: en una
+farmacia esto es consejo de salud y lo firma la casa, así que una ficha corta es
+mejor que un epígrafe rellenado a ojo. Hoy sólo **Solares** los trae, como
+muestra; las otras ocho categorías generan fichas con lo que ya había —nombre,
+resumen, formato y precio— y sin epígrafes.
+
+La URL del producto sale de su nombre (`Stick labial SPF 50` →
+`catalogo-solares-stick-labial-spf-50.html`). Se puede fijar con una clave `id`
+en el JSON, y **hay que hacerlo antes de renombrar un producto que ya esté en
+Google**. Si dos productos de la misma categoría dan la misma URL, el script
+para y lo dice en vez de pisar el fichero en silencio.
+
+Mientras la categoría lleve `"plantilla": true`, sus fichas salen con
+`noindex` y fuera del `sitemap.xml`. Que las diez páginas de categoría **sí** se
+indexen fue una decisión tomada a sabiendas; cincuenta y cuatro fichas
+inventadas son otra cosa: páginas flacas, con un precio de ejemplo que se lee
+como gratis y con texto de salud que no ha escrito nadie. Al quitar `plantilla`
+se indexan solas, y entonces hay que **meterlas a mano en `sitemap.xml`**: el
+script avisa de las que falten.
 
 El estilo va en dos hojas: `marca.css` con la identidad compartida —paleta,
 cabecera, botón y pie— y `catalogo.css` con lo que sólo existe aquí. Hay que
@@ -215,19 +257,23 @@ Tres cosas que hay que entender antes de tocarla:
 
 - **Los datos son inventados.** Seis productos genéricos, sin marca, y los
   precios en amarillo como todo lo que aún no es real. Un aviso grande arriba lo
-  dice. La página lleva `noindex`, no está en `sitemap.xml` y no la enlaza
-  ninguna otra: aun así **cualquiera que sepa la URL puede abrirla**, así que no
-  la enseñes sin ese aviso ni la des por buena hasta poner productos reales.
-- **Es un escaparate, no una tienda.** El botón de cada ficha abre WhatsApp; no
-  hay carrito ni pago. Eso es deliberado: mientras no se pueda comprar desde
-  aquí, la web sigue fuera del régimen de venta a distancia y el aviso legal
-  actual sigue siendo cierto.
-- **Sólo la categoría actual es un enlace** en la tira de arriba. Las demás son
-  texto porque todavía no tienen página, y ya aprendimos en la portada que un
-  enlace que no lleva a ninguna parte es peor que no tenerlo.
+  dice, en la página de categoría y en cada ficha. **Las categorías están
+  enlazadas desde la portada, en `sitemap.xml` y sin `noindex`**, así que
+  cualquiera llega a ellas y Google puede indexarlas; las fichas de producto,
+  sólo mientras sean plantilla, van con `noindex`. Aun así, **cualquiera que
+  sepa la URL puede abrir una**: no las des por buenas hasta poner productos
+  reales.
+- **Es un escaparate, no una tienda.** El botón de la tarjeta y el de la ficha
+  abren WhatsApp; no hay carrito ni pago. Eso es deliberado: mientras no se
+  pueda comprar desde aquí, la web sigue fuera del régimen de venta a distancia
+  y el aviso legal actual sigue siendo cierto.
+- **La tira de arriba enlaza las diez**, con la categoría en la que estás la
+  primera y en tinta rellena. Antes las demás iban en texto porque no tenían
+  página; ya la tienen.
 
 Para añadir un producto o una categoría se edita el JSON y se ejecuta el
-script. La tira se rehace sola en las diez páginas.
+script. La tira se rehace sola en las diez páginas, y la ficha del producto
+nuevo aparece con él.
 
 Las pastillas de la portada llevan a estas páginas. Esa lista está escrita a
 mano en `index.html`, así que el generador comprueba al ejecutarse que coincide
@@ -237,10 +283,14 @@ con el JSON y avisa si sobra o falta alguna.
 
 1. Productos reales con sus precios, en el JSON.
 2. Fotos, en una carpeta `fotos/`.
-3. Quitar `"plantilla": true` de cada categoría, y con ello el aviso amarillo.
+3. Los epígrafes de cada ficha, escritos por quien pueda firmarlos. Hoy sólo
+   los tiene Solares, y también son de muestra.
+4. Quitar `"plantilla": true` de cada categoría: con ello se va el aviso
+   amarillo y sus fichas dejan de llevar `noindex`.
+5. Meter esas fichas en `sitemap.xml`. El script dice cuáles faltan.
 
-Las páginas ya están enlazadas desde la portada, en `sitemap.xml` y sin
-`noindex`, así que **un visitante cualquiera llega a ellas y Google puede
+Las páginas de categoría ya están enlazadas desde la portada, en `sitemap.xml` y
+sin `noindex`, así que **un visitante cualquiera llega a ellas y Google puede
 indexarlas**. El aviso amarillo es lo único que dice que no son de verdad.
 Mientras el precio siga siendo `00,00 €`, eso se lee como «gratis».
 
@@ -296,9 +346,10 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
   indexarlas. Pero sus productos y sus precios **son inventados** y están
   marcados como tales, y el precio de ejemplo es `00,00 €`, que se lee como
   gratis. Un precio expuesto al público es una oferta. **Esto es, con
-  diferencia, lo más urgente de todo el proyecto.** Las diez categorías de la
-  portada siguen siendo atajos a WhatsApp: no hay fichas reales, ni precios, ni
-  carrito. Antes de vender
+  diferencia, lo más urgente de todo el proyecto.** Cada producto tiene ya su
+  ficha —54 en total, con `noindex` mientras sean plantilla—, pero lo que
+  cuentan es inventado: no hay productos reales, ni precios, ni carrito. Antes
+  de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a
   distancia** sin notificarlo a la autoridad sanitaria, aparecer en el registro
   DISTAFARMA de la AEMPS y mostrar el logotipo europeo; y los de receta no
