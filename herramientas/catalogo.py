@@ -29,6 +29,11 @@ from urllib.parse import quote
 
 RAIZ = Path(__file__).resolve().parent.parent
 DATOS = Path(__file__).resolve().parent / "catalogo-datos.json"
+CARPETA_FOTOS = RAIZ / "fotos"
+
+# En orden de preferencia: si un producto tiene la foto en dos formatos, gana el
+# primero de la lista.
+EXTENSIONES_FOTO = (".webp", ".avif", ".jpg", ".jpeg", ".png")
 
 BASE = "https://maragramonte.github.io/Farmacia-Agramonte/"
 WHATSAPP = "34661192472"
@@ -107,10 +112,28 @@ def precio_html(p):
             else escapa(p["precio"]))
 
 
-def foto_html(p, icono):
+def foto_de(c, p):
+    """La foto del producto dentro de fotos/, o None si todavía no la hay.
+
+    Dos maneras. Si el JSON trae "foto", manda ésa. Si no, se busca en fotos/ un
+    fichero que se llame igual que la página del producto, y ésa es la buena el
+    día que lleguen las 54: basta con dejar el fichero bien nombrado y aparece
+    sola. Escribir a mano 54 claves "foto" es una errata esperando a ocurrir, que
+    es la misma razón por la que existe este script."""
     if p.get("foto"):
-        return ('<div class="foto foto-real"><img src="fotos/%s" alt="%s" loading="lazy"></div>'
-                % (escapa(p["foto"]), escapa(p["nombre"])))
+        return "fotos/%s" % p["foto"]
+    base = "%s-%s" % (c["id"], slug_producto(p))
+    for ext in EXTENSIONES_FOTO:
+        if (CARPETA_FOTOS / (base + ext)).exists():
+            return "fotos/%s%s" % (base, ext)
+    return None
+
+
+def foto_html(c, p, icono):
+    ruta = foto_de(c, p)
+    if ruta:
+        return ('<div class="foto foto-real"><img src="%s" alt="%s" loading="lazy"></div>'
+                % (escapa(ruta), escapa(p["nombre"])))
     return '<div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true">%s</svg></div>' % icono
 
 
@@ -144,7 +167,7 @@ def ficha(c, p, icono):
         <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">Preguntar</a>
       </div>
     </article>""" % (
-        foto_html(p, icono), escapa(ruta_producto(c, p)), escapa(p["nombre"]),
+        foto_html(c, p, icono), escapa(ruta_producto(c, p)), escapa(p["nombre"]),
         escapa(p["resumen"]), escapa(p["formato"]), precio_html(p),
         escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]))
 
@@ -373,7 +396,7 @@ def pagina_producto(c, p):
 
 %s%s""" % (
         c["id"], escapa(c["nombre"]), escapa(p["nombre"]),
-        foto_html(p, icono), escapa(p["nombre"]), escapa(p["formato"]),
+        foto_html(c, p, icono), escapa(p["nombre"]), escapa(p["formato"]),
         escapa(p["resumen"]), precio_html(p),
         escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]), ICONO_WHATSAPP,
         TELEFONO_ENLACE, TELEFONO_VISIBLE,
@@ -419,6 +442,25 @@ def comprueba_sitemap(indexables):
               % (len(faltan), ", ".join(faltan[:4]), " …" if len(faltan) > 4 else ""))
 
 
+def comprueba_fotos(categorias):
+    """Cuenta las fotos puestas y avisa de las que el JSON nombra y no están.
+
+    Una clave "foto" con una errata no se nota al generar: se nota en el
+    navegador, como una imagen rota, y sólo si alguien abre esa ficha."""
+    rotas, puestas, total = [], 0, 0
+    for c in categorias:
+        for p in c["productos"]:
+            total += 1
+            ruta = foto_de(c, p)
+            if ruta and not (RAIZ / ruta).exists():
+                rotas.append("%s → %s" % (p["nombre"], ruta))
+            elif ruta:
+                puestas += 1
+    if rotas:
+        print("  AVISO: el JSON nombra fotos que no están en fotos/: %s" % "; ".join(rotas))
+    print("  fotos puestas: %d de %d productos" % (puestas, total))
+
+
 def comprueba_urls_unicas(categorias):
     """Dos productos que den la misma URL se pisarían el fichero en silencio."""
     for c in categorias:
@@ -443,6 +485,7 @@ def main():
 
     comprueba_urls_unicas(categorias)
     comprueba_portada(categorias)
+    comprueba_fotos(categorias)
 
     paginas, fichas, indexables = 0, 0, []
     for c in categorias:

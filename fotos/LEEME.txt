@@ -1,0 +1,63 @@
+Fotos de los productos del catálogo
+===================================
+
+Aquí van las fotos que se ven en las tarjetas del catálogo y en la ficha de
+cada producto. Ahora mismo la carpeta está vacía —este fichero es lo único que
+hay— y por eso las 54 fichas siguen enseñando el recuadro de «Foto pendiente».
+
+
+Cómo se pone una foto
+---------------------
+
+Se deja el fichero aquí con el nombre de la página del producto, sin el
+"catalogo-" del principio ni el ".html" del final:
+
+    catalogo-solares-stick-labial-spf-50.html   ← la página
+    fotos/solares-stick-labial-spf-50.jpg       ← su foto
+
+Y ya está. No hay que tocar el JSON ni editar el HTML: se ejecuta
+
+    python herramientas/catalogo.py
+
+y la foto aparece en la tarjeta y en la ficha. El script dice al terminar
+cuántas fotos hay puestas de los 54 productos.
+
+Si prefieres otro nombre para algún fichero, ponle al producto la clave "foto"
+en herramientas/catalogo-datos.json con el nombre tal cual:
+
+    "foto": "lo-que-sea.jpg"
+
+Esa clave manda por encima del nombre por convenio. Si apunta a un fichero que
+no está, el script avisa al ejecutarse en lugar de dejar una imagen rota.
+
+
+Formatos y tamaño
+-----------------
+
+Valen .webp, .avif, .jpg, .jpeg y .png, en ese orden de preferencia: si un
+producto tiene la foto en dos formatos, gana el primero de esa lista. Para una
+foto de producto, .webp pesa bastante menos que .jpg y se ve igual.
+
+**Cuadradas y con el producto centrado.** La misma foto se recorta de dos
+maneras: 4:3 en la tarjeta de la rejilla y 1:1 en la ficha, las dos con
+object-fit: cover. Si el bote va pegado a un borde, en uno de los dos recortes
+se queda fuera.
+
+Con 1000 × 1000 px sobra: la ficha la enseña a 380 px como mucho, y al doble
+para las pantallas de retina. Más grande sólo hace la web más lenta.
+
+Fondo claro y liso, en la línea de la crema del sitio (#f5f0e6). Las fotos con
+fondo de estantería o de mostrador quedan sucias al recortarlas en cuadrado.
+
+
+Antes de subirlas
+-----------------
+
+Estas fotos se publican en una web pública, así que:
+
+- Que sean **nuestras**, o que tengamos permiso. Las fotos de producto del
+  fabricante no se pueden coger de su web porque estén en internet; se piden, y
+  muchos laboratorios las dan a las farmacias que venden su marca.
+- Que no salga nadie. Si sale una persona, hace falta su permiso por escrito.
+- Que no se lea ninguna receta, etiqueta con nombre de paciente ni papel del
+  mostrador que se haya colado en el encuadre.

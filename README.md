@@ -85,6 +85,8 @@ marca.css           Paleta, cabecera, botón y pie: la identidad compartida
 servir.py           Servidor local (sólo necesita Python)
 servir.bat          Doble clic para lo mismo, en Windows
 
+fotos/              Las fotos de los productos. Hoy vacía: ver su LEEME.txt
+
 favicon.svg         Icono de la pestaña: el monograma en oro sobre tinta
 og.png              Imagen que se ve al compartir el enlace (1200×630)
 robots.txt          Permite indexar y apunta al sitemap
@@ -235,6 +237,30 @@ mejor que un epígrafe rellenado a ojo. Hoy sólo **Solares** los trae, como
 muestra; las otras ocho categorías generan fichas con lo que ya había —nombre,
 resumen, formato y precio— y sin epígrafes.
 
+### Las fotos
+
+Van en `fotos/`, que **hoy está vacía**: por eso las 54 fichas siguen enseñando
+el recuadro de «Foto pendiente». Se ponen dejando el fichero con el nombre de la
+página del producto, sin el `catalogo-` de delante ni el `.html` de detrás:
+
+```
+catalogo-solares-stick-labial-spf-50.html   la página
+fotos/solares-stick-labial-spf-50.jpg       su foto
+```
+
+Y ya está: se ejecuta el script y aparece en la tarjeta y en la ficha, sin tocar
+el JSON. Escribir 54 claves `foto` a mano es la misma errata esperando a ocurrir
+que llevó a generar las páginas en vez de copiarlas. La clave `foto` del JSON
+sigue existiendo para el fichero que no siga el convenio, y manda por encima de
+él; si apunta a algo que no está, el script avisa en lugar de dejar una imagen
+rota. Al terminar dice cuántas fotos hay puestas de los 54 productos.
+
+Valen `.webp`, `.avif`, `.jpg`, `.jpeg` y `.png`, en ese orden de preferencia.
+**Cuadradas y con el producto centrado**: la misma foto se recorta a 4:3 en la
+tarjeta y a 1:1 en la ficha, así que lo que vaya pegado a un borde se pierde en
+uno de los dos recortes. El resto —tamaño, fondo, y de quién tienen que ser las
+fotos antes de publicarlas— está en `fotos/LEEME.txt`.
+
 La URL del producto sale de su nombre (`Stick labial SPF 50` →
 `catalogo-solares-stick-labial-spf-50.html`). Se puede fijar con una clave `id`
 en el JSON, y **hay que hacerlo antes de renombrar un producto que ya esté en
@@ -282,7 +308,7 @@ con el JSON y avisa si sobra o falta alguna.
 **Lo que falta para que esto deje de ser una maqueta**, por orden:
 
 1. Productos reales con sus precios, en el JSON.
-2. Fotos, en una carpeta `fotos/`.
+2. Las fotos, en `fotos/`. La carpeta y el mecanismo ya están; falta meterlas.
 3. Los epígrafes de cada ficha, escritos por quien pueda firmarlos. Hoy sólo
    los tiene Solares, y también son de muestra.
 4. Quitar `"plantilla": true` de cada categoría: con ello se va el aviso
