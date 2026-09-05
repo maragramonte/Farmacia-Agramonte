@@ -105,7 +105,7 @@ tipografias/
 
 herramientas/
   catalogo.py           Escribe las diez catalogo-*.html
-  catalogo-datos.json   Los productos y los precios. Se edita ESTE
+  catalogo-datos.json   Los productos. Se edita ESTE
   tarjeta-social.py     Regenera og.png si cambia el lema o los datos
 ```
 
@@ -213,9 +213,24 @@ concreta: la tira de categorías que va arriba las lista todas, así que añadir
 una obligaba a tocar las diez a mano, y eso es una errata esperando a ocurrir.
 Con una ficha por producto, escribirlas a mano ya no es ni discutible.
 
-Para cambiar productos, precios o fotos se edita **el JSON**, y se vuelve a
-ejecutar el script. Dos comodidades: si un producto no tiene `precio`, sale el
-hueco en amarillo, y en cuanto lo escribes se pinta normal; igual con `foto`.
+Para cambiar productos o fotos se edita **el JSON**, y se vuelve a ejecutar el
+script.
+
+### Los precios
+
+**No se publican.** La decisión es de la farmacia y la razón es doble: un precio
+expuesto al público es una oferta, y mantener decenas al día en una web estática
+es de esas cosas que se quedan viejas sin que nadie se entere. El catálogo
+enseña lo que hay y el precio se pregunta; para eso está el botón.
+
+Un producto sin precio no deja hueco ni marca amarilla: sencillamente no lleva
+esa línea, y la tarjeta se queda con el nombre, el formato y «Preguntar». Eso es
+deliberado. El amarillo de `.pendiente` quiere decir «esto falta», y aquí no
+falta nada.
+
+La clave `precio` sigue existiendo en el JSON: al ponérsela a un producto
+(`"precio": "12,95 €"`) el precio sale, y sólo en ése. Antes de usarla, acuérdate
+de lo de la oferta.
 
 ### La ficha de producto
 
@@ -270,8 +285,8 @@ para y lo dice en vez de pisar el fichero en silencio.
 Mientras la categoría lleve `"plantilla": true`, sus fichas salen con
 `noindex` y fuera del `sitemap.xml`. Que las diez páginas de categoría **sí** se
 indexen fue una decisión tomada a sabiendas; cincuenta y cuatro fichas
-inventadas son otra cosa: páginas flacas, con un precio de ejemplo que se lee
-como gratis y con texto de salud que no ha escrito nadie. Al quitar `plantilla`
+inventadas son otra cosa: páginas flacas, con nombres de productos que no
+existen y con texto de salud que no ha escrito nadie. Al quitar `plantilla`
 se indexan solas, y entonces hay que **meterlas a mano en `sitemap.xml`**: el
 script avisa de las que falten.
 
@@ -281,8 +296,8 @@ cargar `marca.css` primero.
 
 Tres cosas que hay que entender antes de tocarla:
 
-- **Los datos son inventados.** Seis productos genéricos, sin marca, y los
-  precios en amarillo como todo lo que aún no es real. Un aviso grande arriba lo
+- **Los datos son inventados.** Seis productos genéricos, sin marca. Un aviso
+  grande arriba lo
   dice, en la página de categoría y en cada ficha. **Las categorías están
   enlazadas desde la portada, en `sitemap.xml` y sin `noindex`**, así que
   cualquiera llega a ellas y Google puede indexarlas; las fichas de producto,
@@ -307,7 +322,7 @@ con el JSON y avisa si sobra o falta alguna.
 
 **Lo que falta para que esto deje de ser una maqueta**, por orden:
 
-1. Productos reales con sus precios, en el JSON.
+1. Productos reales, en el JSON. Sin precios: eso ya está decidido.
 2. Las fotos, en `fotos/`. La carpeta y el mecanismo ya están; falta meterlas.
 3. Los epígrafes de cada ficha, escritos por quien pueda firmarlos. Hoy sólo
    los tiene Solares, y también son de muestra.
@@ -318,7 +333,6 @@ con el JSON y avisa si sobra o falta alguna.
 Las páginas de categoría ya están enlazadas desde la portada, en `sitemap.xml` y
 sin `noindex`, así que **un visitante cualquiera llega a ellas y Google puede
 indexarlas**. El aviso amarillo es lo único que dice que no son de verdad.
-Mientras el precio siga siendo `00,00 €`, eso se lee como «gratis».
 
 ## Decisiones de diseño
 
@@ -369,13 +383,11 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
   no lleva a ninguna parte es peor que no tenerlo.
 - **Catálogo y venta en línea.** Están las **diez categorías** montadas,
   enlazadas desde la portada y **en el sitemap, sin `noindex`**: Google puede
-  indexarlas. Pero sus productos y sus precios **son inventados** y están
-  marcados como tales, y el precio de ejemplo es `00,00 €`, que se lee como
-  gratis. Un precio expuesto al público es una oferta. **Esto es, con
-  diferencia, lo más urgente de todo el proyecto.** Cada producto tiene ya su
-  ficha —54 en total, con `noindex` mientras sean plantilla—, pero lo que
-  cuentan es inventado: no hay productos reales, ni precios, ni carrito. Antes
-  de vender
+  indexarlas. Pero sus productos **son inventados** y están marcados como
+  tales. **Esto es, con diferencia, lo más urgente de todo el proyecto.** Cada
+  producto tiene ya su ficha —54 en total, con `noindex` mientras sean
+  plantilla—, pero lo que cuentan no existe. Precios no hay y no va a haberlos,
+  que está decidido; carrito tampoco. Antes de vender
   hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a
   distancia** sin notificarlo a la autoridad sanitaria, aparecer en el registro
   DISTAFARMA de la AEMPS y mostrar el logotipo europeo; y los de receta no

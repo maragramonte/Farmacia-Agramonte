@@ -107,9 +107,21 @@ def ruta_producto(c, p):
     return "catalogo-%s-%s.html" % (c["id"], slug_producto(p))
 
 
-def precio_html(p):
-    return ('<span class="pendiente">00,00 €</span>' if not p.get("precio")
-            else escapa(p["precio"]))
+def precio_html(p, sangria):
+    """El precio, o nada en absoluto.
+
+    La farmacia ha decidido no publicar precios: el catálogo enseña lo que hay y
+    el precio se pregunta. Un precio expuesto al público es una oferta, y
+    mantener decenas al día en una web estática es de esas cosas que se quedan
+    viejas sin que nadie se entere.
+
+    Ojo con lo que NO se hace aquí: no se deja el hueco amarillo de .pendiente.
+    Ese amarillo quiere decir «esto falta», y esto no falta, es que no va. Si
+    algún día se quiere publicar el de un producto concreto, basta con ponerle
+    "precio" en el JSON y sale sólo en ese."""
+    if not p.get("precio"):
+        return ""
+    return '\n%s<p class="precio">%s</p>' % (sangria, escapa(p["precio"]))
 
 
 def foto_de(c, p):
@@ -162,13 +174,12 @@ def ficha(c, p, icono):
       <div class="cuerpo">
         <h2><a href="%s">%s</a></h2>
         <p class="resumen">%s</p>
-        <p class="formato">%s</p>
-        <p class="precio">%s</p>
+        <p class="formato">%s</p>%s
         <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">Preguntar</a>
       </div>
     </article>""" % (
         foto_html(c, p, icono), escapa(ruta_producto(c, p)), escapa(p["nombre"]),
-        escapa(p["resumen"]), escapa(p["formato"]), precio_html(p),
+        escapa(p["resumen"]), escapa(p["formato"]), precio_html(p, " " * 8),
         escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]))
 
 
@@ -180,7 +191,7 @@ def aviso_plantilla():
     <div>
       <strong class="rotulo">Plantilla de ejemplo</strong>
       <p>
-        Los productos, los formatos y los precios de esta página <strong>son
+        Los productos y los formatos de esta página <strong>son
         inventados</strong> y están aquí sólo para ver la maquetación. Nada de lo
         que se lee abajo es el catálogo de la farmacia. No enlazar esta página ni
         darla por buena hasta sustituirlo por productos reales.
@@ -380,8 +391,7 @@ def pagina_producto(c, p):
     <div class="datos">
       <h1>%s</h1>
       <p class="formato">%s</p>
-      <p class="resumen">%s</p>
-      <p class="precio">%s</p>
+      <p class="resumen">%s</p>%s
       <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">
         %s
         Preguntar por WhatsApp
@@ -397,7 +407,7 @@ def pagina_producto(c, p):
 %s%s""" % (
         c["id"], escapa(c["nombre"]), escapa(p["nombre"]),
         foto_html(c, p, icono), escapa(p["nombre"]), escapa(p["formato"]),
-        escapa(p["resumen"]), precio_html(p),
+        escapa(p["resumen"]), precio_html(p, " " * 6),
         escapa(enlace_whatsapp(p["consulta"])), escapa(p["consulta"]), ICONO_WHATSAPP,
         TELEFONO_ENLACE, TELEFONO_VISIBLE,
         secciones, otros_de(c, p))

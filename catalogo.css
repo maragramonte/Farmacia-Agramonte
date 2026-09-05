@@ -82,8 +82,12 @@
 .producto h2 a:hover { color: var(--oro-hondo); border-bottom-color: var(--oro); }
 .resumen { font-size: .88rem; color: var(--texto-tenue); margin-bottom: .8rem; }
 .formato { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--oro-hondo); font-weight: 600; margin-bottom: .9rem; }
-.precio { font-size: 1.15rem; margin-top: auto; margin-bottom: .9rem; font-variant-numeric: tabular-nums; }
-.producto .boton { width: 100%; justify-content: center; padding: .7rem 1rem; }
+.precio { font-size: 1.15rem; margin-bottom: .9rem; font-variant-numeric: tabular-nums; }
+/* Lo que se pega al fondo de la tarjeta es el boton, no el precio. Casi ningun
+   producto lleva precio —se pregunta—, asi que si el margen automatico viviera
+   en el precio, las tarjetas sin el se quedarian con el boton a media altura y
+   la rejilla desigual. */
+.producto .boton { margin-top: auto; width: 100%; justify-content: center; padding: .7rem 1rem; }
 
 /* ---------- Ficha de producto ----------
    La página de un producto: la foto a un lado y los datos al otro, y debajo
@@ -100,9 +104,7 @@
 .ficha-producto h1 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin-bottom: .55rem; }
 
 .datos .resumen { font-size: 1rem; max-width: 52ch; margin-bottom: 1.3rem; }
-/* El margen automático de arriba es de la tarjeta, que empuja el precio al pie
-   de la columna. Aquí el precio va donde le toca leerse. */
-.datos .precio { font-size: 1.55rem; margin-top: 0; margin-bottom: 1.3rem; }
+.datos .precio { font-size: 1.55rem; margin-bottom: 1.3rem; }
 .nota-consejo { font-size: .85rem; color: var(--texto-tenue); max-width: 52ch; margin-top: 1.2rem; }
 .nota-consejo a { border-bottom: 1px solid var(--crema-3); }
 .nota-consejo a:hover { color: var(--oro-hondo); }
