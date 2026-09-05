@@ -269,19 +269,34 @@ ocurrir que llevó a generar las páginas en vez de copiarlas. Para eso está
 Nixfarma o el que sea:
 
 ```
-python herramientas/importar.py export.csv                    mira y no toca
-python herramientas/importar.py export.csv --mapa mapa.json
-python herramientas/importar.py export.csv --mapa mapa.json --escribir
+python herramientas/importar.py export.csv
+python herramientas/importar.py export.csv --mapa mapa.json --seleccion sel.csv
+python herramientas/importar.py export.csv --mapa mapa.json --seleccion sel.csv --escribir
 ```
 
-Sin `--mapa` no escribe nada en el catálogo: dice qué columnas ha reconocido,
-lista las familias que trae el CSV y deja al lado un `mapa-catalogo.json` con
-esas familias sin asignar. Se rellena a mano —qué familia va a qué categoría—
-y se vuelve a ejecutar. Sin `--escribir` tampoco toca nada: sólo cuenta qué
-haría. Adivina la codificación (los export de un Windows español suelen salir
-en cp1252) y el separador (suele ser `;`, no `,`), y dice cuál ha usado para
-que se note si ha adivinado mal. Si no acierta con alguna columna, se le fuerza
-con `--columna formato=PRESENTACION`.
+Son **dos filtros seguidos**, y ninguno lo decide el script:
+
+1. **El mapa**, por familias. Sin `--mapa` no escribe nada: dice qué columnas ha
+   reconocido, lista las familias que trae el CSV y deja al lado un
+   `mapa-catalogo.json` con esas familias sin asignar. Se rellena a mano —qué
+   familia va a qué categoría— y las que queden en `null` se quedan fuera.
+2. **La selección**, producto a producto. Con `--seleccion` deja un CSV con una
+   fila por candidato y una columna `incluir` vacía. Se abre en Excel, se
+   escribe `si` en los que entran, y sólo ésos se importan. **El catálogo lleva
+   una selección, no el fichero de artículos entero**: un export de farmacia son
+   miles de referencias, y cuarenta fichas bien escritas valen más que tres mil
+   con «Resumen pendiente». Por eso, importar más de 50 productos sin lista de
+   selección lo rechaza en vez de hacerlo.
+
+Cuando llegue otro export más adelante se repite con el mismo CSV de selección:
+conserva lo ya marcado y añade lo nuevo sin marcar, así que sólo hay que mirar
+lo que ha aparecido desde la última vez.
+
+Sin `--escribir` no toca nada en ningún caso: cuenta qué haría y para. Adivina
+la codificación (los export de un Windows español suelen salir en cp1252) y el
+separador (suele ser `;`, no `,`), y dice cuál ha usado para que se note si ha
+adivinado mal. Si no acierta con alguna columna, se le fuerza con
+`--columna formato=PRESENTACION`.
 
 **Cinco cosas que no hace, y todas a propósito:**
 

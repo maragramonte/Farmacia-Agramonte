@@ -2,9 +2,11 @@
 """
 Vuelca un export del programa de gestión a herramientas/catalogo-datos.json.
 
-    python herramientas/importar.py catalogo.csv                 mira y no toca
-    python herramientas/importar.py catalogo.csv --mapa mapa.json
-    python herramientas/importar.py catalogo.csv --mapa mapa.json --escribir
+    python herramientas/importar.py export.csv
+    python herramientas/importar.py export.csv --mapa mapa.json --seleccion sel.csv
+    python herramientas/importar.py export.csv --mapa mapa.json --seleccion sel.csv --escribir
+
+Sin --escribir no toca nada: cuenta qué haría y para.
 
 Existe porque meter cuarenta productos a mano en el JSON es la misma errata
 esperando a ocurrir que llevó a generar las páginas en vez de copiarlas. Con un
@@ -17,11 +19,20 @@ CÓMO SE USA, la primera vez
    y la familia a la que pertenece. Si además trae el formato o la presentación,
    mejor. Guárdalo como CSV, no como Excel.
 2. Ejecuta esto con el CSV y nada más. No escribe: dice qué columnas ha
-   reconocido, lista las familias que ha encontrado y deja un mapa-ejemplo.json
+   reconocido, lista las familias que ha encontrado y deja un mapa-catalogo.json
    con esas familias sin asignar.
 3. Abre ese fichero y pon, al lado de cada familia, la categoría del catálogo a
    la que va. Las que dejes en null se quedan fuera.
-4. Vuelve a ejecutarlo con --mapa. Verá qué haría. Cuando cuadre, --escribir.
+4. Vuelve a ejecutarlo con --mapa y --seleccion seleccion.csv. Deja ese CSV con
+   una fila por producto candidato y para: el catálogo lleva una SELECCIÓN, no
+   el fichero de artículos entero.
+5. Abre seleccion.csv en Excel y escribe «si» en la columna «incluir» de los
+   que quieras en la web. Guarda.
+6. Vuelve a ejecutarlo igual. Dirá qué haría. Cuando cuadre, añade --escribir.
+
+Cuando llegue otro export más adelante, se repite con el mismo seleccion.csv:
+conserva lo que ya estuviera marcado y añade lo nuevo sin marcar, así que sólo
+hay que mirar lo que ha aparecido desde la última vez.
 
 LO QUE ESTE SCRIPT NO HACE, a propósito
 ---------------------------------------
@@ -224,9 +235,75 @@ def construye(filas, columnas, mapa, categorias_validas):
     return por_categoria, sin_mapear, descartados
 
 
+COLUMNAS_SELECCION = ["categoria", "id", "nombre", "formato", "incluir"]
+
+# Lo que cuenta como un sí en la columna «incluir». Se compara sin tildes y en
+# minúsculas, porque esto lo rellena una persona con prisa en un Excel.
+AFIRMATIVOS = {"si", "s", "x", "1", "true", "v", "y", "yes", "ok"}
+
+# A partir de aquí, importar sin lista de selección casi seguro es un descuido:
+# un export de farmacia son miles de referencias y el catálogo lleva una
+# selección. Cuarenta fichas escritas valen más que tres mil sin resumen.
+SIN_SELECCION_MAXIMO = 50
+
+
+def lee_seleccion(ruta):
+    """Devuelve qué productos están marcados y cuáles ya figuran en el fichero."""
+    texto = Path(ruta).read_text(encoding="utf-8-sig")
+    marcados, conocidos = set(), set()
+    for fila in csv.DictReader(io.StringIO(texto), delimiter=";"):
+        clave = ((fila.get("categoria") or "").strip(),
+                 (fila.get("id") or "").strip())
+        conocidos.add(clave)
+        if sin_tildes(fila.get("incluir") or "") in AFIRMATIVOS:
+            marcados.add(clave)
+    return marcados, conocidos
+
+
+def sincroniza_seleccion(ruta, por_categoria):
+    """Deja en el CSV de selección una fila por producto candidato.
+
+    Va en CSV y no en JSON a propósito: esto lo rellena quien conoce el
+    mostrador, en Excel, escribiendo «si» en una columna. Un JSON con tres mil
+    llaves no lo revisa nadie.
+
+    Conserva lo ya marcado y añade lo que haya aparecido desde la última vez,
+    sin marcar. Así el segundo export no obliga a repasarlo todo otra vez."""
+    marcados, conocidos = (set(), set())
+    if Path(ruta).exists():
+        marcados, conocidos = lee_seleccion(ruta)
+
+    filas, nuevos = [], 0
+    for cid, productos in por_categoria.items():
+        for p in productos:
+            clave = (cid, p["id"])
+            if clave not in conocidos:
+                nuevos += 1
+            filas.append([cid, p["id"], p["nombre"], p.get("formato", ""),
+                          "si" if clave in marcados else ""])
+
+    with io.open(ruta, "w", encoding="utf-8-sig", newline="") as f:
+        escritor = csv.writer(f, delimiter=";")
+        escritor.writerow(COLUMNAS_SELECCION)
+        escritor.writerows(filas)
+    return marcados, len(filas), nuevos
+
+
+def aplica_seleccion(por_categoria, marcados):
+    """Se queda con lo marcado. Una categoría sin nada marcado sale del lote
+    entera: mejor no tocarla que vaciarla por un descuido."""
+    for cid in list(por_categoria):
+        elegidos = [p for p in por_categoria[cid] if (cid, p["id"]) in marcados]
+        if elegidos:
+            por_categoria[cid] = elegidos
+        else:
+            del por_categoria[cid]
+
+
 def quita_repetidos(por_categoria):
     """Dos filas que den el mismo id se pisarían la página. Se queda la primera
     y se avisa: en un export es normal que el mismo artículo salga dos veces."""
+    encabezado = False
     for categoria, productos in por_categoria.items():
         vistos, limpios, repes = set(), [], []
         for p in productos:
@@ -236,7 +313,10 @@ def quita_repetidos(por_categoria):
             vistos.add(p["id"])
             limpios.append(p)
         if repes:
-            print("    %-22s %d repetidos fuera (%s%s)"
+            if not encabezado:
+                print("\n  Repetidos en el CSV, fuera:")
+                encabezado = True
+            print("    %-22s %d (%s%s)"
                   % (categoria, len(repes), ", ".join(repes[:2]),
                      "…" if len(repes) > 2 else ""))
         por_categoria[categoria] = limpios
@@ -249,6 +329,9 @@ def main():
     ap.add_argument("--mapa", help="JSON que dice qué familia va a qué categoría")
     ap.add_argument("--columna", action="append", default=[], metavar="campo=COLUMNA",
                     help="fuerza una columna, p. ej. --columna formato=PRESENTACION")
+    ap.add_argument("--seleccion", metavar="CSV",
+                    help="CSV donde se marca qué productos entran en la web. Si no "
+                         "existe, lo escribe con todos los candidatos y para")
     ap.add_argument("--anadir", action="store_true",
                     help="añade a los productos que ya hay en vez de sustituirlos")
     ap.add_argument("--escribir", action="store_true",
@@ -292,8 +375,30 @@ def main():
     por_categoria, sin_mapear, descartados = construye(
         filas, columnas, mapa, list(categorias))
 
-    print("\n  Qué haría:")
     quita_repetidos(por_categoria)
+    candidatos = sum(len(ps) for ps in por_categoria.values())
+
+    if args.seleccion:
+        marcados, total, nuevos = sincroniza_seleccion(args.seleccion, por_categoria)
+        print("\n  Selección (%s): %d candidatos, %d marcados%s."
+              % (args.seleccion, total, len(marcados),
+                 ", %d nuevos sin marcar" % nuevos if nuevos else ""))
+        if not marcados:
+            print("\n  Ninguno marcado todavía, así que no hay nada que importar.")
+            print("  Abre ese CSV en Excel, escribe «si» en la columna «incluir»")
+            print("  de los que quieras en la web, guárdalo y repite esto.")
+            return
+        aplica_seleccion(por_categoria, marcados)
+    elif args.escribir and candidatos > SIN_SELECCION_MAXIMO:
+        raise SystemExit(
+            "\n  Son %d productos y no me has dado lista de selección.\n"
+            "  El catálogo lleva una selección, no el fichero de artículos entero:\n"
+            "  cuarenta fichas escritas valen más que tres mil sin resumen.\n\n"
+            "  Añade --seleccion seleccion.csv y vuelve a ejecutarlo: te dejará el\n"
+            "  fichero con los %d candidatos para que marques cuáles entran."
+            % (candidatos, candidatos))
+
+    print("\n  Qué haría:")
     for cid, productos in por_categoria.items():
         c = categorias[cid]
         antes = len(c["productos"])
