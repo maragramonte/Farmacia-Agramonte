@@ -9,8 +9,11 @@ Genera dos cosas por cada categoría del JSON:
     catalogo-<id>.html              la rejilla de tarjetas de la categoría.
     catalogo-<id>-<producto>.html   la ficha de cada uno de sus productos.
 
-Y una más, que no depende del JSON pero comparte con ellas cabecera y pie:
+Y dos más, que no dependen del JSON pero comparten con ellas cabecera y pie:
 
+    historia.html                   quiénes somos y de dónde viene la farmacia.
+                                    El texto se edita EN ESTE FICHERO, en
+                                    pagina_historia().
     cesta.html                      la lista de lo que alguien quiere encargar.
                                     Lo que la rellena es cesta.js, en el
                                     navegador; aquí sólo se escribe el molde.
@@ -377,13 +380,17 @@ def otros_de(c, actual):
 
 
 def documento(titulo, descripcion, ruta, contenido, es_plantilla,
-              noindex=False, es_cesta=False):
-    """El esqueleto que comparten la página de categoría, la ficha de producto y
-    la cesta: cabeza, cabecera, aviso, <main> y pie. Lo de dentro de <main> lo
-    pone quien llama. Nació al montar las fichas, para no tener dos copias de la
-    cabecera que se separasen a la primera de cambio."""
+              noindex=False, aqui=None):
+    """El esqueleto que comparten la página de categoría, la ficha de producto,
+    la historia y la cesta: cabeza, cabecera, aviso, <main> y pie. Lo de dentro
+    de <main> lo pone quien llama. Nació al montar las fichas, para no tener dos
+    copias de la cabecera que se separasen a la primera de cambio.
+
+    "aqui" dice en qué entrada del menú estamos, para marcarla con aria-current:
+    "historia", "cesta" o nada."""
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
-    actual = ' aria-current="page"' if es_cesta else ""
+    aqui_historia = ' aria-current="page"' if aqui == "historia" else ""
+    aqui_cesta = ' aria-current="page"' if aqui == "cesta" else ""
     return """<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -421,6 +428,7 @@ def documento(titulo, descripcion, ruta, contenido, es_plantilla,
     <nav class="nav" aria-label="Principal">
       <a href="index.html">Inicio</a>
       <a href="index.html#categorias">Categorías</a>
+      <a href="historia.html"%s>Historia</a>
       <a href="index.html#contacto">Contacto</a>
     </nav>
     <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden%s>
@@ -453,7 +461,7 @@ def documento(titulo, descripcion, ruta, contenido, es_plantilla,
 </body>
 </html>
 """ % (robots, BASE, ruta, escapa(descripcion), escapa(titulo),
-       actual, ICONO_CESTA,
+       aqui_historia, aqui_cesta, ICONO_CESTA,
        WHATSAPP, ICONO_WHATSAPP,
        aviso_plantilla() if es_plantilla else "",
        contenido)
@@ -653,7 +661,144 @@ def pagina_cesta():
         contenido=contenido,
         es_plantilla=False,
         noindex=True,
-        es_cesta=True)
+        aqui="cesta")
+
+
+# El reportaje de prensa. Es el único enlace a un sitio ajeno que hay en la web
+# aparte de WhatsApp, y va aquí arriba para que se vea de un vistazo que existe.
+PRENSA_URL = "https://www.larepublica.cat/coronavirus/reportatge-la-barcelona-que-no-es-resigna/"
+PRENSA_TITULO = "Coronavirus: La Barcelona que no se resigna"
+PRENSA_MEDIO = "La República"
+
+
+def pagina_historia():
+    """historia.html: quiénes somos y de dónde viene la farmacia.
+
+    El texto lo escribe la farmacia y se edita AQUÍ, en este fichero, no en el
+    HTML, que se pierde al regenerar. Está en el generador y no en
+    catalogo-datos.json porque ese JSON es de productos; esto es prosa, como el
+    CIERRE_PEDIDO de arriba.
+
+    Se genera en vez de escribirse a mano por una razón concreta: es una página
+    del menú principal, así que comparte cabecera, menú y contador de la cesta
+    con las cincuenta y ocho de catálogo. Escrita a mano habría una tercera
+    copia de esa cabecera —ya hay dos, aquí y en index.html— y el día que el
+    menú cambie se quedaría atrás sin que nadie lo note."""
+    contenido = """
+  <p class="migas"><a href="index.html">Inicio</a> › Quiénes somos</p>
+
+  <div class="portada-categoria">
+    <h1>Quiénes somos</h1>
+    <p>
+      En la Farmàcia Agramonte nos esforzamos todos los días para que nuestros
+      clientes reciban el mejor servicio posible.
+    </p>
+  </div>
+
+  <div class="historia">
+    <section class="detalle">
+      <h2>Pasión por la salud</h2>
+      <p>
+        En la Farmàcia Agramonte tenemos pasión por la salud, y por eso nuestro
+        objetivo es proporcionar el mejor consejo farmacéutico con el trato más
+        humano y profesional posible. Te acompañamos y te asesoramos en todas y
+        cada una de tus consultas y tratamientos.
+      </p>
+      <p>
+        La farmacia la regenta <strong>Zoila Agramonte Bucho</strong>, licenciada
+        en Farmacia por la Universidad de La Habana, farmacéutica y dietista
+        titulada, con más de treinta años de experiencia en el sector
+        farmacéutico.
+      </p>
+    </section>
+
+    <section class="detalle">
+      <h2>Una tienda modernista protegida</h2>
+      <p>
+        La Farmàcia Agramonte, antigua <strong>Farmàcia Joaquim Cases</strong>,
+        es una tienda modernista protegida como <strong>Bien Cultural de
+        Interés Local</strong> y catalogada como comercio emblemático de gran
+        interés.
+      </p>
+      <p>
+        La decoración actual del local viene de una reforma modernista de 1880,
+        la época en la que la familia Cases creó una fórmula magistral que se
+        popularizó por toda España e incluso en América, la «Solución Casas»,
+        famosa por su capacidad de paliar múltiples enfermedades y dolores.
+      </p>
+      <p>
+        Por fuera, en la fachada destaca un mueble de madera aplacada que ocupa
+        toda su superficie. Por dentro, los acabados modernistas propios de la
+        época: cristales con motivos florales grabados al ácido, pavimento de
+        mosaico hidráulico y muebles con acabados de ebanistería de líneas
+        curvas y motivos florales.
+      </p>
+      <p>
+        Esos motivos modernistas conviven con restos de arquitectura medieval,
+        como el arco de piedra de carga del interior. Está datado en el
+        <strong>siglo XIII</strong>, de los que se construían para hacer
+        posibles espacios flexibles donde ubicar talleres, comercios y demás.
+      </p>
+    </section>
+
+    <section class="detalle">
+      <h2>Cuatro siglos de boticarios</h2>
+      <p>
+        Las primeras referencias históricas de la farmacia datan de
+        <strong>1600</strong>, y hablan de un espacio regentado por una larga
+        estirpe de boticarios.
+      </p>
+      <ul class="cronologia">
+        <li><strong>Hasta 1747</strong><span>Los Saurina, los primeros en
+          regentarla.</span></li>
+        <li><strong>1864 – 2014</strong><span>La familia Cases, propietaria
+          durante siglo y medio.</span></li>
+        <li><strong>Desde 2019</strong><span>Zoila Agramonte Bucho, nueva
+          titular.</span></li>
+      </ul>
+      <p>
+        En 2019 Zoila decide poner en valor el inmenso patrimonio histórico y
+        artístico que tiene la farmacia y, al mismo tiempo, dotarla de
+        dinamismo y modernidad.
+      </p>
+    </section>
+
+    <section class="detalle">
+      <h2>Reportajes de prensa</h2>
+      <p>
+        La revista digital %s nos contactó para hacer un reportaje sobre la
+        farmacia y sobre cómo había repercutido el impacto de la pandemia de
+        covid-19 en el barrio de Santa Caterina.
+      </p>
+      <a class="prensa" href="%s" target="_blank" rel="noopener">
+        <span class="prensa-medio">%s · Reportaje</span>
+        <strong>%s</strong>
+        <span class="prensa-pie">Se abre en una pestaña nueva, en su web</span>
+      </a>
+    </section>
+  </div>
+
+  <div class="cierre">
+    <h2>Ven a verla</h2>
+    <p>
+      Estamos en la Plaça de la Llana, 11, en El Born, de lunes a sábado de 9:00
+      a 14:30 y de 16:00 a 20:30. Si quieres preguntar algo antes de venir,
+      escríbenos por <a href="https://wa.me/%s" target="_blank" rel="noopener">WhatsApp</a>
+      o llama al <a href="tel:%s">%s</a>.
+    </p>
+  </div>
+""" % (PRENSA_MEDIO, PRENSA_URL, PRENSA_MEDIO, PRENSA_TITULO,
+       WHATSAPP, TELEFONO_ENLACE, TELEFONO_VISIBLE)
+
+    return documento(
+        titulo="Quiénes somos — Farmàcia Agramonte",
+        descripcion="La Farmàcia Agramonte, antigua Farmàcia Joaquim Cases: "
+                    "tienda modernista protegida en la Plaça de la Llana, El Born "
+                    "(Barcelona), con referencias desde 1600.",
+        ruta="historia.html",
+        contenido=contenido,
+        es_plantilla=False,
+        aqui="historia")
 
 
 def comprueba_portada(categorias):
@@ -759,12 +904,16 @@ def main():
         print("  %-38s %s" % (destino.name,
                               "%d fichas" % cuantos if cuantos else "sin lista de productos"))
 
+    (RAIZ / "historia.html").write_text(pagina_historia(), encoding="utf-8")
+    print("  %-38s %s" % ("historia.html", "quiénes somos"))
+    indexables.append("historia.html")
+
     (RAIZ / "cesta.html").write_text(pagina_cesta(), encoding="utf-8")
     print("  %-38s %s" % ("cesta.html", "la cesta (noindex)"))
 
     comprueba_huerfanas(escritas)
     comprueba_sitemap(indexables)
-    print("\n%d páginas de categoría, %d fichas de producto y la cesta, escritas desde %s"
+    print("\n%d páginas de categoría, %d fichas de producto, la historia y la cesta, escritas desde %s"
           % (paginas, fichas, DATOS.name))
 
 

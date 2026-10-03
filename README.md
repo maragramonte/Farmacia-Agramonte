@@ -98,6 +98,8 @@ legal.css           Estilo compartido de esas páginas de texto y del 404
 
 catalogo-*.html     Las diez categorías y las fichas de sus productos.
                     SE GENERAN, no se editan a mano
+historia.html       Quiénes somos y la historia de la farmacia. SE GENERA:
+                    el texto está en herramientas/catalogo.py
 cesta.html          La lista de lo que alguien quiere encargar. SE GENERA
 catalogo.css        Lo propio del catálogo: aviso, tira, rejilla y ficha
 cesta.css           Lo propio de la cesta: contador, botón y lista
@@ -112,7 +114,7 @@ fotos/              Las fotos de los productos. Hoy vacía: ver su LEEME.txt
 favicon.svg         Icono de la pestaña: el monograma en oro sobre tinta
 og.png              Imagen que se ve al compartir el enlace (1200×630)
 robots.txt          Permite indexar y apunta al sitemap
-sitemap.xml         Las diecinueve páginas indexables, para los buscadores
+sitemap.xml         Las veinte páginas indexables, para los buscadores
 .nojekyll           Le dice a GitHub Pages que sirva los ficheros tal cual
 
 LICENSE             Qué se puede hacer con este código y qué no
@@ -147,6 +149,35 @@ datos de contacto y horario · pie con enlaces legales e información de contact
 En el móvil el menú no se esconde: la cabecera pasa a dos filas y los enlaces
 quedan en una tira que se desliza si no caben. Las anclas se paran por debajo de
 la cabecera, que va fija, para que el título de la sección no quede tapado.
+
+**El menú está escrito en dos sitios**, y hay que tocar los dos o se descuadra:
+a mano en `index.html`, y generado en `documento()` de
+`herramientas/catalogo.py` para las sesenta páginas restantes. Hoy son cuatro
+entradas: Inicio, Categorías, **Historia** y Contacto, más la cesta y el botón
+de pedir.
+
+## Quiénes somos
+
+`historia.html` cuenta de dónde viene la farmacia: que es la antigua Farmàcia
+Joaquim Cases, tienda modernista protegida como Bien Cultural de Interés Local,
+con referencias documentadas desde 1600, los Saurina hasta 1747, los Cases de
+1864 a 2014 y Zoila Agramonte Bucho como titular desde 2019. Lleva además el
+enlace al reportaje de *La República* sobre el barrio de Santa Caterina durante
+la pandemia, que es **el único enlace a un sitio ajeno de toda la web** aparte
+de los de WhatsApp.
+
+**El texto se edita en `pagina_historia()`, dentro de
+`herramientas/catalogo.py`**, no en el HTML, que se pierde al regenerar. Está en
+el generador y no en `catalogo-datos.json` porque ese JSON es de productos y
+esto es prosa, igual que el `CIERRE_PEDIDO` que va al pie de las categorías. Y
+se genera en vez de escribirse a mano porque es una página del menú principal:
+escrita aparte habría una tercera copia de la cabecera, y el día que cambie el
+menú se quedaría atrás sin que nadie se entere.
+
+Un desajuste que conviene resolver algún día: la portada dice **«Desde 1890»**
+en seis sitios —el `og:description`, el `foundingDate` del JSON-LD que lee
+Google, el sello dibujado y el pie— y 1890 no aparece en esta historia. Se dejó
+así a propósito, pendiente de decidir qué fecha es la buena.
 
 ## Datos de la farmacia
 
@@ -472,11 +503,18 @@ están enlazadas desde la portada, en `sitemap.xml` y sin `noindex`, así que un
 visitante cualquiera llega hoy mismo a las siete de muestra y Google puede
 indexarlas. El aviso amarillo es lo único que dice que no son de verdad.
 
-Por lo mismo hay una cosa más que corre prisa y no es de catálogo:
-`privacidad.html` sigue con **el responsable y el NIF/CIF en amarillo**, sin
-rellenar, y son justo los datos que la LSSI obliga a publicar a quien tiene un
-sitio web. Mientras la web estaba sin publicar no pasaba nada; ahora está en la
-calle.
+Por lo mismo hay otra cosa que corre prisa y no es de catálogo: **los datos del
+titular**, que son los que la LSSI obliga a publicar. El nombre ya está
+—Zoila Agramonte Bucho, en `aviso-legal.html` y en `privacidad.html`—, pero
+siguen en amarillo, sin rellenar, y con la web ya publicada:
+
+- el **NIF/CIF**, en las dos páginas;
+- el **número de colegiada** y el de **autorización sanitaria**;
+- la referencia de **homologación en España** del título. El título es
+  *Licenciada en Farmacia por la Universidad de La Habana*, y la ley pide el
+  título y el Estado que lo expidió: aquí ese Estado no es España, así que
+  conviene decir además con qué resolución está homologado o reconocido para
+  ejercer aquí.
 
 ## Decisiones de diseño
 
