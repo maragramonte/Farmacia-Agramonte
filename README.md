@@ -1,5 +1,11 @@
 # Farmàcia Agramonte — web
 
+### 👉 **<https://maragramonte.github.io/Farmacia-Agramonte/>**
+
+**La web está publicada y en marcha.** Ese enlace es el bueno: es lo que ve
+cualquiera que la abra. Cada `git push` a `main` la republica sola, en un par
+de minutos y sin tocar nada más.
+
 Landing de la Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona),
 maquetada a partir del boceto y del diseño visual, que se guardan **fuera del
 repositorio**: son lo único que no ve quien visita la web, así que no viajan
@@ -39,24 +45,32 @@ así que para comprobar cambios es mejor el servidor.
 
 ## Publicarla en internet
 
-El repositorio ya está en GitHub, y GitHub Pages publica gratis cualquier
-repositorio **público** con un `index.html` en la raíz. **No hace falta hosting
-de pago, ni agencia, ni panel de control.** Son cuatro clics, una sola vez:
+**Ya está hecho.** La web está publicada en GitHub Pages, en
+<https://maragramonte.github.io/Farmacia-Agramonte/>, y no cuesta nada: ni
+hosting, ni agencia, ni panel de control. Esto queda escrito por si algún día
+hay que rehacerlo o entenderlo, no porque haya algo pendiente.
 
-0. **El repositorio tiene que ser público.** Ahora mismo es privado, y en los
-   repositorios privados Pages es una función de pago: por eso la dirección de
-   abajo responde 404. Se cambia en Settings → General → Danger Zone →
-   *Change repository visibility* → **Public**. La web es pública de todos
-   modos; lo único que pasa a verse además es el código, que no guarda ninguna
-   contraseña ni dato de nadie.
-1. Sube los cambios: `git add -A`, `git commit -m "..."`, `git push`.
-2. En GitHub, entra en el repositorio → pestaña **Settings** → **Pages**.
-3. En *Source*, elige **Deploy from a branch**; luego rama `main` y carpeta
-   `/ (root)`. Guarda.
-4. Espera un par de minutos. La web queda en:
-   `https://maragramonte.github.io/Farmacia-Agramonte/`
+Para publicar un cambio, el único paso es subirlo:
 
-A partir de ahí, **cada `git push` republica la web sola**. No hay más pasos.
+```
+git add -A
+git commit -m "..."
+git push
+```
+
+**Cada `git push` a `main` republica la web sola**, en un par de minutos. No hay
+más pasos, no hay botón que pulsar y no hay nada que avisar. Si acabas de
+empujar y no ves el cambio, recarga sin caché (`Ctrl+Shift+R`): suele ser el
+navegador, no el despliegue.
+
+Cómo quedó montado, que es lo que habría que repetir en un repositorio nuevo:
+
+1. El repositorio es **público**. Pages gratis sólo publica los públicos; en los
+   privados es una función de pago. Eso significa que **el código se ve**, y es
+   asumido: ver «Derechos», más abajo.
+2. En GitHub, repositorio → **Settings** → **Pages**.
+3. En *Source*, **Deploy from a branch**; rama `main` y carpeta `/ (root)`.
+4. Un par de minutos y la dirección responde.
 
 Dos apuntes:
 
@@ -453,9 +467,16 @@ con el JSON y avisa si sobra o falta alguna.
 6. Meter esas fichas en `sitemap.xml`, y borrar las páginas de los productos
    que hayan salido. El script dice cuáles faltan y cuáles sobran.
 
-Las páginas de categoría ya están enlazadas desde la portada, en `sitemap.xml` y
-sin `noindex`, así que **un visitante cualquiera llega a ellas y Google puede
-indexarlas**. El aviso amarillo es lo único que dice que no son de verdad.
+Y **esto no es hipotético: la web está publicada**. Las páginas de categoría
+están enlazadas desde la portada, en `sitemap.xml` y sin `noindex`, así que un
+visitante cualquiera llega hoy mismo a las siete de muestra y Google puede
+indexarlas. El aviso amarillo es lo único que dice que no son de verdad.
+
+Por lo mismo hay una cosa más que corre prisa y no es de catálogo:
+`privacidad.html` sigue con **el responsable y el NIF/CIF en amarillo**, sin
+rellenar, y son justo los datos que la LSSI obliga a publicar a quien tiene un
+sitio web. Mientras la web estaba sin publicar no pasaba nada; ahora está en la
+calle.
 
 ## Decisiones de diseño
 
