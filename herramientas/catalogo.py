@@ -723,7 +723,7 @@ def pagina_historia():
       <p>
         La decoración actual del local viene de una reforma modernista de 1880,
         la época en la que la familia Cases creó una fórmula magistral que se
-        popularizó por toda España e incluso en América, la «Solución Casas»,
+        popularizó por toda España e incluso en América, la «Solución Cases»,
         famosa por su capacidad de paliar múltiples enfermedades y dolores.
       </p>
       <p>
