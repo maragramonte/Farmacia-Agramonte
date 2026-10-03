@@ -9,6 +9,11 @@ Es una web **estática**: HTML y CSS, sin dependencias, sin proceso de
 compilación y sin servidor de aplicación. No hace falta contratar a nadie ni
 instalar nada para verla, y tampoco para publicarla.
 
+Lo único que se ejecuta en el navegador de quien la visita es `cesta.js`, y se
+explica abajo en «La cesta». Son trescientas líneas sin dependencias: **no hay
+`npm`, ni `node_modules`, ni nada que compilar**. Para trabajar en la web sigue
+bastando un editor de texto y Python.
+
 ## Verla en tu ordenador
 
 La forma más rápida es **doble clic en `servir.bat`**. Se abre una ventana
@@ -74,12 +79,15 @@ index.html          La landing completa (HTML + CSS + iconos SVG en línea)
 tipografias.css     Declara las tipografías propias (@font-face)
 aviso-legal.html    Titular, datos profesionales y condiciones de uso
 privacidad.html     Qué datos se tratan, para qué y con qué base legal
-cookies.html        No hay cookies; se explica la única petición externa
+cookies.html        No hay cookies; explica la cesta y que no hay terceros
 legal.css           Estilo compartido de esas páginas de texto y del 404
 
 catalogo-*.html     Las diez categorías y las fichas de sus productos.
                     SE GENERAN, no se editan a mano
+cesta.html          La lista de lo que alguien quiere encargar. SE GENERA
 catalogo.css        Lo propio del catálogo: aviso, tira, rejilla y ficha
+cesta.css           Lo propio de la cesta: contador, botón y lista
+cesta.js            La cesta. Lo único de la web que se ejecuta al visitarla
 marca.css           Paleta, cabecera, botón y pie: la identidad compartida
 
 servir.py           Servidor local (sólo necesita Python)
@@ -104,7 +112,7 @@ tipografias/
   LICENCIA-playfairdisplay.txt     La OFL exige distribuirla con la fuente
 
 herramientas/
-  catalogo.py           Escribe las catalogo-*.html
+  catalogo.py           Escribe las catalogo-*.html y cesta.html
   catalogo-datos.json   Los productos. Se edita ESTE
   importar.py           Vuelca un export en CSV al JSON de arriba
   tarjeta-social.py     Regenera og.png si cambia el lema o los datos
@@ -208,11 +216,12 @@ Lee `herramientas/catalogo-datos.json` y escribe dos cosas:
 ```
 catalogo-<id>.html              la rejilla de tarjetas de la categoría
 catalogo-<id>-<producto>.html   la ficha de cada uno de sus productos
+cesta.html                      la cesta, que comparte cabecera con ellas
 ```
 
-Hoy son 10 páginas de categoría y 47 fichas. Es lo mismo que hace
-`tarjeta-social.py` con `og.png`: la web sigue siendo estática y no se ejecuta
-nada al visitarla, sólo cuando cambian los productos. Existe por una razón
+Hoy son 10 páginas de categoría, 47 fichas y la cesta. Es lo mismo que hace
+`tarjeta-social.py` con `og.png`: las páginas se escriben cuando cambian los
+productos, no cuando alguien las visita. Existe por una razón
 concreta: la tira de categorías que va arriba las lista todas, así que añadir
 una obligaba a tocar las diez a mano, y eso es una errata esperando a ocurrir.
 Con una ficha por producto, escribirlas a mano ya no es ni discutible.
@@ -260,6 +269,54 @@ si sirve de plantilla al escribir los de verdad.
 El **formato** sí lleva marca amarilla cuando falta: todo producto tiene uno, y
 no tenerlo es una ficha a medias. Es lo contrario que el precio, que no lleva
 marca porque no es que falte, es que no se publica.
+
+### La cesta
+
+Cada tarjeta y cada ficha llevan un botón **«Añadir»** que apunta el producto en
+una cesta. La cesta se ve en `cesta.html`, con el contador en la cabecera de
+todas las páginas, y desde ahí se cambian las cantidades, se quitan cosas y se
+manda el encargo: **el mensaje de WhatsApp se escribe solo** con la lista
+entera, y lo envía la persona desde su móvil.
+
+**Aquí no se paga, y eso es lo que importa entender.** No hay pasarela, no se
+piden datos, no se cobra nada y la farmacia no recibe nada hasta que alguien le
+manda el mensaje. El encargo se confirma, se valora y se paga **en el
+mostrador**. Por eso la web sigue fuera del régimen de venta a distancia y el
+aviso legal de hoy sigue siendo cierto. Los precios, que no se publican,
+tampoco salen en la cesta: se confirman al contestar.
+
+Todo vive en dos ficheros, `cesta.js` y `cesta.css`, y el HTML lo pone el mismo
+generador que el resto. Cuatro decisiones que conviene no deshacer:
+
+- **La cesta se guarda en el `localStorage` de quien mira la web**, no en un
+  servidor. No hay nada que administrar, nada que respaldar y ningún dato de
+  nadie en ninguna parte. A cambio, la cesta es de ese navegador: no sigue a la
+  persona de un dispositivo a otro, y se pierde al borrar los datos del sitio.
+  Para una lista de la compra que se manda en el momento, es el trato bueno.
+- **El botón de añadir nace con `hidden` y lo destapa el JavaScript.** Si
+  `cesta.js` no carga, no aparece: lo que se ve es el botón de WhatsApp, que es
+  un enlace de verdad y funciona siempre. `cesta.html` tiene su propio aviso para
+  ese caso, y nace visible a propósito.
+- **No hay nada que no se pueda hacer con el teclado.** Las cantidades son
+  botones, el foco no se pierde al quitar una línea y lo que cambia se anuncia
+  en una región `aria-live`, que es lo que lee un lector de pantalla.
+- **Un `wa.me` con un texto larguísimo falla sin avisar.** Así que la cesta
+  recorta la lista al llegar al tope, lo dice dentro del propio mensaje y
+  **avisa en la página** de cuántos productos se han quedado fuera, con «Copiar
+  la lista» y el correo al lado, que esos sí van enteros. Son unos quince
+  productos con nombre de laboratorio; de ahí para arriba se avisa.
+
+Los medicamentos no entran en la cesta porque no hay catálogo de medicamentos:
+su página explica cómo se encarga una receta, y eso no cambia.
+
+**El día que se quiera cobrar de verdad** —Stripe Checkout, o el TPV virtual del
+banco— el carrito ya está hecho y lo que hay que cambiar es el botón final de
+`cesta.html`. Lo que hace falta antes no es código: publicar precios, dejar
+Medicamentos fuera, escribir condiciones de venta y derecho de desistimiento, y
+rehacer el aviso legal y la privacidad. Y la clave secreta de la pasarela no
+puede vivir en GitHub Pages, así que haría falta además una función en servidor
+(Cloudflare Workers o Netlify, gratis en este volumen). Es una decisión del
+negocio, no una tarde de trabajo.
 
 ### Importar desde el programa de gestión
 
@@ -318,7 +375,7 @@ pone delante del nombre salvo que ya estuviera dentro.
 
 ### Las fotos
 
-Van en `fotos/`, que **hoy está vacía**: por eso las 54 fichas siguen enseñando
+Van en `fotos/`, que **hoy está vacía**: por eso las 47 fichas siguen enseñando
 el recuadro de «Foto pendiente». Se ponen dejando el fichero con el nombre de la
 página del producto, sin el `catalogo-` de delante ni el `.html` de detrás:
 
@@ -328,11 +385,11 @@ fotos/solares-stick-labial-spf-50.jpg       su foto
 ```
 
 Y ya está: se ejecuta el script y aparece en la tarjeta y en la ficha, sin tocar
-el JSON. Escribir 54 claves `foto` a mano es la misma errata esperando a ocurrir
+el JSON. Escribir 47 claves `foto` a mano es la misma errata esperando a ocurrir
 que llevó a generar las páginas en vez de copiarlas. La clave `foto` del JSON
 sigue existiendo para el fichero que no siga el convenio, y manda por encima de
 él; si apunta a algo que no está, el script avisa en lugar de dejar una imagen
-rota. Al terminar dice cuántas fotos hay puestas de los 54 productos.
+rota. Al terminar dice cuántas fotos hay puestas de los 47 productos.
 
 Valen `.webp`, `.avif`, `.jpg`, `.jpeg` y `.png`, en ese orden de preferencia.
 **Cuadradas y con el producto centrado**: la misma foto se recorta a 4:3 en la
@@ -366,10 +423,11 @@ Tres cosas que hay que entender antes de tocarla:
   desde la portada, en `sitemap.xml` y sin `noindex`**, así que cualquiera
   llega a ellas y Google puede indexarlas. No las des por buenas hasta poner
   productos reales.
-- **Es un escaparate, no una tienda.** El botón de la tarjeta y el de la ficha
-  abren WhatsApp; no hay carrito ni pago. Eso es deliberado: mientras no se
-  pueda comprar desde aquí, la web sigue fuera del régimen de venta a distancia
-  y el aviso legal actual sigue siendo cierto.
+- **Hay cesta, pero no hay pago.** Se puede apuntar lo que se quiera y el
+  encargo sale por WhatsApp; desde la web no se cobra nada y no se piden datos.
+  Eso es deliberado: mientras no se pueda **pagar** aquí, la web sigue fuera del
+  régimen de venta a distancia y el aviso legal actual sigue siendo cierto. Está
+  explicado abajo, en «La cesta».
 - **La tira de arriba enlaza las diez**, con la categoría en la que estás la
   primera y en tinta rellena. Antes las demás iban en texto porque no tenían
   página; ya la tienen.

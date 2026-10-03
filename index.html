@@ -29,6 +29,11 @@
 <link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tipografias.css">
 
+<!-- La cesta: el contador de la cabecera sale tambien aqui. La hoja va tras
+     el <style> de abajo porque tienen la misma especificidad y gana la
+     ultima; el script, con defer, para que no frene el pintado. -->
+<script src="cesta.js" defer></script>
+
 <style>
   /* ---------------------------------------------------------------
      Farmàcia Agramonte — landing
@@ -394,6 +399,7 @@
     html { scroll-behavior: auto; }
   }
 </style>
+<link rel="stylesheet" href="cesta.css">
 
 <!-- Datos estructurados: es lo que lee Google para mostrar la ficha de la
      farmacia (dirección, teléfono y horario) en los resultados y en Maps. -->
@@ -436,6 +442,9 @@
 </script>
 </head>
 <body>
+<!-- Lo que se le dice a un lector de pantalla al cambiar la cesta. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
+
 <header class="cabecera">
   <div class="contenedor">
     <span class="marca">Farmàcia Agramonte</span>
@@ -445,6 +454,12 @@
       <!-- Blog: vuelve al menú cuando haya un artículo escrito de verdad. -->
       <a href="#contacto">Contacto</a>
     </nav>
+    <!-- Nace con hidden y lo destapa cesta.js: sin JavaScript no hay cesta. -->
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cesta-rotulo">Cesta</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
     <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
       Pedir

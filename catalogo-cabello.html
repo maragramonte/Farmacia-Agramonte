@@ -17,8 +17,17 @@
 <link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="marca.css">
 <link rel="stylesheet" href="catalogo.css">
+<link rel="stylesheet" href="cesta.css">
+<!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
+     para que no frene el pintado: lo que depende de ella nace con hidden y se
+     destapa al cargar, así que nada parpadea ni se ve a medias. -->
+<script src="cesta.js" defer></script>
 </head>
 <body>
+
+<!-- Lo que se le dice a un lector de pantalla al añadir o quitar de la cesta.
+     Está en todas las páginas porque desde todas se puede añadir. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
 
 <header class="cabecera">
   <div class="contenedor">
@@ -28,6 +37,11 @@
       <a href="index.html#categorias">Categorías</a>
       <a href="index.html#contacto">Contacto</a>
     </nav>
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cesta-rotulo">Cesta</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
     <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
       Pedir
@@ -80,7 +94,10 @@
         <h2><a href="catalogo-cabello-champu-anticaida.html">Champú anticaída</a></h2>
         <p class="resumen">De uso frecuente. Se deja actuar un par de minutos.</p>
         <p class="formato">Champú · 200 ml</p>
-        <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20champ%C3%BA%20antica%C3%ADda." target="_blank" rel="noopener" aria-label="Preguntar por un champú anticaída por WhatsApp">Preguntar</a>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="cabello-champu-anticaida" data-nombre="Champú anticaída" data-formato="Champú · 200 ml" data-url="catalogo-cabello-champu-anticaida.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20champ%C3%BA%20antica%C3%ADda." target="_blank" rel="noopener" aria-label="Preguntar por un champú anticaída por WhatsApp">Preguntar</a>
+        </div>
       </div>
     </article>
 
@@ -90,7 +107,10 @@
         <h2><a href="catalogo-cabello-champu-anticaspa.html">Champú anticaspa</a></h2>
         <p class="resumen">Para descamación y picor. Dos o tres veces por semana.</p>
         <p class="formato">Champú · 200 ml</p>
-        <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20champ%C3%BA%20anticaspa." target="_blank" rel="noopener" aria-label="Preguntar por un champú anticaspa por WhatsApp">Preguntar</a>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="cabello-champu-anticaspa" data-nombre="Champú anticaspa" data-formato="Champú · 200 ml" data-url="catalogo-cabello-champu-anticaspa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20champ%C3%BA%20anticaspa." target="_blank" rel="noopener" aria-label="Preguntar por un champú anticaspa por WhatsApp">Preguntar</a>
+        </div>
       </div>
     </article>
 
@@ -100,7 +120,10 @@
         <h2><a href="catalogo-cabello-ampollas-para-el-cabello.html">Ampollas para el cabello</a></h2>
         <p class="resumen">Tratamiento en cura, sobre el cuero cabelludo limpio.</p>
         <p class="formato">Caja de 12 ampollas</p>
-        <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20unas%20ampollas%20para%20el%20cabello." target="_blank" rel="noopener" aria-label="Preguntar por unas ampollas para el cabello por WhatsApp">Preguntar</a>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="cabello-ampollas-para-el-cabello" data-nombre="Ampollas para el cabello" data-formato="Caja de 12 ampollas" data-url="catalogo-cabello-ampollas-para-el-cabello.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20unas%20ampollas%20para%20el%20cabello." target="_blank" rel="noopener" aria-label="Preguntar por unas ampollas para el cabello por WhatsApp">Preguntar</a>
+        </div>
       </div>
     </article>
 
@@ -110,7 +133,10 @@
         <h2><a href="catalogo-cabello-acondicionador-sin-aclarado.html">Acondicionador sin aclarado</a></h2>
         <p class="resumen">Para desenredar sin apelmazar. Se aplica en medios y puntas.</p>
         <p class="formato">Crema · 150 ml</p>
-        <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20acondicionador%20sin%20aclarado." target="_blank" rel="noopener" aria-label="Preguntar por un acondicionador sin aclarado por WhatsApp">Preguntar</a>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="cabello-acondicionador-sin-aclarado" data-nombre="Acondicionador sin aclarado" data-formato="Crema · 150 ml" data-url="catalogo-cabello-acondicionador-sin-aclarado.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20acondicionador%20sin%20aclarado." target="_blank" rel="noopener" aria-label="Preguntar por un acondicionador sin aclarado por WhatsApp">Preguntar</a>
+        </div>
       </div>
     </article>
 
@@ -120,7 +146,10 @@
         <h2><a href="catalogo-cabello-champu-de-uso-frecuente.html">Champú de uso frecuente</a></h2>
         <p class="resumen">Suave, para lavados diarios.</p>
         <p class="formato">Champú · 400 ml</p>
-        <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20champ%C3%BA%20de%20uso%20frecuente." target="_blank" rel="noopener" aria-label="Preguntar por un champú de uso frecuente por WhatsApp">Preguntar</a>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="cabello-champu-de-uso-frecuente" data-nombre="Champú de uso frecuente" data-formato="Champú · 400 ml" data-url="catalogo-cabello-champu-de-uso-frecuente.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20champ%C3%BA%20de%20uso%20frecuente." target="_blank" rel="noopener" aria-label="Preguntar por un champú de uso frecuente por WhatsApp">Preguntar</a>
+        </div>
       </div>
     </article>
 
@@ -130,18 +159,28 @@
         <h2><a href="catalogo-cabello-locion-para-el-cuero-cabelludo.html">Loción para el cuero cabelludo</a></h2>
         <p class="resumen">Sin aclarado, para aplicar por la noche.</p>
         <p class="formato">Loción · 100 ml</p>
-        <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20una%20loci%C3%B3n%20para%20el%20cuero%20cabelludo." target="_blank" rel="noopener" aria-label="Preguntar por una loción para el cuero cabelludo por WhatsApp">Preguntar</a>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="cabello-locion-para-el-cuero-cabelludo" data-nombre="Loción para el cuero cabelludo" data-formato="Loción · 100 ml" data-url="catalogo-cabello-locion-para-el-cuero-cabelludo.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20una%20loci%C3%B3n%20para%20el%20cuero%20cabelludo." target="_blank" rel="noopener" aria-label="Preguntar por una loción para el cuero cabelludo por WhatsApp">Preguntar</a>
+        </div>
       </div>
     </article>
 
   </div>
 
   <div class="cierre">
-    <h2>Cómo se pide, de momento</h2>
+    <h2>Cómo se pide</h2>
     <p>
-      Esta página es un escaparate: enseña lo que tenemos, pero no es una tienda
-      en línea. Se pregunta por WhatsApp o por teléfono, lo preparamos y se
-      recoge en el mostrador, que es donde además podemos aconsejarte.
+      Con «Añadir» vas apuntando lo que quieras en <a href="cesta.html">tu
+      cesta</a>, que se queda guardada en este navegador y puedes cambiar cuando
+      quieras. Al acabar, la cesta escribe sola el mensaje y nos lo mandas por
+      WhatsApp: lo preparamos, te confirmamos el precio y lo recoges en el
+      mostrador.
+    </p>
+    <p>
+      <strong>Aquí no se paga nada</strong> y no te pedimos ningún dato: esto no
+      es una tienda en línea, es la manera de encargar sin tener que escribirnos
+      los productos uno a uno. El mostrador es además donde podemos aconsejarte.
     </p>
     <p>
       Si prefieres llamar, el número es el

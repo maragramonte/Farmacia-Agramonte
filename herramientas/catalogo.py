@@ -9,6 +9,12 @@ Genera dos cosas por cada categoría del JSON:
     catalogo-<id>.html              la rejilla de tarjetas de la categoría.
     catalogo-<id>-<producto>.html   la ficha de cada uno de sus productos.
 
+Y una más, que no depende del JSON pero comparte con ellas cabecera y pie:
+
+    cesta.html                      la lista de lo que alguien quiere encargar.
+                                    Lo que la rellena es cesta.js, en el
+                                    navegador; aquí sólo se escribe el molde.
+
 Existe por una razón muy concreta: la tira de categorías que va arriba de cada
 página tiene que listarlas todas, así que añadir una obligaba a tocar las diez a
 mano. Ahora que además hay una ficha por producto, escribir esto a mano sería
@@ -39,6 +45,8 @@ BASE = "https://maragramonte.github.io/Farmacia-Agramonte/"
 WHATSAPP = "34661192472"
 TELEFONO_ENLACE = "+34933195921"
 TELEFONO_VISIBLE = "933 19 59 21"
+WHATSAPP_VISIBLE = "661 192 472"
+CORREO = "farmacia.lallana@gmail.com"
 
 # Los iconos, en la misma línea que los del resto del sitio: trazo, sin relleno.
 ICONOS = {
@@ -73,6 +81,16 @@ ICONO_WHATSAPP = (
     '-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>'
 )
 
+ICONO_CESTA = (
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/>'
+    '<path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>'
+)
+
+ICONO_MAS = (
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/>'
+    '<line x1="5" y1="12" x2="19" y2="12"/></svg>'
+)
+
 ICONO_AVISO = (
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/>'
     '<line x1="12" y1="10" x2="12" y2="14"/><circle cx="12" cy="17" r=".6" fill="currentColor" stroke="none"/></svg>'
@@ -105,6 +123,33 @@ def slug_producto(p):
 
 def ruta_producto(c, p):
     return "catalogo-%s-%s.html" % (c["id"], slug_producto(p))
+
+
+def id_cesta(c, p):
+    """Cómo se llama el producto dentro de la cesta de quien mira la web.
+
+    Es la categoría y el slug, que juntos ya son únicos —lo comprueba
+    comprueba_urls_unicas— y no cambian al renombrar un producto si lleva su
+    clave "id". Eso importa más de lo que parece: la cesta vive en el navegador
+    de la persona, así que un id que cambie le deja dentro una línea huérfana
+    que ya no enlaza a ninguna ficha."""
+    return "%s-%s" % (c["id"], slug_producto(p))
+
+
+def boton_anadir(c, p):
+    """El botón de añadir a la cesta.
+
+    Nace con hidden y lo destapa cesta.js. Sin JavaScript no hay cesta, y un
+    botón que no hace nada es peor que no tenerlo: el de WhatsApp, que es un
+    enlace de verdad, sigue ahí al lado y funciona siempre.
+
+    El formato va sin la marca amarilla de «pendiente»: esto no se lee, se
+    copia a un mensaje de WhatsApp, y «(Formato pendiente)» ahí no se entiende."""
+    return ('<button type="button" class="anadir" data-cesta-anade hidden'
+            ' data-id="%s" data-nombre="%s" data-formato="%s" data-url="%s">%s Añadir</button>'
+            % (escapa(id_cesta(c, p)), escapa(p["nombre"]),
+               escapa(p.get("formato") or ""), escapa(ruta_producto(c, p)),
+               ICONO_MAS))
 
 
 def precio_html(p, sangria):
@@ -204,20 +249,29 @@ def tira(categorias, actual):
 def ficha(c, p, icono):
     """Una tarjeta de la rejilla.
 
-    El título lleva a la ficha del producto. El botón sigue yendo a WhatsApp,
-    que es como se pide de verdad: quien ya sabe lo que quiere no tiene por qué
-    dar un rodeo por la ficha."""
+    El título lleva a la ficha del producto. Debajo, las dos maneras de pedirlo:
+    «Añadir», que lo apunta en la cesta para encargar varias cosas de una vez, y
+    «Preguntar», que sigue yendo directo a WhatsApp, porque quien ya sabe lo que
+    quiere no tiene por qué dar un rodeo por la cesta.
+
+    Las dos van dentro de .acciones, y es ese bloque el que se pega al fondo de
+    la tarjeta. Antes el margen automático vivía en el botón de WhatsApp; con dos
+    botones eso habría dejado un hueco distinto en cada tarjeta."""
     return """    <article class="producto">
       %s
       <div class="cuerpo">
         <h2><a href="%s">%s</a></h2>
         <p class="resumen">%s</p>
         <p class="formato">%s</p>%s
-        <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">Preguntar</a>
+        <div class="acciones">
+          %s
+          <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">Preguntar</a>
+        </div>
       </div>
     </article>""" % (
         foto_html(c, p, icono), escapa(ruta_producto(c, p)), escapa(p["nombre"]),
         resumen_html(p), formato_html(p), precio_html(p, " " * 8),
+        boton_anadir(c, p),
         escapa(enlace_whatsapp(consulta_de(p))), escapa(consulta_de(p)))
 
 
@@ -241,11 +295,18 @@ def aviso_plantilla():
 
 
 CIERRE_PEDIDO = """  <div class="cierre">
-    <h2>Cómo se pide, de momento</h2>
+    <h2>Cómo se pide</h2>
     <p>
-      Esta página es un escaparate: enseña lo que tenemos, pero no es una tienda
-      en línea. Se pregunta por WhatsApp o por teléfono, lo preparamos y se
-      recoge en el mostrador, que es donde además podemos aconsejarte.
+      Con «Añadir» vas apuntando lo que quieras en <a href="cesta.html">tu
+      cesta</a>, que se queda guardada en este navegador y puedes cambiar cuando
+      quieras. Al acabar, la cesta escribe sola el mensaje y nos lo mandas por
+      WhatsApp: lo preparamos, te confirmamos el precio y lo recoges en el
+      mostrador.
+    </p>
+    <p>
+      <strong>Aquí no se paga nada</strong> y no te pedimos ningún dato: esto no
+      es una tienda en línea, es la manera de encargar sin tener que escribirnos
+      los productos uno a uno. El mostrador es además donde podemos aconsejarte.
     </p>
     <p>
       Si prefieres llamar, el número es el
@@ -315,12 +376,14 @@ def otros_de(c, actual):
 """ % (escapa(c["nombre"]), puntos, c["id"])
 
 
-def documento(titulo, descripcion, ruta, contenido, es_plantilla, noindex=False):
-    """El esqueleto que comparten la página de categoría y la ficha de producto:
-    cabeza, cabecera, aviso, <main> y pie. Lo de dentro de <main> lo pone quien
-    llama. Nació al montar las fichas, para no tener dos copias de la cabecera
-    que se separasen a la primera de cambio."""
+def documento(titulo, descripcion, ruta, contenido, es_plantilla,
+              noindex=False, es_cesta=False):
+    """El esqueleto que comparten la página de categoría, la ficha de producto y
+    la cesta: cabeza, cabecera, aviso, <main> y pie. Lo de dentro de <main> lo
+    pone quien llama. Nació al montar las fichas, para no tener dos copias de la
+    cabecera que se separasen a la primera de cambio."""
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
+    actual = ' aria-current="page"' if es_cesta else ""
     return """<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -340,8 +403,17 @@ def documento(titulo, descripcion, ruta, contenido, es_plantilla, noindex=False)
 <link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="marca.css">
 <link rel="stylesheet" href="catalogo.css">
+<link rel="stylesheet" href="cesta.css">
+<!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
+     para que no frene el pintado: lo que depende de ella nace con hidden y se
+     destapa al cargar, así que nada parpadea ni se ve a medias. -->
+<script src="cesta.js" defer></script>
 </head>
 <body>
+
+<!-- Lo que se le dice a un lector de pantalla al añadir o quitar de la cesta.
+     Está en todas las páginas porque desde todas se puede añadir. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
 
 <header class="cabecera">
   <div class="contenedor">
@@ -351,6 +423,11 @@ def documento(titulo, descripcion, ruta, contenido, es_plantilla, noindex=False)
       <a href="index.html#categorias">Categorías</a>
       <a href="index.html#contacto">Contacto</a>
     </nav>
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden%s>
+      %s
+      <span class="cesta-rotulo">Cesta</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
     <a class="boton" href="https://wa.me/%s" target="_blank" rel="noopener">
       %s
       Pedir
@@ -376,6 +453,7 @@ def documento(titulo, descripcion, ruta, contenido, es_plantilla, noindex=False)
 </body>
 </html>
 """ % (robots, BASE, ruta, escapa(descripcion), escapa(titulo),
+       actual, ICONO_CESTA,
        WHATSAPP, ICONO_WHATSAPP,
        aviso_plantilla() if es_plantilla else "",
        contenido)
@@ -430,14 +508,20 @@ def pagina_producto(c, p):
       <h1>%s</h1>
       <p class="formato">%s</p>
       <p class="resumen">%s</p>%s
-      <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">
+      <div class="acciones">
         %s
-        Preguntar por WhatsApp
-      </a>
+        <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="Preguntar por %s por WhatsApp">
+          %s
+          Preguntar por WhatsApp
+        </a>
+      </div>
+      <p class="cesta-estado" data-cesta-estado="%s" hidden></p>
       <p class="nota-consejo">
-        Esto es un escaparate, no una tienda: no se compra desde aquí. Nos
-        preguntas por WhatsApp o al <a href="tel:%s">%s</a>, lo preparamos y lo
-        recoges en el mostrador, que es donde además podemos aconsejarte.
+        Desde aquí no se paga nada: «Añadir» lo apunta en tu cesta y, cuando
+        acabes de mirar, nos la mandas de una vez por WhatsApp. Lo preparamos,
+        te confirmamos el precio y lo recoges en el mostrador, que es donde
+        además podemos aconsejarte. Si lo prefieres, llámanos al
+        <a href="tel:%s">%s</a>.
       </p>
     </div>
   </div>
@@ -446,7 +530,9 @@ def pagina_producto(c, p):
         c["id"], escapa(c["nombre"]), escapa(p["nombre"]),
         foto_html(c, p, icono), escapa(p["nombre"]), formato_html(p),
         resumen_html(p), precio_html(p, " " * 6),
+        boton_anadir(c, p),
         escapa(enlace_whatsapp(consulta_de(p))), escapa(consulta_de(p)), ICONO_WHATSAPP,
+        escapa(id_cesta(c, p)),
         TELEFONO_ENLACE, TELEFONO_VISIBLE,
         secciones, otros_de(c, p))
 
@@ -463,6 +549,111 @@ def pagina_producto(c, p):
         contenido=contenido,
         es_plantilla=es_plantilla,
         noindex=es_plantilla)
+
+
+def pagina_cesta():
+    """cesta.html: la lista de lo que alguien quiere encargar.
+
+    La pinta cesta.js leyendo el localStorage de quien la abre, así que lo que
+    se escribe aquí son los tres estados posibles, los tres ya en el HTML y dos
+    de ellos con hidden:
+
+      sin JavaScript   lo único que se ve si cesta.js no carga. Nace visible a
+                       propósito: es el único estado honesto cuando la cesta no
+                       puede funcionar, y dice cómo pedir de todas formas.
+      cesta vacía      no ha añadido nada.
+      cesta con cosas  la lista, con las cantidades y los botones.
+
+    Va con noindex y fuera del sitemap.xml, y no por prudencia: es una página
+    distinta para cada visitante y vacía para Google, que no tiene cesta. Que
+    salga en los resultados de búsqueda no le sirve a nadie."""
+    contenido = """
+  <p class="migas"><a href="index.html">Inicio</a> › <a href="index.html#categorias">Categorías</a> › Tu cesta</p>
+
+  <div class="portada-categoria">
+    <h1>Tu cesta</h1>
+    <p>
+      Lo que has apuntado para encargar. Se guarda <strong>sólo en este
+      navegador</strong>: no nos llega nada, ni lo vemos, hasta que nos mandes
+      el mensaje tú.
+    </p>
+  </div>
+
+  <div class="cesta-sinjs" data-cesta-sinjs>
+    <p>
+      <strong>La cesta necesita JavaScript</strong>, y en este navegador está
+      desactivado o no ha llegado a cargarse. El resto del catálogo funciona
+      igual: puedes verlo todo y pedirnos lo que quieras por WhatsApp.
+    </p>
+    <p>
+      Escríbenos al <a href="https://wa.me/%s" target="_blank" rel="noopener">%s</a>
+      o llama al <a href="tel:%s">%s</a>, de lunes a sábado de 9:00 a 14:30 y de
+      16:00 a 20:30.
+    </p>
+  </div>
+
+  <div class="cesta-vacia" data-cesta-vacia hidden>
+    <h2>Todavía no has apuntado nada</h2>
+    <p>
+      Entra en una categoría y pulsa «Añadir» en lo que te interese. Puedes
+      juntar cosas de categorías distintas: la cesta es una sola.
+    </p>
+    <p><a href="index.html#categorias">Ver las categorías</a></p>
+  </div>
+
+  <div data-cesta-llena hidden>
+    <ul class="cesta-lista" data-cesta-lista></ul>
+
+    <p class="cesta-resumen">
+      En la cesta: <strong data-cesta-total>0 productos</strong>
+      <span>Sin precios: te los confirmamos al contestarte.</span>
+    </p>
+
+    <p class="cesta-recorte" data-cesta-recorte hidden></p>
+
+    <div class="cesta-acciones">
+      <a class="boton" href="https://wa.me/%s" target="_blank" rel="noopener" data-cesta-whatsapp>
+        %s
+        Enviar el encargo
+      </a>
+      <button type="button" class="cesta-secundario" data-cesta-copia>Copiar la lista</button>
+      <a class="cesta-secundario" href="mailto:%s" data-cesta-correo>Enviarlo por correo</a>
+      <button type="button" class="cesta-secundario cesta-vaciar" data-cesta-vaciar>Vaciar la cesta</button>
+    </div>
+  </div>
+
+  <div class="cierre">
+    <h2>Qué pasa al enviarlo</h2>
+    <p>
+      Se abre tu WhatsApp con el mensaje escrito: puedes leerlo, cambiar lo que
+      quieras y enviarlo tú. <strong>Aquí no se cobra nada y no te pedimos
+      ningún dato</strong>; esto no es una tienda en línea, es la manera de
+      encargar sin escribirnos los productos uno a uno.
+    </p>
+    <p>
+      Te contestamos con el precio y cuándo lo tienes listo, y se paga al
+      recogerlo en el mostrador, que es donde además podemos aconsejarte. Si
+      prefieres llamar, el número es el <a href="tel:%s">%s</a>.
+    </p>
+    <p>
+      De <strong>medicamentos</strong> no hay catálogo y no entran en la cesta:
+      <a href="catalogo-medicamentos.html">ahí se explica</a> cómo se encarga
+      una receta.
+    </p>
+  </div>
+""" % (WHATSAPP, WHATSAPP_VISIBLE, TELEFONO_ENLACE, TELEFONO_VISIBLE,
+       WHATSAPP, ICONO_WHATSAPP, CORREO,
+       TELEFONO_ENLACE, TELEFONO_VISIBLE)
+
+    return documento(
+        titulo="Tu cesta — Farmàcia Agramonte",
+        descripcion="Lo que has apuntado para encargar en la Farmàcia Agramonte, "
+                    "Plaça de la Llana 11, El Born (Barcelona).",
+        ruta="cesta.html",
+        contenido=contenido,
+        es_plantilla=False,
+        noindex=True,
+        es_cesta=True)
 
 
 def comprueba_portada(categorias):
@@ -568,9 +759,12 @@ def main():
         print("  %-38s %s" % (destino.name,
                               "%d fichas" % cuantos if cuantos else "sin lista de productos"))
 
+    (RAIZ / "cesta.html").write_text(pagina_cesta(), encoding="utf-8")
+    print("  %-38s %s" % ("cesta.html", "la cesta (noindex)"))
+
     comprueba_huerfanas(escritas)
     comprueba_sitemap(indexables)
-    print("\n%d páginas de categoría y %d fichas de producto escritas desde %s"
+    print("\n%d páginas de categoría, %d fichas de producto y la cesta, escritas desde %s"
           % (paginas, fichas, DATOS.name))
 
 

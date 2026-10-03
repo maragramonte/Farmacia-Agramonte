@@ -1,0 +1,199 @@
+/* ---------------------------------------------------------------
+   Farmàcia Agramonte — la cesta
+
+   Lo que pinta la lista de encargo: el contador de la cabecera, el botón de
+   añadir y la página cesta.html.
+
+   Va en hoja aparte, y no dentro de catalogo.css, porque el contador de la
+   cabecera sale también en la portada, y la portada no carga ni marca.css ni
+   catalogo.css: lleva su CSS dentro. Lo que sí comparte son los nombres de la
+   paleta (--tinta, --oro, --crema-3…), que están declarados en los dos
+   sitios, así que esta hoja tira de ellos y no define colores propios.
+   --------------------------------------------------------------- */
+
+/* El atributo hidden lo pone y lo quita cesta.js para todo lo que no debe
+   verse sin JavaScript. Un display: flex o grid en una regla posterior se lo
+   comería, así que aquí queda dicho que hidden manda. */
+[hidden] { display: none !important; }
+
+/* Para los avisos del lector de pantalla: existen, se anuncian y no se ven.
+   Ni display: none ni visibility: hidden valen aquí; los lectores los saltan. */
+.solo-lectores {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- El contador de la cabecera ----------
+   Nace con hidden y lo destapa cesta.js: sin JavaScript no hay cesta que
+   enseñar, y un enlace que lleva a una página vacía es peor que no tenerlo. */
+.cesta-enlace {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 600; color: var(--sobre-tinta);
+  border: 1px solid rgba(201,160,85,.45);
+  padding: .62rem .9rem;
+  transition: border-color .18s ease, color .18s ease;
+}
+.cesta-enlace:hover { color: var(--oro-claro); border-color: var(--oro); }
+.cesta-enlace[aria-current="page"] { color: var(--oro); border-color: var(--oro); }
+.cesta-enlace svg {
+  width: 17px; height: 17px; flex: none;
+  stroke: currentColor; fill: none; stroke-width: 1.5;
+}
+
+/* La cuenta, en oro relleno. Con la cesta vacía se queda en hueco: un «0» en
+   oro llama la atención para decir que no hay nada. */
+.cesta-cuenta {
+  display: inline-grid; place-items: center;
+  min-width: 1.45rem; height: 1.45rem; padding-inline: .25rem;
+  border-radius: 999px;
+  background: var(--oro); color: var(--tinta);
+  font-variant-numeric: tabular-nums; letter-spacing: 0;
+}
+.cesta-enlace-vacio .cesta-cuenta {
+  background: transparent; color: var(--tenue-tinta);
+  box-shadow: inset 0 0 0 1px rgba(201,160,85,.4);
+}
+
+/* ---------- El botón de añadir ----------
+   Secundario a propósito: el oro relleno sigue siendo el de WhatsApp, que es
+   lo único que existe sin JavaScript y lo que de verdad cierra el encargo. */
+.anadir {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  width: 100%;
+  background: transparent; color: var(--texto);
+  border: 1px solid var(--crema-3);
+  font-family: inherit;
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600;
+  padding: .7rem 1rem; cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+.anadir:hover { border-color: var(--oro); color: var(--oro-hondo); }
+.anadir svg {
+  width: 15px; height: 15px; flex: none;
+  stroke: currentColor; fill: none; stroke-width: 1.6;
+}
+/* Un segundo tras pulsar. Es la única confirmación visible de que ha entrado
+   en la cesta sin mirar a la cabecera; lo que se le dice al lector de pantalla
+   va por el aria-live, no por esto. */
+.anadir.anadido {
+  background: var(--tinta); border-color: var(--tinta); color: var(--sobre-tinta);
+}
+
+/* Las dos acciones de la tarjeta van juntas, y el bloque es el que se pega al
+   fondo. Antes ese margen automático vivía en el botón de WhatsApp; con dos
+   botones habría dejado un hueco variable entre ellos y la rejilla desigual. */
+.producto .acciones { margin-top: auto; display: grid; gap: .5rem; }
+.producto .acciones .boton { margin-top: 0; }
+
+/* En la ficha del producto los botones no ocupan el ancho entero: ahí hay sitio
+   y una fila de dos se lee mejor que dos filas. */
+.ficha-producto .acciones { display: flex; flex-wrap: wrap; gap: .7rem; }
+.ficha-producto .anadir { width: auto; padding-inline: 1.3rem; }
+
+.cesta-estado { font-size: .85rem; color: var(--texto-tenue); margin-top: .8rem; }
+.cesta-estado a { border-bottom: 1px solid var(--crema-3); }
+.cesta-estado a:hover { color: var(--oro-hondo); }
+
+/* ---------- La página de la cesta ---------- */
+.cesta-sinjs, .cesta-vacia { background: var(--crema-2); padding: 2rem; }
+.cesta-vacia h2 { font-size: 1.3rem; margin-bottom: .6rem; }
+.cesta-vacia p, .cesta-sinjs p { color: var(--texto-tenue); max-width: 70ch; }
+.cesta-vacia p + p, .cesta-sinjs p + p { margin-top: .6rem; }
+.cesta-vacia a, .cesta-sinjs a { border-bottom: 1px solid var(--crema-3); }
+.cesta-vacia a:hover, .cesta-sinjs a:hover { color: var(--oro-hondo); }
+/* El título recibe el foco al vaciar la cesta, y entonces no debe parecer que
+   se ha roto algo: el contorno es el mismo que el de cualquier enlace. */
+.cesta-vacia h2:focus-visible { outline: 2px solid var(--oro); outline-offset: 4px; }
+
+.cesta-lista { list-style: none; margin: 0; padding: 0; }
+.cesta-linea {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center; gap: 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--crema-3);
+}
+.cesta-linea:first-child { border-top: 1px solid var(--crema-3); }
+.cesta-que strong { display: block; font-size: 1rem; font-weight: 600; line-height: 1.35; }
+.cesta-que a { border-bottom: 1px solid var(--crema-3); }
+.cesta-que a:hover { color: var(--oro-hondo); border-bottom-color: var(--oro); }
+.cesta-que small {
+  display: block; margin-top: .2rem;
+  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--oro-hondo); font-weight: 600;
+}
+
+.cesta-cantidad {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--crema-3); background: #fbf8f2;
+}
+.cesta-cantidad button {
+  width: 2.4rem; height: 2.4rem;
+  background: transparent; border: 0; cursor: pointer;
+  font-family: inherit; font-size: 1.1rem; color: var(--texto);
+  transition: background .18s ease, color .18s ease;
+}
+.cesta-cantidad button:hover:not(:disabled) { background: var(--crema-2); color: var(--oro-hondo); }
+/* El menos se desactiva en 1: para quitarlo del todo está «Quitar», que dice
+   lo que hace. Un menos que de pronto borra la línea sorprende. */
+.cesta-cantidad button:disabled { color: var(--crema-3); cursor: default; }
+.cesta-cantidad span {
+  min-width: 2.2rem; text-align: center;
+  font-variant-numeric: tabular-nums; font-weight: 600;
+}
+
+.cesta-quitar {
+  background: transparent; border: 0; cursor: pointer;
+  font-family: inherit; font-size: .74rem; letter-spacing: .1em;
+  text-transform: uppercase; font-weight: 600;
+  color: var(--texto-tenue); padding: .5rem;
+  border-bottom: 1px solid transparent;
+  transition: color .18s ease, border-color .18s ease;
+}
+.cesta-quitar:hover { color: var(--oro-hondo); border-bottom-color: var(--oro); }
+
+.cesta-resumen {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem;
+  padding-block: 1.25rem;
+  font-size: .95rem; color: var(--texto-tenue);
+}
+.cesta-resumen strong { color: var(--texto); font-weight: 600; }
+
+/* Sale sólo cuando la cesta no cabe en un mensaje de WhatsApp. Va en el
+   amarillo de .pendiente, que en esta web quiere decir «mira esto». */
+.cesta-recorte {
+  background: #f6e3bd; color: var(--tinta);
+  border-left: 3px solid var(--oro);
+  padding: .9rem 1.1rem; margin-bottom: 1.25rem;
+  font-size: .9rem; max-width: 70ch;
+}
+
+.cesta-acciones { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; }
+/* Los secundarios son enlaces y botones de texto, no botones a medias: el oro
+   relleno es el de enviar el encargo, y sólo ése. */
+.cesta-secundario {
+  background: transparent; border: 0; cursor: pointer; padding: .5rem 0;
+  font-family: inherit; font-size: .88rem; color: var(--texto-tenue);
+  border-bottom: 1px solid var(--crema-3);
+  transition: color .18s ease, border-color .18s ease;
+}
+.cesta-secundario:hover { color: var(--oro-hondo); border-bottom-color: var(--oro); }
+.cesta-vaciar { margin-left: auto; }
+
+@media (max-width: 560px) {
+  /* El nombre arriba a lo ancho, y debajo cantidad y «Quitar». A 320 px las
+     tres columnas dejan el nombre partido letra a letra. */
+  .cesta-linea { grid-template-columns: 1fr auto; gap: .6rem 1rem; }
+  .cesta-que { grid-column: 1 / -1; }
+  .cesta-sinjs, .cesta-vacia { padding: 1.5rem; }
+  .cesta-vaciar { margin-left: 0; }
+  /* La cabecera del móvil ya va apretada: el contador se queda en el icono y
+     la cuenta, que el rótulo lo dice el aria-label. */
+  .cesta-enlace { padding: .62rem .7rem; gap: .4rem; }
+  .cesta-enlace .cesta-rotulo { display: none; }
+  .ficha-producto .anadir { width: 100%; }
+}
