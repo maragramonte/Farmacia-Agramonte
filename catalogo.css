@@ -64,12 +64,17 @@
 }
 .foto svg { width: 38px; height: 38px; stroke: rgba(58,44,31,.42); fill: none; stroke-width: 1.1; }
 .foto::after {
+  /* Este rótulo lo pone el CSS, no el generador, así que su traducción tiene
+     que vivir aquí: la regla de abajo lo cambia según el lang del <html>.
+     Al añadir un idioma, añade su regla o saldrá en español. */
   content: "Foto pendiente";
   position: absolute; left: 0; bottom: 0;
   background: rgba(30,20,12,.78); color: var(--tenue-tinta);
   font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
   padding: .3rem .6rem;
 }
+
+html[lang="ca"] .foto::after { content: "Foto pendent"; }
 
 /* Cuando el producto ya tiene foto de verdad: fuera el degradado y fuera el
    rótulo de «Foto pendiente». El generador pone esta clase solo. */

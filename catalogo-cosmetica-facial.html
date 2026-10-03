@@ -5,22 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
      python herramientas/catalogo.py. Los productos están en
-     herramientas/catalogo-datos.json. -->
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
 <link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-cosmetica-facial.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-cosmetica-facial.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/catalogo-cosmetica-facial.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-cosmetica-facial.html">
 <meta name="description" content="Cosmética facial en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
 <title>Cosmética facial — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
-<!-- Tipografías propias, servidas desde este mismo repositorio. -->
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
 <link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="marca.css">
 <link rel="stylesheet" href="catalogo.css">
 <link rel="stylesheet" href="cesta.css">
+<link rel="stylesheet" href="idiomas.css">
 <!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
      para que no frene el pintado: lo que depende de ella nace con hidden y se
-     destapa al cargar, así que nada parpadea ni se ve a medias. -->
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
 <script src="cesta.js" defer></script>
 </head>
 <body>
@@ -37,6 +43,10 @@
       <a href="index.html#categorias">Categorías</a>
       <a href="historia.html">Historia</a>
       <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <nav class="idiomas" aria-label="Idioma">
+      <span aria-current="true" title="Idioma actual: Español">ES</span>
+      <a href="ca/catalogo-cosmetica-facial.html" lang="ca" hreflang="ca" title="Ver esta página en Català">CA</a>
     </nav>
     <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
@@ -59,7 +69,7 @@
     <p>Limpieza, hidratación y cuidado del rostro. Si no sabes por dónde empezar o tu piel se ha vuelto reactiva, cuéntanoslo: media consulta se resuelve sabiendo qué te estás poniendo ya.</p>
   </div>
 
-  <nav class="tira" aria-label="Categorías del catálogo">
+  <nav class="tira" aria-label="Categorías">
     <a href="catalogo-cosmetica-facial.html" aria-current="page">Cosmética facial</a>
     <a href="catalogo-medicamentos.html">Medicamentos</a>
     <a href="catalogo-cosmetica-corporal.html">Cosmética corporal</a>
@@ -104,23 +114,9 @@
 
   <div class="cierre">
     <h2>Cómo se pide</h2>
-    <p>
-      Con «Añadir» vas apuntando lo que quieras en <a href="cesta.html">tu
-      cesta</a>, que se queda guardada en este navegador y puedes cambiar cuando
-      quieras. Al acabar, la cesta escribe sola el mensaje y nos lo mandas por
-      WhatsApp: lo preparamos, te confirmamos el precio y lo recoges en el
-      mostrador.
-    </p>
-    <p>
-      <strong>Aquí no se paga nada</strong> y no te pedimos ningún dato: esto no
-      es una tienda en línea, es la manera de encargar sin tener que escribirnos
-      los productos uno a uno. El mostrador es además donde podemos aconsejarte.
-    </p>
-    <p>
-      Si prefieres llamar, el número es el
-      <a href="tel:+34933195921">933 19 59 21</a>, de lunes a sábado de 9:00 a
-      14:30 y de 16:00 a 20:30.
-    </p>
+    <p>Con «Añadir» vas apuntando lo que quieras en <a href="cesta.html">tu cesta</a>, que se queda guardada en este navegador y puedes cambiar cuando quieras. Al acabar, la cesta escribe sola el mensaje y nos lo mandas por WhatsApp: lo preparamos, te confirmamos el precio y lo recoges en el mostrador.</p>
+    <p><strong>Aquí no se paga nada</strong> y no te pedimos ningún dato: esto no es una tienda en línea, es la manera de encargar sin tener que escribirnos los productos uno a uno. El mostrador es además donde podemos aconsejarte.</p>
+    <p>Si prefieres llamar, el número es el <a href="tel:+34933195921">933 19 59 21</a>, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30.</p>
   </div>
 
 </main>

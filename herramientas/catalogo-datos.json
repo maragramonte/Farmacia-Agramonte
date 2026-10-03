@@ -1,21 +1,38 @@
 {
   "_leeme": [
-    "Los productos de este fichero SON INVENTADOS. Están para ver la",
-    "maquetación. Al sustituirlos por los reales, quita también la clave",
-    "'plantilla': true de cada categoría y desaparecerá el aviso amarillo.",
+    "Los productos de las categorías marcadas con 'plantilla': true SON",
+    "INVENTADOS. Están para ver la maquetación. Al sustituirlos por los reales,",
+    "quita también esa clave y desaparecerá el aviso amarillo.",
+    "",
+    "IDIOMAS. Los campos que se traducen admiten dos formas:",
+    "",
+    "    \"resumen\": \"Hidratante en gel...\"",
+    "    \"resumen\": { \"es\": \"Hidratante en gel...\", \"ca\": \"Hidratant...\" }",
+    "",
+    "La primera vale para todos los idiomas y es lo correcto en un nombre de",
+    "marca, que no se traduce. En un resumen o en una intro significa que está",
+    "SIN TRADUCIR, y el generador lo avisa al ejecutarse. Para añadir un idioma",
+    "nuevo basta con meter su clave; lo que falte sale en español.",
+    "",
+    "Se traducen: el 'nombre' de la categoría, su 'intro', su 'sin_productos',",
+    "y de cada producto el 'nombre' (si no es marca), el 'resumen', el",
+    "'formato', la 'consulta' y los cuatro epígrafes de la ficha.",
     "",
     "Cada producto admite: nombre, resumen, formato, precio y consulta.",
     "  - precio: LA FARMACIA HA DECIDIDO NO PUBLICAR PRECIOS. Si la clave",
     "    falta, que es lo normal, no se pinta nada y queda sólo el botón",
     "    Preguntar. Ponla ('12,95 €') sólo si quieres publicar el de ese",
-    "    producto en concreto.",
+    "    producto en concreto. No se traduce.",
     "  - foto: si falta, sale el recuadro con 'Foto pendiente'. Al dejar el",
     "    fichero en fotos/ con el nombre de la página del producto, se pinta.",
+    "    Es la misma foto en todos los idiomas.",
     "  - consulta: lo que se escribe solo en WhatsApp al pulsar Preguntar.",
     "",
-    "Cada producto tiene además su propia ficha, en catalogo-<categoria>-<id>.",
-    "El id se saca del nombre. Ponle la clave 'id' para fijar la URL, que es lo",
-    "que hay que hacer antes de renombrar algo que ya esté en Google.",
+    "Cada producto tiene además su propia ficha, en catalogo-<categoria>-<id>,",
+    "y una copia por idioma en su carpeta (ca/). El id se saca del nombre EN",
+    "ESPAÑOL, para que la URL sea la misma en todos los idiomas. Ponle la clave",
+    "'id' para fijarla, que es lo que hay que hacer antes de renombrar algo que",
+    "ya esté en Google.",
     "",
     "Los epígrafes de la ficha son listas de textos y TODOS son opcionales: el",
     "que no esté, no se pinta. No los rellenes a ojo: en una farmacia esto es",
@@ -31,385 +48,991 @@
     "",
     "Después de editar, ejecuta:  python herramientas/catalogo.py"
   ],
-
   "categorias": [
     {
       "id": "medicamentos",
-      "nombre": "Medicamentos",
+      "nombre": {
+        "es": "Medicamentos",
+        "ca": "Medicaments"
+      },
       "icono": "capsula",
       "plantilla": false,
-      "intro": "Aquí no hay lista de productos, y es a propósito.",
+      "intro": {
+        "es": "Aquí no hay lista de productos, y es a propósito.",
+        "ca": "Aquí no hi ha llista de productes, i és a propòsit."
+      },
       "sin_productos": {
-        "titulo": "Los medicamentos se encargan, no se compran por internet",
-        "parrafos": [
-          "La ley no permite anunciar al público los medicamentos que necesitan receta, y los que no la necesitan sólo pueden anunciarse con advertencias obligatorias. Por eso esta página no lleva catálogo: sería publicidad de medicamentos, que es otra cosa distinta a enseñar una crema.",
-          "Lo que sí puedes hacer es encargarlos. Envíanos la receta o el nombre de lo que buscas por WhatsApp o por teléfono, lo preparamos y te avisamos cuando esté. La dispensación y la comprobación de la receta se hacen en el mostrador, como manda la normativa y como conviene: es donde podemos preguntarte si tomas algo más.",
-          "Ante cualquier síntoma que preocupe, lo primero es el médico. Lo que hacemos aquí es consejo farmacéutico, no diagnóstico."
-        ]
+        "titulo": {
+          "es": "Los medicamentos se encargan, no se compran por internet",
+          "ca": "Els medicaments s'encarreguen, no es compren per internet"
+        },
+        "parrafos": {
+          "es": [
+            "La ley no permite anunciar al público los medicamentos que necesitan receta, y los que no la necesitan sólo pueden anunciarse con advertencias obligatorias. Por eso esta página no lleva catálogo: sería publicidad de medicamentos, que es otra cosa distinta a enseñar una crema.",
+            "Lo que sí puedes hacer es encargarlos. Envíanos la receta o el nombre de lo que buscas por WhatsApp o por teléfono, lo preparamos y te avisamos cuando esté. La dispensación y la comprobación de la receta se hacen en el mostrador, como manda la normativa y como conviene: es donde podemos preguntarte si tomas algo más.",
+            "Ante cualquier síntoma que preocupe, lo primero es el médico. Lo que hacemos aquí es consejo farmacéutico, no diagnóstico."
+          ],
+          "ca": [
+            "La llei no permet anunciar al públic els medicaments que necessiten recepta, i els que no la necessiten només es poden anunciar amb advertiments obligatoris. Per això aquesta pàgina no porta catàleg: seria publicitat de medicaments, que és una cosa diferent de mostrar una crema.",
+            "El que sí que pots fer és encarregar-los. Envia'ns la recepta o el nom del que busques per WhatsApp o per telèfon, ho preparem i t'avisem quan estigui a punt. La dispensació i la comprovació de la recepta es fan al taulell, com mana la normativa i com convé: és on et podem preguntar si prens alguna cosa més.",
+            "Davant de qualsevol símptoma que preocupi, el primer és el metge. El que fem aquí és consell farmacèutic, no diagnòstic."
+          ]
+        }
       },
       "productos": []
     },
     {
       "id": "cosmetica-facial",
-      "nombre": "Cosmética facial",
+      "nombre": {
+        "es": "Cosmética facial",
+        "ca": "Cosmètica facial"
+      },
       "icono": "espejo",
       "plantilla": false,
-      "intro": "Limpieza, hidratación y cuidado del rostro. Si no sabes por dónde empezar o tu piel se ha vuelto reactiva, cuéntanoslo: media consulta se resuelve sabiendo qué te estás poniendo ya.",
+      "intro": {
+        "es": "Limpieza, hidratación y cuidado del rostro. Si no sabes por dónde empezar o tu piel se ha vuelto reactiva, cuéntanoslo: media consulta se resuelve sabiendo qué te estás poniendo ya.",
+        "ca": "Neteja, hidratació i cura del rostre. Si no saps per on començar o la teva pell s'ha tornat reactiva, explica'ns-ho: mitja consulta es resol sabent què t'estàs posant ja."
+      },
       "productos": [
         {
           "id": "hydrance-aqua-gel",
           "nombre": "Avène Hydrance Aqua-gel",
-          "resumen": "Hidratante en gel para piel deshidratada. Ligera y de absorción rápida. No lleva filtro solar.",
-          "consulta": "el Avène Hydrance Aqua-gel"
+          "resumen": {
+            "es": "Hidratante en gel para piel deshidratada. Ligera y de absorción rápida. No lleva filtro solar.",
+            "ca": "Hidratant en gel per a pell deshidratada. Lleugera i d'absorció ràpida. No porta filtre solar."
+          },
+          "consulta": {
+            "es": "el Avène Hydrance Aqua-gel",
+            "ca": "l'Avène Hydrance Aqua-gel"
+          }
         },
         {
           "id": "hydraphase-intense-ligera-spf20",
           "nombre": "La Roche-Posay Hydraphase Intense Ligera SPF 20",
-          "resumen": "Hidratante ligera con ácido hialurónico y agua termal, con un filtro solar bajo para el día a día. No sustituye a un fotoprotector.",
-          "consulta": "la Hydraphase Intense Ligera SPF 20"
+          "resumen": {
+            "es": "Hidratante ligera con ácido hialurónico y agua termal, con un filtro solar bajo para el día a día. No sustituye a un fotoprotector.",
+            "ca": "Hidratant lleugera amb àcid hialurònic i aigua termal, amb un filtre solar baix per al dia a dia. No substitueix un fotoprotector."
+          },
+          "consulta": {
+            "es": "la Hydraphase Intense Ligera SPF 20",
+            "ca": "la Hydraphase Intense Ligera SPF 20"
+          }
         }
       ]
     },
     {
       "id": "cosmetica-corporal",
-      "nombre": "Cosmética corporal",
+      "nombre": {
+        "es": "Cosmética corporal",
+        "ca": "Cosmètica corporal"
+      },
       "icono": "bote",
       "plantilla": true,
-      "intro": "Cuerpo, manos e higiene diaria. La piel del cuerpo pide menos que la de la cara, pero la pide todos los días.",
+      "intro": {
+        "es": "Cuerpo, manos e higiene diaria. La piel del cuerpo pide menos que la de la cara, pero la pide todos los días.",
+        "ca": "Cos, mans i higiene diària. La pell del cos demana menys que la de la cara, però la demana cada dia."
+      },
       "productos": [
         {
-          "nombre": "Crema hidratante corporal",
-          "resumen": "Para después de la ducha, sobre la piel aún húmeda.",
-          "formato": "Crema · 400 ml",
-          "consulta": "una crema hidratante corporal"
+          "nombre": {
+            "es": "Crema hidratante corporal",
+            "ca": "Crema hidratant corporal"
+          },
+          "resumen": {
+            "es": "Para después de la ducha, sobre la piel aún húmeda.",
+            "ca": "Per a després de la dutxa, sobre la pell encara humida."
+          },
+          "formato": {
+            "es": "Crema · 400 ml",
+            "ca": "Crema · 400 ml"
+          },
+          "consulta": {
+            "es": "una crema hidratante corporal",
+            "ca": "una crema hidratant corporal"
+          }
         },
         {
-          "nombre": "Gel de baño para piel atópica",
-          "resumen": "Sin jabón ni perfume. Para pieles que se irritan con facilidad.",
-          "formato": "Gel · 500 ml",
-          "consulta": "un gel de baño para piel atópica"
+          "nombre": {
+            "es": "Gel de baño para piel atópica",
+            "ca": "Gel de bany per a pell atòpica"
+          },
+          "resumen": {
+            "es": "Sin jabón ni perfume. Para pieles que se irritan con facilidad.",
+            "ca": "Sense sabó ni perfum. Per a pells que s'irriten amb facilitat."
+          },
+          "formato": {
+            "es": "Gel · 500 ml",
+            "ca": "Gel · 500 ml"
+          },
+          "consulta": {
+            "es": "un gel de baño para piel atópica",
+            "ca": "un gel de bany per a pell atòpica"
+          }
         },
         {
-          "nombre": "Crema de manos",
-          "resumen": "De bolsillo, para las manos que se lavan muchas veces al día.",
-          "formato": "Crema · 75 ml",
-          "consulta": "una crema de manos"
+          "nombre": {
+            "es": "Crema de manos",
+            "ca": "Crema de mans"
+          },
+          "resumen": {
+            "es": "De bolsillo, para las manos que se lavan muchas veces al día.",
+            "ca": "De butxaca, per a les mans que es renten moltes vegades al dia."
+          },
+          "formato": {
+            "es": "Crema · 75 ml",
+            "ca": "Crema · 75 ml"
+          },
+          "consulta": {
+            "es": "una crema de manos",
+            "ca": "una crema de mans"
+          }
         },
         {
-          "nombre": "Crema de pies",
-          "resumen": "Más densa, para talones y zonas de roce.",
-          "formato": "Crema · 100 ml",
-          "consulta": "una crema de pies"
+          "nombre": {
+            "es": "Crema de pies",
+            "ca": "Crema de peus"
+          },
+          "resumen": {
+            "es": "Más densa, para talones y zonas de roce.",
+            "ca": "Més densa, per a talons i zones de fregament."
+          },
+          "formato": {
+            "es": "Crema · 100 ml",
+            "ca": "Crema · 100 ml"
+          },
+          "consulta": {
+            "es": "una crema de pies",
+            "ca": "una crema de peus"
+          }
         },
         {
-          "nombre": "Aceite corporal",
-          "resumen": "Se aplica con masaje. Deja la piel flexible.",
-          "formato": "Aceite · 200 ml",
-          "consulta": "un aceite corporal"
+          "nombre": {
+            "es": "Aceite corporal",
+            "ca": "Oli corporal"
+          },
+          "resumen": {
+            "es": "Se aplica con masaje. Deja la piel flexible.",
+            "ca": "S'aplica amb massatge. Deixa la pell flexible."
+          },
+          "formato": {
+            "es": "Aceite · 200 ml",
+            "ca": "Oli · 200 ml"
+          },
+          "consulta": {
+            "es": "un aceite corporal",
+            "ca": "un oli corporal"
+          }
         },
         {
-          "nombre": "Desodorante sin alcohol",
-          "resumen": "Para axilas sensibles o recién depiladas.",
-          "formato": "Roll-on · 50 ml",
-          "consulta": "un desodorante sin alcohol"
+          "nombre": {
+            "es": "Desodorante sin alcohol",
+            "ca": "Desodorant sense alcohol"
+          },
+          "resumen": {
+            "es": "Para axilas sensibles o recién depiladas.",
+            "ca": "Per a aixelles sensibles o acabades de depilar."
+          },
+          "formato": {
+            "es": "Roll-on · 50 ml",
+            "ca": "Roll-on · 50 ml"
+          },
+          "consulta": {
+            "es": "un desodorante sin alcohol",
+            "ca": "un desodorant sense alcohol"
+          }
         }
       ]
     },
     {
       "id": "solares",
-      "nombre": "Solares",
+      "nombre": {
+        "es": "Solares",
+        "ca": "Solars"
+      },
       "icono": "sol",
       "plantilla": false,
-      "intro": "Fotoprotección para la cara, el cuerpo y los niños. Si dudas entre dos factores o tienes la piel reactiva, pregúntanos: es de las cosas que mejor se resuelven hablando.",
+      "intro": {
+        "es": "Fotoprotección para la cara, el cuerpo y los niños. Si dudas entre dos factores o tienes la piel reactiva, pregúntanos: es de las cosas que mejor se resuelven hablando.",
+        "ca": "Fotoprotecció per a la cara, el cos i els nens. Si dubtes entre dos factors o tens la pell reactiva, pregunta'ns: és de les coses que millor es resolen parlant."
+      },
       "productos": [
         {
           "id": "anthelios-age-correct-spf50",
           "nombre": "La Roche-Posay Anthelios Age Correct SPF 50",
-          "resumen": "Fotoprotección diaria para el rostro, con tratamiento antiedad. Textura de crema, para la rutina de la mañana.",
-          "formato": "Tubo · 50 ml",
-          "consulta": "el Anthelios Age Correct SPF 50"
+          "resumen": {
+            "es": "Fotoprotección diaria para el rostro, con tratamiento antiedad. Textura de crema, para la rutina de la mañana.",
+            "ca": "Fotoprotecció diària per al rostre, amb tractament antiedat. Textura de crema, per a la rutina del matí."
+          },
+          "formato": {
+            "es": "Tubo · 50 ml",
+            "ca": "Tub · 50 ml"
+          },
+          "consulta": {
+            "es": "el Anthelios Age Correct SPF 50",
+            "ca": "l'Anthelios Age Correct SPF 50"
+          }
         },
         {
           "id": "anthelios-dermopediatrics-spf50-spray",
-          "nombre": "La Roche-Posay Anthelios Dermo-Pediatrics SPF 50+ espray",
-          "resumen": "Muy alta protección para rostro y cuerpo, pensada para la piel sensible de los niños. En espray, para aplicar con prisa.",
-          "consulta": "el Anthelios Dermo-Pediatrics SPF 50+ en espray"
+          "nombre": {
+            "es": "La Roche-Posay Anthelios Dermo-Pediatrics SPF 50+ espray",
+            "ca": "La Roche-Posay Anthelios Dermo-Pediatrics SPF 50+ esprai"
+          },
+          "resumen": {
+            "es": "Muy alta protección para rostro y cuerpo, pensada para la piel sensible de los niños. En espray, para aplicar con prisa.",
+            "ca": "Protecció molt alta per a rostre i cos, pensada per a la pell sensible dels nens. En esprai, per aplicar amb pressa."
+          },
+          "consulta": {
+            "es": "el Anthelios Dermo-Pediatrics SPF 50+ en espray",
+            "ca": "l'Anthelios Dermo-Pediatrics SPF 50+ en esprai"
+          }
         },
         {
           "id": "cleanance-solaire-spf50",
           "nombre": "Avène Cleanance Solaire SPF 50+",
-          "resumen": "Fotoprotector sin aceites para piel grasa o con tendencia al acné. Acabado mate, no deja sensación grasa.",
-          "consulta": "el Avène Cleanance Solaire SPF 50+"
+          "resumen": {
+            "es": "Fotoprotector sin aceites para piel grasa o con tendencia al acné. Acabado mate, no deja sensación grasa.",
+            "ca": "Fotoprotector sense olis per a pell greixosa o amb tendència a l'acne. Acabat mat, no deixa sensació greixosa."
+          },
+          "consulta": {
+            "es": "el Avène Cleanance Solaire SPF 50+",
+            "ca": "l'Avène Cleanance Solaire SPF 50+"
+          }
         }
       ]
     },
     {
       "id": "cabello",
-      "nombre": "Cabello",
+      "nombre": {
+        "es": "Cabello",
+        "ca": "Cabell"
+      },
       "icono": "peine",
       "plantilla": true,
-      "intro": "Champús, tratamientos y cuidado del cuero cabelludo. Si se te cae más de lo normal, cuéntanos desde cuándo: eso orienta mucho.",
+      "intro": {
+        "es": "Champús, tratamientos y cuidado del cuero cabelludo. Si se te cae más de lo normal, cuéntanos desde cuándo: eso orienta mucho.",
+        "ca": "Xampús, tractaments i cura del cuir cabellut. Si et cau més del normal, explica'ns des de quan: això orienta molt."
+      },
       "productos": [
         {
-          "nombre": "Champú anticaída",
-          "resumen": "De uso frecuente. Se deja actuar un par de minutos.",
-          "formato": "Champú · 200 ml",
-          "consulta": "un champú anticaída"
+          "nombre": {
+            "es": "Champú anticaída",
+            "ca": "Xampú anticaiguda"
+          },
+          "resumen": {
+            "es": "De uso frecuente. Se deja actuar un par de minutos.",
+            "ca": "D'ús freqüent. Es deixa actuar un parell de minuts."
+          },
+          "formato": {
+            "es": "Champú · 200 ml",
+            "ca": "Xampú · 200 ml"
+          },
+          "consulta": {
+            "es": "un champú anticaída",
+            "ca": "un xampú anticaiguda"
+          }
         },
         {
-          "nombre": "Champú anticaspa",
-          "resumen": "Para descamación y picor. Dos o tres veces por semana.",
-          "formato": "Champú · 200 ml",
-          "consulta": "un champú anticaspa"
+          "nombre": {
+            "es": "Champú anticaspa",
+            "ca": "Xampú anticaspa"
+          },
+          "resumen": {
+            "es": "Para descamación y picor. Dos o tres veces por semana.",
+            "ca": "Per a descamació i picor. Dues o tres vegades per setmana."
+          },
+          "formato": {
+            "es": "Champú · 200 ml",
+            "ca": "Xampú · 200 ml"
+          },
+          "consulta": {
+            "es": "un champú anticaspa",
+            "ca": "un xampú anticaspa"
+          }
         },
         {
-          "nombre": "Ampollas para el cabello",
-          "resumen": "Tratamiento en cura, sobre el cuero cabelludo limpio.",
-          "formato": "Caja de 12 ampollas",
-          "consulta": "unas ampollas para el cabello"
+          "nombre": {
+            "es": "Ampollas para el cabello",
+            "ca": "Ampolles per al cabell"
+          },
+          "resumen": {
+            "es": "Tratamiento en cura, sobre el cuero cabelludo limpio.",
+            "ca": "Tractament en cura, sobre el cuir cabellut net."
+          },
+          "formato": {
+            "es": "Caja de 12 ampollas",
+            "ca": "Caixa de 12 ampolles"
+          },
+          "consulta": {
+            "es": "unas ampollas para el cabello",
+            "ca": "unes ampolles per al cabell"
+          }
         },
         {
-          "nombre": "Acondicionador sin aclarado",
-          "resumen": "Para desenredar sin apelmazar. Se aplica en medios y puntas.",
-          "formato": "Crema · 150 ml",
-          "consulta": "un acondicionador sin aclarado"
+          "nombre": {
+            "es": "Acondicionador sin aclarado",
+            "ca": "Condicionador sense esbandida"
+          },
+          "resumen": {
+            "es": "Para desenredar sin apelmazar. Se aplica en medios y puntas.",
+            "ca": "Per desenredar sense aixafar. S'aplica a migs i puntes."
+          },
+          "formato": {
+            "es": "Crema · 150 ml",
+            "ca": "Crema · 150 ml"
+          },
+          "consulta": {
+            "es": "un acondicionador sin aclarado",
+            "ca": "un condicionador sense esbandida"
+          }
         },
         {
-          "nombre": "Champú de uso frecuente",
-          "resumen": "Suave, para lavados diarios.",
-          "formato": "Champú · 400 ml",
-          "consulta": "un champú de uso frecuente"
+          "nombre": {
+            "es": "Champú de uso frecuente",
+            "ca": "Xampú d'ús freqüent"
+          },
+          "resumen": {
+            "es": "Suave, para lavados diarios.",
+            "ca": "Suau, per a rentats diaris."
+          },
+          "formato": {
+            "es": "Champú · 400 ml",
+            "ca": "Xampú · 400 ml"
+          },
+          "consulta": {
+            "es": "un champú de uso frecuente",
+            "ca": "un xampú d'ús freqüent"
+          }
         },
         {
-          "nombre": "Loción para el cuero cabelludo",
-          "resumen": "Sin aclarado, para aplicar por la noche.",
-          "formato": "Loción · 100 ml",
-          "consulta": "una loción para el cuero cabelludo"
+          "nombre": {
+            "es": "Loción para el cuero cabelludo",
+            "ca": "Loció per al cuir cabellut"
+          },
+          "resumen": {
+            "es": "Sin aclarado, para aplicar por la noche.",
+            "ca": "Sense esbandida, per aplicar a la nit."
+          },
+          "formato": {
+            "es": "Loción · 100 ml",
+            "ca": "Loció · 100 ml"
+          },
+          "consulta": {
+            "es": "una loción para el cuero cabelludo",
+            "ca": "una loció per al cuir cabellut"
+          }
         }
       ]
     },
     {
       "id": "bebe-e-infantil",
-      "nombre": "Bebé e infantil",
+      "nombre": {
+        "es": "Bebé e infantil",
+        "ca": "Bebè i infantil"
+      },
       "icono": "cara",
       "plantilla": true,
-      "intro": "Pañal, baño e higiene del bebé y del niño. Si es tu primer hijo, pregunta sin reparo: nos lo preguntan todos.",
+      "intro": {
+        "es": "Pañal, baño e higiene del bebé y del niño. Si es tu primer hijo, pregunta sin reparo: nos lo preguntan todos.",
+        "ca": "Bolquer, bany i higiene del bebè i del nen. Si és el teu primer fill, pregunta sense repares: ens ho pregunten tots."
+      },
       "productos": [
         {
-          "nombre": "Crema de pañal",
-          "resumen": "Capa protectora en cada cambio. Textura espesa.",
-          "formato": "Pomada · 100 ml",
-          "consulta": "una crema de pañal"
+          "nombre": {
+            "es": "Crema de pañal",
+            "ca": "Crema de bolquer"
+          },
+          "resumen": {
+            "es": "Capa protectora en cada cambio. Textura espesa.",
+            "ca": "Capa protectora a cada canvi. Textura espessa."
+          },
+          "formato": {
+            "es": "Pomada · 100 ml",
+            "ca": "Pomada · 100 ml"
+          },
+          "consulta": {
+            "es": "una crema de pañal",
+            "ca": "una crema de bolquer"
+          }
         },
         {
-          "nombre": "Gel-champú para bebé",
-          "resumen": "Uno para todo, sin lágrimas. Para el baño diario.",
-          "formato": "Gel · 500 ml",
-          "consulta": "un gel-champú para bebé"
+          "nombre": {
+            "es": "Gel-champú para bebé",
+            "ca": "Gel-xampú per a bebè"
+          },
+          "resumen": {
+            "es": "Uno para todo, sin lágrimas. Para el baño diario.",
+            "ca": "Un per a tot, sense llàgrimes. Per al bany diari."
+          },
+          "formato": {
+            "es": "Gel · 500 ml",
+            "ca": "Gel · 500 ml"
+          },
+          "consulta": {
+            "es": "un gel-champú para bebé",
+            "ca": "un gel-xampú per a bebè"
+          }
         },
         {
-          "nombre": "Suero fisiológico monodosis",
-          "resumen": "Para la higiene nasal y ocular. Un envase por uso.",
-          "formato": "Caja de 30 monodosis",
-          "consulta": "suero fisiológico monodosis"
+          "nombre": {
+            "es": "Suero fisiológico monodosis",
+            "ca": "Sèrum fisiològic monodosi"
+          },
+          "resumen": {
+            "es": "Para la higiene nasal y ocular. Un envase por uso.",
+            "ca": "Per a la higiene nasal i ocular. Un envàs per ús."
+          },
+          "formato": {
+            "es": "Caja de 30 monodosis",
+            "ca": "Caixa de 30 monodosis"
+          },
+          "consulta": {
+            "es": "suero fisiológico monodosis",
+            "ca": "sèrum fisiològic monodosi"
+          }
         },
         {
-          "nombre": "Termómetro digital",
-          "resumen": "Lectura rápida, punta flexible.",
-          "formato": "Unidad",
-          "consulta": "un termómetro digital"
+          "nombre": {
+            "es": "Termómetro digital",
+            "ca": "Termòmetre digital"
+          },
+          "resumen": {
+            "es": "Lectura rápida, punta flexible.",
+            "ca": "Lectura ràpida, punta flexible."
+          },
+          "formato": {
+            "es": "Unidad",
+            "ca": "Unitat"
+          },
+          "consulta": {
+            "es": "un termómetro digital",
+            "ca": "un termòmetre digital"
+          }
         },
         {
-          "nombre": "Chupete de silicona",
-          "resumen": "Varias tallas según la edad. Pregunta cuál toca.",
-          "formato": "Unidad",
-          "consulta": "un chupete de silicona"
+          "nombre": {
+            "es": "Chupete de silicona",
+            "ca": "Xumet de silicona"
+          },
+          "resumen": {
+            "es": "Varias tallas según la edad. Pregunta cuál toca.",
+            "ca": "Diverses talles segons l'edat. Pregunta quina toca."
+          },
+          "formato": {
+            "es": "Unidad",
+            "ca": "Unitat"
+          },
+          "consulta": {
+            "es": "un chupete de silicona",
+            "ca": "un xumet de silicona"
+          }
         },
         {
-          "nombre": "Leche corporal infantil",
-          "resumen": "Hidratación diaria después del baño.",
-          "formato": "Loción · 300 ml",
-          "consulta": "una leche corporal infantil"
+          "nombre": {
+            "es": "Leche corporal infantil",
+            "ca": "Llet corporal infantil"
+          },
+          "resumen": {
+            "es": "Hidratación diaria después del baño.",
+            "ca": "Hidratació diària després del bany."
+          },
+          "formato": {
+            "es": "Loción · 300 ml",
+            "ca": "Loció · 300 ml"
+          },
+          "consulta": {
+            "es": "una leche corporal infantil",
+            "ca": "una llet corporal infantil"
+          }
         }
       ]
     },
     {
       "id": "salud-intima",
-      "nombre": "Salud íntima",
+      "nombre": {
+        "es": "Salud íntima",
+        "ca": "Salut íntima"
+      },
       "icono": "corazon",
       "plantilla": true,
-      "intro": "Higiene, anticoncepción y cuidado íntimo. Se puede preguntar con discreción: por WhatsApp, por teléfono o en el mostrador, apartados del resto.",
+      "intro": {
+        "es": "Higiene, anticoncepción y cuidado íntimo. Se puede preguntar con discreción: por WhatsApp, por teléfono o en el mostrador, apartados del resto.",
+        "ca": "Higiene, anticoncepció i cura íntima. Es pot preguntar amb discreció: per WhatsApp, per telèfon o al taulell, apartats de la resta."
+      },
       "productos": [
         {
-          "nombre": "Gel de higiene íntima",
-          "resumen": "De uso diario, con pH adaptado a la zona.",
-          "formato": "Gel · 250 ml",
-          "consulta": "un gel de higiene íntima"
+          "nombre": {
+            "es": "Gel de higiene íntima",
+            "ca": "Gel d'higiene íntima"
+          },
+          "resumen": {
+            "es": "De uso diario, con pH adaptado a la zona.",
+            "ca": "D'ús diari, amb pH adaptat a la zona."
+          },
+          "formato": {
+            "es": "Gel · 250 ml",
+            "ca": "Gel · 250 ml"
+          },
+          "consulta": {
+            "es": "un gel de higiene íntima",
+            "ca": "un gel d'higiene íntima"
+          }
         },
         {
-          "nombre": "Preservativos",
-          "resumen": "Varios tamaños y texturas. Pregunta sin problema.",
-          "formato": "Caja de 12",
-          "consulta": "preservativos"
+          "nombre": {
+            "es": "Preservativos",
+            "ca": "Preservatius"
+          },
+          "resumen": {
+            "es": "Varios tamaños y texturas. Pregunta sin problema.",
+            "ca": "Diverses mides i textures. Pregunta sense problema."
+          },
+          "formato": {
+            "es": "Caja de 12",
+            "ca": "Caixa de 12"
+          },
+          "consulta": {
+            "es": "preservativos",
+            "ca": "preservatius"
+          }
         },
         {
-          "nombre": "Lubricante de base acuosa",
-          "resumen": "Compatible con preservativo.",
-          "formato": "Gel · 75 ml",
-          "consulta": "un lubricante"
+          "nombre": {
+            "es": "Lubricante de base acuosa",
+            "ca": "Lubricant de base aquosa"
+          },
+          "resumen": {
+            "es": "Compatible con preservativo.",
+            "ca": "Compatible amb preservatiu."
+          },
+          "formato": {
+            "es": "Gel · 75 ml",
+            "ca": "Gel · 75 ml"
+          },
+          "consulta": {
+            "es": "un lubricante",
+            "ca": "un lubricant"
+          }
         },
         {
-          "nombre": "Óvulos hidratantes",
-          "resumen": "Para la sequedad vaginal. Aplicación por la noche.",
-          "formato": "Caja de 10",
-          "consulta": "unos óvulos hidratantes"
+          "nombre": {
+            "es": "Óvulos hidratantes",
+            "ca": "Òvuls hidratants"
+          },
+          "resumen": {
+            "es": "Para la sequedad vaginal. Aplicación por la noche.",
+            "ca": "Per a la sequedat vaginal. Aplicació a la nit."
+          },
+          "formato": {
+            "es": "Caja de 10",
+            "ca": "Caixa de 10"
+          },
+          "consulta": {
+            "es": "unos óvulos hidratantes",
+            "ca": "uns òvuls hidratants"
+          }
         },
         {
-          "nombre": "Compresas de algodón",
-          "resumen": "Sin plásticos ni perfume. Varias absorciones.",
-          "formato": "Paquete",
-          "consulta": "compresas de algodón"
+          "nombre": {
+            "es": "Compresas de algodón",
+            "ca": "Compreses de cotó"
+          },
+          "resumen": {
+            "es": "Sin plásticos ni perfume. Varias absorciones.",
+            "ca": "Sense plàstics ni perfum. Diverses absorcions."
+          },
+          "formato": {
+            "es": "Paquete",
+            "ca": "Paquet"
+          },
+          "consulta": {
+            "es": "compresas de algodón",
+            "ca": "compreses de cotó"
+          }
         },
         {
-          "nombre": "Test de embarazo",
-          "resumen": "Resultado en pocos minutos. Se puede hacer aquí si lo prefieres.",
-          "formato": "Unidad",
-          "consulta": "un test de embarazo"
+          "nombre": {
+            "es": "Test de embarazo",
+            "ca": "Test d'embaràs"
+          },
+          "resumen": {
+            "es": "Resultado en pocos minutos. Se puede hacer aquí si lo prefieres.",
+            "ca": "Resultat en pocs minuts. Es pot fer aquí si ho prefereixes."
+          },
+          "formato": {
+            "es": "Unidad",
+            "ca": "Unitat"
+          },
+          "consulta": {
+            "es": "un test de embarazo",
+            "ca": "un test d'embaràs"
+          }
         }
       ]
     },
     {
       "id": "nutricion-y-vitaminas",
-      "nombre": "Nutrición y vitaminas",
+      "nombre": {
+        "es": "Nutrición y vitaminas",
+        "ca": "Nutrició i vitamines"
+      },
       "icono": "manzana",
       "plantilla": true,
-      "intro": "Complementos alimenticios y nutrición específica. No sustituyen a una dieta variada ni a lo que te haya dicho tu médico: si tomas medicación, dínoslo antes, porque algunos se llevan mal entre sí.",
+      "intro": {
+        "es": "Complementos alimenticios y nutrición específica. No sustituyen a una dieta variada ni a lo que te haya dicho tu médico: si tomas medicación, dínoslo antes, porque algunos se llevan mal entre sí.",
+        "ca": "Complements alimentaris i nutrició específica. No substitueixen una dieta variada ni el que t'hagi dit el teu metge: si prens medicació, digues-nos-ho abans, perquè alguns no es porten bé entre ells."
+      },
       "productos": [
         {
-          "nombre": "Vitamina D en gotas",
-          "resumen": "Dosificación en gotas. Sigue siempre la pauta indicada.",
-          "formato": "Gotas · 10 ml",
-          "consulta": "vitamina D en gotas"
+          "nombre": {
+            "es": "Vitamina D en gotas",
+            "ca": "Vitamina D en gotes"
+          },
+          "resumen": {
+            "es": "Dosificación en gotas. Sigue siempre la pauta indicada.",
+            "ca": "Dosificació en gotes. Segueix sempre la pauta indicada."
+          },
+          "formato": {
+            "es": "Gotas · 10 ml",
+            "ca": "Gotes · 10 ml"
+          },
+          "consulta": {
+            "es": "vitamina D en gotas",
+            "ca": "vitamina D en gotes"
+          }
         },
         {
-          "nombre": "Complejo de vitamina B",
-          "resumen": "Una toma al día, con el desayuno.",
-          "formato": "60 cápsulas",
-          "consulta": "un complejo de vitamina B"
+          "nombre": {
+            "es": "Complejo de vitamina B",
+            "ca": "Complex de vitamina B"
+          },
+          "resumen": {
+            "es": "Una toma al día, con el desayuno.",
+            "ca": "Una presa al dia, amb l'esmorzar."
+          },
+          "formato": {
+            "es": "60 cápsulas",
+            "ca": "60 càpsules"
+          },
+          "consulta": {
+            "es": "un complejo de vitamina B",
+            "ca": "un complex de vitamina B"
+          }
         },
         {
-          "nombre": "Magnesio",
-          "resumen": "En comprimidos. Pregunta por la forma que mejor te siente.",
-          "formato": "90 comprimidos",
-          "consulta": "magnesio"
+          "nombre": {
+            "es": "Magnesio",
+            "ca": "Magnesi"
+          },
+          "resumen": {
+            "es": "En comprimidos. Pregunta por la forma que mejor te siente.",
+            "ca": "En comprimits. Pregunta per la forma que et vagi millor."
+          },
+          "formato": {
+            "es": "90 comprimidos",
+            "ca": "90 comprimits"
+          },
+          "consulta": {
+            "es": "magnesio",
+            "ca": "magnesi"
+          }
         },
         {
           "nombre": "Omega 3",
-          "resumen": "Perlas de aceite de pescado. Guardar en sitio fresco.",
-          "formato": "60 perlas",
-          "consulta": "omega 3"
+          "resumen": {
+            "es": "Perlas de aceite de pescado. Guardar en sitio fresco.",
+            "ca": "Perles d'oli de peix. Guardar en lloc fresc."
+          },
+          "formato": {
+            "es": "60 perlas",
+            "ca": "60 perles"
+          },
+          "consulta": {
+            "es": "omega 3",
+            "ca": "omega 3"
+          }
         },
         {
-          "nombre": "Probióticos",
-          "resumen": "En sobres, para disolver. Mantener refrigerado.",
-          "formato": "30 sobres",
-          "consulta": "probióticos"
+          "nombre": {
+            "es": "Probióticos",
+            "ca": "Probiòtics"
+          },
+          "resumen": {
+            "es": "En sobres, para disolver. Mantener refrigerado.",
+            "ca": "En sobres, per dissoldre. Mantenir refrigerat."
+          },
+          "formato": {
+            "es": "30 sobres",
+            "ca": "30 sobres"
+          },
+          "consulta": {
+            "es": "probióticos",
+            "ca": "probiòtics"
+          }
         },
         {
-          "nombre": "Hierro con vitamina C",
-          "resumen": "Se absorbe mejor en ayunas. Puede teñir las heces.",
-          "formato": "30 comprimidos",
-          "consulta": "hierro con vitamina C"
+          "nombre": {
+            "es": "Hierro con vitamina C",
+            "ca": "Ferro amb vitamina C"
+          },
+          "resumen": {
+            "es": "Se absorbe mejor en ayunas. Puede teñir las heces.",
+            "ca": "S'absorbeix millor en dejú. Pot tenyir la femta."
+          },
+          "formato": {
+            "es": "30 comprimidos",
+            "ca": "30 comprimits"
+          },
+          "consulta": {
+            "es": "hierro con vitamina C",
+            "ca": "ferro amb vitamina C"
+          }
         }
       ]
     },
     {
       "id": "fitoterapia",
-      "nombre": "Fitoterapia",
+      "nombre": {
+        "es": "Fitoterapia",
+        "ca": "Fitoteràpia"
+      },
       "icono": "hoja",
       "plantilla": true,
-      "intro": "Plantas medicinales, infusiones y derivados. Que sea natural no quiere decir que sea inocuo: hay plantas que interfieren con medicamentos, así que pregúntanos antes si tomas algo.",
+      "intro": {
+        "es": "Plantas medicinales, infusiones y derivados. Que sea natural no quiere decir que sea inocuo: hay plantas que interfieren con medicamentos, así que pregúntanos antes si tomas algo.",
+        "ca": "Plantes medicinals, infusions i derivats. Que sigui natural no vol dir que sigui innocu: hi ha plantes que interfereixen amb medicaments, així que pregunta'ns abans si prens alguna cosa."
+      },
       "productos": [
         {
-          "nombre": "Infusión de manzanilla",
-          "resumen": "En bolsitas. La de toda la vida.",
-          "formato": "20 bolsitas",
-          "consulta": "infusión de manzanilla"
+          "nombre": {
+            "es": "Infusión de manzanilla",
+            "ca": "Infusió de camamilla"
+          },
+          "resumen": {
+            "es": "En bolsitas. La de toda la vida.",
+            "ca": "En bossetes. La de tota la vida."
+          },
+          "formato": {
+            "es": "20 bolsitas",
+            "ca": "20 bossetes"
+          },
+          "consulta": {
+            "es": "infusión de manzanilla",
+            "ca": "infusió de camamilla"
+          }
         },
         {
-          "nombre": "Infusión de tila",
-          "resumen": "En bolsitas, para tomar caliente.",
-          "formato": "20 bolsitas",
-          "consulta": "infusión de tila"
+          "nombre": {
+            "es": "Infusión de tila",
+            "ca": "Infusió de til·la"
+          },
+          "resumen": {
+            "es": "En bolsitas, para tomar caliente.",
+            "ca": "En bossetes, per prendre calenta."
+          },
+          "formato": {
+            "es": "20 bolsitas",
+            "ca": "20 bossetes"
+          },
+          "consulta": {
+            "es": "infusión de tila",
+            "ca": "infusió de til·la"
+          }
         },
         {
-          "nombre": "Aceite esencial de árbol de té",
-          "resumen": "Uso tópico y diluido. Nunca puro sobre la piel.",
-          "formato": "Aceite · 10 ml",
-          "consulta": "aceite esencial de árbol de té"
+          "nombre": {
+            "es": "Aceite esencial de árbol de té",
+            "ca": "Oli essencial d'arbre del te"
+          },
+          "resumen": {
+            "es": "Uso tópico y diluido. Nunca puro sobre la piel.",
+            "ca": "Ús tòpic i diluït. Mai pur sobre la pell."
+          },
+          "formato": {
+            "es": "Aceite · 10 ml",
+            "ca": "Oli · 10 ml"
+          },
+          "consulta": {
+            "es": "aceite esencial de árbol de té",
+            "ca": "oli essencial d'arbre del te"
+          }
         },
         {
-          "nombre": "Jarabe de própolis",
-          "resumen": "Con miel. No apto para menores de un año.",
-          "formato": "Jarabe · 150 ml",
-          "consulta": "jarabe de própolis"
+          "nombre": {
+            "es": "Jarabe de própolis",
+            "ca": "Xarop de pròpolis"
+          },
+          "resumen": {
+            "es": "Con miel. No apto para menores de un año.",
+            "ca": "Amb mel. No apte per a menors d'un any."
+          },
+          "formato": {
+            "es": "Jarabe · 150 ml",
+            "ca": "Xarop · 150 ml"
+          },
+          "consulta": {
+            "es": "jarabe de própolis",
+            "ca": "xarop de pròpolis"
+          }
         },
         {
-          "nombre": "Cápsulas de cardo mariano",
-          "resumen": "Complemento alimenticio. Una toma al día.",
-          "formato": "60 cápsulas",
-          "consulta": "cápsulas de cardo mariano"
+          "nombre": {
+            "es": "Cápsulas de cardo mariano",
+            "ca": "Càpsules de card marià"
+          },
+          "resumen": {
+            "es": "Complemento alimenticio. Una toma al día.",
+            "ca": "Complement alimentari. Una presa al dia."
+          },
+          "formato": {
+            "es": "60 cápsulas",
+            "ca": "60 càpsules"
+          },
+          "consulta": {
+            "es": "cápsulas de cardo mariano",
+            "ca": "càpsules de card marià"
+          }
         },
         {
-          "nombre": "Gel de aloe vera",
-          "resumen": "Para después del sol o pequeñas rozaduras.",
-          "formato": "Gel · 200 ml",
-          "consulta": "gel de aloe vera"
+          "nombre": {
+            "es": "Gel de aloe vera",
+            "ca": "Gel d'àloe vera"
+          },
+          "resumen": {
+            "es": "Para después del sol o pequeñas rozaduras.",
+            "ca": "Per a després del sol o petites irritacions."
+          },
+          "formato": {
+            "es": "Gel · 200 ml",
+            "ca": "Gel · 200 ml"
+          },
+          "consulta": {
+            "es": "gel de aloe vera",
+            "ca": "gel d'àloe vera"
+          }
         }
       ]
     },
     {
       "id": "ortopedia",
-      "nombre": "Ortopedia",
+      "nombre": {
+        "es": "Ortopedia",
+        "ca": "Ortopèdia"
+      },
       "icono": "cruz",
       "plantilla": true,
-      "intro": "Vendajes, sujeciones y ayudas técnicas. Casi todo va por talla: si puedes, pásate a que te midamos, que acertar a ojo sale caro.",
+      "intro": {
+        "es": "Vendajes, sujeciones y ayudas técnicas. Casi todo va por talla: si puedes, pásate a que te midamos, que acertar a ojo sale caro.",
+        "ca": "Benes, subjeccions i ajudes tècniques. Gairebé tot va per talla: si pots, passa que et prenguem mides, que encertar a ull surt car."
+      },
       "productos": [
         {
-          "nombre": "Tobillera elástica",
-          "resumen": "Sujeción ligera para esguinces ya en recuperación.",
-          "formato": "Tallas S a XL",
-          "consulta": "una tobillera elástica"
+          "nombre": {
+            "es": "Tobillera elástica",
+            "ca": "Turmellera elàstica"
+          },
+          "resumen": {
+            "es": "Sujeción ligera para esguinces ya en recuperación.",
+            "ca": "Subjecció lleugera per a esquinços ja en recuperació."
+          },
+          "formato": {
+            "es": "Tallas S a XL",
+            "ca": "Talles S a XL"
+          },
+          "consulta": {
+            "es": "una tobillera elástica",
+            "ca": "una turmellera elàstica"
+          }
         },
         {
-          "nombre": "Muñequera con férula",
-          "resumen": "Inmoviliza la muñeca dejando libres los dedos.",
-          "formato": "Derecha o izquierda",
-          "consulta": "una muñequera con férula"
+          "nombre": {
+            "es": "Muñequera con férula",
+            "ca": "Canellera amb fèrula"
+          },
+          "resumen": {
+            "es": "Inmoviliza la muñeca dejando libres los dedos.",
+            "ca": "Immobilitza el canell deixant lliures els dits."
+          },
+          "formato": {
+            "es": "Derecha o izquierda",
+            "ca": "Dreta o esquerra"
+          },
+          "consulta": {
+            "es": "una muñequera con férula",
+            "ca": "una canellera amb fèrula"
+          }
         },
         {
-          "nombre": "Plantillas de gel",
-          "resumen": "Amortiguan el talón. Se recortan a la medida.",
-          "formato": "Par · tallas 35 a 46",
-          "consulta": "unas plantillas de gel"
+          "nombre": {
+            "es": "Plantillas de gel",
+            "ca": "Plantilles de gel"
+          },
+          "resumen": {
+            "es": "Amortiguan el talón. Se recortan a la medida.",
+            "ca": "Amorteixen el taló. Es retallen a mida."
+          },
+          "formato": {
+            "es": "Par · tallas 35 a 46",
+            "ca": "Parell · talles 35 a 46"
+          },
+          "consulta": {
+            "es": "unas plantillas de gel",
+            "ca": "unes plantilles de gel"
+          }
         },
         {
-          "nombre": "Faja lumbar",
-          "resumen": "Sujeción de la zona baja de la espalda.",
-          "formato": "Tallas S a XXL",
-          "consulta": "una faja lumbar"
+          "nombre": {
+            "es": "Faja lumbar",
+            "ca": "Faixa lumbar"
+          },
+          "resumen": {
+            "es": "Sujeción de la zona baja de la espalda.",
+            "ca": "Subjecció de la zona baixa de l'esquena."
+          },
+          "formato": {
+            "es": "Tallas S a XXL",
+            "ca": "Talles S a XXL"
+          },
+          "consulta": {
+            "es": "una faja lumbar",
+            "ca": "una faixa lumbar"
+          }
         },
         {
-          "nombre": "Media de compresión",
-          "resumen": "Varias compresiones. Conviene medir la pierna antes.",
-          "formato": "Par · según medida",
-          "consulta": "medias de compresión"
+          "nombre": {
+            "es": "Media de compresión",
+            "ca": "Mitja de compressió"
+          },
+          "resumen": {
+            "es": "Varias compresiones. Conviene medir la pierna antes.",
+            "ca": "Diverses compressions. Convé mesurar la cama abans."
+          },
+          "formato": {
+            "es": "Par · según medida",
+            "ca": "Parell · segons mida"
+          },
+          "consulta": {
+            "es": "medias de compresión",
+            "ca": "mitges de compressió"
+          }
         },
         {
-          "nombre": "Collarín cervical blando",
-          "resumen": "Uso limitado en el tiempo y con indicación médica.",
-          "formato": "Tallas S a L",
-          "consulta": "un collarín cervical"
+          "nombre": {
+            "es": "Collarín cervical blando",
+            "ca": "Collaret cervical tou"
+          },
+          "resumen": {
+            "es": "Uso limitado en el tiempo y con indicación médica.",
+            "ca": "Ús limitat en el temps i amb indicació mèdica."
+          },
+          "formato": {
+            "es": "Tallas S a L",
+            "ca": "Talles S a L"
+          },
+          "consulta": {
+            "es": "un collarín cervical",
+            "ca": "un collaret cervical"
+          }
         }
       ]
     }

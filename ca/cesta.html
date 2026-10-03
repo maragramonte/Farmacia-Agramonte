@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
+     python herramientas/catalogo.py. Los productos están en
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/cesta.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/cesta.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/cesta.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/cesta.html">
+<meta name="description" content="El que has apuntat per encarregar a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).">
+<title>La teva cistella — Farmàcia Agramonte</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2a1d12">
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
+<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../tipografias.css">
+<link rel="stylesheet" href="../marca.css">
+<link rel="stylesheet" href="../catalogo.css">
+<link rel="stylesheet" href="../cesta.css">
+<link rel="stylesheet" href="../idiomas.css">
+<!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
+     para que no frene el pintado: lo que depende de ella nace con hidden y se
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
+<script src="../cesta.js" defer></script>
+</head>
+<body>
+
+<!-- Lo que se le dice a un lector de pantalla al añadir o quitar de la cesta.
+     Está en todas las páginas porque desde todas se puede añadir. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="index.html">Farmàcia Agramonte</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html">Inici</a>
+      <a href="index.html#categorias">Categories</a>
+      <a href="historia.html">Història</a>
+      <a href="index.html#contacto">Contacte</a>
+    </nav>
+    <nav class="idiomas" aria-label="Idioma">
+      <a href="../cesta.html" lang="es" hreflang="es" title="Veure aquesta pàgina en Español">ES</a>
+      <span aria-current="true" title="Idioma actual: Català">CA</span>
+    </nav>
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden aria-current="page">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cesta-rotulo">Cistella</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
+    <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+      Demanar
+    </a>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <p class="migas"><a href="index.html">Inici</a> › <a href="index.html#categorias">Categories</a> › La teva cistella</p>
+
+  <div class="portada-categoria">
+    <h1>La teva cistella</h1>
+    <p>El que has apuntat per encarregar. Es guarda <strong>només en aquest navegador</strong>: no ens arriba res, ni ho veiem, fins que ens enviïs el missatge tu.</p>
+  </div>
+
+  <div class="cesta-sinjs" data-cesta-sinjs>
+    <p><strong>La cistella necessita JavaScript</strong>, i en aquest navegador està desactivat o no s'ha arribat a carregar. La resta del catàleg funciona igual: pots veure-ho tot i demanar-nos el que vulguis per WhatsApp.</p>
+    <p>Escriu-nos al <a href="https://wa.me/34661192472" target="_blank" rel="noopener">661 192 472</a> o truca al <a href="tel:+34933195921">933 19 59 21</a>, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30.</p>
+  </div>
+
+  <div class="cesta-vacia" data-cesta-vacia hidden>
+    <h2>Encara no has apuntat res</h2>
+    <p>Entra en una categoria i prem «Afegir» en el que t'interessi. Pots ajuntar coses de categories diferents: la cistella és una de sola.</p>
+    <p><a href="index.html#categorias">Veure les categories</a></p>
+  </div>
+
+  <div data-cesta-llena hidden>
+    <ul class="cesta-lista" data-cesta-lista></ul>
+
+    <p class="cesta-resumen">
+      A la cistella: <strong data-cesta-total>0</strong>
+      <span>Sense preus: te'ls confirmem quan et contestem.</span>
+    </p>
+
+    <p class="cesta-recorte" data-cesta-recorte hidden></p>
+
+    <div class="cesta-acciones">
+      <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener" data-cesta-whatsapp>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+        Enviar l'encàrrec
+      </a>
+      <button type="button" class="cesta-secundario" data-cesta-copia>Copiar la llista</button>
+      <a class="cesta-secundario" href="mailto:farmacia.lallana@gmail.com" data-cesta-correo>Enviar-ho per correu</a>
+      <button type="button" class="cesta-secundario cesta-vaciar" data-cesta-vaciar>Buidar la cistella</button>
+    </div>
+  </div>
+
+  <div class="cierre">
+    <h2>Què passa quan l'envies</h2>
+    <p>S'obre el teu WhatsApp amb el missatge escrit: pots llegir-lo, canviar el que vulguis i enviar-lo tu. <strong>Aquí no es cobra res i no et demanem cap dada</strong>; això no és una botiga en línia, és la manera d'encarregar sense escriure'ns els productes un per un.</p>
+    <p>Et contestem amb el preu i quan el tindràs llest, i es paga en recollir-lo al taulell, que és on a més et podem aconsellar. Si prefereixes trucar, el número és el <a href="tel:+34933195921">933 19 59 21</a>.</p>
+    <p>De <strong>medicaments</strong> no hi ha catàleg i no entren a la cistella: <a href="catalogo-medicamentos.html">allà s'explica</a> com s'encarrega una recepta.</p>
+  </div>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p>© 2026 Farmàcia Agramonte</p>
+    <p>
+      <a href="aviso-legal.html">Avís legal</a> ·
+      <a href="privacidad.html">Privacitat</a> ·
+      <a href="cookies.html">Galetes</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

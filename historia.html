@@ -5,22 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
      python herramientas/catalogo.py. Los productos están en
-     herramientas/catalogo-datos.json. -->
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
 <link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/historia.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/historia.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/historia.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/historia.html">
 <meta name="description" content="La Farmàcia Agramonte, antigua Farmàcia Joaquim Cases: tienda modernista protegida en la Plaça de la Llana, El Born (Barcelona), con referencias desde 1600.">
 <title>Quiénes somos — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
-<!-- Tipografías propias, servidas desde este mismo repositorio. -->
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
 <link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="marca.css">
 <link rel="stylesheet" href="catalogo.css">
 <link rel="stylesheet" href="cesta.css">
+<link rel="stylesheet" href="idiomas.css">
 <!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
      para que no frene el pintado: lo que depende de ella nace con hidden y se
-     destapa al cargar, así que nada parpadea ni se ve a medias. -->
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
 <script src="cesta.js" defer></script>
 </head>
 <body>
@@ -37,6 +43,10 @@
       <a href="index.html#categorias">Categorías</a>
       <a href="historia.html" aria-current="page">Historia</a>
       <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <nav class="idiomas" aria-label="Idioma">
+      <span aria-current="true" title="Idioma actual: Español">ES</span>
+      <a href="ca/historia.html" lang="ca" hreflang="ca" title="Ver esta página en Català">CA</a>
     </nav>
     <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
@@ -56,87 +66,38 @@
 
   <div class="portada-categoria">
     <h1>Quiénes somos</h1>
-    <p>
-      En la Farmàcia Agramonte nos esforzamos todos los días para que nuestros
-      clientes reciban el mejor servicio posible.
-    </p>
+    <p>En la Farmàcia Agramonte nos esforzamos todos los días para que nuestros clientes reciban el mejor servicio posible.</p>
   </div>
 
   <div class="historia">
     <section class="detalle">
       <h2>Pasión por la salud</h2>
-      <p>
-        En la Farmàcia Agramonte tenemos pasión por la salud, y por eso nuestro
-        objetivo es proporcionar el mejor consejo farmacéutico con el trato más
-        humano y profesional posible. Te acompañamos y te asesoramos en todas y
-        cada una de tus consultas y tratamientos.
-      </p>
-      <p>
-        La farmacia la regenta <strong>Zoila Agramonte Bucho</strong>, licenciada
-        en Farmacia por la Universidad de La Habana, farmacéutica y dietista
-        titulada, con más de treinta años de experiencia en el sector
-        farmacéutico.
-      </p>
+      <p>En la Farmàcia Agramonte tenemos pasión por la salud, y por eso nuestro objetivo es proporcionar el mejor consejo farmacéutico con el trato más humano y profesional posible. Te acompañamos y te asesoramos en todas y cada una de tus consultas y tratamientos.</p>
+      <p>La farmacia la regenta <strong>Zoila Agramonte Bucho</strong>, licenciada en Farmacia por la Universidad de La Habana, farmacéutica y dietista titulada, con más de treinta años de experiencia en el sector farmacéutico.</p>
     </section>
 
     <section class="detalle">
       <h2>Una tienda modernista protegida</h2>
-      <p>
-        La Farmàcia Agramonte, antigua <strong>Farmàcia Joaquim Cases</strong>,
-        es una tienda modernista protegida como <strong>Bien Cultural de
-        Interés Local</strong> y catalogada como comercio emblemático de gran
-        interés.
-      </p>
-      <p>
-        La decoración actual del local viene de una reforma modernista de 1880,
-        la época en la que la familia Cases creó una fórmula magistral que se
-        popularizó por toda España e incluso en América, la «Solución Cases»,
-        famosa por su capacidad de paliar múltiples enfermedades y dolores.
-      </p>
-      <p>
-        Por fuera, en la fachada destaca un mueble de madera aplacada que ocupa
-        toda su superficie. Por dentro, los acabados modernistas propios de la
-        época: cristales con motivos florales grabados al ácido, pavimento de
-        mosaico hidráulico y muebles con acabados de ebanistería de líneas
-        curvas y motivos florales.
-      </p>
-      <p>
-        Esos motivos modernistas conviven con restos de arquitectura medieval,
-        como el arco de piedra de carga del interior. Está datado en el
-        <strong>siglo XIII</strong>, de los que se construían para hacer
-        posibles espacios flexibles donde ubicar talleres, comercios y demás.
-      </p>
+      <p>La Farmàcia Agramonte, antigua <strong>Farmàcia Joaquim Cases</strong>, es una tienda modernista protegida como <strong>Bien Cultural de Interés Local</strong> y catalogada como comercio emblemático de gran interés.</p>
+      <p>La decoración actual del local viene de una reforma modernista de 1880, la época en la que la familia Cases creó una fórmula magistral que se popularizó por toda España e incluso en América, la «Solución Cases», famosa por su capacidad de paliar múltiples enfermedades y dolores.</p>
+      <p>Por fuera, en la fachada destaca un mueble de madera aplacada que ocupa toda su superficie. Por dentro, los acabados modernistas propios de la época: cristales con motivos florales grabados al ácido, pavimento de mosaico hidráulico y muebles con acabados de ebanistería de líneas curvas y motivos florales.</p>
+      <p>Esos motivos modernistas conviven con restos de arquitectura medieval, como el arco de piedra de carga del interior. Está datado en el <strong>siglo XIII</strong>, de los que se construían para hacer posibles espacios flexibles donde ubicar talleres, comercios y demás.</p>
     </section>
 
     <section class="detalle">
       <h2>Cuatro siglos de boticarios</h2>
-      <p>
-        Las primeras referencias históricas de la farmacia datan de
-        <strong>1600</strong>, y hablan de un espacio regentado por una larga
-        estirpe de boticarios.
-      </p>
+      <p>Las primeras referencias históricas de la farmacia datan de <strong>1600</strong>, y hablan de un espacio regentado por una larga estirpe de boticarios.</p>
       <ul class="cronologia">
-        <li><strong>Hasta 1747</strong><span>Los Saurina, los primeros en
-          regentarla.</span></li>
-        <li><strong>1864 – 2014</strong><span>La familia Cases, propietaria
-          durante siglo y medio.</span></li>
-        <li><strong>Desde 2019</strong><span>Zoila Agramonte Bucho, nueva
-          titular.</span></li>
+        <li><strong>Hasta 1747</strong><span>Los Saurina, los primeros en regentarla.</span></li>
+        <li><strong>1864 – 2014</strong><span>La familia Cases, propietaria durante siglo y medio.</span></li>
+        <li><strong>Desde 2019</strong><span>Zoila Agramonte Bucho, nueva titular.</span></li>
       </ul>
-      <p>
-        En 2019 Zoila decide poner en valor el inmenso patrimonio histórico y
-        artístico que tiene la farmacia y, al mismo tiempo, dotarla de
-        dinamismo y modernidad.
-      </p>
+      <p>En 2019 Zoila decide poner en valor el inmenso patrimonio histórico y artístico que tiene la farmacia y, al mismo tiempo, dotarla de dinamismo y modernidad.</p>
     </section>
 
     <section class="detalle">
       <h2>Reportajes de prensa</h2>
-      <p>
-        La revista digital La República nos contactó para hacer un reportaje sobre la
-        farmacia y sobre cómo había repercutido el impacto de la pandemia de
-        covid-19 en el barrio de Santa Caterina.
-      </p>
+      <p>La revista digital La República nos contactó para hacer un reportaje sobre la farmacia y sobre cómo había repercutido el impacto de la pandemia de covid-19 en el barrio de Santa Caterina.</p>
       <a class="prensa" href="https://www.larepublica.cat/coronavirus/reportatge-la-barcelona-que-no-es-resigna/" target="_blank" rel="noopener">
         <span class="prensa-medio">La República · Reportaje</span>
         <strong>Coronavirus: La Barcelona que no se resigna</strong>
@@ -147,12 +108,7 @@
 
   <div class="cierre">
     <h2>Ven a verla</h2>
-    <p>
-      Estamos en la Plaça de la Llana, 11, en El Born, de lunes a sábado de 9:00
-      a 14:30 y de 16:00 a 20:30. Si quieres preguntar algo antes de venir,
-      escríbenos por <a href="https://wa.me/34661192472" target="_blank" rel="noopener">WhatsApp</a>
-      o llama al <a href="tel:+34933195921">933 19 59 21</a>.
-    </p>
+    <p>Estamos en la Plaça de la Llana, 11, en El Born, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30. Si quieres preguntar algo antes de venir, escríbenos por <a href="https://wa.me/34661192472" target="_blank" rel="noopener">WhatsApp</a> o llama al <a href="tel:+34933195921">933 19 59 21</a>.</p>
   </div>
 
 </main>

@@ -9,9 +9,15 @@
    de venta a distancia: el encargo se confirma y se paga en el mostrador.
 
    Por qué esto no es React: lo único que hace falta es guardar una lista y
-   volver a pintarla. Son estas trescientas líneas, sin dependencias, sin
+   volver a pintarla. Son estas cuatrocientas líneas, sin dependencias, sin
    compilar nada y sin que los testers instalen Node: siguen abriendo
    servir.bat y ya está.
+
+   IDIOMAS. Los textos están abajo, en TEXTOS, y se elige por el lang del
+   <html>, que lo pone el generador. Un idioma que no esté en la tabla cae en
+   español, igual que en catalogo.py. Es el único fichero del sitio cuyos
+   textos NO están en herramientas/textos.json, y es por una razón: aquí se
+   escriben mientras alguien pulsa botones, no al generar las páginas.
 
    El contrato con el HTML son atributos data-*, y lo pone el generador
    (herramientas/catalogo.py). Si cambias un nombre aquí, cámbialo allí:
@@ -53,11 +59,90 @@
   var TOPE_URL = 1800;
   var TOPE_UNIDADES = 99;
 
+  /* ---------- Los textos ----------
+     Los %s se rellenan en orden. Al añadir un idioma, se añade su bloque; lo
+     que falte sale en español. */
+  var TEXTOS = {
+    es: {
+      cesta_con: "Tu cesta: %s",
+      cesta_vacia: "Tu cesta, vacía",
+      uno: "1 producto",
+      varios: "%s productos",
+      anadido: "Añadido a la cesta: %s. Ahora tienes %s.",
+      quitado: "Quitado de la cesta. Quedan %s.",
+      vaciada: "Cesta vacía.",
+      quitar_una: "Quitar una unidad de %s",
+      anadir_una: "Añadir una unidad de %s",
+      quitar_esto: "Quitar %s de la cesta",
+      quitar: "Quitar",
+      ya_tienes: "Ya tienes <strong>%s</strong> en la cesta. <a href=\"cesta.html\">Ver la cesta</a>",
+      copiar: "Copiar la lista",
+      copiada: "Copiada",
+      no_copiada: "No se ha podido copiar",
+      copiada_aviso: "Lista copiada al portapapeles.",
+      no_copiada_aviso: "No se ha podido copiar la lista.",
+      mensaje_cabeza: "Hola, quería encargar:\n\n",
+      mensaje_pie: "\n\n¿Me decís el precio y cuándo lo puedo recoger? Gracias.",
+      mensaje_resto_uno: "\n- ...y 1 producto más.",
+      mensaje_resto: "\n- ...y %s productos más.",
+      correo_asunto: "Encargo desde la web",
+      recorte: "La cesta es tan larga que en WhatsApp no cabe de una vez: el " +
+               "mensaje llevará los primeros y dirá que faltan <strong>%s</strong>. " +
+               "Para mandarla entera, usa <strong>Copiar la lista</strong> o el correo."
+    },
+    ca: {
+      cesta_con: "La teva cistella: %s",
+      cesta_vacia: "La teva cistella, buida",
+      uno: "1 producte",
+      varios: "%s productes",
+      anadido: "Afegit a la cistella: %s. Ara tens %s.",
+      quitado: "Tret de la cistella. Queden %s.",
+      vaciada: "Cistella buida.",
+      quitar_una: "Treure una unitat de %s",
+      anadir_una: "Afegir una unitat de %s",
+      quitar_esto: "Treure %s de la cistella",
+      quitar: "Treure",
+      ya_tienes: "Ja en tens <strong>%s</strong> a la cistella. <a href=\"cesta.html\">Veure la cistella</a>",
+      copiar: "Copiar la llista",
+      copiada: "Copiada",
+      no_copiada: "No s'ha pogut copiar",
+      copiada_aviso: "Llista copiada al porta-retalls.",
+      no_copiada_aviso: "No s'ha pogut copiar la llista.",
+      mensaje_cabeza: "Hola, volia encarregar:\n\n",
+      mensaje_pie: "\n\nEm dieu el preu i quan ho puc recollir? Gràcies.",
+      mensaje_resto_uno: "\n- ...i 1 producte més.",
+      mensaje_resto: "\n- ...i %s productes més.",
+      correo_asunto: "Encàrrec des del web",
+      recorte: "La cistella és tan llarga que a WhatsApp no hi cap d'un cop: el " +
+               "missatge portarà els primers i dirà que en falten <strong>%s</strong>. " +
+               "Per enviar-la sencera, fes servir <strong>Copiar la llista</strong> o el correu."
+    }
+  };
+
+  var IDIOMA = (function () {
+    var l = (document.documentElement.getAttribute("lang") || "es").slice(0, 2);
+    return TEXTOS[l] ? l : "es";
+  })();
+
+  function t(clave) {
+    var cadena = TEXTOS[IDIOMA][clave];
+    if (cadena === undefined) cadena = TEXTOS.es[clave];
+    /* Los huecos se rellenan en orden con el resto de los argumentos. Se hace
+       a mano y no con una librería porque es lo único que hace falta. */
+    for (var i = 1; i < arguments.length; i++) {
+      cadena = cadena.replace("%s", arguments[i]);
+    }
+    return cadena;
+  }
+
   /* ---------- Dónde se guarda ----------
      En localStorage, que es del navegador de quien mira la web: la farmacia no
      ve nada de esto. Puede fallar —ventana privada, almacenamiento bloqueado—
      y entonces no hay que romperse: se tira de esta copia en memoria y la cesta
-     dura lo que dure la pestaña. Es peor, pero funciona. */
+     dura lo que dure la pestaña. Es peor, pero funciona.
+
+     La clave no lleva el idioma a propósito: quien añade algo en español y
+     luego cambia a catalán tiene que encontrar su cesta, no otra vacía. */
   var memoria = null;
 
   function acota(n) {
@@ -159,18 +244,16 @@
   }
 
   function mensaje(items, tope) {
-    var cabeza = "Hola, quería encargar:\n\n";
-    var pie = "\n\n¿Me decís el precio y cuándo lo puedo recoger? Gracias.";
     var puestas = lineas(items);
     var fuera = 0;
 
     /* Recortar por el final hasta que el enlace quepa. Mejor un mensaje que
-       dice «y 3 más» que un enlace que no abre. */
+       dice «y 25 más» que un enlace que no abre. */
     while (true) {
-      var cola = fuera
-        ? "\n- ...y " + fuera + " producto" + (fuera > 1 ? "s" : "") + " más."
-        : "";
-      var texto = cabeza + puestas.join("\n") + cola + pie;
+      var cola = "";
+      if (fuera === 1) cola = t("mensaje_resto_uno");
+      else if (fuera > 1) cola = t("mensaje_resto", fuera);
+      var texto = t("mensaje_cabeza") + puestas.join("\n") + cola + t("mensaje_pie");
       /* Devuelve {texto, fuera}, no sólo la cadena: quien pinta la página
          necesita saber cuántas líneas se han quedado fuera para avisarlo. */
       if (!tope || encodeURIComponent(texto).length <= tope ||
@@ -182,40 +265,44 @@
     }
   }
 
-  function enlaceWhatsapp(items) {
+  function topeDelTexto() {
     /* El tope es de la URL entera, así que se descuenta lo que ocupa la base. */
-    var base = "https://wa.me/" + WHATSAPP + "?text=";
-    return base + encodeURIComponent(mensaje(items, TOPE_URL - base.length).texto);
+    return TOPE_URL - ("https://wa.me/" + WHATSAPP + "?text=").length;
+  }
+
+  function enlaceWhatsapp(items) {
+    return "https://wa.me/" + WHATSAPP + "?text=" +
+      encodeURIComponent(mensaje(items, topeDelTexto()).texto);
   }
 
   function enlaceCorreo(items) {
     return "mailto:" + CORREO +
-      "?subject=" + encodeURIComponent("Encargo desde la web") +
+      "?subject=" + encodeURIComponent(t("correo_asunto")) +
       "&body=" + encodeURIComponent(mensaje(items, null).texto);
   }
 
   /* ---------- Pintar ---------- */
-  function escribe(el, t) {
-    if (el) el.textContent = t;
+  function escribe(el, s) {
+    if (el) el.textContent = s;
   }
 
-  function escapa(t) {
-    return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+  function escapa(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
       .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
   function plural(n) {
-    return n === 1 ? "1 producto" : n + " productos";
+    return n === 1 ? t("uno") : t("varios", n);
   }
 
-  function avisa(t) {
+  function avisa(s) {
     var zona = document.querySelector("[data-cesta-avisos]");
     if (!zona) return;
     /* Vaciar y volver a escribir: si el texto fuese idéntico al anterior
        —añadir dos veces el mismo producto— un lector de pantalla no lo
        anunciaría otra vez. */
     zona.textContent = "";
-    window.setTimeout(function () { zona.textContent = t; }, 60);
+    window.setTimeout(function () { zona.textContent = s; }, 60);
   }
 
   function pintaContador(items) {
@@ -225,7 +312,7 @@
       enlaces[i].hidden = false;
       escribe(enlaces[i].querySelector("[data-cesta-cuenta]"), String(n));
       enlaces[i].setAttribute("aria-label",
-        n ? "Tu cesta: " + plural(n) : "Tu cesta, vacía");
+        n ? t("cesta_con", plural(n)) : t("cesta_vacia"));
       enlaces[i].classList.toggle("cesta-enlace-vacio", n === 0);
     }
   }
@@ -248,8 +335,7 @@
         continue;
       }
       estados[j].hidden = false;
-      estados[j].innerHTML = "Ya tienes <strong>" + cuantos +
-        '</strong> en la cesta. <a href="cesta.html">Ver la cesta</a>';
+      estados[j].innerHTML = t("ya_tienes", cuantos);
     }
   }
 
@@ -272,41 +358,34 @@
         "</div>" +
         '<div class="cesta-cantidad">' +
           '<button type="button" data-cesta-menos="' + escapa(it.id) + '"' +
-            ' aria-label="Quitar una unidad de ' + escapa(it.nombre) + '"' +
+            ' aria-label="' + escapa(t("quitar_una", it.nombre)) + '"' +
             (it.cantidad <= 1 ? " disabled" : "") + ">&minus;</button>" +
           '<span aria-hidden="true">' + it.cantidad + "</span>" +
           '<button type="button" data-cesta-mas="' + escapa(it.id) + '"' +
-            ' aria-label="Añadir una unidad de ' + escapa(it.nombre) + '"' +
+            ' aria-label="' + escapa(t("anadir_una", it.nombre)) + '"' +
             (it.cantidad >= TOPE_UNIDADES ? " disabled" : "") + ">+</button>" +
         "</div>" +
         '<button type="button" class="cesta-quitar" data-cesta-quita="' +
-          escapa(it.id) + '" aria-label="Quitar ' + escapa(it.nombre) +
-          ' de la cesta">Quitar</button>' +
-        "</li>";
+          escapa(it.id) + '" aria-label="' +
+          escapa(t("quitar_esto", it.nombre)) + '">' + escapa(t("quitar")) +
+        "</button></li>";
     }).join("");
 
     var wa = document.querySelector("[data-cesta-whatsapp]");
     if (wa) wa.href = enlaceWhatsapp(items);
     var correo = document.querySelector("[data-cesta-correo]");
     if (correo) correo.href = enlaceCorreo(items);
+    escribe(document.querySelector("[data-cesta-total]"), plural(unidades(items)));
 
     /* Si el mensaje de WhatsApp no cabe entero hay que decirlo aquí: enviar un
        encargo recortado creyendo que iba completo es el peor fallo que puede
        tener esta página. Por correo y copiando la lista sí va todo. */
     var recorte = document.querySelector("[data-cesta-recorte]");
     if (recorte) {
-      var tope = TOPE_URL - ("https://wa.me/" + WHATSAPP + "?text=").length;
-      var fuera = mensaje(items, tope).fuera;
+      var fuera = mensaje(items, topeDelTexto()).fuera;
       recorte.hidden = fuera === 0;
-      if (fuera) {
-        recorte.innerHTML = "La cesta es tan larga que en WhatsApp no cabe de " +
-          "una vez: el mensaje llevará los primeros y dirá que faltan " +
-          "<strong>" + fuera + "</strong>. Para mandarla entera, usa " +
-          "<strong>Copiar la lista</strong> o el correo.";
-      }
+      if (fuera) recorte.innerHTML = t("recorte", fuera);
     }
-    escribe(document.querySelector("[data-cesta-total]"),
-            plural(unidades(items)));
   }
 
   function pinta() {
@@ -333,9 +412,9 @@
     }
   }
 
-  function aPelo(t) {
+  function aPelo(s) {
     var area = document.createElement("textarea");
-    area.value = t;
+    area.value = s;
     area.setAttribute("readonly", "");
     area.style.position = "fixed";
     area.style.opacity = "0";
@@ -354,23 +433,22 @@
   function copia(b) {
     var items = leer();
     if (!items.length) return;
-    var t = mensaje(items, null).texto;
+    var s = mensaje(items, null).texto;
     var dicho = function (ok) {
-      escribe(b, ok ? "Copiada" : "No se ha podido copiar");
-      avisa(ok ? "Lista copiada al portapapeles."
-               : "No se ha podido copiar la lista.");
-      window.setTimeout(function () { escribe(b, "Copiar la lista"); }, 2000);
+      escribe(b, ok ? t("copiada") : t("no_copiada"));
+      avisa(ok ? t("copiada_aviso") : t("no_copiada_aviso"));
+      window.setTimeout(function () { escribe(b, t("copiar")); }, 2000);
     };
     /* El portapapeles moderno no existe en file:// ni en http sin cifrar, que
        es justo como se abre esto al probarlo en local. De ahí la copia de
        seguridad con un textarea, que funciona en los dos sitios. */
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(t).then(
+      navigator.clipboard.writeText(s).then(
         function () { dicho(true); },
-        function () { dicho(aPelo(t)); });
+        function () { dicho(aPelo(s)); });
       return;
     }
-    dicho(aPelo(t));
+    dicho(aPelo(s));
   }
 
   function cosa(b) {
@@ -396,8 +474,8 @@
       if (!b.getAttribute("data-id")) return;
       anade(cosa(b));
       pinta();
-      avisa("Añadido a la cesta: " + b.getAttribute("data-nombre") +
-            ". Ahora tienes " + plural(unidades(leer())) + ".");
+      avisa(t("anadido", b.getAttribute("data-nombre"),
+              plural(unidades(leer()))));
       b.classList.add("anadido");
       window.setTimeout(function () { b.classList.remove("anadido"); }, 1200);
       return;
@@ -423,7 +501,7 @@
     if (fuera) {
       quita(fuera);
       pinta();
-      avisa("Quitado de la cesta. Quedan " + plural(unidades(leer())) + ".");
+      avisa(t("quitado", plural(unidades(leer()))));
       enfoca();
       return;
     }
@@ -431,7 +509,7 @@
     if (b.hasAttribute("data-cesta-vaciar")) {
       vacia();
       pinta();
-      avisa("Cesta vacía.");
+      avisa(t("vaciada"));
       enfoca();
       return;
     }
@@ -445,7 +523,8 @@
     for (var i = 0; i < avisos.length; i++) avisos[i].hidden = true;
     document.addEventListener("click", haz);
     /* Dos pestañas abiertas son la misma cesta: si se añade en una, la otra se
-       entera y no se queda enseñando una cuenta que ya no es. */
+       entera y no se queda enseñando una cuenta que ya no es. Vale también si
+       las dos pestañas están en idiomas distintos. */
     window.addEventListener("storage", function (e) {
       if (!e.key || e.key === CLAVE) pinta();
     });

@@ -104,6 +104,18 @@ dl.ficha dd { margin: 0; }
   dl.ficha div { grid-template-columns: 1fr; gap: .15rem; }
 }
 
+/* El aviso de que una traducción no la ha revisado nadie. Va arriba, en el
+   amarillo de .pendiente, y dice cuál es la versión que prevalece: en un texto
+   legal eso no es un detalle. Se quita el día que alguien la firme. */
+.pendiente-aviso {
+  background: #f6e3bd;
+  border-left: 3px solid var(--oro);
+  padding: 1rem 1.2rem;
+  margin-bottom: 2.5rem;
+  font-size: .95rem;
+}
+.pendiente-aviso a { border-bottom: 1px solid rgba(42, 29, 18, .3); }
+
 /* Dato que todavía no tenemos. Se ve a la legua para que nadie publique
    la página dándolo por bueno. */
 .pendiente {

@@ -5,23 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
      python herramientas/catalogo.py. Los productos están en
-     herramientas/catalogo-datos.json. -->
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/cesta.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/cesta.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/cesta.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/cesta.html">
 <meta name="description" content="Lo que has apuntado para encargar en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
 <title>Tu cesta — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
-<!-- Tipografías propias, servidas desde este mismo repositorio. -->
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
 <link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="marca.css">
 <link rel="stylesheet" href="catalogo.css">
 <link rel="stylesheet" href="cesta.css">
+<link rel="stylesheet" href="idiomas.css">
 <!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
      para que no frene el pintado: lo que depende de ella nace con hidden y se
-     destapa al cargar, así que nada parpadea ni se ve a medias. -->
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
 <script src="cesta.js" defer></script>
 </head>
 <body>
@@ -38,6 +44,10 @@
       <a href="index.html#categorias">Categorías</a>
       <a href="historia.html">Historia</a>
       <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <nav class="idiomas" aria-label="Idioma">
+      <span aria-current="true" title="Idioma actual: Español">ES</span>
+      <a href="ca/cesta.html" lang="ca" hreflang="ca" title="Ver esta página en Català">CA</a>
     </nav>
     <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden aria-current="page">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
@@ -57,32 +67,17 @@
 
   <div class="portada-categoria">
     <h1>Tu cesta</h1>
-    <p>
-      Lo que has apuntado para encargar. Se guarda <strong>sólo en este
-      navegador</strong>: no nos llega nada, ni lo vemos, hasta que nos mandes
-      el mensaje tú.
-    </p>
+    <p>Lo que has apuntado para encargar. Se guarda <strong>sólo en este navegador</strong>: no nos llega nada, ni lo vemos, hasta que nos mandes el mensaje tú.</p>
   </div>
 
   <div class="cesta-sinjs" data-cesta-sinjs>
-    <p>
-      <strong>La cesta necesita JavaScript</strong>, y en este navegador está
-      desactivado o no ha llegado a cargarse. El resto del catálogo funciona
-      igual: puedes verlo todo y pedirnos lo que quieras por WhatsApp.
-    </p>
-    <p>
-      Escríbenos al <a href="https://wa.me/34661192472" target="_blank" rel="noopener">661 192 472</a>
-      o llama al <a href="tel:+34933195921">933 19 59 21</a>, de lunes a sábado de 9:00 a 14:30 y de
-      16:00 a 20:30.
-    </p>
+    <p><strong>La cesta necesita JavaScript</strong>, y en este navegador está desactivado o no ha llegado a cargarse. El resto del catálogo funciona igual: puedes verlo todo y pedirnos lo que quieras por WhatsApp.</p>
+    <p>Escríbenos al <a href="https://wa.me/34661192472" target="_blank" rel="noopener">661 192 472</a> o llama al <a href="tel:+34933195921">933 19 59 21</a>, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30.</p>
   </div>
 
   <div class="cesta-vacia" data-cesta-vacia hidden>
     <h2>Todavía no has apuntado nada</h2>
-    <p>
-      Entra en una categoría y pulsa «Añadir» en lo que te interese. Puedes
-      juntar cosas de categorías distintas: la cesta es una sola.
-    </p>
+    <p>Entra en una categoría y pulsa «Añadir» en lo que te interese. Puedes juntar cosas de categorías distintas: la cesta es una sola.</p>
     <p><a href="index.html#categorias">Ver las categorías</a></p>
   </div>
 
@@ -90,7 +85,7 @@
     <ul class="cesta-lista" data-cesta-lista></ul>
 
     <p class="cesta-resumen">
-      En la cesta: <strong data-cesta-total>0 productos</strong>
+      En la cesta: <strong data-cesta-total>0</strong>
       <span>Sin precios: te los confirmamos al contestarte.</span>
     </p>
 
@@ -109,22 +104,9 @@
 
   <div class="cierre">
     <h2>Qué pasa al enviarlo</h2>
-    <p>
-      Se abre tu WhatsApp con el mensaje escrito: puedes leerlo, cambiar lo que
-      quieras y enviarlo tú. <strong>Aquí no se cobra nada y no te pedimos
-      ningún dato</strong>; esto no es una tienda en línea, es la manera de
-      encargar sin escribirnos los productos uno a uno.
-    </p>
-    <p>
-      Te contestamos con el precio y cuándo lo tienes listo, y se paga al
-      recogerlo en el mostrador, que es donde además podemos aconsejarte. Si
-      prefieres llamar, el número es el <a href="tel:+34933195921">933 19 59 21</a>.
-    </p>
-    <p>
-      De <strong>medicamentos</strong> no hay catálogo y no entran en la cesta:
-      <a href="catalogo-medicamentos.html">ahí se explica</a> cómo se encarga
-      una receta.
-    </p>
+    <p>Se abre tu WhatsApp con el mensaje escrito: puedes leerlo, cambiar lo que quieras y enviarlo tú. <strong>Aquí no se cobra nada y no te pedimos ningún dato</strong>; esto no es una tienda en línea, es la manera de encargar sin escribirnos los productos uno a uno.</p>
+    <p>Te contestamos con el precio y cuándo lo tienes listo, y se paga al recogerlo en el mostrador, que es donde además podemos aconsejarte. Si prefieres llamar, el número es el <a href="tel:+34933195921">933 19 59 21</a>.</p>
+    <p>De <strong>medicamentos</strong> no hay catálogo y no entran en la cesta: <a href="catalogo-medicamentos.html">ahí se explica</a> cómo se encarga una receta.</p>
   </div>
 
 </main>

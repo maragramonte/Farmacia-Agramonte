@@ -11,6 +11,10 @@ maquetada a partir del boceto y del diseño visual, que se guardan **fuera del
 repositorio**: son lo único que no ve quien visita la web, así que no viajan
 con ella.
 
+Está en **español y en catalán**: el español en la raíz y el catalán en
+<https://maragramonte.github.io/Farmacia-Agramonte/ca/>, con un selector en la
+cabecera que lleva de cada página a su traducción. Ver «Idiomas», abajo.
+
 Es una web **estática**: HTML y CSS, sin dependencias, sin proceso de
 compilación y sin servidor de aplicación. No hace falta contratar a nadie ni
 instalar nada para verla, y tampoco para publicarla.
@@ -88,18 +92,25 @@ Dos apuntes:
 ## Estructura
 
 ```
-index.html          La landing completa (HTML + CSS + iconos SVG en línea)
-404.html            Lo que se ve al abrir una dirección que no existe
+index.html          La landing completa. Se edita ESTA: la catalana se
+                    genera a partir de ella
+404.html            Lo que se ve al abrir una dirección que no existe.
+                    Bilingüe: Pages sirve el mismo para todo el sitio
 tipografias.css     Declara las tipografías propias (@font-face)
+portada.css         Lo propio de la portada. Lo cargan las dos portadas
 aviso-legal.html    Titular, datos profesionales y condiciones de uso
 privacidad.html     Qué datos se tratan, para qué y con qué base legal
 cookies.html        No hay cookies; explica la cesta y que no hay terceros
 legal.css           Estilo compartido de esas páginas de texto y del 404
 
+ca/                 Toda la web en catalán. index.html y las catalogo-*
+                    SE GENERAN; las tres legales están a mano
+idiomas.css         El selector de idioma de la cabecera
+
 catalogo-*.html     Las diez categorías y las fichas de sus productos.
                     SE GENERAN, no se editan a mano
 historia.html       Quiénes somos y la historia de la farmacia. SE GENERA:
-                    el texto está en herramientas/catalogo.py
+                    el texto está en herramientas/textos.json
 cesta.html          La lista de lo que alguien quiere encargar. SE GENERA
 catalogo.css        Lo propio del catálogo: aviso, tira, rejilla y ficha
 cesta.css           Lo propio de la cesta: contador, botón y lista
@@ -114,7 +125,7 @@ fotos/              Las fotos de los productos. Hoy vacía: ver su LEEME.txt
 favicon.svg         Icono de la pestaña: el monograma en oro sobre tinta
 og.png              Imagen que se ve al compartir el enlace (1200×630)
 robots.txt          Permite indexar y apunta al sitemap
-sitemap.xml         Las veinte páginas indexables, para los buscadores
+sitemap.xml         Las páginas indexables de los dos idiomas. SE GENERA
 .nojekyll           Le dice a GitHub Pages que sirva los ficheros tal cual
 
 LICENSE             Qué se puede hacer con este código y qué no
@@ -128,7 +139,11 @@ tipografias/
   LICENCIA-playfairdisplay.txt     La OFL exige distribuirla con la fuente
 
 herramientas/
-  catalogo.py           Escribe las catalogo-*.html y cesta.html
+  catalogo.py           Escribe el catálogo, la historia, la cesta, la
+                        portada catalana y el sitemap, en los dos idiomas
+  textos.json           TODOS los textos de la interfaz, en cada idioma
+  acentos.py            Comprueba la ortografía que se confunde entre el
+                        español y el catalán
   catalogo-datos.json   Los productos. Se edita ESTE
   importar.py           Vuelca un export en CSV al JSON de arriba
   tarjeta-social.py     Regenera og.png si cambia el lema o los datos
@@ -137,6 +152,120 @@ herramientas/
 El boceto y el diseño visual (`diseno/`) están ignorados por git y viven sólo
 en el ordenador. Conviene tener una copia de seguridad aparte, porque el
 repositorio ya no hace esa función.
+
+## Idiomas
+
+**El español vive en la raíz y el catalán en `ca/`.** No es un detalle de
+gusto: las URL en español llevan tiempo publicadas, están en Google y en el
+sitemap, y mover el español a `/es/` las rompería todas. Dejándolo donde está
+no se pierde nada y los idiomas se añaden encima.
+
+De las 64 páginas por idioma, **todas se generan menos cuatro**: la portada
+española y las tres legales en catalán. Lo demás sale de un sitio u otro:
+
+| Dónde se escribe | Qué sale de ahí |
+|---|---|
+| `herramientas/textos.json` | Todo lo que no es un producto: menú, botones, pie, la cesta y la historia completa |
+| `herramientas/catalogo-datos.json` | Los productos: nombres, resúmenes, formatos |
+| `index.html` | La portada española. La catalana se genera **de ella** |
+| `ca/aviso-legal.html` y compañía | Las tres legales en catalán, a mano |
+
+### Cómo se traduce un texto
+
+En `textos.json`, cada clave lleva sus idiomas juntos, para que se vea de un
+golpe el que falta:
+
+```json
+"nav_inicio": { "es": "Inicio", "ca": "Inici" }
+```
+
+En `catalogo-datos.json` un campo acepta **las dos formas**:
+
+```json
+"resumen": "Hidratante en gel para piel deshidratada."
+"resumen": { "es": "Hidratante en gel...", "ca": "Hidratant en gel..." }
+```
+
+La cadena suelta vale para todos los idiomas, que es lo correcto en el nombre
+de una marca. En un resumen o en una intro significa que **está sin traducir**,
+y el generador lo cuenta al terminar. Así se traduce producto a producto sin
+tocar los cuarenta de golpe, y **nada se queda en blanco por el camino**: lo
+que falta sale en español.
+
+### La portada, que es el caso raro
+
+`index.html` está escrita a mano —lleva su hero en SVG y el JSON-LD que lee
+Google— y la catalana **se genera de ella**, sustituyendo los trozos de texto
+que están en la lista `portada` de `textos.json`. Ni dos ficheros de
+cuatrocientas líneas que se separan, ni una plantilla de Python que impide
+editar la portada como HTML.
+
+Lo que hace que no envejezca en silencio: **si cambias un texto español de la
+portada, el generador para** y dice qué par de `textos.json` se ha quedado
+viejo. Es a propósito; sin eso, la portada catalana se iría quedando atrás sin
+que nadie se enterara.
+
+### Lo que comparten los dos idiomas
+
+Las hojas de estilo, las tipografías, `cesta.js` y las fotos **no se duplican**:
+viven en la raíz y desde `ca/` se piden con `../`, que lo pone el generador.
+Se calcula en vez de usar rutas absolutas porque ésas llevan dentro el nombre
+del repositorio y se romperían al renombrarlo o al poner un dominio propio.
+
+La **cesta también es una sola**: su clave de `localStorage` no lleva el idioma,
+así que quien añade algo en español y cambia a catalán encuentra su cesta y no
+otra vacía. Con un matiz: cada línea guarda el nombre y el formato **tal como
+se veían al añadirla**, así que una cesta montada en los dos idiomas sale
+mezclada. Arreglarlo exigiría llevar el catálogo entero también en JavaScript,
+que es justo lo que esta web no hace.
+
+El `404.html` es **bilingüe en un solo fichero**, porque GitHub Pages sirve el
+mismo para todo el sitio y no hay manera de saber en qué idioma estaba quien se
+ha perdido.
+
+### Para los buscadores
+
+Cada página lleva su `canonical` y los `hreflang` de todas sus traducciones,
+con `x-default` al español. Eso le dice a Google que son la misma página en
+otro idioma y no contenido duplicado. **La URL de un producto no se traduce**:
+`ca/catalogo-solares-cleanance-solaire-spf50.html` tiene el mismo nombre que la
+española, porque los nombres de producto son marcas y porque traducir los slugs
+duplicaría el trabajo de mantener URL estables.
+
+### Comprobar los acentos
+
+El catalán y el español se parecen lo justo para equivocarse:
+
+```
+python herramientas/acentos.py
+```
+
+Busca los errores concretos que se cometen al traducir entre los dos —el acento
+grave que el español pone agudo (`interès`, `època`, `Amèrica`), la ela geminada
+escrita como `ll` o `l.l`, y las palabras de un idioma colándose en el otro— y
+avisa de cada uno con su contexto. **No es un corrector**: son avisos que hay
+que mirar. Se salta los comentarios del código, que van en español en los dos
+idiomas a propósito, y los bloques marcados con otro `lang`.
+
+### Añadir el inglés
+
+1. En `textos.json`, mete `"en"` en `idiomas` con `"carpeta": "en"`.
+2. Añade la clave `"en"` a cada texto. Lo que no traduzcas sale en español, y
+   el generador dice cuánto falta.
+3. Lo mismo en `catalogo-datos.json`, y una lista `"en"` en `portada`.
+4. Ejecuta el generador: escribe `en/` entero, con sus `hreflang` y su sitemap.
+5. Las tres legales en inglés hay que escribirlas a mano, como las catalanas.
+6. En `catalogo.css`, añade la regla del rótulo «Foto pendiente», que lo pone
+   el CSS y no el generador. Y en `cesta.js`, su bloque en `TEXTOS`.
+
+### Lo que falta del catalán
+
+- **Las tres páginas legales están traducidas pero sin revisar**, y lo dicen
+  arriba en amarillo: la versión española es la original y la que prevalece.
+  Son textos jurídicos, así que conviene que los lea alguien antes de quitar
+  ese aviso.
+- Los textos de salud de los productos los he traducido yo. En una farmacia
+  eso es consejo, así que **hay que revisarlos** igual que los españoles.
 
 ## Secciones de la landing
 
@@ -261,10 +390,14 @@ Lee `herramientas/catalogo-datos.json` y escribe dos cosas:
 ```
 catalogo-<id>.html              la rejilla de tarjetas de la categoría
 catalogo-<id>-<producto>.html   la ficha de cada uno de sus productos
+historia.html                   quiénes somos
 cesta.html                      la cesta, que comparte cabecera con ellas
+ca/…                            todo lo anterior otra vez, en catalán
+ca/index.html                   la portada catalana, hecha desde index.html
+sitemap.xml                     las páginas indexables de los dos idiomas
 ```
 
-Hoy son 10 páginas de categoría, 47 fichas y la cesta. Es lo mismo que hace
+Hoy son 118 páginas: 10 de categoría, 47 fichas, la historia y la cesta, en cada uno de los dos idiomas. Es lo mismo que hace
 `tarjeta-social.py` con `og.png`: las páginas se escriben cuando cambian los
 productos, no cuando alguien las visita. Existe por una razón
 concreta: la tira de categorías que va arriba las lista todas, así que añadir
@@ -453,8 +586,8 @@ Mientras la categoría lleve `"plantilla": true`, sus fichas salen con
 indexen fue una decisión tomada a sabiendas; cincuenta y cuatro fichas
 inventadas son otra cosa: páginas flacas, con nombres de productos que no
 existen y con texto de salud que no ha escrito nadie. Al quitar `plantilla`
-se indexan solas, y entonces hay que **meterlas a mano en `sitemap.xml`**: el
-script avisa de las que falten.
+se indexan solas, y entran en `sitemap.xml` sin que haya que tocar nada: lo
+escribe el generador.
 
 El estilo va en dos hojas: `marca.css` con la identidad compartida —paleta,
 cabecera, botón y pie— y `catalogo.css` con lo que sólo existe aquí. Hay que
@@ -495,8 +628,9 @@ con el JSON y avisa si sobra o falta alguna.
    tiene ninguno.
 5. Quitar `"plantilla": true` de las siete que quedan: con ello se va el aviso
    amarillo y sus fichas dejan de llevar `noindex`.
-6. Meter esas fichas en `sitemap.xml`, y borrar las páginas de los productos
-   que hayan salido. El script dice cuáles faltan y cuáles sobran.
+6. Borrar las páginas de los productos que hayan salido: el script dice
+   cuáles sobran y da el `git rm` escrito. El `sitemap.xml` ya no hay que
+   tocarlo, que lo escribe el generador.
 
 Y **esto no es hipotético: la web está publicada**. Las páginas de categoría
 están enlazadas desde la portada, en `sitemap.xml` y sin `noindex`, así que un

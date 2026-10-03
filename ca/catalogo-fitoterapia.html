@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
+     python herramientas/catalogo.py. Los productos están en
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
+<link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/catalogo-fitoterapia.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-fitoterapia.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/catalogo-fitoterapia.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-fitoterapia.html">
+<meta name="description" content="Fitoteràpia a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).">
+<title>Fitoteràpia (plantilla) — Farmàcia Agramonte</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2a1d12">
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
+<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../tipografias.css">
+<link rel="stylesheet" href="../marca.css">
+<link rel="stylesheet" href="../catalogo.css">
+<link rel="stylesheet" href="../cesta.css">
+<link rel="stylesheet" href="../idiomas.css">
+<!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
+     para que no frene el pintado: lo que depende de ella nace con hidden y se
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
+<script src="../cesta.js" defer></script>
+</head>
+<body>
+
+<!-- Lo que se le dice a un lector de pantalla al añadir o quitar de la cesta.
+     Está en todas las páginas porque desde todas se puede añadir. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="index.html">Farmàcia Agramonte</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html">Inici</a>
+      <a href="index.html#categorias">Categories</a>
+      <a href="historia.html">Història</a>
+      <a href="index.html#contacto">Contacte</a>
+    </nav>
+    <nav class="idiomas" aria-label="Idioma">
+      <a href="../catalogo-fitoterapia.html" lang="es" hreflang="es" title="Veure aquesta pàgina en Español">ES</a>
+      <span aria-current="true" title="Idioma actual: Català">CA</span>
+    </nav>
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cesta-rotulo">Cistella</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
+    <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+      Demanar
+    </a>
+  </div>
+</header>
+
+<div class="aviso-plantilla">
+  <div class="contenedor">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/><line x1="12" y1="10" x2="12" y2="14"/><circle cx="12" cy="17" r=".6" fill="currentColor" stroke="none"/></svg>
+    <div>
+      <strong class="rotulo">Plantilla d'exemple</strong>
+      <p>Els productes i els formats d'aquesta pàgina <strong>són inventats</strong> i hi són només per veure la maquetació. Res del que es llegeix a sota és el catàleg de la farmàcia. No enllaceu aquesta pàgina ni la doneu per bona fins que no se substitueixi per productes reals.</p>
+    </div>
+  </div>
+</div>
+
+<main class="contenedor">
+
+  <p class="migas"><a href="index.html">Inici</a> › <a href="index.html#categorias">Categories</a> › Fitoteràpia</p>
+
+  <div class="portada-categoria">
+    <h1>Fitoteràpia</h1>
+    <p>Plantes medicinals, infusions i derivats. Que sigui natural no vol dir que sigui innocu: hi ha plantes que interfereixen amb medicaments, així que pregunta'ns abans si prens alguna cosa.</p>
+  </div>
+
+  <nav class="tira" aria-label="Categories">
+    <a href="catalogo-fitoterapia.html" aria-current="page">Fitoteràpia</a>
+    <a href="catalogo-medicamentos.html">Medicaments</a>
+    <a href="catalogo-cosmetica-facial.html">Cosmètica facial</a>
+    <a href="catalogo-cosmetica-corporal.html">Cosmètica corporal</a>
+    <a href="catalogo-solares.html">Solars</a>
+    <a href="catalogo-cabello.html">Cabell</a>
+    <a href="catalogo-bebe-e-infantil.html">Bebè i infantil</a>
+    <a href="catalogo-salud-intima.html">Salut íntima</a>
+    <a href="catalogo-nutricion-y-vitaminas.html">Nutrició i vitamines</a>
+    <a href="catalogo-ortopedia.html">Ortopèdia</a>
+  </nav>
+
+  <div class="productos">
+
+    <article class="producto">
+      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/></svg></div>
+      <div class="cuerpo">
+        <h2><a href="catalogo-fitoterapia-infusion-de-manzanilla.html">Infusió de camamilla</a></h2>
+        <p class="resumen">En bossetes. La de tota la vida.</p>
+        <p class="formato">20 bossetes</p>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="fitoterapia-infusion-de-manzanilla" data-nombre="Infusió de camamilla" data-formato="20 bossetes" data-url="catalogo-fitoterapia-infusion-de-manzanilla.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Afegir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20volia%20preguntar%20per%20infusi%C3%B3%20de%20camamilla." target="_blank" rel="noopener" aria-label="Preguntar per infusió de camamilla per WhatsApp">Preguntar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="producto">
+      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/></svg></div>
+      <div class="cuerpo">
+        <h2><a href="catalogo-fitoterapia-infusion-de-tila.html">Infusió de til·la</a></h2>
+        <p class="resumen">En bossetes, per prendre calenta.</p>
+        <p class="formato">20 bossetes</p>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="fitoterapia-infusion-de-tila" data-nombre="Infusió de til·la" data-formato="20 bossetes" data-url="catalogo-fitoterapia-infusion-de-tila.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Afegir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20volia%20preguntar%20per%20infusi%C3%B3%20de%20til%C2%B7la." target="_blank" rel="noopener" aria-label="Preguntar per infusió de til·la per WhatsApp">Preguntar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="producto">
+      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/></svg></div>
+      <div class="cuerpo">
+        <h2><a href="catalogo-fitoterapia-aceite-esencial-de-arbol-de-te.html">Oli essencial d'arbre del te</a></h2>
+        <p class="resumen">Ús tòpic i diluït. Mai pur sobre la pell.</p>
+        <p class="formato">Oli · 10 ml</p>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="fitoterapia-aceite-esencial-de-arbol-de-te" data-nombre="Oli essencial d'arbre del te" data-formato="Oli · 10 ml" data-url="catalogo-fitoterapia-aceite-esencial-de-arbol-de-te.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Afegir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20volia%20preguntar%20per%20oli%20essencial%20d%27arbre%20del%20te." target="_blank" rel="noopener" aria-label="Preguntar per oli essencial d'arbre del te per WhatsApp">Preguntar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="producto">
+      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/></svg></div>
+      <div class="cuerpo">
+        <h2><a href="catalogo-fitoterapia-jarabe-de-propolis.html">Xarop de pròpolis</a></h2>
+        <p class="resumen">Amb mel. No apte per a menors d'un any.</p>
+        <p class="formato">Xarop · 150 ml</p>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="fitoterapia-jarabe-de-propolis" data-nombre="Xarop de pròpolis" data-formato="Xarop · 150 ml" data-url="catalogo-fitoterapia-jarabe-de-propolis.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Afegir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20volia%20preguntar%20per%20xarop%20de%20pr%C3%B2polis." target="_blank" rel="noopener" aria-label="Preguntar per xarop de pròpolis per WhatsApp">Preguntar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="producto">
+      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/></svg></div>
+      <div class="cuerpo">
+        <h2><a href="catalogo-fitoterapia-capsulas-de-cardo-mariano.html">Càpsules de card marià</a></h2>
+        <p class="resumen">Complement alimentari. Una presa al dia.</p>
+        <p class="formato">60 càpsules</p>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="fitoterapia-capsulas-de-cardo-mariano" data-nombre="Càpsules de card marià" data-formato="60 càpsules" data-url="catalogo-fitoterapia-capsulas-de-cardo-mariano.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Afegir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20volia%20preguntar%20per%20c%C3%A0psules%20de%20card%20mari%C3%A0." target="_blank" rel="noopener" aria-label="Preguntar per càpsules de card marià per WhatsApp">Preguntar</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="producto">
+      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/></svg></div>
+      <div class="cuerpo">
+        <h2><a href="catalogo-fitoterapia-gel-de-aloe-vera.html">Gel d'àloe vera</a></h2>
+        <p class="resumen">Per a després del sol o petites irritacions.</p>
+        <p class="formato">Gel · 200 ml</p>
+        <div class="acciones">
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="fitoterapia-gel-de-aloe-vera" data-nombre="Gel d'àloe vera" data-formato="Gel · 200 ml" data-url="catalogo-fitoterapia-gel-de-aloe-vera.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Afegir</button>
+          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20volia%20preguntar%20per%20gel%20d%27%C3%A0loe%20vera." target="_blank" rel="noopener" aria-label="Preguntar per gel d'àloe vera per WhatsApp">Preguntar</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="cierre">
+    <h2>Com es demana</h2>
+    <p>Amb «Afegir» vas apuntant el que vulguis a <a href="cesta.html">la teva cistella</a>, que es queda guardada en aquest navegador i pots canviar quan vulguis. Quan acabis, la cistella escriu sola el missatge i ens l'envies per WhatsApp: ho preparem, et confirmem el preu i el reculls al taulell.</p>
+    <p><strong>Aquí no es paga res</strong> i no et demanem cap dada: això no és una botiga en línia, és la manera d'encarregar sense haver d'escriure'ns els productes un per un. El taulell és, a més, on et podem aconsellar.</p>
+    <p>Si prefereixes trucar, el número és el <a href="tel:+34933195921">933 19 59 21</a>, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30.</p>
+  </div>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p>© 2026 Farmàcia Agramonte</p>
+    <p>
+      <a href="aviso-legal.html">Avís legal</a> ·
+      <a href="privacidad.html">Privacitat</a> ·
+      <a href="cookies.html">Galetes</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

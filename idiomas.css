@@ -1,0 +1,46 @@
+/* ---------------------------------------------------------------
+   Farmàcia Agramonte — el selector de idioma
+
+   Hoja propia, y pequeña, por una razón concreta: el selector sale en la
+   portada (portada.css), en el catálogo (marca.css + catalogo.css) y en
+   las páginas legales (legal.css), y esas tres no comparten ninguna otra
+   hoja. Meterlo en una de ellas obligaba a copiarlo en las otras dos.
+
+   Tira de los nombres de la paleta, que están declarados en las tres.
+   --------------------------------------------------------------- */
+
+.idiomas {
+  display: inline-flex; align-items: center; gap: .1rem;
+  font-size: .72rem; letter-spacing: .1em; font-weight: 600;
+}
+
+/* El idioma en el que estás y los demás ocupan lo mismo, para que al
+   cambiar no se mueva nada de sitio. */
+.idiomas a,
+.idiomas span {
+  display: inline-grid; place-items: center;
+  min-width: 2.1rem; padding: .4rem .25rem;
+  border-bottom: 1px solid transparent;
+  transition: color .18s ease, border-color .18s ease;
+}
+
+.idiomas a { color: var(--tenue-tinta, #b6a48c); }
+.idiomas a:hover { color: var(--oro-claro, #e0c285); border-bottom-color: var(--oro, #c9a055); }
+
+/* El actual, en oro y subrayado: tiene que leerse como «estás aquí», no como
+   un enlace más que no hace nada. No lleva aria-current="page" sino "true",
+   porque no es una entrada de menú: es el estado de un conmutador. */
+.idiomas span[aria-current] {
+  color: var(--oro, #c9a055);
+  border-bottom-color: var(--oro, #c9a055);
+  cursor: default;
+}
+
+/* En las páginas de texto legal la cabecera es clara y estrecha, y ahí el
+   oro de marca no llega al contraste que pide la AA. */
+.cabecera .volver + .idiomas { margin-left: .5rem; }
+
+@media (max-width: 560px) {
+  /* La cabecera del móvil va apretada: el selector se queda en lo mínimo. */
+  .idiomas a, .idiomas span { min-width: 1.9rem; padding: .4rem .15rem; }
+}

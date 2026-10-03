@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
+     python herramientas/catalogo.py. Los productos están en
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
+<link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-medicamentos.html">
+<meta name="description" content="Medicaments a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).">
+<title>Medicaments — Farmàcia Agramonte</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2a1d12">
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
+<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../tipografias.css">
+<link rel="stylesheet" href="../marca.css">
+<link rel="stylesheet" href="../catalogo.css">
+<link rel="stylesheet" href="../cesta.css">
+<link rel="stylesheet" href="../idiomas.css">
+<!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
+     para que no frene el pintado: lo que depende de ella nace con hidden y se
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
+<script src="../cesta.js" defer></script>
+</head>
+<body>
+
+<!-- Lo que se le dice a un lector de pantalla al añadir o quitar de la cesta.
+     Está en todas las páginas porque desde todas se puede añadir. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="index.html">Farmàcia Agramonte</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html">Inici</a>
+      <a href="index.html#categorias">Categories</a>
+      <a href="historia.html">Història</a>
+      <a href="index.html#contacto">Contacte</a>
+    </nav>
+    <nav class="idiomas" aria-label="Idioma">
+      <a href="../catalogo-medicamentos.html" lang="es" hreflang="es" title="Veure aquesta pàgina en Español">ES</a>
+      <span aria-current="true" title="Idioma actual: Català">CA</span>
+    </nav>
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cesta-rotulo">Cistella</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
+    <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+      Demanar
+    </a>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <p class="migas"><a href="index.html">Inici</a> › <a href="index.html#categorias">Categories</a> › Medicaments</p>
+
+  <div class="portada-categoria">
+    <h1>Medicaments</h1>
+    <p>Aquí no hi ha llista de productes, i és a propòsit.</p>
+  </div>
+
+  <nav class="tira" aria-label="Categories">
+    <a href="catalogo-medicamentos.html" aria-current="page">Medicaments</a>
+    <a href="catalogo-cosmetica-facial.html">Cosmètica facial</a>
+    <a href="catalogo-cosmetica-corporal.html">Cosmètica corporal</a>
+    <a href="catalogo-solares.html">Solars</a>
+    <a href="catalogo-cabello.html">Cabell</a>
+    <a href="catalogo-bebe-e-infantil.html">Bebè i infantil</a>
+    <a href="catalogo-salud-intima.html">Salut íntima</a>
+    <a href="catalogo-nutricion-y-vitaminas.html">Nutrició i vitamines</a>
+    <a href="catalogo-fitoterapia.html">Fitoteràpia</a>
+    <a href="catalogo-ortopedia.html">Ortopèdia</a>
+  </nav>
+
+  <div class="cierre">
+    <h2>Els medicaments s'encarreguen, no es compren per internet</h2>
+    <p>La llei no permet anunciar al públic els medicaments que necessiten recepta, i els que no la necessiten només es poden anunciar amb advertiments obligatoris. Per això aquesta pàgina no porta catàleg: seria publicitat de medicaments, que és una cosa diferent de mostrar una crema.</p>
+    <p>El que sí que pots fer és encarregar-los. Envia'ns la recepta o el nom del que busques per WhatsApp o per telèfon, ho preparem i t'avisem quan estigui a punt. La dispensació i la comprovació de la recepta es fan al taulell, com mana la normativa i com convé: és on et podem preguntar si prens alguna cosa més.</p>
+    <p>Davant de qualsevol símptoma que preocupi, el primer és el metge. El que fem aquí és consell farmacèutic, no diagnòstic.</p>
+    <p>Per encarregar: <a href="https://wa.me/34661192472" target="_blank" rel="noopener">WhatsApp</a> o <a href="tel:+34933195921">933 19 59 21</a>, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30.</p>
+  </div>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p>© 2026 Farmàcia Agramonte</p>
+    <p>
+      <a href="aviso-legal.html">Avís legal</a> ·
+      <a href="privacidad.html">Privacitat</a> ·
+      <a href="cookies.html">Galetes</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

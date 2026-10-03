@@ -5,22 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
      python herramientas/catalogo.py. Los productos están en
-     herramientas/catalogo-datos.json. -->
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
 <link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-medicamentos.html">
 <meta name="description" content="Medicamentos en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
 <title>Medicamentos — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#2a1d12">
-<!-- Tipografías propias, servidas desde este mismo repositorio. -->
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
 <link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="marca.css">
 <link rel="stylesheet" href="catalogo.css">
 <link rel="stylesheet" href="cesta.css">
+<link rel="stylesheet" href="idiomas.css">
 <!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
      para que no frene el pintado: lo que depende de ella nace con hidden y se
-     destapa al cargar, así que nada parpadea ni se ve a medias. -->
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
 <script src="cesta.js" defer></script>
 </head>
 <body>
@@ -37,6 +43,10 @@
       <a href="index.html#categorias">Categorías</a>
       <a href="historia.html">Historia</a>
       <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <nav class="idiomas" aria-label="Idioma">
+      <span aria-current="true" title="Idioma actual: Español">ES</span>
+      <a href="ca/catalogo-medicamentos.html" lang="ca" hreflang="ca" title="Ver esta página en Català">CA</a>
     </nav>
     <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
@@ -59,7 +69,7 @@
     <p>Aquí no hay lista de productos, y es a propósito.</p>
   </div>
 
-  <nav class="tira" aria-label="Categorías del catálogo">
+  <nav class="tira" aria-label="Categorías">
     <a href="catalogo-medicamentos.html" aria-current="page">Medicamentos</a>
     <a href="catalogo-cosmetica-facial.html">Cosmética facial</a>
     <a href="catalogo-cosmetica-corporal.html">Cosmética corporal</a>
@@ -77,10 +87,7 @@
     <p>La ley no permite anunciar al público los medicamentos que necesitan receta, y los que no la necesitan sólo pueden anunciarse con advertencias obligatorias. Por eso esta página no lleva catálogo: sería publicidad de medicamentos, que es otra cosa distinta a enseñar una crema.</p>
     <p>Lo que sí puedes hacer es encargarlos. Envíanos la receta o el nombre de lo que buscas por WhatsApp o por teléfono, lo preparamos y te avisamos cuando esté. La dispensación y la comprobación de la receta se hacen en el mostrador, como manda la normativa y como conviene: es donde podemos preguntarte si tomas algo más.</p>
     <p>Ante cualquier síntoma que preocupe, lo primero es el médico. Lo que hacemos aquí es consejo farmacéutico, no diagnóstico.</p>
-    <p>
-      Para encargar: <a href="https://wa.me/34661192472" target="_blank" rel="noopener">WhatsApp</a>
-      o <a href="tel:+34933195921">933 19 59 21</a>, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30.
-    </p>
+    <p>Para encargar: <a href="https://wa.me/34661192472" target="_blank" rel="noopener">WhatsApp</a> o <a href="tel:+34933195921">933 19 59 21</a>, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30.</p>
   </div>
 
 </main>
