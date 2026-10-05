@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
+     python herramientas/catalogo.py. Los productos están en
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
+<link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/en/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="en" href="https://maragramonte.github.io/Farmacia-Agramonte/en/catalogo-medicamentos.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/catalogo-medicamentos.html">
+<meta name="description" content="Medicines at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
+<title>Medicines — Farmàcia Agramonte</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2a1d12">
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
+<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../tipografias.css">
+<link rel="stylesheet" href="../marca.css">
+<link rel="stylesheet" href="../catalogo.css">
+<link rel="stylesheet" href="../cesta.css">
+<link rel="stylesheet" href="../idiomas.css">
+<!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
+     para que no frene el pintado: lo que depende de ella nace con hidden y se
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
+<script src="../cesta.js" defer></script>
+</head>
+<body>
+
+<!-- Lo que se le dice a un lector de pantalla al añadir o quitar de la cesta.
+     Está en todas las páginas porque desde todas se puede añadir. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="index.html">Farmàcia Agramonte</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html">Home</a>
+      <a href="index.html#categorias">Categories</a>
+      <a href="historia.html">About us</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+    <nav class="idiomas" aria-label="Language">
+      <a href="../catalogo-medicamentos.html" lang="es" hreflang="es" title="View this page in Español">ES</a>
+      <a href="../ca/catalogo-medicamentos.html" lang="ca" hreflang="ca" title="View this page in Català">CA</a>
+      <span aria-current="true" title="Current language: English">EN</span>
+    </nav>
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cesta-rotulo">Basket</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
+    <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+      Order
+    </a>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <p class="migas"><a href="index.html">Home</a> › <a href="index.html#categorias">Categories</a> › Medicines</p>
+
+  <div class="portada-categoria">
+    <h1>Medicines</h1>
+    <p>There is no product list here, and that is deliberate.</p>
+  </div>
+
+  <nav class="tira" aria-label="Categories">
+    <a href="catalogo-medicamentos.html" aria-current="page">Medicines</a>
+    <a href="catalogo-cosmetica-facial.html">Facial skincare</a>
+    <a href="catalogo-cosmetica-corporal.html">Body care</a>
+    <a href="catalogo-solares.html">Sun care</a>
+    <a href="catalogo-cabello.html">Hair care</a>
+    <a href="catalogo-bebe-e-infantil.html">Baby and child</a>
+    <a href="catalogo-salud-intima.html">Intimate health</a>
+    <a href="catalogo-nutricion-y-vitaminas.html">Nutrition and vitamins</a>
+    <a href="catalogo-fitoterapia.html">Herbal medicine</a>
+    <a href="catalogo-ortopedia.html">Orthopaedics</a>
+  </nav>
+
+  <div class="cierre">
+    <h2>Medicines are ordered, not bought online</h2>
+    <p>The law does not allow prescription medicines to be advertised to the public, and those that need no prescription may only be advertised with mandatory warnings. That is why this page carries no catalogue: it would be advertising medicines, which is a different matter from showing you a moisturiser.</p>
+    <p>What you can do is order them. Send us the prescription or the name of what you need on WhatsApp or by phone, we prepare it and let you know when it is ready. Dispensing and checking the prescription happen at the counter, as the rules require and as it should be: that is where we can ask you whether you are taking anything else.</p>
+    <p>If a symptom worries you, see a doctor first. What we give here is pharmaceutical advice, not a diagnosis.</p>
+    <p>To order: <a href="https://wa.me/34661192472" target="_blank" rel="noopener">WhatsApp</a> or <a href="tel:+34933195921">933 19 59 21</a>, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30.</p>
+  </div>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p>© 2026 Farmàcia Agramonte</p>
+    <p>
+      <a href="aviso-legal.html">Legal notice</a> ·
+      <a href="privacidad.html">Privacy</a> ·
+      <a href="cookies.html">Cookies</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

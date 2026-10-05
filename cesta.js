@@ -116,6 +116,33 @@
       recorte: "La cistella és tan llarga que a WhatsApp no hi cap d'un cop: el " +
                "missatge portarà els primers i dirà que en falten <strong>%s</strong>. " +
                "Per enviar-la sencera, fes servir <strong>Copiar la llista</strong> o el correu."
+    },
+    en: {
+      cesta_con: "Your basket: %s",
+      cesta_vacia: "Your basket, empty",
+      uno: "1 product",
+      varios: "%s products",
+      anadido: "Added to the basket: %s. You now have %s.",
+      quitado: "Removed from the basket. %s left.",
+      vaciada: "Basket empty.",
+      quitar_una: "Remove one unit of %s",
+      anadir_una: "Add one unit of %s",
+      quitar_esto: "Remove %s from the basket",
+      quitar: "Remove",
+      ya_tienes: "You already have <strong>%s</strong> in the basket. <a href=\"cesta.html\">See the basket</a>",
+      copiar: "Copy the list",
+      copiada: "Copied",
+      no_copiada: "Could not copy",
+      copiada_aviso: "List copied to the clipboard.",
+      no_copiada_aviso: "The list could not be copied.",
+      mensaje_cabeza: "Hello, I would like to order:\n\n",
+      mensaje_pie: "\n\nCould you tell me the price and when I can collect it? Thank you.",
+      mensaje_resto_uno: "\n- ...and 1 more product.",
+      mensaje_resto: "\n- ...and %s more products.",
+      correo_asunto: "Order from the website",
+      recorte: "The basket is so long that it will not fit in WhatsApp in one go: the " +
+               "message will carry the first ones and say that <strong>%s</strong> are missing. " +
+               "To send it whole, use <strong>Copy the list</strong> or email."
     }
   };
 

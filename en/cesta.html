@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
+     python herramientas/catalogo.py. Los productos están en
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/en/cesta.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/cesta.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/cesta.html">
+<link rel="alternate" hreflang="en" href="https://maragramonte.github.io/Farmacia-Agramonte/en/cesta.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/cesta.html">
+<meta name="description" content="What you have noted down to order at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
+<title>Your basket — Farmàcia Agramonte</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2a1d12">
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
+<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../tipografias.css">
+<link rel="stylesheet" href="../marca.css">
+<link rel="stylesheet" href="../catalogo.css">
+<link rel="stylesheet" href="../cesta.css">
+<link rel="stylesheet" href="../idiomas.css">
+<!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
+     para que no frene el pintado: lo que depende de ella nace con hidden y se
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
+<script src="../cesta.js" defer></script>
+</head>
+<body>
+
+<!-- Lo que se le dice a un lector de pantalla al añadir o quitar de la cesta.
+     Está en todas las páginas porque desde todas se puede añadir. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="index.html">Farmàcia Agramonte</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html">Home</a>
+      <a href="index.html#categorias">Categories</a>
+      <a href="historia.html">About us</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+    <nav class="idiomas" aria-label="Language">
+      <a href="../cesta.html" lang="es" hreflang="es" title="View this page in Español">ES</a>
+      <a href="../ca/cesta.html" lang="ca" hreflang="ca" title="View this page in Català">CA</a>
+      <span aria-current="true" title="Current language: English">EN</span>
+    </nav>
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden aria-current="page">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cesta-rotulo">Basket</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
+    <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+      Order
+    </a>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <p class="migas"><a href="index.html">Home</a> › <a href="index.html#categorias">Categories</a> › Your basket</p>
+
+  <div class="portada-categoria">
+    <h1>Your basket</h1>
+    <p>What you have noted down to order. It is kept <strong>only in this browser</strong>: nothing reaches us, and we cannot see it, until you send us the message yourself.</p>
+  </div>
+
+  <div class="cesta-sinjs" data-cesta-sinjs>
+    <p><strong>The basket needs JavaScript</strong>, and in this browser it is turned off or has not loaded. The rest of the catalogue works just the same: you can browse it all and order whatever you like on WhatsApp.</p>
+    <p>Message us on <a href="https://wa.me/34661192472" target="_blank" rel="noopener">661 192 472</a> or call <a href="tel:+34933195921">933 19 59 21</a>, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30.</p>
+  </div>
+
+  <div class="cesta-vacia" data-cesta-vacia hidden>
+    <h2>You have not noted anything down yet</h2>
+    <p>Open a category and press “Add” on whatever interests you. You can mix things from different categories: there is only one basket.</p>
+    <p><a href="index.html#categorias">See the categories</a></p>
+  </div>
+
+  <div data-cesta-llena hidden>
+    <ul class="cesta-lista" data-cesta-lista></ul>
+
+    <p class="cesta-resumen">
+      In the basket: <strong data-cesta-total>0</strong>
+      <span>No prices: we confirm them when we reply to you.</span>
+    </p>
+
+    <p class="cesta-recorte" data-cesta-recorte hidden></p>
+
+    <div class="cesta-acciones">
+      <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener" data-cesta-whatsapp>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+        Send the order
+      </a>
+      <button type="button" class="cesta-secundario" data-cesta-copia>Copy the list</button>
+      <a class="cesta-secundario" href="mailto:farmacia.lallana@gmail.com" data-cesta-correo>Send it by email</a>
+      <button type="button" class="cesta-secundario cesta-vaciar" data-cesta-vaciar>Empty the basket</button>
+    </div>
+  </div>
+
+  <div class="cierre">
+    <h2>What happens when you send it</h2>
+    <p>Your WhatsApp opens with the message already written: you can read it, change anything you want and send it yourself. <strong>Nothing is charged here and we do not ask you for any personal details</strong>; this is not an online shop, it is a way to order without typing the products out one by one.</p>
+    <p>We reply with the price and when it will be ready, and you pay when you collect it at the counter, which is also where we can advise you. If you would rather call, the number is <a href="tel:+34933195921">933 19 59 21</a>.</p>
+    <p>There is no catalogue of <strong>medicines</strong> and they do not go in the basket: <a href="catalogo-medicamentos.html">that page explains</a> how to order a prescription.</p>
+  </div>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p>© 2026 Farmàcia Agramonte</p>
+    <p>
+      <a href="aviso-legal.html">Legal notice</a> ·
+      <a href="privacidad.html">Privacy</a> ·
+      <a href="cookies.html">Cookies</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

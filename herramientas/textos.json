@@ -25,13 +25,22 @@
       "nombre": "Español",
       "corto": "ES",
       "carpeta": "",
-      "etiqueta_html": "es"
+      "etiqueta_html": "es",
+      "og_locale": "es_ES"
     },
     "ca": {
       "nombre": "Català",
       "corto": "CA",
       "carpeta": "ca",
-      "etiqueta_html": "ca"
+      "etiqueta_html": "ca",
+      "og_locale": "ca_ES"
+    },
+    "en": {
+      "nombre": "English",
+      "corto": "EN",
+      "carpeta": "en",
+      "etiqueta_html": "en",
+      "og_locale": "en_GB"
     }
   },
 
@@ -55,132 +64,623 @@
 
   "portada": {
     "ca": [
-      ["Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
-       "Farmàcia Agramonte, a la Plaça de la Llana (el Born, Barcelona). Envia'ns la teva recepta per WhatsApp, la preparem i t'avisem."],
-      ["Farmacia en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
-       "Farmàcia a la Plaça de la Llana (el Born, Barcelona) des del 1890. Envia'ns la teva recepta per WhatsApp, la preparem i t'avisem."],
-      ["Farmacia de barrio en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envía tu receta por WhatsApp, la preparamos y te avisamos.",
-       "Farmàcia de barri a la Plaça de la Llana (el Born, Barcelona) des del 1890. Envia la teva recepta per WhatsApp, la preparem i t'avisem."],
-      ["Farmàcia Agramonte — consejo de siempre, de tu barrio",
-       "Farmàcia Agramonte — consell de sempre, del teu barri"],
-
-      ["Ilustración del mostrador de la farmacia con las estanterías de botes",
-       "Il·lustració del taulell de la farmàcia amb les estanteries de pots"],
-      ["<h1>Consejo de siempre,<em>de tu barrio</em></h1>",
-       "<h1>Consell de sempre,<em>del teu barri</em></h1>"],
-      ["<strong>Envíanos la receta</strong> o el nombre del producto.",
-       "<strong>Envia'ns la recepta</strong> o el nom del producte."],
-      ["Lo preparamos y te avisamos.", "Ho preparem i t'avisem."],
-      ["Vienes a buscarlo cuando quieras.", "Vens a buscar-ho quan vulguis."],
-      ["Enviar por WhatsApp", "Enviar per WhatsApp"],
-
-      ["¿Qué estás buscando?", "Què estàs buscant?"],
-      ["Cada una abre su página. Si prefieres preguntar",
-       "Cada una obre la seva pàgina. Si prefereixes preguntar"],
-      ["directamente, escríbenos por ", "directament, escriu-nos per "],
-      ["o llámanos al ", "o truca'ns al "],
-
-      ["¿Por qué elegir Farmàcia Agramonte?", "Per què triar la Farmàcia Agramonte?"],
-      ["Atención personalizada", "Atenció personalitzada"],
-      ["Te escuchamos y te aconsejamos según tus necesidades.",
-       "T'escoltem i t'aconsellem segons les teves necessitats."],
-      ["Experiencia y confianza", "Experiència i confiança"],
-      ["Más de 130 años al servicio de nuestro barrio.",
-       "Més de 130 anys al servei del nostre barri."],
-      ["Cercanía y calidad", "Proximitat i qualitat"],
-      ["Productos seleccionados y un trato humano, de tú a tú.",
-       "Productes seleccionats i un tracte humà, de tu a tu."],
-
-      ["Lunes a Sábado", "Dilluns a dissabte"],
-      ["Dónde estamos", "On som"],
-      ["Pedir por WhatsApp", "Demanar per WhatsApp"],
-      ["Envíanos tu receta o consulta y te responderemos.",
-       "Envia'ns la teva recepta o consulta i et respondrem."],
-      ["Escríbenos <span>→</span>", "Escriu-nos <span>→</span>"],
-
-      ["Desde 1890 cuidando de tu salud en el corazón de Barcelona.",
-       "Des del 1890 cuidant de la teva salut al cor de Barcelona."],
-      ["Atención al cliente", "Atenció al client"],
-      ["Llamar a la farmacia", "Trucar a la farmàcia"],
-      ["Escribir un correo", "Escriure un correu"],
-      ["Horario y dirección", "Horari i adreça"],
-      ["Política de privacidad", "Política de privacitat"],
-      ["Política de cookies", "Política de galetes"],
-      ["Farmacéutica titular: Zoila Agramonte Bucho ·",
-       "Farmacèutica titular: Zoila Agramonte Bucho ·"],
-      ["Número de colegiada: ", "Número de col·legiada: "],
-      [">PENDIENTE<", ">PENDENT<"],
-      ["© 2026 Farmàcia Agramonte. Todos los derechos reservados.",
-       "© 2026 Farmàcia Agramonte. Tots els drets reservats."],
-
-      ["Medicamentos", "Medicaments"],
-      ["Cosmética facial", "Cosmètica facial"],
-      ["Cosmética corporal", "Cosmètica corporal"],
-      ["Nutrición y vitaminas", "Nutrició i vitamines"],
-      ["Bebé e infantil", "Bebè i infantil"],
-      ["Salud íntima", "Salut íntima"],
-      ["Fitoterapia", "Fitoteràpia"],
-      ["Ortopedia", "Ortopèdia"],
-      ["Solares", "Solars"],
-      ["Cabello", "Cabell"],
-
-      ["Información", "Informació"],
-      ["Aviso legal", "Avís legal"],
-      ["Categorías", "Categories"],
-      ["Enlaces", "Enllaços"],
-      ["Historia", "Història"],
-      ["Contacto", "Contacte"],
-      ["Horario", "Horari"],
-      ["Inicio", "Inici"],
-      ["Cesta", "Cistella"],
-      ["Pedir", "Demanar"]
+      [
+        "Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
+        "Farmàcia Agramonte, a la Plaça de la Llana (el Born, Barcelona). Envia'ns la teva recepta per WhatsApp, la preparem i t'avisem."
+      ],
+      [
+        "Farmacia en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
+        "Farmàcia a la Plaça de la Llana (el Born, Barcelona) des del 1890. Envia'ns la teva recepta per WhatsApp, la preparem i t'avisem."
+      ],
+      [
+        "Farmacia de barrio en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envía tu receta por WhatsApp, la preparamos y te avisamos.",
+        "Farmàcia de barri a la Plaça de la Llana (el Born, Barcelona) des del 1890. Envia la teva recepta per WhatsApp, la preparem i t'avisem."
+      ],
+      [
+        "Farmàcia Agramonte — consejo de siempre, de tu barrio",
+        "Farmàcia Agramonte — consell de sempre, del teu barri"
+      ],
+      [
+        "Ilustración del mostrador de la farmacia con las estanterías de botes",
+        "Il·lustració del taulell de la farmàcia amb les estanteries de pots"
+      ],
+      [
+        "<h1>Consejo de siempre,<em>de tu barrio</em></h1>",
+        "<h1>Consell de sempre,<em>del teu barri</em></h1>"
+      ],
+      [
+        "<strong>Envíanos la receta</strong> o el nombre del producto.",
+        "<strong>Envia'ns la recepta</strong> o el nom del producte."
+      ],
+      [
+        "Lo preparamos y te avisamos.",
+        "Ho preparem i t'avisem."
+      ],
+      [
+        "Vienes a buscarlo cuando quieras.",
+        "Vens a buscar-ho quan vulguis."
+      ],
+      [
+        "Enviar por WhatsApp",
+        "Enviar per WhatsApp"
+      ],
+      [
+        "¿Qué estás buscando?",
+        "Què estàs buscant?"
+      ],
+      [
+        "Cada una abre su página. Si prefieres preguntar",
+        "Cada una obre la seva pàgina. Si prefereixes preguntar"
+      ],
+      [
+        "directamente, escríbenos por ",
+        "directament, escriu-nos per "
+      ],
+      [
+        "o llámanos al ",
+        "o truca'ns al "
+      ],
+      [
+        "¿Por qué elegir Farmàcia Agramonte?",
+        "Per què triar la Farmàcia Agramonte?"
+      ],
+      [
+        "Atención personalizada",
+        "Atenció personalitzada"
+      ],
+      [
+        "Te escuchamos y te aconsejamos según tus necesidades.",
+        "T'escoltem i t'aconsellem segons les teves necessitats."
+      ],
+      [
+        "Experiencia y confianza",
+        "Experiència i confiança"
+      ],
+      [
+        "Más de 130 años al servicio de nuestro barrio.",
+        "Més de 130 anys al servei del nostre barri."
+      ],
+      [
+        "Cercanía y calidad",
+        "Proximitat i qualitat"
+      ],
+      [
+        "Productos seleccionados y un trato humano, de tú a tú.",
+        "Productes seleccionats i un tracte humà, de tu a tu."
+      ],
+      [
+        "Lunes a Sábado",
+        "Dilluns a dissabte"
+      ],
+      [
+        "Dónde estamos",
+        "On som"
+      ],
+      [
+        "Pedir por WhatsApp",
+        "Demanar per WhatsApp"
+      ],
+      [
+        "Envíanos tu receta o consulta y te responderemos.",
+        "Envia'ns la teva recepta o consulta i et respondrem."
+      ],
+      [
+        "Escríbenos <span>→</span>",
+        "Escriu-nos <span>→</span>"
+      ],
+      [
+        "Desde 1890 cuidando de tu salud en el corazón de Barcelona.",
+        "Des del 1890 cuidant de la teva salut al cor de Barcelona."
+      ],
+      [
+        "Atención al cliente",
+        "Atenció al client"
+      ],
+      [
+        "Llamar a la farmacia",
+        "Trucar a la farmàcia"
+      ],
+      [
+        "Escribir un correo",
+        "Escriure un correu"
+      ],
+      [
+        "Horario y dirección",
+        "Horari i adreça"
+      ],
+      [
+        "Política de privacidad",
+        "Política de privacitat"
+      ],
+      [
+        "Política de cookies",
+        "Política de galetes"
+      ],
+      [
+        "Farmacéutica titular: Zoila Agramonte Bucho ·",
+        "Farmacèutica titular: Zoila Agramonte Bucho ·"
+      ],
+      [
+        "Número de colegiada: ",
+        "Número de col·legiada: "
+      ],
+      [
+        ">PENDIENTE<",
+        ">PENDENT<"
+      ],
+      [
+        "© 2026 Farmàcia Agramonte. Todos los derechos reservados.",
+        "© 2026 Farmàcia Agramonte. Tots els drets reservats."
+      ],
+      [
+        "Medicamentos",
+        "Medicaments"
+      ],
+      [
+        "Cosmética facial",
+        "Cosmètica facial"
+      ],
+      [
+        "Cosmética corporal",
+        "Cosmètica corporal"
+      ],
+      [
+        "Nutrición y vitaminas",
+        "Nutrició i vitamines"
+      ],
+      [
+        "Bebé e infantil",
+        "Bebè i infantil"
+      ],
+      [
+        "Salud íntima",
+        "Salut íntima"
+      ],
+      [
+        "Fitoterapia",
+        "Fitoteràpia"
+      ],
+      [
+        "Ortopedia",
+        "Ortopèdia"
+      ],
+      [
+        "Solares",
+        "Solars"
+      ],
+      [
+        "Cabello",
+        "Cabell"
+      ],
+      [
+        "Información",
+        "Informació"
+      ],
+      [
+        "Aviso legal",
+        "Avís legal"
+      ],
+      [
+        "Categorías",
+        "Categories"
+      ],
+      [
+        "Enlaces",
+        "Enllaços"
+      ],
+      [
+        "Historia",
+        "Història"
+      ],
+      [
+        "Contacto",
+        "Contacte"
+      ],
+      [
+        "Horario",
+        "Horari"
+      ],
+      [
+        "Inicio",
+        "Inici"
+      ],
+      [
+        "Cesta",
+        "Cistella"
+      ],
+      [
+        "Pedir",
+        "Demanar"
+      ]
+    ],
+    "en": [
+      [
+        "Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
+        "Farmàcia Agramonte, on Plaça de la Llana (El Born, Barcelona). Send us your prescription on WhatsApp, we prepare it and let you know."
+      ],
+      [
+        "Farmacia en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
+        "Pharmacy on Plaça de la Llana (El Born, Barcelona) since 1890. Send us your prescription on WhatsApp, we prepare it and let you know."
+      ],
+      [
+        "Farmacia de barrio en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envía tu receta por WhatsApp, la preparamos y te avisamos.",
+        "Neighbourhood pharmacy on Plaça de la Llana (El Born, Barcelona) since 1890. Send your prescription on WhatsApp, we prepare it and let you know."
+      ],
+      [
+        "Farmàcia Agramonte — consejo de siempre, de tu barrio",
+        "Farmàcia Agramonte — timeless advice, from your neighbourhood"
+      ],
+      [
+        "Ilustración del mostrador de la farmacia con las estanterías de botes",
+        "Illustration of the pharmacy counter with its shelves of jars"
+      ],
+      [
+        "<h1>Consejo de siempre,<em>de tu barrio</em></h1>",
+        "<h1>Timeless advice,<em>from your neighbourhood</em></h1>"
+      ],
+      [
+        "<strong>Envíanos la receta</strong> o el nombre del producto.",
+        "<strong>Send us the prescription</strong> or the product name."
+      ],
+      [
+        "Lo preparamos y te avisamos.",
+        "We prepare it and let you know."
+      ],
+      [
+        "Vienes a buscarlo cuando quieras.",
+        "You come and collect it whenever you like."
+      ],
+      [
+        "Enviar por WhatsApp",
+        "Send on WhatsApp"
+      ],
+      [
+        "¿Qué estás buscando?",
+        "What are you looking for?"
+      ],
+      [
+        "Cada una abre su página. Si prefieres preguntar",
+        "Each one opens its own page. If you would rather ask"
+      ],
+      [
+        "directamente, escríbenos por ",
+        "us directly, message us on "
+      ],
+      [
+        "o llámanos al ",
+        "or call us on "
+      ],
+      [
+        "¿Por qué elegir Farmàcia Agramonte?",
+        "Why choose Farmàcia Agramonte?"
+      ],
+      [
+        "Atención personalizada",
+        "Personal attention"
+      ],
+      [
+        "Te escuchamos y te aconsejamos según tus necesidades.",
+        "We listen to you and advise you according to what you need."
+      ],
+      [
+        "Experiencia y confianza",
+        "Experience and trust"
+      ],
+      [
+        "Más de 130 años al servicio de nuestro barrio.",
+        "More than 130 years serving our neighbourhood."
+      ],
+      [
+        "Cercanía y calidad",
+        "Closeness and quality"
+      ],
+      [
+        "Productos seleccionados y un trato humano, de tú a tú.",
+        "Carefully chosen products and a human touch, one to one."
+      ],
+      [
+        "Lunes a Sábado",
+        "Monday to Saturday"
+      ],
+      [
+        "Dónde estamos",
+        "Where we are"
+      ],
+      [
+        "Pedir por WhatsApp",
+        "Order on WhatsApp"
+      ],
+      [
+        "Envíanos tu receta o consulta y te responderemos.",
+        "Send us your prescription or your question and we will reply."
+      ],
+      [
+        "Escríbenos <span>→</span>",
+        "Message us <span>→</span>"
+      ],
+      [
+        "Desde 1890 cuidando de tu salud en el corazón de Barcelona.",
+        "Caring for your health in the heart of Barcelona since 1890."
+      ],
+      [
+        "Atención al cliente",
+        "Customer service"
+      ],
+      [
+        "Llamar a la farmacia",
+        "Call the pharmacy"
+      ],
+      [
+        "Escribir un correo",
+        "Send an email"
+      ],
+      [
+        "Horario y dirección",
+        "Opening hours and address"
+      ],
+      [
+        "Política de privacidad",
+        "Privacy policy"
+      ],
+      [
+        "Política de cookies",
+        "Cookie policy"
+      ],
+      [
+        "Farmacéutica titular: Zoila Agramonte Bucho ·",
+        "Pharmacist in charge: Zoila Agramonte Bucho ·"
+      ],
+      [
+        "Número de colegiada: ",
+        "Registration number: "
+      ],
+      [
+        ">PENDIENTE<",
+        ">PENDING<"
+      ],
+      [
+        "© 2026 Farmàcia Agramonte. Todos los derechos reservados.",
+        "© 2026 Farmàcia Agramonte. All rights reserved."
+      ],
+      [
+        "Medicamentos",
+        "Medicines"
+      ],
+      [
+        "Cosmética facial",
+        "Facial skincare"
+      ],
+      [
+        "Cosmética corporal",
+        "Body care"
+      ],
+      [
+        "Nutrición y vitaminas",
+        "Nutrition and vitamins"
+      ],
+      [
+        "Bebé e infantil",
+        "Baby and child"
+      ],
+      [
+        "Salud íntima",
+        "Intimate health"
+      ],
+      [
+        "Fitoterapia",
+        "Herbal medicine"
+      ],
+      [
+        "Ortopedia",
+        "Orthopaedics"
+      ],
+      [
+        "Solares",
+        "Sun care"
+      ],
+      [
+        "Cabello",
+        "Hair care"
+      ],
+      [
+        "Información",
+        "Information"
+      ],
+      [
+        "Aviso legal",
+        "Legal notice"
+      ],
+      [
+        "Categorías",
+        "Categories"
+      ],
+      [
+        "Enlaces",
+        "Links"
+      ],
+      [
+        "Historia",
+        "About us"
+      ],
+      [
+        "Contacto",
+        "Contact"
+      ],
+      [
+        "Horario",
+        "Opening hours"
+      ],
+      [
+        "Inicio",
+        "Home"
+      ],
+      [
+        "Cesta",
+        "Basket"
+      ],
+      [
+        "Pedir",
+        "Order"
+      ]
     ]
   },
 
   "textos": {
-    "nav_inicio":      { "es": "Inicio",      "ca": "Inici" },
-    "nav_categorias":  { "es": "Categorías",  "ca": "Categories" },
-    "nav_historia":    { "es": "Historia",    "ca": "Història" },
-    "nav_contacto":    { "es": "Contacto",    "ca": "Contacte" },
-    "nav_cesta":       { "es": "Cesta",       "ca": "Cistella" },
-    "nav_pedir":       { "es": "Pedir",       "ca": "Demanar" },
-
-    "idioma_aria":     { "es": "Idioma",      "ca": "Idioma" },
-    "idioma_actual":   { "es": "Idioma actual: %s", "ca": "Idioma actual: %s" },
-    "idioma_cambiar":  { "es": "Ver esta página en %s", "ca": "Veure aquesta pàgina en %s" },
-
-    "pie_derechos":    { "es": "© 2026 Farmàcia Agramonte", "ca": "© 2026 Farmàcia Agramonte" },
-    "pie_aviso":       { "es": "Aviso legal",   "ca": "Avís legal" },
-    "pie_privacidad":  { "es": "Privacidad",    "ca": "Privacitat" },
-    "pie_cookies":     { "es": "Cookies",       "ca": "Galetes" },
-
-    "boton_preguntar": { "es": "Preguntar", "ca": "Preguntar" },
-    "boton_preguntar_whatsapp": { "es": "Preguntar por WhatsApp", "ca": "Preguntar per WhatsApp" },
-    "boton_preguntar_aria": { "es": "Preguntar por %s por WhatsApp", "ca": "Preguntar per %s per WhatsApp" },
-    "boton_anadir":    { "es": "Añadir", "ca": "Afegir" },
-
-    "whatsapp_consulta": { "es": "Hola, quería preguntar por %s.", "ca": "Hola, volia preguntar per %s." },
-
-    "pendiente_formato": { "es": "Formato pendiente", "ca": "Format pendent" },
-    "pendiente_resumen": { "es": "Resumen pendiente", "ca": "Resum pendent" },
-    "pendiente_foto":    { "es": "Foto pendiente",    "ca": "Foto pendent" },
-
-    "coletilla_plantilla": { "es": " (plantilla)", "ca": " (plantilla)" },
-    "aviso_plantilla_rotulo": { "es": "Plantilla de ejemplo", "ca": "Plantilla d'exemple" },
+    "nav_inicio": {
+      "es": "Inicio",
+      "ca": "Inici",
+      "en": "Home"
+    },
+    "nav_categorias": {
+      "es": "Categorías",
+      "ca": "Categories",
+      "en": "Categories"
+    },
+    "nav_historia": {
+      "es": "Historia",
+      "ca": "Història",
+      "en": "About us"
+    },
+    "nav_contacto": {
+      "es": "Contacto",
+      "ca": "Contacte",
+      "en": "Contact"
+    },
+    "nav_cesta": {
+      "es": "Cesta",
+      "ca": "Cistella",
+      "en": "Basket"
+    },
+    "nav_pedir": {
+      "es": "Pedir",
+      "ca": "Demanar",
+      "en": "Order"
+    },
+    "idioma_aria": {
+      "es": "Idioma",
+      "ca": "Idioma",
+      "en": "Language"
+    },
+    "idioma_actual": {
+      "es": "Idioma actual: %s",
+      "ca": "Idioma actual: %s",
+      "en": "Current language: %s"
+    },
+    "idioma_cambiar": {
+      "es": "Ver esta página en %s",
+      "ca": "Veure aquesta pàgina en %s",
+      "en": "View this page in %s"
+    },
+    "pie_derechos": {
+      "es": "© 2026 Farmàcia Agramonte",
+      "ca": "© 2026 Farmàcia Agramonte",
+      "en": "© 2026 Farmàcia Agramonte"
+    },
+    "pie_aviso": {
+      "es": "Aviso legal",
+      "ca": "Avís legal",
+      "en": "Legal notice"
+    },
+    "pie_privacidad": {
+      "es": "Privacidad",
+      "ca": "Privacitat",
+      "en": "Privacy"
+    },
+    "pie_cookies": {
+      "es": "Cookies",
+      "ca": "Galetes",
+      "en": "Cookies"
+    },
+    "boton_preguntar": {
+      "es": "Preguntar",
+      "ca": "Preguntar",
+      "en": "Ask"
+    },
+    "boton_preguntar_whatsapp": {
+      "es": "Preguntar por WhatsApp",
+      "ca": "Preguntar per WhatsApp",
+      "en": "Ask on WhatsApp"
+    },
+    "boton_preguntar_aria": {
+      "es": "Preguntar por %s por WhatsApp",
+      "ca": "Preguntar per %s per WhatsApp",
+      "en": "Ask about %s on WhatsApp"
+    },
+    "boton_anadir": {
+      "es": "Añadir",
+      "ca": "Afegir",
+      "en": "Add"
+    },
+    "whatsapp_consulta": {
+      "es": "Hola, quería preguntar por %s.",
+      "ca": "Hola, volia preguntar per %s.",
+      "en": "Hello, I wanted to ask about %s."
+    },
+    "pendiente_formato": {
+      "es": "Formato pendiente",
+      "ca": "Format pendent",
+      "en": "Size pending"
+    },
+    "pendiente_resumen": {
+      "es": "Resumen pendiente",
+      "ca": "Resum pendent",
+      "en": "Description pending"
+    },
+    "pendiente_foto": {
+      "es": "Foto pendiente",
+      "ca": "Foto pendent",
+      "en": "Photo pending"
+    },
+    "coletilla_plantilla": {
+      "es": " (plantilla)",
+      "ca": " (plantilla)",
+      "en": " (template)"
+    },
+    "aviso_plantilla_rotulo": {
+      "es": "Plantilla de ejemplo",
+      "ca": "Plantilla d'exemple",
+      "en": "Sample template"
+    },
     "aviso_plantilla_texto": {
       "es": "Los productos y los formatos de esta página <strong>son inventados</strong> y están aquí sólo para ver la maquetación. Nada de lo que se lee abajo es el catálogo de la farmacia. No enlazar esta página ni darla por buena hasta sustituirlo por productos reales.",
-      "ca": "Els productes i els formats d'aquesta pàgina <strong>són inventats</strong> i hi són només per veure la maquetació. Res del que es llegeix a sota és el catàleg de la farmàcia. No enllaceu aquesta pàgina ni la doneu per bona fins que no se substitueixi per productes reals."
+      "ca": "Els productes i els formats d'aquesta pàgina <strong>són inventats</strong> i hi són només per veure la maquetació. Res del que es llegeix a sota és el catàleg de la farmàcia. No enllaceu aquesta pàgina ni la doneu per bona fins que no se substitueixi per productes reals.",
+      "en": "The products and sizes on this page <strong>are made up</strong> and are here only to show the layout. Nothing you read below is the pharmacy’s catalogue. Do not link to this page or treat it as final until it is replaced with real products."
     },
-
-    "seccion_descripcion":  { "es": "Para qué es",    "ca": "Per a què serveix" },
-    "seccion_modo_empleo":  { "es": "Modo de empleo", "ca": "Mode d'ús" },
-    "seccion_composicion":  { "es": "Composición",    "ca": "Composició" },
-    "seccion_advertencias": { "es": "Advertencias",   "ca": "Advertiments" },
-
-    "otros_titulo": { "es": "Más de %s", "ca": "Més de %s" },
-    "otros_volver": { "es": "Ver toda la categoría", "ca": "Veure tota la categoria" },
-
-    "cierre_titulo": { "es": "Cómo se pide", "ca": "Com es demana" },
+    "seccion_descripcion": {
+      "es": "Para qué es",
+      "ca": "Per a què serveix",
+      "en": "What it is for"
+    },
+    "seccion_modo_empleo": {
+      "es": "Modo de empleo",
+      "ca": "Mode d'ús",
+      "en": "How to use it"
+    },
+    "seccion_composicion": {
+      "es": "Composición",
+      "ca": "Composició",
+      "en": "Ingredients"
+    },
+    "seccion_advertencias": {
+      "es": "Advertencias",
+      "ca": "Advertiments",
+      "en": "Warnings"
+    },
+    "otros_titulo": {
+      "es": "Más de %s",
+      "ca": "Més de %s",
+      "en": "More from %s"
+    },
+    "otros_volver": {
+      "es": "Ver toda la categoría",
+      "ca": "Veure tota la categoria",
+      "en": "See the whole category"
+    },
+    "cierre_titulo": {
+      "es": "Cómo se pide",
+      "ca": "Com es demana",
+      "en": "How to order"
+    },
     "cierre_parrafos": {
       "es": [
         "Con «Añadir» vas apuntando lo que quieras en <a href=\"%scesta.html\">tu cesta</a>, que se queda guardada en este navegador y puedes cambiar cuando quieras. Al acabar, la cesta escribe sola el mensaje y nos lo mandas por WhatsApp: lo preparamos, te confirmamos el precio y lo recoges en el mostrador.",
@@ -191,31 +691,67 @@
         "Amb «Afegir» vas apuntant el que vulguis a <a href=\"%scesta.html\">la teva cistella</a>, que es queda guardada en aquest navegador i pots canviar quan vulguis. Quan acabis, la cistella escriu sola el missatge i ens l'envies per WhatsApp: ho preparem, et confirmem el preu i el reculls al taulell.",
         "<strong>Aquí no es paga res</strong> i no et demanem cap dada: això no és una botiga en línia, és la manera d'encarregar sense haver d'escriure'ns els productes un per un. El taulell és, a més, on et podem aconsellar.",
         "Si prefereixes trucar, el número és el <a href=\"tel:%s\">%s</a>, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30."
+      ],
+      "en": [
+        "With “Add” you note down whatever you like in <a href=\"%scesta.html\">your basket</a>, which stays saved in this browser and you can change whenever you want. When you are done, the basket writes the message for you and you send it to us on WhatsApp: we prepare it, confirm the price and you collect it at the counter.",
+        "<strong>Nothing is paid here</strong> and we do not ask you for any personal details: this is not an online shop, it is a way to order without having to type the products out one by one. The counter is also where we can advise you.",
+        "If you would rather call, the number is <a href=\"tel:%s\">%s</a>, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30."
       ]
     },
-
     "sin_productos_encargar": {
       "es": "Para encargar: <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> o <a href=\"tel:%s\">%s</a>, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30.",
-      "ca": "Per encarregar: <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> o <a href=\"tel:%s\">%s</a>, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30."
+      "ca": "Per encarregar: <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> o <a href=\"tel:%s\">%s</a>, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30.",
+      "en": "To order: <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> or <a href=\"tel:%s\">%s</a>, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30."
     },
-
     "ficha_nota_consejo": {
       "es": "Desde aquí no se paga nada: «Añadir» lo apunta en tu cesta y, cuando acabes de mirar, nos la mandas de una vez por WhatsApp. Lo preparamos, te confirmamos el precio y lo recoges en el mostrador, que es donde además podemos aconsejarte. Si lo prefieres, llámanos al <a href=\"tel:%s\">%s</a>.",
-      "ca": "Des d'aquí no es paga res: «Afegir» ho apunta a la teva cistella i, quan acabis de mirar, ens l'envies d'un cop per WhatsApp. Ho preparem, et confirmem el preu i el reculls al taulell, que és on a més et podem aconsellar. Si ho prefereixes, truca'ns al <a href=\"tel:%s\">%s</a>."
+      "ca": "Des d'aquí no es paga res: «Afegir» ho apunta a la teva cistella i, quan acabis de mirar, ens l'envies d'un cop per WhatsApp. Ho preparem, et confirmem el preu i el reculls al taulell, que és on a més et podem aconsellar. Si ho prefereixes, truca'ns al <a href=\"tel:%s\">%s</a>.",
+      "en": "Nothing is paid from here: “Add” notes it down in your basket and, when you have finished looking, you send it to us in one go on WhatsApp. We prepare it, confirm the price and you collect it at the counter, which is also where we can advise you. If you would rather, call us on <a href=\"tel:%s\">%s</a>."
     },
-
-    "titulo_categoria":     { "es": "%s%s — Farmàcia Agramonte", "ca": "%s%s — Farmàcia Agramonte" },
-    "desc_categoria":       { "es": "%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).", "ca": "%s a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona)." },
-    "titulo_producto":      { "es": "%s%s — %s — Farmàcia Agramonte", "ca": "%s%s — %s — Farmàcia Agramonte" },
-    "desc_producto":        { "es": "%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).", "ca": "%s a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona)." },
-
-    "cesta_titulo_pagina": { "es": "Tu cesta — Farmàcia Agramonte", "ca": "La teva cistella — Farmàcia Agramonte" },
-    "cesta_descripcion":   { "es": "Lo que has apuntado para encargar en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).", "ca": "El que has apuntat per encarregar a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona)." },
-    "cesta_h1":            { "es": "Tu cesta", "ca": "La teva cistella" },
-    "cesta_migas":         { "es": "Tu cesta", "ca": "La teva cistella" },
+    "titulo_categoria": {
+      "es": "%s%s — Farmàcia Agramonte",
+      "ca": "%s%s — Farmàcia Agramonte",
+      "en": "%s%s — Farmàcia Agramonte"
+    },
+    "desc_categoria": {
+      "es": "%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
+      "ca": "%s a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).",
+      "en": "%s at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
+    },
+    "titulo_producto": {
+      "es": "%s%s — %s — Farmàcia Agramonte",
+      "ca": "%s%s — %s — Farmàcia Agramonte",
+      "en": "%s%s — %s — Farmàcia Agramonte"
+    },
+    "desc_producto": {
+      "es": "%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
+      "ca": "%s a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).",
+      "en": "%s at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
+    },
+    "cesta_titulo_pagina": {
+      "es": "Tu cesta — Farmàcia Agramonte",
+      "ca": "La teva cistella — Farmàcia Agramonte",
+      "en": "Your basket — Farmàcia Agramonte"
+    },
+    "cesta_descripcion": {
+      "es": "Lo que has apuntado para encargar en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
+      "ca": "El que has apuntat per encarregar a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).",
+      "en": "What you have noted down to order at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
+    },
+    "cesta_h1": {
+      "es": "Tu cesta",
+      "ca": "La teva cistella",
+      "en": "Your basket"
+    },
+    "cesta_migas": {
+      "es": "Tu cesta",
+      "ca": "La teva cistella",
+      "en": "Your basket"
+    },
     "cesta_entradilla": {
       "es": "Lo que has apuntado para encargar. Se guarda <strong>sólo en este navegador</strong>: no nos llega nada, ni lo vemos, hasta que nos mandes el mensaje tú.",
-      "ca": "El que has apuntat per encarregar. Es guarda <strong>només en aquest navegador</strong>: no ens arriba res, ni ho veiem, fins que ens enviïs el missatge tu."
+      "ca": "El que has apuntat per encarregar. Es guarda <strong>només en aquest navegador</strong>: no ens arriba res, ni ho veiem, fins que ens enviïs el missatge tu.",
+      "en": "What you have noted down to order. It is kept <strong>only in this browser</strong>: nothing reaches us, and we cannot see it, until you send us the message yourself."
     },
     "cesta_sinjs": {
       "es": [
@@ -225,21 +761,62 @@
       "ca": [
         "<strong>La cistella necessita JavaScript</strong>, i en aquest navegador està desactivat o no s'ha arribat a carregar. La resta del catàleg funciona igual: pots veure-ho tot i demanar-nos el que vulguis per WhatsApp.",
         "Escriu-nos al <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">%s</a> o truca al <a href=\"tel:%s\">%s</a>, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30."
+      ],
+      "en": [
+        "<strong>The basket needs JavaScript</strong>, and in this browser it is turned off or has not loaded. The rest of the catalogue works just the same: you can browse it all and order whatever you like on WhatsApp.",
+        "Message us on <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">%s</a> or call <a href=\"tel:%s\">%s</a>, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30."
       ]
     },
-    "cesta_vacia_h2": { "es": "Todavía no has apuntado nada", "ca": "Encara no has apuntat res" },
+    "cesta_vacia_h2": {
+      "es": "Todavía no has apuntado nada",
+      "ca": "Encara no has apuntat res",
+      "en": "You have not noted anything down yet"
+    },
     "cesta_vacia_p": {
       "es": "Entra en una categoría y pulsa «Añadir» en lo que te interese. Puedes juntar cosas de categorías distintas: la cesta es una sola.",
-      "ca": "Entra en una categoria i prem «Afegir» en el que t'interessi. Pots ajuntar coses de categories diferents: la cistella és una de sola."
+      "ca": "Entra en una categoria i prem «Afegir» en el que t'interessi. Pots ajuntar coses de categories diferents: la cistella és una de sola.",
+      "en": "Open a category and press “Add” on whatever interests you. You can mix things from different categories: there is only one basket."
     },
-    "cesta_vacia_enlace": { "es": "Ver las categorías", "ca": "Veure les categories" },
-    "cesta_resumen":      { "es": "En la cesta:", "ca": "A la cistella:" },
-    "cesta_resumen_nota": { "es": "Sin precios: te los confirmamos al contestarte.", "ca": "Sense preus: te'ls confirmem quan et contestem." },
-    "cesta_enviar":       { "es": "Enviar el encargo", "ca": "Enviar l'encàrrec" },
-    "cesta_copiar":       { "es": "Copiar la lista", "ca": "Copiar la llista" },
-    "cesta_correo":       { "es": "Enviarlo por correo", "ca": "Enviar-ho per correu" },
-    "cesta_vaciar":       { "es": "Vaciar la cesta", "ca": "Buidar la cistella" },
-    "cesta_cierre_h2":    { "es": "Qué pasa al enviarlo", "ca": "Què passa quan l'envies" },
+    "cesta_vacia_enlace": {
+      "es": "Ver las categorías",
+      "ca": "Veure les categories",
+      "en": "See the categories"
+    },
+    "cesta_resumen": {
+      "es": "En la cesta:",
+      "ca": "A la cistella:",
+      "en": "In the basket:"
+    },
+    "cesta_resumen_nota": {
+      "es": "Sin precios: te los confirmamos al contestarte.",
+      "ca": "Sense preus: te'ls confirmem quan et contestem.",
+      "en": "No prices: we confirm them when we reply to you."
+    },
+    "cesta_enviar": {
+      "es": "Enviar el encargo",
+      "ca": "Enviar l'encàrrec",
+      "en": "Send the order"
+    },
+    "cesta_copiar": {
+      "es": "Copiar la lista",
+      "ca": "Copiar la llista",
+      "en": "Copy the list"
+    },
+    "cesta_correo": {
+      "es": "Enviarlo por correo",
+      "ca": "Enviar-ho per correu",
+      "en": "Send it by email"
+    },
+    "cesta_vaciar": {
+      "es": "Vaciar la cesta",
+      "ca": "Buidar la cistella",
+      "en": "Empty the basket"
+    },
+    "cesta_cierre_h2": {
+      "es": "Qué pasa al enviarlo",
+      "ca": "Què passa quan l'envies",
+      "en": "What happens when you send it"
+    },
     "cesta_cierre": {
       "es": [
         "Se abre tu WhatsApp con el mensaje escrito: puedes leerlo, cambiar lo que quieras y enviarlo tú. <strong>Aquí no se cobra nada y no te pedimos ningún dato</strong>; esto no es una tienda en línea, es la manera de encargar sin escribirnos los productos uno a uno.",
@@ -250,21 +827,43 @@
         "S'obre el teu WhatsApp amb el missatge escrit: pots llegir-lo, canviar el que vulguis i enviar-lo tu. <strong>Aquí no es cobra res i no et demanem cap dada</strong>; això no és una botiga en línia, és la manera d'encarregar sense escriure'ns els productes un per un.",
         "Et contestem amb el preu i quan el tindràs llest, i es paga en recollir-lo al taulell, que és on a més et podem aconsellar. Si prefereixes trucar, el número és el <a href=\"tel:%s\">%s</a>.",
         "De <strong>medicaments</strong> no hi ha catàleg i no entren a la cistella: <a href=\"%scatalogo-medicamentos.html\">allà s'explica</a> com s'encarrega una recepta."
+      ],
+      "en": [
+        "Your WhatsApp opens with the message already written: you can read it, change anything you want and send it yourself. <strong>Nothing is charged here and we do not ask you for any personal details</strong>; this is not an online shop, it is a way to order without typing the products out one by one.",
+        "We reply with the price and when it will be ready, and you pay when you collect it at the counter, which is also where we can advise you. If you would rather call, the number is <a href=\"tel:%s\">%s</a>.",
+        "There is no catalogue of <strong>medicines</strong> and they do not go in the basket: <a href=\"%scatalogo-medicamentos.html\">that page explains</a> how to order a prescription."
       ]
     },
-
-    "historia_titulo_pagina": { "es": "Quiénes somos — Farmàcia Agramonte", "ca": "Qui som — Farmàcia Agramonte" },
+    "historia_titulo_pagina": {
+      "es": "Quiénes somos — Farmàcia Agramonte",
+      "ca": "Qui som — Farmàcia Agramonte",
+      "en": "About us — Farmàcia Agramonte"
+    },
     "historia_descripcion": {
       "es": "La Farmàcia Agramonte, antigua Farmàcia Joaquim Cases: tienda modernista protegida en la Plaça de la Llana, El Born (Barcelona), con referencias desde 1600.",
-      "ca": "La Farmàcia Agramonte, antiga Farmàcia Joaquim Cases: botiga modernista protegida a la Plaça de la Llana, el Born (Barcelona), amb referències des del 1600."
+      "ca": "La Farmàcia Agramonte, antiga Farmàcia Joaquim Cases: botiga modernista protegida a la Plaça de la Llana, el Born (Barcelona), amb referències des del 1600.",
+      "en": "Farmàcia Agramonte, formerly Farmàcia Joaquim Cases: a protected Modernista shop on Plaça de la Llana, El Born (Barcelona), with records going back to 1600."
     },
-    "historia_h1":     { "es": "Quiénes somos", "ca": "Qui som" },
-    "historia_migas":  { "es": "Quiénes somos", "ca": "Qui som" },
+    "historia_h1": {
+      "es": "Quiénes somos",
+      "ca": "Qui som",
+      "en": "About us"
+    },
+    "historia_migas": {
+      "es": "Quiénes somos",
+      "ca": "Qui som",
+      "en": "About us"
+    },
     "historia_entradilla": {
       "es": "En la Farmàcia Agramonte nos esforzamos todos los días para que nuestros clientes reciban el mejor servicio posible.",
-      "ca": "A la Farmàcia Agramonte ens esforcem cada dia perquè els nostres clients rebin el millor servei possible."
+      "ca": "A la Farmàcia Agramonte ens esforcem cada dia perquè els nostres clients rebin el millor servei possible.",
+      "en": "At Farmàcia Agramonte we work every day so that our customers get the best service we can give them."
     },
-    "historia_s1_h2": { "es": "Pasión por la salud", "ca": "Passió per la salut" },
+    "historia_s1_h2": {
+      "es": "Pasión por la salud",
+      "ca": "Passió per la salut",
+      "en": "A passion for health"
+    },
     "historia_s1": {
       "es": [
         "En la Farmàcia Agramonte tenemos pasión por la salud, y por eso nuestro objetivo es proporcionar el mejor consejo farmacéutico con el trato más humano y profesional posible. Te acompañamos y te asesoramos en todas y cada una de tus consultas y tratamientos.",
@@ -273,9 +872,17 @@
       "ca": [
         "A la Farmàcia Agramonte tenim passió per la salut, i per això el nostre objectiu és donar el millor consell farmacèutic amb el tracte més humà i professional possible. T'acompanyem i t'assessorem en totes i cadascuna de les teves consultes i tractaments.",
         "La farmàcia la regenta <strong>Zoila Agramonte Bucho</strong>, llicenciada en Farmàcia per la Universitat de l'Havana, farmacèutica i dietista titulada, amb més de trenta anys d'experiència en el sector farmacèutic."
+      ],
+      "en": [
+        "At Farmàcia Agramonte we have a passion for health, and that is why our aim is to give the best pharmaceutical advice with the most human and professional care possible. We support and advise you through each and every one of your questions and treatments.",
+        "The pharmacy is run by <strong>Zoila Agramonte Bucho</strong>, who holds a degree in Pharmacy from the University of Havana and is a qualified pharmacist and dietitian with more than thirty years of experience in the pharmaceutical sector."
       ]
     },
-    "historia_s2_h2": { "es": "Una tienda modernista protegida", "ca": "Una botiga modernista protegida" },
+    "historia_s2_h2": {
+      "es": "Una tienda modernista protegida",
+      "ca": "Una botiga modernista protegida",
+      "en": "A protected Modernista shop"
+    },
     "historia_s2": {
       "es": [
         "La Farmàcia Agramonte, antigua <strong>Farmàcia Joaquim Cases</strong>, es una tienda modernista protegida como <strong>Bien Cultural de Interés Local</strong> y catalogada como comercio emblemático de gran interés.",
@@ -288,40 +895,102 @@
         "La decoració actual del local ve d'una reforma modernista del 1880, l'època en què la família Cases va crear una fórmula magistral que es va popularitzar per tot Espanya i fins i tot a Amèrica, la «Solución Cases», famosa per la seva capacitat de pal·liar múltiples malalties i dolors.",
         "Per fora, a la façana destaca un moble de fusta aplacada que ocupa tota la superfície. Per dins, els acabats modernistes propis de l'època: vidres amb motius florals gravats a l'àcid, paviment de mosaic hidràulic i mobles amb acabats d'ebenisteria de línies corbes i motius florals.",
         "Aquests motius modernistes conviuen amb restes d'arquitectura medieval, com l'arc de pedra de càrrega de l'interior. Està datat al <strong>segle XIII</strong>, dels que es construïen per fer possibles espais flexibles on ubicar tallers, comerços i altres."
+      ],
+      "en": [
+        "Farmàcia Agramonte, formerly <strong>Farmàcia Joaquim Cases</strong>, is a Modernista shop protected as a <strong>Cultural Asset of Local Interest</strong> and listed as an emblematic business of great interest.",
+        "The interior as it stands today comes from a Modernista refurbishment of 1880, the period in which the Cases family created a compounded formula that became popular throughout Spain and even in the Americas, the “Solución Cases”, known for easing a wide range of ailments and pains.",
+        "Outside, the façade is dominated by a panelled wooden shopfront covering its whole surface. Inside, the Modernista finishes typical of the period: glass with acid-etched floral motifs, hydraulic mosaic flooring, and cabinetwork with curved lines and floral detail.",
+        "Those Modernista motifs sit alongside remains of medieval architecture, such as the stone load-bearing arch inside. It dates from the <strong>13th century</strong>, one of those built to make flexible spaces possible for workshops, shops and the like."
       ]
     },
-    "historia_s3_h2": { "es": "Cuatro siglos de boticarios", "ca": "Quatre segles d'apotecaris" },
+    "historia_s3_h2": {
+      "es": "Cuatro siglos de boticarios",
+      "ca": "Quatre segles d'apotecaris",
+      "en": "Four centuries of apothecaries"
+    },
     "historia_s3_p1": {
       "es": "Las primeras referencias históricas de la farmacia datan de <strong>1600</strong>, y hablan de un espacio regentado por una larga estirpe de boticarios.",
-      "ca": "Les primeres referències històriques de la farmàcia són del <strong>1600</strong>, i parlen d'un espai regentat per una llarga nissaga d'apotecaris."
+      "ca": "Les primeres referències històriques de la farmàcia són del <strong>1600</strong>, i parlen d'un espai regentat per una llarga nissaga d'apotecaris.",
+      "en": "The earliest historical records of the pharmacy date from <strong>1600</strong>, and describe a place run by a long line of apothecaries."
     },
     "historia_s3_p2": {
       "es": "En 2019 Zoila decide poner en valor el inmenso patrimonio histórico y artístico que tiene la farmacia y, al mismo tiempo, dotarla de dinamismo y modernidad.",
-      "ca": "El 2019 la Zoila decideix posar en valor l'immens patrimoni històric i artístic que té la farmàcia i, al mateix temps, dotar-la de dinamisme i modernitat."
+      "ca": "El 2019 la Zoila decideix posar en valor l'immens patrimoni històric i artístic que té la farmàcia i, al mateix temps, dotar-la de dinamisme i modernitat.",
+      "en": "In 2019 Zoila decided to bring out the immense historical and artistic heritage of the pharmacy and, at the same time, give it energy and a modern outlook."
     },
     "historia_cronologia": {
       "es": [
-        ["Hasta 1747", "Los Saurina, los primeros en regentarla."],
-        ["1864 – 2014", "La familia Cases, propietaria durante siglo y medio."],
-        ["Desde 2019", "Zoila Agramonte Bucho, nueva titular."]
+        [
+          "Hasta 1747",
+          "Los Saurina, los primeros en regentarla."
+        ],
+        [
+          "1864 – 2014",
+          "La familia Cases, propietaria durante siglo y medio."
+        ],
+        [
+          "Desde 2019",
+          "Zoila Agramonte Bucho, nueva titular."
+        ]
       ],
       "ca": [
-        ["Fins al 1747", "Els Saurina, els primers a regentar-la."],
-        ["1864 – 2014", "La família Cases, propietària durant segle i mig."],
-        ["Des del 2019", "Zoila Agramonte Bucho, nova titular."]
+        [
+          "Fins al 1747",
+          "Els Saurina, els primers a regentar-la."
+        ],
+        [
+          "1864 – 2014",
+          "La família Cases, propietària durant segle i mig."
+        ],
+        [
+          "Des del 2019",
+          "Zoila Agramonte Bucho, nova titular."
+        ]
+      ],
+      "en": [
+        [
+          "Until 1747",
+          "The Saurina family, the first to run it."
+        ],
+        [
+          "1864 – 2014",
+          "The Cases family, owners for a century and a half."
+        ],
+        [
+          "Since 2019",
+          "Zoila Agramonte Bucho, the new licence holder."
+        ]
       ]
     },
-    "historia_s4_h2": { "es": "Reportajes de prensa", "ca": "Reportatges de premsa" },
+    "historia_s4_h2": {
+      "es": "Reportajes de prensa",
+      "ca": "Reportatges de premsa",
+      "en": "Press coverage"
+    },
     "historia_s4_p1": {
       "es": "La revista digital %s nos contactó para hacer un reportaje sobre la farmacia y sobre cómo había repercutido el impacto de la pandemia de covid-19 en el barrio de Santa Caterina.",
-      "ca": "La revista digital %s ens va contactar per fer un reportatge sobre la farmàcia i sobre com havia repercutit l'impacte de la pandèmia de covid-19 al barri de Santa Caterina."
+      "ca": "La revista digital %s ens va contactar per fer un reportatge sobre la farmàcia i sobre com havia repercutit l'impacte de la pandèmia de covid-19 al barri de Santa Caterina.",
+      "en": "The digital magazine %s got in touch with us to run a feature on the pharmacy and on how the impact of the covid-19 pandemic had been felt in the Santa Caterina neighbourhood."
     },
-    "historia_prensa_sufijo": { "es": "%s · Reportaje", "ca": "%s · Reportatge" },
-    "historia_prensa_pie":    { "es": "Se abre en una pestaña nueva, en su web", "ca": "S'obre en una pestanya nova, al seu web" },
-    "historia_cierre_h2":     { "es": "Ven a verla", "ca": "Vine a veure-la" },
+    "historia_prensa_sufijo": {
+      "es": "%s · Reportaje",
+      "ca": "%s · Reportatge",
+      "en": "%s · Feature"
+    },
+    "historia_prensa_pie": {
+      "es": "Se abre en una pestaña nueva, en su web",
+      "ca": "S'obre en una pestanya nova, al seu web",
+      "en": "Opens in a new tab, on their own website"
+    },
+    "historia_cierre_h2": {
+      "es": "Ven a verla",
+      "ca": "Vine a veure-la",
+      "en": "Come and see it"
+    },
     "historia_cierre_p": {
       "es": "Estamos en la Plaça de la Llana, 11, en El Born, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30. Si quieres preguntar algo antes de venir, escríbenos por <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> o llama al <a href=\"tel:%s\">%s</a>.",
-      "ca": "Som a la Plaça de la Llana, 11, al Born, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30. Si vols preguntar alguna cosa abans de venir, escriu-nos per <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> o truca al <a href=\"tel:%s\">%s</a>."
+      "ca": "Som a la Plaça de la Llana, 11, al Born, de dilluns a dissabte de 9:00 a 14:30 i de 16:00 a 20:30. Si vols preguntar alguna cosa abans de venir, escriu-nos per <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> o truca al <a href=\"tel:%s\">%s</a>.",
+      "en": "We are at Plaça de la Llana, 11, in El Born, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30. If you would like to ask something before coming, message us on <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> or call <a href=\"tel:%s\">%s</a>."
     }
   }
 }

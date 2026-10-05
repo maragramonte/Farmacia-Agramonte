@@ -53,18 +53,21 @@
       "id": "medicamentos",
       "nombre": {
         "es": "Medicamentos",
-        "ca": "Medicaments"
+        "ca": "Medicaments",
+        "en": "Medicines"
       },
       "icono": "capsula",
       "plantilla": false,
       "intro": {
         "es": "Aquí no hay lista de productos, y es a propósito.",
-        "ca": "Aquí no hi ha llista de productes, i és a propòsit."
+        "ca": "Aquí no hi ha llista de productes, i és a propòsit.",
+        "en": "There is no product list here, and that is deliberate."
       },
       "sin_productos": {
         "titulo": {
           "es": "Los medicamentos se encargan, no se compran por internet",
-          "ca": "Els medicaments s'encarreguen, no es compren per internet"
+          "ca": "Els medicaments s'encarreguen, no es compren per internet",
+          "en": "Medicines are ordered, not bought online"
         },
         "parrafos": {
           "es": [
@@ -76,6 +79,11 @@
             "La llei no permet anunciar al públic els medicaments que necessiten recepta, i els que no la necessiten només es poden anunciar amb advertiments obligatoris. Per això aquesta pàgina no porta catàleg: seria publicitat de medicaments, que és una cosa diferent de mostrar una crema.",
             "El que sí que pots fer és encarregar-los. Envia'ns la recepta o el nom del que busques per WhatsApp o per telèfon, ho preparem i t'avisem quan estigui a punt. La dispensació i la comprovació de la recepta es fan al taulell, com mana la normativa i com convé: és on et podem preguntar si prens alguna cosa més.",
             "Davant de qualsevol símptoma que preocupi, el primer és el metge. El que fem aquí és consell farmacèutic, no diagnòstic."
+          ],
+          "en": [
+            "The law does not allow prescription medicines to be advertised to the public, and those that need no prescription may only be advertised with mandatory warnings. That is why this page carries no catalogue: it would be advertising medicines, which is a different matter from showing you a moisturiser.",
+            "What you can do is order them. Send us the prescription or the name of what you need on WhatsApp or by phone, we prepare it and let you know when it is ready. Dispensing and checking the prescription happen at the counter, as the rules require and as it should be: that is where we can ask you whether you are taking anything else.",
+            "If a symptom worries you, see a doctor first. What we give here is pharmaceutical advice, not a diagnosis."
           ]
         }
       },
@@ -85,13 +93,15 @@
       "id": "cosmetica-facial",
       "nombre": {
         "es": "Cosmética facial",
-        "ca": "Cosmètica facial"
+        "ca": "Cosmètica facial",
+        "en": "Facial skincare"
       },
       "icono": "espejo",
       "plantilla": false,
       "intro": {
         "es": "Limpieza, hidratación y cuidado del rostro. Si no sabes por dónde empezar o tu piel se ha vuelto reactiva, cuéntanoslo: media consulta se resuelve sabiendo qué te estás poniendo ya.",
-        "ca": "Neteja, hidratació i cura del rostre. Si no saps per on començar o la teva pell s'ha tornat reactiva, explica'ns-ho: mitja consulta es resol sabent què t'estàs posant ja."
+        "ca": "Neteja, hidratació i cura del rostre. Si no saps per on començar o la teva pell s'ha tornat reactiva, explica'ns-ho: mitja consulta es resol sabent què t'estàs posant ja.",
+        "en": "Cleansing, moisturising and facial care. If you do not know where to start, or your skin has become reactive, tell us: half the answer comes from knowing what you are already using."
       },
       "productos": [
         {
@@ -99,7 +109,8 @@
           "nombre": "Avène Hydrance Aqua-gel",
           "resumen": {
             "es": "Hidratante en gel para piel deshidratada. Ligera y de absorción rápida. No lleva filtro solar.",
-            "ca": "Hidratant en gel per a pell deshidratada. Lleugera i d'absorció ràpida. No porta filtre solar."
+            "ca": "Hidratant en gel per a pell deshidratada. Lleugera i d'absorció ràpida. No porta filtre solar.",
+            "en": "A gel moisturiser for dehydrated skin. Light and quick to absorb. It contains no sun filter."
           },
           "consulta": {
             "es": "el Avène Hydrance Aqua-gel",
@@ -111,7 +122,8 @@
           "nombre": "La Roche-Posay Hydraphase Intense Ligera SPF 20",
           "resumen": {
             "es": "Hidratante ligera con ácido hialurónico y agua termal, con un filtro solar bajo para el día a día. No sustituye a un fotoprotector.",
-            "ca": "Hidratant lleugera amb àcid hialurònic i aigua termal, amb un filtre solar baix per al dia a dia. No substitueix un fotoprotector."
+            "ca": "Hidratant lleugera amb àcid hialurònic i aigua termal, amb un filtre solar baix per al dia a dia. No substitueix un fotoprotector.",
+            "en": "A light moisturiser with hyaluronic acid and thermal spring water, with a low sun filter for everyday use. It is not a substitute for a sunscreen."
           },
           "consulta": {
             "es": "la Hydraphase Intense Ligera SPF 20",
@@ -124,27 +136,32 @@
       "id": "cosmetica-corporal",
       "nombre": {
         "es": "Cosmética corporal",
-        "ca": "Cosmètica corporal"
+        "ca": "Cosmètica corporal",
+        "en": "Body care"
       },
       "icono": "bote",
       "plantilla": true,
       "intro": {
         "es": "Cuerpo, manos e higiene diaria. La piel del cuerpo pide menos que la de la cara, pero la pide todos los días.",
-        "ca": "Cos, mans i higiene diària. La pell del cos demana menys que la de la cara, però la demana cada dia."
+        "ca": "Cos, mans i higiene diària. La pell del cos demana menys que la de la cara, però la demana cada dia.",
+        "en": "Body, hands and everyday hygiene. The skin on your body asks for less than the skin on your face, but it asks every day."
       },
       "productos": [
         {
           "nombre": {
             "es": "Crema hidratante corporal",
-            "ca": "Crema hidratant corporal"
+            "ca": "Crema hidratant corporal",
+            "en": "Body moisturiser"
           },
           "resumen": {
             "es": "Para después de la ducha, sobre la piel aún húmeda.",
-            "ca": "Per a després de la dutxa, sobre la pell encara humida."
+            "ca": "Per a després de la dutxa, sobre la pell encara humida.",
+            "en": "For after the shower, on skin that is still damp."
           },
           "formato": {
             "es": "Crema · 400 ml",
-            "ca": "Crema · 400 ml"
+            "ca": "Crema · 400 ml",
+            "en": "Cream · 400 ml"
           },
           "consulta": {
             "es": "una crema hidratante corporal",
@@ -154,15 +171,18 @@
         {
           "nombre": {
             "es": "Gel de baño para piel atópica",
-            "ca": "Gel de bany per a pell atòpica"
+            "ca": "Gel de bany per a pell atòpica",
+            "en": "Bath gel for atopic skin"
           },
           "resumen": {
             "es": "Sin jabón ni perfume. Para pieles que se irritan con facilidad.",
-            "ca": "Sense sabó ni perfum. Per a pells que s'irriten amb facilitat."
+            "ca": "Sense sabó ni perfum. Per a pells que s'irriten amb facilitat.",
+            "en": "Soap-free and fragrance-free. For skin that is easily irritated."
           },
           "formato": {
             "es": "Gel · 500 ml",
-            "ca": "Gel · 500 ml"
+            "ca": "Gel · 500 ml",
+            "en": "Gel · 500 ml"
           },
           "consulta": {
             "es": "un gel de baño para piel atópica",
@@ -172,15 +192,18 @@
         {
           "nombre": {
             "es": "Crema de manos",
-            "ca": "Crema de mans"
+            "ca": "Crema de mans",
+            "en": "Hand cream"
           },
           "resumen": {
             "es": "De bolsillo, para las manos que se lavan muchas veces al día.",
-            "ca": "De butxaca, per a les mans que es renten moltes vegades al dia."
+            "ca": "De butxaca, per a les mans que es renten moltes vegades al dia.",
+            "en": "Pocket-sized, for hands that are washed many times a day."
           },
           "formato": {
             "es": "Crema · 75 ml",
-            "ca": "Crema · 75 ml"
+            "ca": "Crema · 75 ml",
+            "en": "Cream · 75 ml"
           },
           "consulta": {
             "es": "una crema de manos",
@@ -190,15 +213,18 @@
         {
           "nombre": {
             "es": "Crema de pies",
-            "ca": "Crema de peus"
+            "ca": "Crema de peus",
+            "en": "Foot cream"
           },
           "resumen": {
             "es": "Más densa, para talones y zonas de roce.",
-            "ca": "Més densa, per a talons i zones de fregament."
+            "ca": "Més densa, per a talons i zones de fregament.",
+            "en": "Thicker, for heels and areas that rub."
           },
           "formato": {
             "es": "Crema · 100 ml",
-            "ca": "Crema · 100 ml"
+            "ca": "Crema · 100 ml",
+            "en": "Cream · 100 ml"
           },
           "consulta": {
             "es": "una crema de pies",
@@ -208,15 +234,18 @@
         {
           "nombre": {
             "es": "Aceite corporal",
-            "ca": "Oli corporal"
+            "ca": "Oli corporal",
+            "en": "Body oil"
           },
           "resumen": {
             "es": "Se aplica con masaje. Deja la piel flexible.",
-            "ca": "S'aplica amb massatge. Deixa la pell flexible."
+            "ca": "S'aplica amb massatge. Deixa la pell flexible.",
+            "en": "Massage it in. It leaves the skin supple."
           },
           "formato": {
             "es": "Aceite · 200 ml",
-            "ca": "Oli · 200 ml"
+            "ca": "Oli · 200 ml",
+            "en": "Oil · 200 ml"
           },
           "consulta": {
             "es": "un aceite corporal",
@@ -226,15 +255,18 @@
         {
           "nombre": {
             "es": "Desodorante sin alcohol",
-            "ca": "Desodorant sense alcohol"
+            "ca": "Desodorant sense alcohol",
+            "en": "Alcohol-free deodorant"
           },
           "resumen": {
             "es": "Para axilas sensibles o recién depiladas.",
-            "ca": "Per a aixelles sensibles o acabades de depilar."
+            "ca": "Per a aixelles sensibles o acabades de depilar.",
+            "en": "For sensitive or freshly shaved underarms."
           },
           "formato": {
             "es": "Roll-on · 50 ml",
-            "ca": "Roll-on · 50 ml"
+            "ca": "Roll-on · 50 ml",
+            "en": "Roll-on · 50 ml"
           },
           "consulta": {
             "es": "un desodorante sin alcohol",
@@ -247,13 +279,15 @@
       "id": "solares",
       "nombre": {
         "es": "Solares",
-        "ca": "Solars"
+        "ca": "Solars",
+        "en": "Sun care"
       },
       "icono": "sol",
       "plantilla": false,
       "intro": {
         "es": "Fotoprotección para la cara, el cuerpo y los niños. Si dudas entre dos factores o tienes la piel reactiva, pregúntanos: es de las cosas que mejor se resuelven hablando.",
-        "ca": "Fotoprotecció per a la cara, el cos i els nens. Si dubtes entre dos factors o tens la pell reactiva, pregunta'ns: és de les coses que millor es resolen parlant."
+        "ca": "Fotoprotecció per a la cara, el cos i els nens. Si dubtes entre dos factors o tens la pell reactiva, pregunta'ns: és de les coses que millor es resolen parlant.",
+        "en": "Sun protection for the face, the body and children. If you are torn between two factors, or your skin is reactive, just ask: this is one of those things best settled in conversation."
       },
       "productos": [
         {
@@ -261,11 +295,13 @@
           "nombre": "La Roche-Posay Anthelios Age Correct SPF 50",
           "resumen": {
             "es": "Fotoprotección diaria para el rostro, con tratamiento antiedad. Textura de crema, para la rutina de la mañana.",
-            "ca": "Fotoprotecció diària per al rostre, amb tractament antiedat. Textura de crema, per a la rutina del matí."
+            "ca": "Fotoprotecció diària per al rostre, amb tractament antiedat. Textura de crema, per a la rutina del matí.",
+            "en": "Daily sun protection for the face, with an anti-ageing treatment. A cream texture, for the morning routine."
           },
           "formato": {
             "es": "Tubo · 50 ml",
-            "ca": "Tub · 50 ml"
+            "ca": "Tub · 50 ml",
+            "en": "Tube · 50 ml"
           },
           "consulta": {
             "es": "el Anthelios Age Correct SPF 50",
@@ -276,11 +312,13 @@
           "id": "anthelios-dermopediatrics-spf50-spray",
           "nombre": {
             "es": "La Roche-Posay Anthelios Dermo-Pediatrics SPF 50+ espray",
-            "ca": "La Roche-Posay Anthelios Dermo-Pediatrics SPF 50+ esprai"
+            "ca": "La Roche-Posay Anthelios Dermo-Pediatrics SPF 50+ esprai",
+            "en": "La Roche-Posay Anthelios Dermo-Pediatrics SPF 50+ spray"
           },
           "resumen": {
             "es": "Muy alta protección para rostro y cuerpo, pensada para la piel sensible de los niños. En espray, para aplicar con prisa.",
-            "ca": "Protecció molt alta per a rostre i cos, pensada per a la pell sensible dels nens. En esprai, per aplicar amb pressa."
+            "ca": "Protecció molt alta per a rostre i cos, pensada per a la pell sensible dels nens. En esprai, per aplicar amb pressa.",
+            "en": "Very high protection for face and body, made for children’s sensitive skin. A spray, for when you are in a hurry."
           },
           "consulta": {
             "es": "el Anthelios Dermo-Pediatrics SPF 50+ en espray",
@@ -292,7 +330,8 @@
           "nombre": "Avène Cleanance Solaire SPF 50+",
           "resumen": {
             "es": "Fotoprotector sin aceites para piel grasa o con tendencia al acné. Acabado mate, no deja sensación grasa.",
-            "ca": "Fotoprotector sense olis per a pell greixosa o amb tendència a l'acne. Acabat mat, no deixa sensació greixosa."
+            "ca": "Fotoprotector sense olis per a pell greixosa o amb tendència a l'acne. Acabat mat, no deixa sensació greixosa.",
+            "en": "An oil-free sunscreen for oily or acne-prone skin. A matte finish that does not feel greasy."
           },
           "consulta": {
             "es": "el Avène Cleanance Solaire SPF 50+",
@@ -305,27 +344,32 @@
       "id": "cabello",
       "nombre": {
         "es": "Cabello",
-        "ca": "Cabell"
+        "ca": "Cabell",
+        "en": "Hair care"
       },
       "icono": "peine",
       "plantilla": true,
       "intro": {
         "es": "Champús, tratamientos y cuidado del cuero cabelludo. Si se te cae más de lo normal, cuéntanos desde cuándo: eso orienta mucho.",
-        "ca": "Xampús, tractaments i cura del cuir cabellut. Si et cau més del normal, explica'ns des de quan: això orienta molt."
+        "ca": "Xampús, tractaments i cura del cuir cabellut. Si et cau més del normal, explica'ns des de quan: això orienta molt.",
+        "en": "Shampoos, treatments and scalp care. If you are losing more hair than usual, tell us how long it has been going on: that tells us a great deal."
       },
       "productos": [
         {
           "nombre": {
             "es": "Champú anticaída",
-            "ca": "Xampú anticaiguda"
+            "ca": "Xampú anticaiguda",
+            "en": "Anti-hair-loss shampoo"
           },
           "resumen": {
             "es": "De uso frecuente. Se deja actuar un par de minutos.",
-            "ca": "D'ús freqüent. Es deixa actuar un parell de minuts."
+            "ca": "D'ús freqüent. Es deixa actuar un parell de minuts.",
+            "en": "For frequent use. Leave it on for a couple of minutes."
           },
           "formato": {
             "es": "Champú · 200 ml",
-            "ca": "Xampú · 200 ml"
+            "ca": "Xampú · 200 ml",
+            "en": "Shampoo · 200 ml"
           },
           "consulta": {
             "es": "un champú anticaída",
@@ -335,15 +379,18 @@
         {
           "nombre": {
             "es": "Champú anticaspa",
-            "ca": "Xampú anticaspa"
+            "ca": "Xampú anticaspa",
+            "en": "Anti-dandruff shampoo"
           },
           "resumen": {
             "es": "Para descamación y picor. Dos o tres veces por semana.",
-            "ca": "Per a descamació i picor. Dues o tres vegades per setmana."
+            "ca": "Per a descamació i picor. Dues o tres vegades per setmana.",
+            "en": "For flaking and itching. Two or three times a week."
           },
           "formato": {
             "es": "Champú · 200 ml",
-            "ca": "Xampú · 200 ml"
+            "ca": "Xampú · 200 ml",
+            "en": "Shampoo · 200 ml"
           },
           "consulta": {
             "es": "un champú anticaspa",
@@ -353,15 +400,18 @@
         {
           "nombre": {
             "es": "Ampollas para el cabello",
-            "ca": "Ampolles per al cabell"
+            "ca": "Ampolles per al cabell",
+            "en": "Hair ampoules"
           },
           "resumen": {
             "es": "Tratamiento en cura, sobre el cuero cabelludo limpio.",
-            "ca": "Tractament en cura, sobre el cuir cabellut net."
+            "ca": "Tractament en cura, sobre el cuir cabellut net.",
+            "en": "A course of treatment, applied to a clean scalp."
           },
           "formato": {
             "es": "Caja de 12 ampollas",
-            "ca": "Caixa de 12 ampolles"
+            "ca": "Caixa de 12 ampolles",
+            "en": "Box of 12 ampoules"
           },
           "consulta": {
             "es": "unas ampollas para el cabello",
@@ -371,15 +421,18 @@
         {
           "nombre": {
             "es": "Acondicionador sin aclarado",
-            "ca": "Condicionador sense esbandida"
+            "ca": "Condicionador sense esbandida",
+            "en": "Leave-in conditioner"
           },
           "resumen": {
             "es": "Para desenredar sin apelmazar. Se aplica en medios y puntas.",
-            "ca": "Per desenredar sense aixafar. S'aplica a migs i puntes."
+            "ca": "Per desenredar sense aixafar. S'aplica a migs i puntes.",
+            "en": "Detangles without weighing hair down. Apply to the mid-lengths and ends."
           },
           "formato": {
             "es": "Crema · 150 ml",
-            "ca": "Crema · 150 ml"
+            "ca": "Crema · 150 ml",
+            "en": "Cream · 150 ml"
           },
           "consulta": {
             "es": "un acondicionador sin aclarado",
@@ -389,15 +442,18 @@
         {
           "nombre": {
             "es": "Champú de uso frecuente",
-            "ca": "Xampú d'ús freqüent"
+            "ca": "Xampú d'ús freqüent",
+            "en": "Everyday shampoo"
           },
           "resumen": {
             "es": "Suave, para lavados diarios.",
-            "ca": "Suau, per a rentats diaris."
+            "ca": "Suau, per a rentats diaris.",
+            "en": "Gentle, for daily washing."
           },
           "formato": {
             "es": "Champú · 400 ml",
-            "ca": "Xampú · 400 ml"
+            "ca": "Xampú · 400 ml",
+            "en": "Shampoo · 400 ml"
           },
           "consulta": {
             "es": "un champú de uso frecuente",
@@ -407,15 +463,18 @@
         {
           "nombre": {
             "es": "Loción para el cuero cabelludo",
-            "ca": "Loció per al cuir cabellut"
+            "ca": "Loció per al cuir cabellut",
+            "en": "Scalp lotion"
           },
           "resumen": {
             "es": "Sin aclarado, para aplicar por la noche.",
-            "ca": "Sense esbandida, per aplicar a la nit."
+            "ca": "Sense esbandida, per aplicar a la nit.",
+            "en": "No rinsing needed; apply at night."
           },
           "formato": {
             "es": "Loción · 100 ml",
-            "ca": "Loció · 100 ml"
+            "ca": "Loció · 100 ml",
+            "en": "Lotion · 100 ml"
           },
           "consulta": {
             "es": "una loción para el cuero cabelludo",
@@ -428,27 +487,32 @@
       "id": "bebe-e-infantil",
       "nombre": {
         "es": "Bebé e infantil",
-        "ca": "Bebè i infantil"
+        "ca": "Bebè i infantil",
+        "en": "Baby and child"
       },
       "icono": "cara",
       "plantilla": true,
       "intro": {
         "es": "Pañal, baño e higiene del bebé y del niño. Si es tu primer hijo, pregunta sin reparo: nos lo preguntan todos.",
-        "ca": "Bolquer, bany i higiene del bebè i del nen. Si és el teu primer fill, pregunta sense repares: ens ho pregunten tots."
+        "ca": "Bolquer, bany i higiene del bebè i del nen. Si és el teu primer fill, pregunta sense repares: ens ho pregunten tots.",
+        "en": "Nappies, bath time and hygiene for babies and children. If this is your first child, ask away: everybody does."
       },
       "productos": [
         {
           "nombre": {
             "es": "Crema de pañal",
-            "ca": "Crema de bolquer"
+            "ca": "Crema de bolquer",
+            "en": "Nappy cream"
           },
           "resumen": {
             "es": "Capa protectora en cada cambio. Textura espesa.",
-            "ca": "Capa protectora a cada canvi. Textura espessa."
+            "ca": "Capa protectora a cada canvi. Textura espessa.",
+            "en": "A protective layer at every change. A thick texture."
           },
           "formato": {
             "es": "Pomada · 100 ml",
-            "ca": "Pomada · 100 ml"
+            "ca": "Pomada · 100 ml",
+            "en": "Ointment · 100 ml"
           },
           "consulta": {
             "es": "una crema de pañal",
@@ -458,15 +522,18 @@
         {
           "nombre": {
             "es": "Gel-champú para bebé",
-            "ca": "Gel-xampú per a bebè"
+            "ca": "Gel-xampú per a bebè",
+            "en": "Baby wash and shampoo"
           },
           "resumen": {
             "es": "Uno para todo, sin lágrimas. Para el baño diario.",
-            "ca": "Un per a tot, sense llàgrimes. Per al bany diari."
+            "ca": "Un per a tot, sense llàgrimes. Per al bany diari.",
+            "en": "One product for everything, tear-free. For the daily bath."
           },
           "formato": {
             "es": "Gel · 500 ml",
-            "ca": "Gel · 500 ml"
+            "ca": "Gel · 500 ml",
+            "en": "Gel · 500 ml"
           },
           "consulta": {
             "es": "un gel-champú para bebé",
@@ -476,15 +543,18 @@
         {
           "nombre": {
             "es": "Suero fisiológico monodosis",
-            "ca": "Sèrum fisiològic monodosi"
+            "ca": "Sèrum fisiològic monodosi",
+            "en": "Single-dose saline solution"
           },
           "resumen": {
             "es": "Para la higiene nasal y ocular. Un envase por uso.",
-            "ca": "Per a la higiene nasal i ocular. Un envàs per ús."
+            "ca": "Per a la higiene nasal i ocular. Un envàs per ús.",
+            "en": "For nasal and eye hygiene. One vial per use."
           },
           "formato": {
             "es": "Caja de 30 monodosis",
-            "ca": "Caixa de 30 monodosis"
+            "ca": "Caixa de 30 monodosis",
+            "en": "Box of 30 single doses"
           },
           "consulta": {
             "es": "suero fisiológico monodosis",
@@ -494,15 +564,18 @@
         {
           "nombre": {
             "es": "Termómetro digital",
-            "ca": "Termòmetre digital"
+            "ca": "Termòmetre digital",
+            "en": "Digital thermometer"
           },
           "resumen": {
             "es": "Lectura rápida, punta flexible.",
-            "ca": "Lectura ràpida, punta flexible."
+            "ca": "Lectura ràpida, punta flexible.",
+            "en": "A fast reading and a flexible tip."
           },
           "formato": {
             "es": "Unidad",
-            "ca": "Unitat"
+            "ca": "Unitat",
+            "en": "Single unit"
           },
           "consulta": {
             "es": "un termómetro digital",
@@ -512,15 +585,18 @@
         {
           "nombre": {
             "es": "Chupete de silicona",
-            "ca": "Xumet de silicona"
+            "ca": "Xumet de silicona",
+            "en": "Silicone dummy"
           },
           "resumen": {
             "es": "Varias tallas según la edad. Pregunta cuál toca.",
-            "ca": "Diverses talles segons l'edat. Pregunta quina toca."
+            "ca": "Diverses talles segons l'edat. Pregunta quina toca.",
+            "en": "Several sizes by age. Ask us which one is right."
           },
           "formato": {
             "es": "Unidad",
-            "ca": "Unitat"
+            "ca": "Unitat",
+            "en": "Single unit"
           },
           "consulta": {
             "es": "un chupete de silicona",
@@ -530,15 +606,18 @@
         {
           "nombre": {
             "es": "Leche corporal infantil",
-            "ca": "Llet corporal infantil"
+            "ca": "Llet corporal infantil",
+            "en": "Children’s body lotion"
           },
           "resumen": {
             "es": "Hidratación diaria después del baño.",
-            "ca": "Hidratació diària després del bany."
+            "ca": "Hidratació diària després del bany.",
+            "en": "Daily moisturising after the bath."
           },
           "formato": {
             "es": "Loción · 300 ml",
-            "ca": "Loció · 300 ml"
+            "ca": "Loció · 300 ml",
+            "en": "Lotion · 300 ml"
           },
           "consulta": {
             "es": "una leche corporal infantil",
@@ -551,27 +630,32 @@
       "id": "salud-intima",
       "nombre": {
         "es": "Salud íntima",
-        "ca": "Salut íntima"
+        "ca": "Salut íntima",
+        "en": "Intimate health"
       },
       "icono": "corazon",
       "plantilla": true,
       "intro": {
         "es": "Higiene, anticoncepción y cuidado íntimo. Se puede preguntar con discreción: por WhatsApp, por teléfono o en el mostrador, apartados del resto.",
-        "ca": "Higiene, anticoncepció i cura íntima. Es pot preguntar amb discreció: per WhatsApp, per telèfon o al taulell, apartats de la resta."
+        "ca": "Higiene, anticoncepció i cura íntima. Es pot preguntar amb discreció: per WhatsApp, per telèfon o al taulell, apartats de la resta.",
+        "en": "Hygiene, contraception and intimate care. You can ask discreetly: on WhatsApp, by phone, or at the counter away from everyone else."
       },
       "productos": [
         {
           "nombre": {
             "es": "Gel de higiene íntima",
-            "ca": "Gel d'higiene íntima"
+            "ca": "Gel d'higiene íntima",
+            "en": "Intimate wash"
           },
           "resumen": {
             "es": "De uso diario, con pH adaptado a la zona.",
-            "ca": "D'ús diari, amb pH adaptat a la zona."
+            "ca": "D'ús diari, amb pH adaptat a la zona.",
+            "en": "For daily use, with a pH suited to the area."
           },
           "formato": {
             "es": "Gel · 250 ml",
-            "ca": "Gel · 250 ml"
+            "ca": "Gel · 250 ml",
+            "en": "Gel · 250 ml"
           },
           "consulta": {
             "es": "un gel de higiene íntima",
@@ -581,15 +665,18 @@
         {
           "nombre": {
             "es": "Preservativos",
-            "ca": "Preservatius"
+            "ca": "Preservatius",
+            "en": "Condoms"
           },
           "resumen": {
             "es": "Varios tamaños y texturas. Pregunta sin problema.",
-            "ca": "Diverses mides i textures. Pregunta sense problema."
+            "ca": "Diverses mides i textures. Pregunta sense problema.",
+            "en": "Several sizes and textures. Do ask."
           },
           "formato": {
             "es": "Caja de 12",
-            "ca": "Caixa de 12"
+            "ca": "Caixa de 12",
+            "en": "Box of 12"
           },
           "consulta": {
             "es": "preservativos",
@@ -599,15 +686,18 @@
         {
           "nombre": {
             "es": "Lubricante de base acuosa",
-            "ca": "Lubricant de base aquosa"
+            "ca": "Lubricant de base aquosa",
+            "en": "Water-based lubricant"
           },
           "resumen": {
             "es": "Compatible con preservativo.",
-            "ca": "Compatible amb preservatiu."
+            "ca": "Compatible amb preservatiu.",
+            "en": "Safe to use with condoms."
           },
           "formato": {
             "es": "Gel · 75 ml",
-            "ca": "Gel · 75 ml"
+            "ca": "Gel · 75 ml",
+            "en": "Gel · 75 ml"
           },
           "consulta": {
             "es": "un lubricante",
@@ -617,15 +707,18 @@
         {
           "nombre": {
             "es": "Óvulos hidratantes",
-            "ca": "Òvuls hidratants"
+            "ca": "Òvuls hidratants",
+            "en": "Moisturising pessaries"
           },
           "resumen": {
             "es": "Para la sequedad vaginal. Aplicación por la noche.",
-            "ca": "Per a la sequedat vaginal. Aplicació a la nit."
+            "ca": "Per a la sequedat vaginal. Aplicació a la nit.",
+            "en": "For vaginal dryness. Use at night."
           },
           "formato": {
             "es": "Caja de 10",
-            "ca": "Caixa de 10"
+            "ca": "Caixa de 10",
+            "en": "Box of 10"
           },
           "consulta": {
             "es": "unos óvulos hidratantes",
@@ -635,15 +728,18 @@
         {
           "nombre": {
             "es": "Compresas de algodón",
-            "ca": "Compreses de cotó"
+            "ca": "Compreses de cotó",
+            "en": "Cotton sanitary towels"
           },
           "resumen": {
             "es": "Sin plásticos ni perfume. Varias absorciones.",
-            "ca": "Sense plàstics ni perfum. Diverses absorcions."
+            "ca": "Sense plàstics ni perfum. Diverses absorcions.",
+            "en": "Plastic-free and fragrance-free. Several absorbency levels."
           },
           "formato": {
             "es": "Paquete",
-            "ca": "Paquet"
+            "ca": "Paquet",
+            "en": "Pack"
           },
           "consulta": {
             "es": "compresas de algodón",
@@ -653,15 +749,18 @@
         {
           "nombre": {
             "es": "Test de embarazo",
-            "ca": "Test d'embaràs"
+            "ca": "Test d'embaràs",
+            "en": "Pregnancy test"
           },
           "resumen": {
             "es": "Resultado en pocos minutos. Se puede hacer aquí si lo prefieres.",
-            "ca": "Resultat en pocs minuts. Es pot fer aquí si ho prefereixes."
+            "ca": "Resultat en pocs minuts. Es pot fer aquí si ho prefereixes.",
+            "en": "A result in a few minutes. You can take it here if you prefer."
           },
           "formato": {
             "es": "Unidad",
-            "ca": "Unitat"
+            "ca": "Unitat",
+            "en": "Single unit"
           },
           "consulta": {
             "es": "un test de embarazo",
@@ -674,27 +773,32 @@
       "id": "nutricion-y-vitaminas",
       "nombre": {
         "es": "Nutrición y vitaminas",
-        "ca": "Nutrició i vitamines"
+        "ca": "Nutrició i vitamines",
+        "en": "Nutrition and vitamins"
       },
       "icono": "manzana",
       "plantilla": true,
       "intro": {
         "es": "Complementos alimenticios y nutrición específica. No sustituyen a una dieta variada ni a lo que te haya dicho tu médico: si tomas medicación, dínoslo antes, porque algunos se llevan mal entre sí.",
-        "ca": "Complements alimentaris i nutrició específica. No substitueixen una dieta variada ni el que t'hagi dit el teu metge: si prens medicació, digues-nos-ho abans, perquè alguns no es porten bé entre ells."
+        "ca": "Complements alimentaris i nutrició específica. No substitueixen una dieta variada ni el que t'hagi dit el teu metge: si prens medicació, digues-nos-ho abans, perquè alguns no es porten bé entre ells.",
+        "en": "Food supplements and specific nutrition. They are no substitute for a varied diet or for what your doctor has told you: if you are on medication, tell us first, because some of these do not mix well."
       },
       "productos": [
         {
           "nombre": {
             "es": "Vitamina D en gotas",
-            "ca": "Vitamina D en gotes"
+            "ca": "Vitamina D en gotes",
+            "en": "Vitamin D drops"
           },
           "resumen": {
             "es": "Dosificación en gotas. Sigue siempre la pauta indicada.",
-            "ca": "Dosificació en gotes. Segueix sempre la pauta indicada."
+            "ca": "Dosificació en gotes. Segueix sempre la pauta indicada.",
+            "en": "Dosed in drops. Always follow the dosage you have been given."
           },
           "formato": {
             "es": "Gotas · 10 ml",
-            "ca": "Gotes · 10 ml"
+            "ca": "Gotes · 10 ml",
+            "en": "Drops · 10 ml"
           },
           "consulta": {
             "es": "vitamina D en gotas",
@@ -704,15 +808,18 @@
         {
           "nombre": {
             "es": "Complejo de vitamina B",
-            "ca": "Complex de vitamina B"
+            "ca": "Complex de vitamina B",
+            "en": "Vitamin B complex"
           },
           "resumen": {
             "es": "Una toma al día, con el desayuno.",
-            "ca": "Una presa al dia, amb l'esmorzar."
+            "ca": "Una presa al dia, amb l'esmorzar.",
+            "en": "One dose a day, with breakfast."
           },
           "formato": {
             "es": "60 cápsulas",
-            "ca": "60 càpsules"
+            "ca": "60 càpsules",
+            "en": "60 capsules"
           },
           "consulta": {
             "es": "un complejo de vitamina B",
@@ -722,15 +829,18 @@
         {
           "nombre": {
             "es": "Magnesio",
-            "ca": "Magnesi"
+            "ca": "Magnesi",
+            "en": "Magnesium"
           },
           "resumen": {
             "es": "En comprimidos. Pregunta por la forma que mejor te siente.",
-            "ca": "En comprimits. Pregunta per la forma que et vagi millor."
+            "ca": "En comprimits. Pregunta per la forma que et vagi millor.",
+            "en": "In tablets. Ask which form suits you best."
           },
           "formato": {
             "es": "90 comprimidos",
-            "ca": "90 comprimits"
+            "ca": "90 comprimits",
+            "en": "90 tablets"
           },
           "consulta": {
             "es": "magnesio",
@@ -741,11 +851,13 @@
           "nombre": "Omega 3",
           "resumen": {
             "es": "Perlas de aceite de pescado. Guardar en sitio fresco.",
-            "ca": "Perles d'oli de peix. Guardar en lloc fresc."
+            "ca": "Perles d'oli de peix. Guardar en lloc fresc.",
+            "en": "Fish oil capsules. Keep somewhere cool."
           },
           "formato": {
             "es": "60 perlas",
-            "ca": "60 perles"
+            "ca": "60 perles",
+            "en": "60 capsules"
           },
           "consulta": {
             "es": "omega 3",
@@ -755,15 +867,18 @@
         {
           "nombre": {
             "es": "Probióticos",
-            "ca": "Probiòtics"
+            "ca": "Probiòtics",
+            "en": "Probiotics"
           },
           "resumen": {
             "es": "En sobres, para disolver. Mantener refrigerado.",
-            "ca": "En sobres, per dissoldre. Mantenir refrigerat."
+            "ca": "En sobres, per dissoldre. Mantenir refrigerat.",
+            "en": "In sachets, to dissolve. Keep refrigerated."
           },
           "formato": {
             "es": "30 sobres",
-            "ca": "30 sobres"
+            "ca": "30 sobres",
+            "en": "30 sachets"
           },
           "consulta": {
             "es": "probióticos",
@@ -773,15 +888,18 @@
         {
           "nombre": {
             "es": "Hierro con vitamina C",
-            "ca": "Ferro amb vitamina C"
+            "ca": "Ferro amb vitamina C",
+            "en": "Iron with vitamin C"
           },
           "resumen": {
             "es": "Se absorbe mejor en ayunas. Puede teñir las heces.",
-            "ca": "S'absorbeix millor en dejú. Pot tenyir la femta."
+            "ca": "S'absorbeix millor en dejú. Pot tenyir la femta.",
+            "en": "Better absorbed on an empty stomach. It may darken your stools."
           },
           "formato": {
             "es": "30 comprimidos",
-            "ca": "30 comprimits"
+            "ca": "30 comprimits",
+            "en": "30 tablets"
           },
           "consulta": {
             "es": "hierro con vitamina C",
@@ -794,27 +912,32 @@
       "id": "fitoterapia",
       "nombre": {
         "es": "Fitoterapia",
-        "ca": "Fitoteràpia"
+        "ca": "Fitoteràpia",
+        "en": "Herbal medicine"
       },
       "icono": "hoja",
       "plantilla": true,
       "intro": {
         "es": "Plantas medicinales, infusiones y derivados. Que sea natural no quiere decir que sea inocuo: hay plantas que interfieren con medicamentos, así que pregúntanos antes si tomas algo.",
-        "ca": "Plantes medicinals, infusions i derivats. Que sigui natural no vol dir que sigui innocu: hi ha plantes que interfereixen amb medicaments, així que pregunta'ns abans si prens alguna cosa."
+        "ca": "Plantes medicinals, infusions i derivats. Que sigui natural no vol dir que sigui innocu: hi ha plantes que interfereixen amb medicaments, així que pregunta'ns abans si prens alguna cosa.",
+        "en": "Medicinal plants, infusions and derivatives. Natural does not mean harmless: some plants interfere with medicines, so ask us first if you are taking anything."
       },
       "productos": [
         {
           "nombre": {
             "es": "Infusión de manzanilla",
-            "ca": "Infusió de camamilla"
+            "ca": "Infusió de camamilla",
+            "en": "Chamomile tea"
           },
           "resumen": {
             "es": "En bolsitas. La de toda la vida.",
-            "ca": "En bossetes. La de tota la vida."
+            "ca": "En bossetes. La de tota la vida.",
+            "en": "In teabags. The one everybody knows."
           },
           "formato": {
             "es": "20 bolsitas",
-            "ca": "20 bossetes"
+            "ca": "20 bossetes",
+            "en": "20 teabags"
           },
           "consulta": {
             "es": "infusión de manzanilla",
@@ -824,15 +947,18 @@
         {
           "nombre": {
             "es": "Infusión de tila",
-            "ca": "Infusió de til·la"
+            "ca": "Infusió de til·la",
+            "en": "Lime blossom tea"
           },
           "resumen": {
             "es": "En bolsitas, para tomar caliente.",
-            "ca": "En bossetes, per prendre calenta."
+            "ca": "En bossetes, per prendre calenta.",
+            "en": "In teabags, to drink hot."
           },
           "formato": {
             "es": "20 bolsitas",
-            "ca": "20 bossetes"
+            "ca": "20 bossetes",
+            "en": "20 teabags"
           },
           "consulta": {
             "es": "infusión de tila",
@@ -842,15 +968,18 @@
         {
           "nombre": {
             "es": "Aceite esencial de árbol de té",
-            "ca": "Oli essencial d'arbre del te"
+            "ca": "Oli essencial d'arbre del te",
+            "en": "Tea tree essential oil"
           },
           "resumen": {
             "es": "Uso tópico y diluido. Nunca puro sobre la piel.",
-            "ca": "Ús tòpic i diluït. Mai pur sobre la pell."
+            "ca": "Ús tòpic i diluït. Mai pur sobre la pell.",
+            "en": "For topical use, diluted. Never neat on the skin."
           },
           "formato": {
             "es": "Aceite · 10 ml",
-            "ca": "Oli · 10 ml"
+            "ca": "Oli · 10 ml",
+            "en": "Oil · 10 ml"
           },
           "consulta": {
             "es": "aceite esencial de árbol de té",
@@ -860,15 +989,18 @@
         {
           "nombre": {
             "es": "Jarabe de própolis",
-            "ca": "Xarop de pròpolis"
+            "ca": "Xarop de pròpolis",
+            "en": "Propolis syrup"
           },
           "resumen": {
             "es": "Con miel. No apto para menores de un año.",
-            "ca": "Amb mel. No apte per a menors d'un any."
+            "ca": "Amb mel. No apte per a menors d'un any.",
+            "en": "With honey. Not suitable for children under one year old."
           },
           "formato": {
             "es": "Jarabe · 150 ml",
-            "ca": "Xarop · 150 ml"
+            "ca": "Xarop · 150 ml",
+            "en": "Syrup · 150 ml"
           },
           "consulta": {
             "es": "jarabe de própolis",
@@ -878,15 +1010,18 @@
         {
           "nombre": {
             "es": "Cápsulas de cardo mariano",
-            "ca": "Càpsules de card marià"
+            "ca": "Càpsules de card marià",
+            "en": "Milk thistle capsules"
           },
           "resumen": {
             "es": "Complemento alimenticio. Una toma al día.",
-            "ca": "Complement alimentari. Una presa al dia."
+            "ca": "Complement alimentari. Una presa al dia.",
+            "en": "A food supplement. One dose a day."
           },
           "formato": {
             "es": "60 cápsulas",
-            "ca": "60 càpsules"
+            "ca": "60 càpsules",
+            "en": "60 capsules"
           },
           "consulta": {
             "es": "cápsulas de cardo mariano",
@@ -896,15 +1031,18 @@
         {
           "nombre": {
             "es": "Gel de aloe vera",
-            "ca": "Gel d'àloe vera"
+            "ca": "Gel d'àloe vera",
+            "en": "Aloe vera gel"
           },
           "resumen": {
             "es": "Para después del sol o pequeñas rozaduras.",
-            "ca": "Per a després del sol o petites irritacions."
+            "ca": "Per a després del sol o petites irritacions.",
+            "en": "For after sun exposure or minor grazes."
           },
           "formato": {
             "es": "Gel · 200 ml",
-            "ca": "Gel · 200 ml"
+            "ca": "Gel · 200 ml",
+            "en": "Gel · 200 ml"
           },
           "consulta": {
             "es": "gel de aloe vera",
@@ -917,27 +1055,32 @@
       "id": "ortopedia",
       "nombre": {
         "es": "Ortopedia",
-        "ca": "Ortopèdia"
+        "ca": "Ortopèdia",
+        "en": "Orthopaedics"
       },
       "icono": "cruz",
       "plantilla": true,
       "intro": {
         "es": "Vendajes, sujeciones y ayudas técnicas. Casi todo va por talla: si puedes, pásate a que te midamos, que acertar a ojo sale caro.",
-        "ca": "Benes, subjeccions i ajudes tècniques. Gairebé tot va per talla: si pots, passa que et prenguem mides, que encertar a ull surt car."
+        "ca": "Benes, subjeccions i ajudes tècniques. Gairebé tot va per talla: si pots, passa que et prenguem mides, que encertar a ull surt car.",
+        "en": "Dressings, supports and mobility aids. Nearly everything comes in sizes: if you can, come in and let us measure you, because guessing gets expensive."
       },
       "productos": [
         {
           "nombre": {
             "es": "Tobillera elástica",
-            "ca": "Turmellera elàstica"
+            "ca": "Turmellera elàstica",
+            "en": "Elastic ankle support"
           },
           "resumen": {
             "es": "Sujeción ligera para esguinces ya en recuperación.",
-            "ca": "Subjecció lleugera per a esquinços ja en recuperació."
+            "ca": "Subjecció lleugera per a esquinços ja en recuperació.",
+            "en": "Light support for sprains that are already healing."
           },
           "formato": {
             "es": "Tallas S a XL",
-            "ca": "Talles S a XL"
+            "ca": "Talles S a XL",
+            "en": "Sizes S to XL"
           },
           "consulta": {
             "es": "una tobillera elástica",
@@ -947,15 +1090,18 @@
         {
           "nombre": {
             "es": "Muñequera con férula",
-            "ca": "Canellera amb fèrula"
+            "ca": "Canellera amb fèrula",
+            "en": "Wrist splint"
           },
           "resumen": {
             "es": "Inmoviliza la muñeca dejando libres los dedos.",
-            "ca": "Immobilitza el canell deixant lliures els dits."
+            "ca": "Immobilitza el canell deixant lliures els dits.",
+            "en": "Immobilises the wrist while leaving the fingers free."
           },
           "formato": {
             "es": "Derecha o izquierda",
-            "ca": "Dreta o esquerra"
+            "ca": "Dreta o esquerra",
+            "en": "Right or left"
           },
           "consulta": {
             "es": "una muñequera con férula",
@@ -965,15 +1111,18 @@
         {
           "nombre": {
             "es": "Plantillas de gel",
-            "ca": "Plantilles de gel"
+            "ca": "Plantilles de gel",
+            "en": "Gel insoles"
           },
           "resumen": {
             "es": "Amortiguan el talón. Se recortan a la medida.",
-            "ca": "Amorteixen el taló. Es retallen a mida."
+            "ca": "Amorteixen el taló. Es retallen a mida.",
+            "en": "They cushion the heel. Trim them to size."
           },
           "formato": {
             "es": "Par · tallas 35 a 46",
-            "ca": "Parell · talles 35 a 46"
+            "ca": "Parell · talles 35 a 46",
+            "en": "Pair · sizes 35 to 46"
           },
           "consulta": {
             "es": "unas plantillas de gel",
@@ -983,15 +1132,18 @@
         {
           "nombre": {
             "es": "Faja lumbar",
-            "ca": "Faixa lumbar"
+            "ca": "Faixa lumbar",
+            "en": "Lumbar support belt"
           },
           "resumen": {
             "es": "Sujeción de la zona baja de la espalda.",
-            "ca": "Subjecció de la zona baixa de l'esquena."
+            "ca": "Subjecció de la zona baixa de l'esquena.",
+            "en": "Support for the lower back."
           },
           "formato": {
             "es": "Tallas S a XXL",
-            "ca": "Talles S a XXL"
+            "ca": "Talles S a XXL",
+            "en": "Sizes S to XXL"
           },
           "consulta": {
             "es": "una faja lumbar",
@@ -1001,15 +1153,18 @@
         {
           "nombre": {
             "es": "Media de compresión",
-            "ca": "Mitja de compressió"
+            "ca": "Mitja de compressió",
+            "en": "Compression stocking"
           },
           "resumen": {
             "es": "Varias compresiones. Conviene medir la pierna antes.",
-            "ca": "Diverses compressions. Convé mesurar la cama abans."
+            "ca": "Diverses compressions. Convé mesurar la cama abans.",
+            "en": "Several compression levels. It is best to measure the leg first."
           },
           "formato": {
             "es": "Par · según medida",
-            "ca": "Parell · segons mida"
+            "ca": "Parell · segons mida",
+            "en": "Pair · made to measure"
           },
           "consulta": {
             "es": "medias de compresión",
@@ -1019,15 +1174,18 @@
         {
           "nombre": {
             "es": "Collarín cervical blando",
-            "ca": "Collaret cervical tou"
+            "ca": "Collaret cervical tou",
+            "en": "Soft cervical collar"
           },
           "resumen": {
             "es": "Uso limitado en el tiempo y con indicación médica.",
-            "ca": "Ús limitat en el temps i amb indicació mèdica."
+            "ca": "Ús limitat en el temps i amb indicació mèdica.",
+            "en": "For limited periods and on medical advice."
           },
           "formato": {
             "es": "Tallas S a L",
-            "ca": "Talles S a L"
+            "ca": "Talles S a L",
+            "en": "Sizes S to L"
           },
           "consulta": {
             "es": "un collarín cervical",

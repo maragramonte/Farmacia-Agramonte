@@ -1001,8 +1001,11 @@ def pagina_portada(idioma, pares):
                   '<link rel="canonical" href="%s%s/">' % (BASE, car), 1)
     t = t.replace('<meta property="og:url" content="%s">' % BASE,
                   '<meta property="og:url" content="%s%s/">' % (BASE, car), 1)
+    # El locale se declara en textos.json: "%s_ES" % idioma daba "en_ES",
+    # que no es un locale real. Se deja como respaldo por si falta la clave.
     t = t.replace('<meta property="og:locale" content="es_ES">',
-                  '<meta property="og:locale" content="%s_ES">' % idioma, 1)
+                  '<meta property="og:locale" content="%s">'
+                  % IDIOMAS[idioma].get("og_locale", "%s_ES" % idioma), 1)
     # El JSON-LD describe esta página, así que su url es la de este idioma.
     t = t.replace('"url": "%s",' % BASE, '"url": "%s%s/",' % (BASE, car), 1)
 

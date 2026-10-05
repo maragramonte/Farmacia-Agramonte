@@ -75,6 +75,7 @@
 }
 
 html[lang="ca"] .foto::after { content: "Foto pendent"; }
+html[lang="en"] .foto::after { content: "Photo pending"; }
 
 /* Cuando el producto ya tiene foto de verdad: fuera el degradado y fuera el
    rótulo de «Foto pendiente». El generador pone esta clase solo. */

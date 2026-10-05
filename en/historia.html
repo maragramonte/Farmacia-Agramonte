@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ESTE FICHERO SE GENERA. No lo edites a mano: se pierde al ejecutar
+     python herramientas/catalogo.py. Los productos están en
+     herramientas/catalogo-datos.json y los textos en herramientas/textos.json. -->
+<link rel="canonical" href="https://maragramonte.github.io/Farmacia-Agramonte/en/historia.html">
+<link rel="alternate" hreflang="es" href="https://maragramonte.github.io/Farmacia-Agramonte/historia.html">
+<link rel="alternate" hreflang="ca" href="https://maragramonte.github.io/Farmacia-Agramonte/ca/historia.html">
+<link rel="alternate" hreflang="en" href="https://maragramonte.github.io/Farmacia-Agramonte/en/historia.html">
+<link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/historia.html">
+<meta name="description" content="Farmàcia Agramonte, formerly Farmàcia Joaquim Cases: a protected Modernista shop on Plaça de la Llana, El Born (Barcelona), with records going back to 1600.">
+<title>About us — Farmàcia Agramonte</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2a1d12">
+<!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
+     por idioma: desde ca/ se piden con ../ -->
+<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../tipografias.css">
+<link rel="stylesheet" href="../marca.css">
+<link rel="stylesheet" href="../catalogo.css">
+<link rel="stylesheet" href="../cesta.css">
+<link rel="stylesheet" href="../idiomas.css">
+<!-- La cesta es lo único de la web que se ejecuta en el navegador. Con defer
+     para que no frene el pintado: lo que depende de ella nace con hidden y se
+     destapa al cargar, así que nada parpadea ni se ve a medias. Los textos los
+     saca del lang de este <html>. -->
+<script src="../cesta.js" defer></script>
+</head>
+<body>
+
+<!-- Lo que se le dice a un lector de pantalla al añadir o quitar de la cesta.
+     Está en todas las páginas porque desde todas se puede añadir. -->
+<div class="solo-lectores" role="status" aria-live="polite" data-cesta-avisos></div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="index.html">Farmàcia Agramonte</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html">Home</a>
+      <a href="index.html#categorias">Categories</a>
+      <a href="historia.html" aria-current="page">About us</a>
+      <a href="index.html#contacto">Contact</a>
+    </nav>
+    <nav class="idiomas" aria-label="Language">
+      <a href="../historia.html" lang="es" hreflang="es" title="View this page in Español">ES</a>
+      <a href="../ca/historia.html" lang="ca" hreflang="ca" title="View this page in Català">CA</a>
+      <span aria-current="true" title="Current language: English">EN</span>
+    </nav>
+    <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cesta-rotulo">Basket</span>
+      <span class="cesta-cuenta" data-cesta-cuenta>0</span>
+    </a>
+    <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
+      Order
+    </a>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <p class="migas"><a href="index.html">Home</a> › About us</p>
+
+  <div class="portada-categoria">
+    <h1>About us</h1>
+    <p>At Farmàcia Agramonte we work every day so that our customers get the best service we can give them.</p>
+  </div>
+
+  <div class="historia">
+    <section class="detalle">
+      <h2>A passion for health</h2>
+      <p>At Farmàcia Agramonte we have a passion for health, and that is why our aim is to give the best pharmaceutical advice with the most human and professional care possible. We support and advise you through each and every one of your questions and treatments.</p>
+      <p>The pharmacy is run by <strong>Zoila Agramonte Bucho</strong>, who holds a degree in Pharmacy from the University of Havana and is a qualified pharmacist and dietitian with more than thirty years of experience in the pharmaceutical sector.</p>
+    </section>
+
+    <section class="detalle">
+      <h2>A protected Modernista shop</h2>
+      <p>Farmàcia Agramonte, formerly <strong>Farmàcia Joaquim Cases</strong>, is a Modernista shop protected as a <strong>Cultural Asset of Local Interest</strong> and listed as an emblematic business of great interest.</p>
+      <p>The interior as it stands today comes from a Modernista refurbishment of 1880, the period in which the Cases family created a compounded formula that became popular throughout Spain and even in the Americas, the “Solución Cases”, known for easing a wide range of ailments and pains.</p>
+      <p>Outside, the façade is dominated by a panelled wooden shopfront covering its whole surface. Inside, the Modernista finishes typical of the period: glass with acid-etched floral motifs, hydraulic mosaic flooring, and cabinetwork with curved lines and floral detail.</p>
+      <p>Those Modernista motifs sit alongside remains of medieval architecture, such as the stone load-bearing arch inside. It dates from the <strong>13th century</strong>, one of those built to make flexible spaces possible for workshops, shops and the like.</p>
+    </section>
+
+    <section class="detalle">
+      <h2>Four centuries of apothecaries</h2>
+      <p>The earliest historical records of the pharmacy date from <strong>1600</strong>, and describe a place run by a long line of apothecaries.</p>
+      <ul class="cronologia">
+        <li><strong>Until 1747</strong><span>The Saurina family, the first to run it.</span></li>
+        <li><strong>1864 – 2014</strong><span>The Cases family, owners for a century and a half.</span></li>
+        <li><strong>Since 2019</strong><span>Zoila Agramonte Bucho, the new licence holder.</span></li>
+      </ul>
+      <p>In 2019 Zoila decided to bring out the immense historical and artistic heritage of the pharmacy and, at the same time, give it energy and a modern outlook.</p>
+    </section>
+
+    <section class="detalle">
+      <h2>Press coverage</h2>
+      <p>The digital magazine La República got in touch with us to run a feature on the pharmacy and on how the impact of the covid-19 pandemic had been felt in the Santa Caterina neighbourhood.</p>
+      <a class="prensa" href="https://www.larepublica.cat/coronavirus/reportatge-la-barcelona-que-no-es-resigna/" target="_blank" rel="noopener">
+        <span class="prensa-medio">La República · Feature</span>
+        <strong>Coronavirus: La Barcelona que no se resigna</strong>
+        <span class="prensa-pie">Opens in a new tab, on their own website</span>
+      </a>
+    </section>
+  </div>
+
+  <div class="cierre">
+    <h2>Come and see it</h2>
+    <p>We are at Plaça de la Llana, 11, in El Born, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30. If you would like to ask something before coming, message us on <a href="https://wa.me/34661192472" target="_blank" rel="noopener">WhatsApp</a> or call <a href="tel:+34933195921">933 19 59 21</a>.</p>
+  </div>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p>© 2026 Farmàcia Agramonte</p>
+    <p>
+      <a href="aviso-legal.html">Legal notice</a> ·
+      <a href="privacidad.html">Privacy</a> ·
+      <a href="cookies.html">Cookies</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
