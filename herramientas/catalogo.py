@@ -694,8 +694,11 @@ def pagina(c, categorias, idioma):
          escapa(T("nav_categorias", idioma)),
          tira(categorias, c["id"], idioma), cuerpo_categoria(c, icono, idioma))
 
-    # Sin noindex: las diez se indexan. Decisión de la farmacia, tomada a
-    # sabiendas de que siete siguen siendo de muestra.
+    # Ninguna de las diez lleva noindex: se llega a ellas desde la portada y
+    # Google puede indexarlas. Decisión de la farmacia, tomada a sabiendas de
+    # que siete siguen siendo de muestra. Lo que sí se les niega mientras sean
+    # plantilla es el sitemap, y eso lo decide main() al juntar los indexables:
+    # dejar de invitar a Google no es lo mismo que cerrarle la puerta.
     return documento(
         idioma=idioma,
         fichero="catalogo-%s.html" % c["id"],
@@ -750,12 +753,12 @@ def pagina_producto(c, p, idioma):
         T("ficha_nota_consejo", idioma) % (TELEFONO_ENLACE, TELEFONO_VISIBLE),
         secciones, otros_de(c, p, idioma))
 
-    # Mientras la categoría sea plantilla, sus fichas van con noindex y fuera del
-    # sitemap. Que las diez páginas de categoría se indexen fue una decisión
-    # tomada a sabiendas; una ficha inventada por producto es otra cosa: son
-    # decenas de páginas flacas y —en cuanto se rellenen los epígrafes— con
-    # texto de salud que no ha firmado nadie. Al quitar "plantilla": true del
-    # JSON se indexan solas.
+    # Mientras la categoría sea plantilla, sus fichas van con noindex y, como
+    # su página de categoría, fuera del sitemap. Que ninguna de las diez
+    # páginas de categoría lleve noindex fue una decisión tomada a sabiendas;
+    # una ficha inventada por producto es otra cosa: son decenas de páginas
+    # flacas y —en cuanto se rellenen los epígrafes— con texto de salud que no
+    # ha firmado nadie. Al quitar "plantilla": true del JSON se indexan solas.
     return documento(
         idioma=idioma,
         fichero=ruta_producto(c, p),
@@ -1051,13 +1054,13 @@ def escribe_sitemap(indexables, hoy):
     """Escribe sitemap.xml entero.
 
     Antes estaba a mano y el script sólo avisaba de lo que faltaba. Con dos
-    idiomas son más de cuarenta URL y la lista crece cada vez que se quita un
+    idiomas son decenas de URL y la lista crece cada vez que se quita un
     "plantilla": true, así que mantenerla a mano era la errata esperando a
     ocurrir de siempre. Lo que NO entra: la cesta, que lleva noindex porque es
     distinta para cada visitante.
 
-    Las fichas de las categorías que siguen siendo plantilla tampoco entran:
-    eso lo decide quien llama, en la lista de indexables."""
+    Las categorías que siguen siendo plantilla tampoco entran, ni ellas ni sus
+    fichas: eso lo decide quien llama, en la lista de indexables."""
     filas = []
     for idioma in IDIOMAS:
         for fichero, prioridad in PAGINAS_FIJAS:

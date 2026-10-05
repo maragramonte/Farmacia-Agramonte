@@ -20,9 +20,9 @@ compilación y sin servidor de aplicación. No hace falta contratar a nadie ni
 instalar nada para verla, y tampoco para publicarla.
 
 Lo único que se ejecuta en el navegador de quien la visita es `cesta.js`, y se
-explica abajo en «La cesta». Son trescientas líneas sin dependencias: **no hay
-`npm`, ni `node_modules`, ni nada que compilar**. Para trabajar en la web sigue
-bastando un editor de texto y Python.
+explica abajo en «La cesta». Son poco más de quinientas líneas sin
+dependencias: **no hay `npm`, ni `node_modules`, ni nada que compilar**. Para
+trabajar en la web sigue bastando un editor de texto y Python.
 
 ## Verla en tu ordenador
 
@@ -103,8 +103,9 @@ privacidad.html     Qué datos se tratan, para qué y con qué base legal
 cookies.html        No hay cookies; explica la cesta y que no hay terceros
 legal.css           Estilo compartido de esas páginas de texto y del 404
 
-ca/                 Toda la web en catalán. index.html y las catalogo-*
-                    SE GENERAN; las tres legales están a mano
+ca/                 Toda la web en catalán. index.html, las catalogo-*,
+                    historia.html y cesta.html SE GENERAN; las tres
+                    legales están a mano
 idiomas.css         El selector de idioma de la cabecera
 
 catalogo-*.html     Las diez categorías y las fichas de sus productos.
@@ -160,14 +161,17 @@ gusto: las URL en español llevan tiempo publicadas, están en Google y en el
 sitemap, y mover el español a `/es/` las rompería todas. Dejándolo donde está
 no se pierde nada y los idiomas se añaden encima.
 
-De las 64 páginas por idioma, **todas se generan menos cuatro**: la portada
-española y las tres legales en catalán. Lo demás sale de un sitio u otro:
+El sitio son **127 páginas HTML**: 64 en español —la raíz, con el 404 bilingüe
+dentro— y 63 en catalán. **Sólo ocho se escriben a mano**: la portada española,
+el 404 y las tres legales de cada idioma. Las 119 restantes las escribe el
+generador, y salen de un sitio u otro:
 
 | Dónde se escribe | Qué sale de ahí |
 |---|---|
 | `herramientas/textos.json` | Todo lo que no es un producto: menú, botones, pie, la cesta y la historia completa |
 | `herramientas/catalogo-datos.json` | Los productos: nombres, resúmenes, formatos |
 | `index.html` | La portada española. La catalana se genera **de ella** |
+| `aviso-legal.html` y compañía | Las tres legales en español, y el `404.html`, a mano |
 | `ca/aviso-legal.html` y compañía | Las tres legales en catalán, a mano |
 
 ### Cómo se traduce un texto
@@ -397,7 +401,8 @@ ca/index.html                   la portada catalana, hecha desde index.html
 sitemap.xml                     las páginas indexables de los dos idiomas
 ```
 
-Hoy son 118 páginas: 10 de categoría, 47 fichas, la historia y la cesta, en cada uno de los dos idiomas. Es lo mismo que hace
+Hoy son 118 páginas: 10 de categoría, 47 fichas, la historia y la cesta, en
+cada uno de los dos idiomas; con la portada catalana, 119. Es lo mismo que hace
 `tarjeta-social.py` con `og.png`: las páginas se escriben cuando cambian los
 productos, no cuando alguien las visita. Existe por una razón
 concreta: la tira de categorías que va arriba las lista todas, así que añadir
@@ -581,13 +586,14 @@ en el JSON, y **hay que hacerlo antes de renombrar un producto que ya esté en
 Google**. Si dos productos de la misma categoría dan la misma URL, el script
 para y lo dice en vez de pisar el fichero en silencio.
 
-Mientras la categoría lleve `"plantilla": true`, sus fichas salen con
-`noindex` y fuera del `sitemap.xml`. Que las diez páginas de categoría **sí** se
-indexen fue una decisión tomada a sabiendas; cincuenta y cuatro fichas
-inventadas son otra cosa: páginas flacas, con nombres de productos que no
-existen y con texto de salud que no ha escrito nadie. Al quitar `plantilla`
-se indexan solas, y entran en `sitemap.xml` sin que haya que tocar nada: lo
-escribe el generador.
+Mientras la categoría lleve `"plantilla": true`, **ni ella ni sus fichas entran
+en `sitemap.xml`**, y las fichas salen además con `noindex`. Ninguna de las diez
+páginas de categoría lleva `noindex` —eso fue una decisión tomada a sabiendas—,
+pero en el sitemap sólo están las tres que no llevan muestras: cuarenta y dos
+fichas inventadas son otra cosa, páginas flacas, con nombres de productos que no
+existen y con texto de salud que no ha escrito nadie. Al quitar `plantilla`, la
+categoría y sus fichas entran en `sitemap.xml` y se indexan solas, sin que haya
+que tocar nada: lo escribe el generador.
 
 El estilo va en dos hojas: `marca.css` con la identidad compartida —paleta,
 cabecera, botón y pie— y `catalogo.css` con lo que sólo existe aquí. Hay que
@@ -598,9 +604,9 @@ Tres cosas que hay que entender antes de tocarla:
 - **Siete categorías siguen inventadas.** Seis productos genéricos cada una,
   sin marca, con el aviso grande arriba en la página y en cada ficha, y con
   `noindex` en las fichas. **Las diez páginas de categoría están enlazadas
-  desde la portada, en `sitemap.xml` y sin `noindex`**, así que cualquiera
-  llega a ellas y Google puede indexarlas. No las des por buenas hasta poner
-  productos reales.
+  desde la portada y ninguna lleva `noindex`**, así que cualquiera llega a
+  ellas y Google puede indexarlas aunque las siete de muestra se queden fuera
+  del `sitemap.xml`. No las des por buenas hasta poner productos reales.
 - **Hay cesta, pero no hay pago.** Se puede apuntar lo que se quiera y el
   encargo sale por WhatsApp; desde la web no se cobra nada y no se piden datos.
   Eso es deliberado: mientras no se pueda **pagar** aquí, la web sigue fuera del
@@ -633,9 +639,10 @@ con el JSON y avisa si sobra o falta alguna.
    tocarlo, que lo escribe el generador.
 
 Y **esto no es hipotético: la web está publicada**. Las páginas de categoría
-están enlazadas desde la portada, en `sitemap.xml` y sin `noindex`, así que un
-visitante cualquiera llega hoy mismo a las siete de muestra y Google puede
-indexarlas. El aviso amarillo es lo único que dice que no son de verdad.
+están enlazadas desde la portada y ninguna lleva `noindex`, así que un visitante
+cualquiera llega hoy mismo a las siete de muestra y Google puede indexarlas:
+estar fuera del `sitemap.xml` no lo impide, sólo deja de invitarlo. El aviso
+amarillo es lo único que dice que no son de verdad.
 
 Por lo mismo hay otra cosa que corre prisa y no es de catálogo: **los datos del
 titular**, que son los que la LSSI obliga a publicar. El nombre ya está
@@ -673,8 +680,9 @@ los 144 KB que ocuparían sueltos. Al dejar de pedirle nada a Google, las
 políticas de privacidad y de cookies se simplificaron: ya no hay ninguna
 transferencia de datos por el mero hecho de visitar la página.
 
-Los datos que todavía no tenemos —el nombre del farmacéutico titular, su número
-de colegiado, el NIF— aparecen marcados en amarillo con la clase `.pendiente`.
+Los datos que todavía no tenemos —el número de colegiada, el NIF, la
+autorización sanitaria y la homologación del título— aparecen marcados en
+amarillo con la clase `.pendiente`. El nombre de la titular ya está puesto.
 Se ven a la legua a propósito: así nadie publica la página dándolos por buenos.
 Al rellenarlos, hay que quitar también el `<span>` que los envuelve.
 
@@ -682,10 +690,14 @@ Al rellenarlos, hay que quitar también el `<span>` que los envuelve.
 
 Ordenado por lo que más urge antes de enseñar la web a nadie.
 
-- **Nº de colegiado y farmacéutico titular.** Marcados como `PENDIENTE` en el
-  pie de `index.html` y en `aviso-legal.html`. En España es obligatorio
-  identificarlos, así que esto va primero.
-- **NIF y razón social del titular**, en `aviso-legal.html` y `privacidad.html`.
+- **Nº de colegiada.** La titular ya está puesta —Zoila Agramonte Bucho, en el
+  pie de `index.html`, en `aviso-legal.html` y en `privacidad.html`—, pero su
+  número sigue como `PENDIENTE` en el pie de `index.html` y en
+  `aviso-legal.html`. En España es obligatorio identificar a los dos, así que
+  esto va primero.
+- **NIF**, en `aviso-legal.html` y en `privacidad.html`. Y en `aviso-legal.html`
+  faltan además el **número de autorización sanitaria** y la **homologación en
+  España** del título. Son los cinco recuadros amarillos que quedan.
 - **Fotos.** El hero lleva una ilustración provisional del mostrador, dibujada
   en SVG y con un aviso encima. Hay que sustituirla por la foto real.
 - **Blog.** Los tres artículos («Cómo cuidar tu piel en primavera» y los otros
@@ -698,20 +710,23 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
   comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
   no lleva a ninguna parte es peor que no tenerlo.
 - **Catálogo y venta en línea.** Están las **diez categorías** montadas,
-  enlazadas desde la portada y **en el sitemap, sin `noindex`**: Google puede
-  indexarlas. **Dos ya tienen productos reales**, Solares y Cosmética facial,
-  con cinco productos entre ambas y sus cinco fichas indexadas; **las otras
-  siete siguen inventadas** y marcadas como tales. Acabar de llenarlas es, con
-  diferencia, lo más urgente del proyecto. Precios no hay y no va a haberlos,
-  que está decidido; carrito tampoco. Antes de vender
-  hay dos cosas que decidir. Una, que **«Medicamentos» no puede venderse a
-  distancia** sin notificarlo a la autoridad sanitaria, aparecer en el registro
-  DISTAFARMA de la AEMPS y mostrar el logotipo europeo; y los de receta no
-  pueden venderse a distancia nunca. El resto de categorías son parafarmacia y
-  no tienen esa limitación. Y dos, que en cuanto haya carrito hay que **cambiar
-  el aviso legal**, que hoy dice que esto no es una tienda, y añadir condiciones
-  de venta, desistimiento de catorce días, envíos y formas de pago.
-- **Tienda.** Cuenta de usuario, carrito, checkout, formas de pago, devoluciones
-  y envíos están comentados en el pie a la espera del catálogo. Buscador,
-  productos destacados y CMS quedaron fuera de esta primera versión por lo
-  mismo, tal y como ya preveía el wireframe.
+  enlazadas desde la portada y **sin `noindex`**: Google puede indexarlas.
+  **Dos ya tienen productos reales**, Solares y Cosmética facial, con cinco
+  productos entre ambas; esas dos, Medicamentos y las cinco fichas son lo único
+  que entra en el `sitemap.xml`. **Las otras siete siguen inventadas** y
+  marcadas como tales. Acabar de llenarlas es, con diferencia, lo más urgente
+  del proyecto. Precios no hay y no va a haberlos, que está decidido; cesta sí
+  hay, pero **no cobra**: el encargo sale por WhatsApp y se paga en el
+  mostrador. Antes de vender de verdad hay dos cosas que decidir. Una, que
+  **«Medicamentos» no puede venderse a distancia** sin notificarlo a la
+  autoridad sanitaria, aparecer en el registro DISTAFARMA de la AEMPS y mostrar
+  el logotipo europeo; y los de receta no pueden venderse a distancia nunca. El
+  resto de categorías son parafarmacia y no tienen esa limitación. Y dos, que en
+  cuanto se pueda **pagar** aquí hay que **cambiar el aviso legal**, que hoy
+  dice que esto no es una tienda, y añadir condiciones de venta, desistimiento
+  de catorce días, envíos y formas de pago.
+- **Tienda.** Cuenta de usuario, checkout, formas de pago, devoluciones y
+  envíos están comentados en el pie a la espera del catálogo; la cesta, que sí
+  existe, no es ninguna de esas cosas. Buscador, productos destacados y CMS
+  quedaron fuera de esta primera versión por lo mismo, tal y como ya preveía el
+  wireframe.
