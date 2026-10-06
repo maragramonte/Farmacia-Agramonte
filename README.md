@@ -2,6 +2,9 @@
 
 ### 👉 **<https://maragramonte.github.io/Farmacia-Agramonte/>**
 
+*A short English orientation for developers: [`README.en.md`](README.en.md).
+Este documento, en español, es el completo y el que manda.*
+
 **La web está publicada y en marcha.** Ese enlace es el bueno: es lo que ve
 cualquiera que la abra. Cada `git push` a `main` la republica sola, en un par
 de minutos y sin tocar nada más.
