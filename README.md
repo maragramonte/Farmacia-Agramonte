@@ -177,7 +177,7 @@ escribe el generador, y salen de un sitio u otro:
 |---|---|
 | `herramientas/textos.json` | Todo lo que no es un producto: menú, botones, pie, la cesta y la historia completa |
 | `herramientas/catalogo-datos.json` | Los productos: nombres, resúmenes, formatos |
-| `index.html` | La portada española. La catalana se genera **de ella** |
+| `index.html` | La portada española. La catalana y la inglesa se generan **de ella** |
 | `aviso-legal.html` y compañía | Las tres legales en español, y el `404.html`, a mano |
 | `ca/…` y `en/…` | Las tres legales de cada idioma, a mano |
 
@@ -200,8 +200,8 @@ En `catalogo-datos.json` un campo acepta **las dos formas**:
 La cadena suelta vale para todos los idiomas, que es lo correcto en el nombre
 de una marca. En un resumen o en una intro significa que **está sin traducir**,
 y el generador lo cuenta al terminar. Así se traduce producto a producto sin
-tocar los cuarenta de golpe, y **nada se queda en blanco por el camino**: lo
-que falta sale en español.
+tocar los 47 de golpe, y **nada se queda en blanco por el camino**: lo que
+falta sale en español.
 
 ### La portada, que es el caso raro
 
@@ -220,8 +220,8 @@ vez y no cada vez.
 Dos cosas de la cabeza de la portada **no son traducción y se sustituyen
 aparte**: el selector de idioma, que se escribe entero según los idiomas que
 haya, y el `og:locale`, que sale de la clave `og_locale` de cada idioma en
-`textos.json`. Lo segundo existe porque antes se construía como
-`"%s_ES" % idioma`, y para el inglés daba `en_ES`, que no es un locale real.
+`textos.json` y no se deduce del código de idioma, que daría locales que no
+existen.
 
 ### Lo que comparten los tres idiomas
 
@@ -303,8 +303,9 @@ Vale igual para el catalán y para el inglés:
   revisar**, y lo dicen arriba en amarillo: la versión española es la original
   y la que prevalece. Son textos jurídicos, así que conviene que los lea
   alguien antes de quitar ese aviso.
-- Los textos de salud de los productos los he traducido yo. En una farmacia
-  eso es consejo, así que **hay que revisarlos** igual que los españoles.
+- Los textos de salud de los productos están traducidos **sin revisar**. En
+  una farmacia eso es consejo, así que hay que mirarlos igual que los
+  españoles.
 
 ## Secciones de la landing
 
@@ -331,11 +332,10 @@ título debajo de la cabecera.
 
 **Hay tres cabeceras, no una**: la de la portada (`portada.css`), la del
 catálogo (`marca.css`) y la de las páginas de texto (`legal.css`), que no
-comparten hoja. Al añadir el inglés se vio que la tercera era la única **sin
-trato de móvil y sin `flex-wrap`**: con la marca a 1.4rem, el «Volver» y tres
-códigos de idioma no se cabe en 320 px, y sin `flex-wrap` no partía en dos
-filas, se desbordaba a lo ancho. Ya tiene lo mismo que las otras dos. Si algún
-día se añade un cuarto idioma, es el primer sitio que hay que mirar.
+comparten hoja. Las tres llevan trato de móvil y `flex-wrap`; la de `legal.css`
+fue la última en tenerlo y es **la primera que hay que mirar si algún día se
+añade un cuarto idioma**, porque es la más justa de sitio a 320 px: la marca,
+el «Volver» y los códigos de idioma en una sola fila.
 
 Y **tres pies**, por el mismo reparto: el largo de la portada, con sus cuatro
 columnas de enlaces y el monograma (`portada.css`); el de una fila de las
@@ -343,7 +343,8 @@ páginas generadas, con el copyright, el Instagram y las legales (`marca.css`,
 y el HTML lo pone `documento()` en `catalogo.py`); y el de una sola línea
 centrada de las páginas de texto y el 404 (`legal.css`, escrito a mano en cada
 uno de esos diez ficheros). Lo que vaya en «todos los pies» hay que ponerlo
-tres veces.
+tres veces: el enlace a `@farmacia.agramonte`, que está en las 190 páginas, es
+el ejemplo vivo. **Si cambia la cuenta, hay que tocar los tres.**
 
 **El menú está escrito en dos sitios**, y hay que tocar los dos o se descuadra:
 a mano en `index.html`, y generado en `documento()` de
@@ -559,9 +560,16 @@ su página explica cómo se encarga una receta, y eso no cambia.
 
 **El día que se quiera cobrar de verdad** —Stripe Checkout, o el TPV virtual del
 banco— el carrito ya está hecho y lo que hay que cambiar es el botón final de
-`cesta.html`. Lo que hace falta antes no es código: publicar precios, dejar
-Medicamentos fuera, escribir condiciones de venta y derecho de desistimiento, y
-rehacer el aviso legal y la privacidad. Y la clave secreta de la pasarela no
+`cesta.html`. Lo que hace falta antes no es código:
+
+- **Dejar Medicamentos fuera.** No puede venderse a distancia sin notificarlo a
+  la autoridad sanitaria, aparecer en el registro DISTAFARMA de la AEMPS y
+  mostrar el logotipo europeo; y los de receta no pueden venderse a distancia
+  nunca. El resto de categorías son parafarmacia y no tienen esa limitación.
+- **Rehacer el aviso legal**, que hoy dice que esto no es una tienda, y añadir
+  condiciones de venta, desistimiento de catorce días, envíos y formas de pago.
+  También la privacidad.
+- **Publicar precios**, con lo que eso implica (ver «Los precios»). Y la clave secreta de la pasarela no
 puede vivir en GitHub Pages, así que haría falta además una función en servidor
 (Cloudflare Workers o Netlify, gratis en este volumen). Es una decisión del
 negocio, no una tarde de trabajo.
@@ -746,11 +754,10 @@ transferencia de datos por el mero hecho de visitar la página.
 leían como una nube de etiquetas de blog, que era lo más genérico que tenía la
 página. Cada una es ahora el frente de un cajón: fondo crema, moldura interior
 en oro, el icono grande, el rótulo en versalitas y un tirador debajo; al pasar
-por encima el cajón «se abre». Las clases son `.cajonera` y `.cajon`, en la
-línea del resto de nombres de esta web —`.escaparate`, `.marca`, `.migas`,
-`.tira`—, y la moldura y el tirador los dibuja el CSS con `::before` y
-`::after`, así que en el HTML un cajón sigue siendo un `<a>` con su icono y su
-nombre. La tira de categorías del catálogo **sí sigue siendo de píldoras**, a
+por encima el cajón «se abre». Las clases son `.cajonera` y `.cajon`, y la
+moldura y el tirador los dibuja el CSS con `::before` y `::after`, así que en
+el HTML un cajón sigue siendo un `<a>` con su icono y su nombre. La tira de
+categorías del catálogo **sí sigue siendo de píldoras**, a
 propósito: ahí no se elige destino, se cambia entre hermanas con una marcada
 como actual, y es la forma correcta para un filtro.
 
@@ -763,9 +770,8 @@ donde lo pone el diseño. Su aro de texto se centra solo —el arco empieza abaj
 y da la vuelta entera, de modo que `startOffset="50%"` con
 `text-anchor="middle"` deja el rótulo arriba mida lo que mida—, y la única
 palabra traducible, el «desde», está dentro del círculo en recto y no en el
-aro, para que al traducirla no pueda romperlo. Antes de eso el aro se salía: el
-texto medía 176,7 px sobre un arco de 157,1, y en SVG lo que se sale del
-recorrido no se dibuja.
+aro. Las dos cosas son por lo mismo: en SVG, lo que se sale del recorrido no se
+dibuja, así que un aro que no se centre solo se recorta al traducirlo.
 
 **El monograma del pie es un sello, no un adorno de columna.** Era un circulito
 de 62 px encima del nombre; ahora es una columna propia al final de la rejilla.
@@ -778,18 +784,14 @@ fecha en Playfair y cifras tabulares. El último nudo va macizo porque es la
 etapa que no se ha cerrado. Hilo y nudo son `::before` y `::after` del `<li>`,
 así que el generador no cambia.
 
-**Dos trampas de especificidad que costaron un fallo visible cada una**, y que
-conviene no «simplificar» de vuelta. `.detalle ul` (0,1,1) le ganaba a
-`.cronologia` (0,1,0) y le colaba la sangría de viñeta y el hueco entre puntos
-de las listas del catálogo, que con un hilo continuo lo habría partido en
-trozos: el selector es `ul.cronologia` por eso. Y `.pie p` alcanzaba a los dos
-párrafos del `.pie-legal` y les imponía un `max-width: 32ch`; como un bloque con
-`max-width` y sin márgenes automáticos no se centra, las dos líneas legales
-salían arrimadas a la izquierda con medio pie vacío, con el texto centrado
-dentro de esa caja estrecha. El selector es `.pie-rejilla p`. La forma es la
-misma en los dos casos: una regla de elemento dentro de un contenedor le gana a
-la clase del hijo, y lo que hereda el padre no sirve de nada frente a una regla
-que apunta al elemento.
+**Dos selectores llevan el elemento delante a propósito, y no hay que
+«simplificarlos»**: `ul.cronologia` en `catalogo.css` y `.pie-rejilla p` en
+`portada.css`. Escritos como `.cronologia` y `.pie p` los gana una regla de
+elemento de más arriba en su propia hoja, que les cuela una sangría y un
+`max-width` ajenos; cada uno costó un fallo visible antes de verse. Misma forma
+las dos veces: una regla de elemento dentro de un contenedor le gana a la clase
+del hijo, y lo que hereda el padre no sirve de nada frente a una regla que
+apunta al elemento. Los dos llevan su comentario en la hoja.
 
 Los datos del titular ya están todos puestos. La clase `.pendiente` —el
 recuadro amarillo— sigue en uso para lo que todavía no es real: hoy, los
@@ -805,43 +807,26 @@ NIF llegó primero uno que no validaba, y no se escribió.
 
 ## Qué falta
 
-Ordenado por lo que más urge antes de enseñar la web a nadie.
+Ordenado por lo que más urge antes de enseñar la web a nadie. Cada punto se
+explica entero en su sección; esto es sólo la lista.
 
-- **Fotos.** El hero lleva una ilustración provisional del mostrador, dibujada
-  en SVG y con un aviso encima. Hay que sustituirla por la foto real.
-- **Blog.** Los tres artículos («Cómo cuidar tu piel en primavera» y los otros
-  dos) eran texto de relleno y sus «Leer más» no llevaban a ninguna parte, así
-  que la sección salió de la página: un consejo de salud firmado por el
-  farmacéutico que nadie ha escrito no debe publicarse. El CSS sigue en su
-  sitio y la maquetación está en el historial (`git show 4bd4d10:index.html`),
-  lista para volver en cuanto haya un artículo de verdad.
-- **Perfil de Facebook.** El icono sigue comentado en el pie de la portada,
-  con la URL de ejemplo lista para sustituir. Un icono que no lleva a ninguna
-  parte es peor que no tenerlo. El de **Instagram ya está puesto**
-  (`@farmacia.agramonte`), en **las 190 páginas** y en el `sameAs` del JSON-LD
-  de las tres portadas, que es por donde Google ata la ficha de la farmacia a
-  su cuenta. Como hay tres pies distintos (ver abajo), está escrito en tres
-  sitios: `index.html` para las portadas, `documento()` en `catalogo.py` para
-  las 177 generadas y a mano en las nueve legales y el 404. **Si cambia la
-  cuenta hay que tocar los tres.**
-- **Catálogo y venta en línea.** Están las **diez categorías** montadas,
-  enlazadas desde la portada y **sin `noindex`**: Google puede indexarlas.
-  **Dos ya tienen productos reales**, Solares y Cosmética facial, con cinco
-  productos entre ambas; esas dos, Medicamentos y las cinco fichas son lo único
-  que entra en el `sitemap.xml`. **Las otras siete siguen inventadas** y
-  marcadas como tales. Acabar de llenarlas es, con diferencia, lo más urgente
-  del proyecto. Precios no hay y no va a haberlos, que está decidido; cesta sí
-  hay, pero **no cobra**: el encargo sale por WhatsApp y se paga en el
-  mostrador. Antes de vender de verdad hay dos cosas que decidir. Una, que
-  **«Medicamentos» no puede venderse a distancia** sin notificarlo a la
-  autoridad sanitaria, aparecer en el registro DISTAFARMA de la AEMPS y mostrar
-  el logotipo europeo; y los de receta no pueden venderse a distancia nunca. El
-  resto de categorías son parafarmacia y no tienen esa limitación. Y dos, que en
-  cuanto se pueda **pagar** aquí hay que **cambiar el aviso legal**, que hoy
-  dice que esto no es una tienda, y añadir condiciones de venta, desistimiento
-  de catorce días, envíos y formas de pago.
-- **Tienda.** Cuenta de usuario, checkout, formas de pago, devoluciones y
-  envíos están comentados en el pie a la espera del catálogo; la cesta, que sí
-  existe, no es ninguna de esas cosas. Buscador, productos destacados y CMS
-  quedaron fuera de esta primera versión por lo mismo, tal y como ya preveía el
-  wireframe.
+- **Llenar las siete categorías de muestra.** Es, con diferencia, lo más
+  urgente del proyecto: ver «El catálogo».
+- **Las fotos.** Las de producto van en `fotos/` —ver «Las fotos»—, y la del
+  mostrador sustituye a la ilustración provisional del hero, que lleva su aviso
+  encima a la espera.
+- **Decidir qué fecha es la buena**, 1890 o la de la cronología: ver «Quiénes
+  somos».
+- **Antes de poder cobrar aquí**, lo que hay que decidir y cambiar está en «La
+  cesta». No es código.
+- **Blog.** Salió de la portada porque sus tres artículos eran relleno, y un
+  consejo de salud que no ha escrito nadie no se publica. Vuelve en cuanto haya
+  uno de verdad: la maquetación está en `git show 4bd4d10:index.html` y su CSS
+  sigue en `portada.css`.
+- **Perfil de Facebook.** Su icono sigue comentado en el pie de la portada, con
+  la URL de ejemplo lista para sustituir. Un icono que no lleva a ninguna parte
+  es peor que no tenerlo. El de Instagram ya está puesto.
+- **Tienda.** Cuenta, checkout, formas de pago, devoluciones y envíos están
+  comentados en el pie a la espera del catálogo; la cesta, que sí existe, no es
+  ninguna de esas cosas. Buscador, destacados y CMS quedaron fuera de esta
+  primera versión, tal y como ya preveía el wireframe.
