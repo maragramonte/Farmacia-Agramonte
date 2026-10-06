@@ -701,12 +701,13 @@ estar fuera del `sitemap.xml` no lo impide, sólo deja de invitarlo. El aviso
 amarillo es lo único que dice que no son de verdad.
 
 Por lo mismo hay otra cosa que corre prisa y no es de catálogo: **los datos del
-titular**, que son los que la LSSI obliga a publicar. El nombre ya está
-—Zoila Agramonte Bucho, en `aviso-legal.html` y en `privacidad.html`—, pero
-siguen en amarillo, sin rellenar, y con la web ya publicada:
+titular**, que son los que la LSSI obliga a publicar. El nombre y el número de
+colegiada ya están —Zoila Agramonte Bucho, col. 17594, en el pie de la portada
+y en `aviso-legal.html`—, pero siguen en amarillo, sin rellenar, y con la web
+ya publicada:
 
-- el **NIF/CIF**, en las dos páginas;
-- el **número de colegiada** y el de **autorización sanitaria**;
+- el **NIF/CIF**, en el aviso legal y en la privacidad;
+- el **número de autorización sanitaria**;
 - la referencia de **homologación en España** del título. El título es
   *Licenciada en Farmacia por la Universidad de La Habana*, y la ley pide el
   título y el Estado que lo expidió: aquí ese Estado no es España, así que
@@ -736,9 +737,10 @@ los 144 KB que ocuparían sueltos. Al dejar de pedirle nada a Google, las
 políticas de privacidad y de cookies se simplificaron: ya no hay ninguna
 transferencia de datos por el mero hecho de visitar la página.
 
-Los datos que todavía no tenemos —el número de colegiada, el NIF, la
-autorización sanitaria y la homologación del título— aparecen marcados en
-amarillo con la clase `.pendiente`. El nombre de la titular ya está puesto.
+Los datos que todavía no tenemos —el NIF, la autorización sanitaria y la
+homologación del título— aparecen marcados en amarillo con la clase
+`.pendiente`. El nombre de la titular y su número de colegiada ya están
+puestos.
 Se ven a la legua a propósito: así nadie publica la página dándolos por buenos.
 Al rellenarlos, hay que quitar también el `<span>` que los envuelve.
 
@@ -746,18 +748,14 @@ Al rellenarlos, hay que quitar también el `<span>` que los envuelve.
 
 Ordenado por lo que más urge antes de enseñar la web a nadie.
 
-- **Nº de colegiada.** La titular ya está puesta —Zoila Agramonte Bucho, en el
-  pie de `index.html`, en `aviso-legal.html` y en `privacidad.html`—, pero su
-  número sigue como `PENDIENTE` en el pie de `index.html` y en
-  `aviso-legal.html`. En España es obligatorio identificar a los dos, así que
-  esto va primero.
 - **NIF**, en `aviso-legal.html` y en `privacidad.html`. Y en `aviso-legal.html`
   faltan además el **número de autorización sanitaria** y la **homologación en
-  España** del título. Son **cuatro datos** y, con los tres idiomas, **16
+  España** del título. Son **tres datos** y, con los tres idiomas, **12
   recuadros amarillos**: el NIF aparece en el aviso legal y en la privacidad de
-  cada idioma, y los otros tres sólo en el aviso legal. Se rellenan todos o
+  cada idioma, y los otros dos sólo en el aviso legal. Se rellenan todos o
   ninguno: dejar un idioma puesto y otro en amarillo es peor que tenerlos
-  todos vacíos.
+  todos vacíos. (El número de colegiada, que era el cuarto, ya está: 17594, en
+  el pie de la portada y en el aviso legal de los tres idiomas.)
 - **Fotos.** El hero lleva una ilustración provisional del mostrador, dibujada
   en SVG y con un aviso encima. Hay que sustituirla por la foto real.
 - **Blog.** Los tres artículos («Cómo cuidar tu piel en primavera» y los otros
