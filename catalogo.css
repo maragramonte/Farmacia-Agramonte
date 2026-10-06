@@ -161,18 +161,62 @@ html[lang="en"] .foto::after { content: "Photo pending"; }
    abajo, así que el último epígrafe no necesita el respiro extra del final. */
 .historia .detalle:last-child { padding-bottom: 1.6rem; }
 
-.cronologia { list-style: none; margin: 1.2rem 0; padding: 0; display: grid; gap: .1rem; }
-.cronologia li {
-  display: grid; grid-template-columns: 10rem 1fr; gap: 1rem;
-  padding: .7rem 0;
-  border-bottom: 1px solid var(--crema-3);
+/* La cronología es una línea de tiempo, no una tabla de tres filas: el hilo
+   baja por la izquierda y cada etapa cuelga de su nudo. Era lo que pedía un
+   epígrafe titulado «Cuatro siglos de boticarios».
+
+   El hilo y el nudo son ::before y ::after del <li>, así que el generador no
+   cambia: la cronología sigue saliendo de historia_cronologia en textos.json
+   como un <strong> con la fecha y un <span> con lo que pasó. Y como esta hoja
+   la cargan las tres historias, los tres idiomas cambian a la vez. */
+/* El selector lleva el ul delante por una razón: «.detalle ul», unas líneas
+   más arriba, es más específico que un «.cronologia» suelto y le estaba
+   imponiendo a esta lista la sangría de viñeta y el hueco entre puntos que
+   son de las listas del catálogo. Con el ul delante empatan, y gana ésta por
+   ir después en la hoja. Con el hilo de la línea de tiempo eso ya no es un
+   detalle de sangría: el hueco lo partiría en trozos. */
+ul.cronologia {
+  list-style: none; display: block;
+  margin: 1.6rem 0; padding: 0;
 }
-.cronologia li:first-child { border-top: 1px solid var(--crema-3); }
+.cronologia li { position: relative; padding: 0 0 1.5rem 2.4rem; }
+.cronologia li:last-child { padding-bottom: 0; }
+
+/* El hilo. Va de borde a borde del <li> para que el de uno enlace con el del
+   siguiente sin saltos: si empezara a la altura del nudo, cada nudo tendría
+   encima un hueco del alto de su propio desplazamiento. Los dos extremos son
+   la excepción: el primero arranca en su nudo y el último se para en el suyo
+   -de ahí el calc-, que es lo que deja la línea abierta por abajo y cerrada
+   por arriba. */
+.cronologia li::before {
+  content: "";
+  position: absolute; left: 5px; top: 0; bottom: 0;
+  width: 1px; background: var(--crema-3);
+}
+.cronologia li:first-child::before { top: .4rem; }
+.cronologia li:last-child::before { bottom: calc(100% - .4rem); }
+
+/* El nudo. Va detrás del hilo en el orden del CSS, así que se pinta encima y
+   lo tapa; el relleno es el color del papel a propósito. El último va macizo:
+   es la etapa de ahora, la que no se ha cerrado. */
+.cronologia li::after {
+  content: "";
+  position: absolute; left: 0; top: .4rem;
+  width: 11px; height: 11px; border-radius: 50%;
+  border: 1px solid var(--oro); background: var(--crema);
+}
+.cronologia li:last-child::after { background: var(--oro); }
+
+/* La fecha, en la tipografía de los titulares. En versalitas de .74rem era el
+   dato más pequeño de la página siendo el que la ordena. */
 .cronologia strong {
-  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--oro-hondo); padding-top: .2rem;
+  display: block;
+  font-family: var(--display); font-size: 1.15rem; font-weight: 400;
+  line-height: 1.35; color: var(--texto);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: .1rem;
 }
-.cronologia span { color: var(--texto-tenue); }
+.cronologia span { display: block; color: var(--texto-tenue); }
 
 /* El reportaje. Es el único enlace a un sitio ajeno de toda la web aparte de
    WhatsApp, así que se ve que lleva fuera y se dice antes de pulsarlo. */
@@ -212,7 +256,8 @@ html[lang="en"] .foto::after { content: "Photo pending"; }
   .producto .resumen { display: none; }
   .producto .boton { font-size: .68rem; letter-spacing: .08em; padding: .65rem .5rem; }
   .cierre { padding: 1.5rem; }
-  /* La fecha encima del texto: a 320 px las dos columnas dejan «Los Saurina,
-     los primeros en regentarla» partido en seis líneas. */
-  .cronologia li { grid-template-columns: 1fr; gap: .15rem; }
+  /* La fecha ya va encima del texto en todos los anchos desde que esto es una
+     línea de tiempo. Aquí sólo se recorta la sangría del hilo, que a 320 px
+     son 2,4rem que le faltan al texto. */
+  .cronologia li { padding-left: 1.9rem; }
 }
