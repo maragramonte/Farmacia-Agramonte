@@ -329,6 +329,14 @@ códigos de idioma no se cabe en 320 px, y sin `flex-wrap` no partía en dos
 filas, se desbordaba a lo ancho. Ya tiene lo mismo que las otras dos. Si algún
 día se añade un cuarto idioma, es el primer sitio que hay que mirar.
 
+Y **tres pies**, por el mismo reparto: el largo de la portada, con sus cuatro
+columnas de enlaces y el monograma (`portada.css`); el de una fila de las
+páginas generadas, con el copyright, el Instagram y las legales (`marca.css`,
+y el HTML lo pone `documento()` en `catalogo.py`); y el de una sola línea
+centrada de las páginas de texto y el 404 (`legal.css`, escrito a mano en cada
+uno de esos diez ficheros). Lo que vaya en «todos los pies» hay que ponerlo
+tres veces.
+
 **El menú está escrito en dos sitios**, y hay que tocar los dos o se descuadra:
 a mano en `index.html`, y generado en `documento()` de
 `herramientas/catalogo.py` para las 177 que genera. Hoy son cuatro
@@ -758,14 +766,15 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
   farmacéutico que nadie ha escrito no debe publicarse. El CSS sigue en su
   sitio y la maquetación está en el historial (`git show 4bd4d10:index.html`),
   lista para volver en cuanto haya un artículo de verdad.
-- **Perfil de Facebook.** El icono sigue comentado en el pie, con la URL de
-  ejemplo lista para sustituir. Un icono que no lleva a ninguna parte es peor
-  que no tenerlo. El de **Instagram ya está puesto**
-  (`@farmacia.agramonte`), en el pie de la portada y en el `sameAs` del
-  JSON-LD, que es por donde Google ata la ficha de la farmacia a su cuenta.
-  Ojo: el pie de las páginas generadas —catálogo, fichas, historia y cesta— es
-  el corto, el de copyright y legales, y ahí no hay iconos; el de Instagram
-  sólo sale en la portada.
+- **Perfil de Facebook.** El icono sigue comentado en el pie de la portada,
+  con la URL de ejemplo lista para sustituir. Un icono que no lleva a ninguna
+  parte es peor que no tenerlo. El de **Instagram ya está puesto**
+  (`@farmacia.agramonte`), en **las 190 páginas** y en el `sameAs` del JSON-LD
+  de las tres portadas, que es por donde Google ata la ficha de la farmacia a
+  su cuenta. Como hay tres pies distintos (ver abajo), está escrito en tres
+  sitios: `index.html` para las portadas, `documento()` en `catalogo.py` para
+  las 177 generadas y a mano en las nueve legales y el 404. **Si cambia la
+  cuenta hay que tocar los tres.**
 - **Catálogo y venta en línea.** Están las **diez categorías** montadas,
   enlazadas desde la portada y **sin `noindex`**: Google puede indexarlas.
   **Dos ya tienen productos reales**, Solares y Cosmética facial, con cinco

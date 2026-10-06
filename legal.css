@@ -148,3 +148,8 @@ dl.ficha dd { margin: 0; }
   padding: 2rem 1.5rem;
 }
 .pie-legal a { color: var(--oro-claro); }
+/* El Instagram, en la misma fila que el copyright y las legales. El enlace es
+   inline-flex para que el icono y la arroba no se separen al partir la línea
+   en una pantalla estrecha. */
+.pie-legal .social { display: inline-flex; align-items: center; gap: .35rem; }
+.pie-legal .social svg { width: 15px; height: 15px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.4; }

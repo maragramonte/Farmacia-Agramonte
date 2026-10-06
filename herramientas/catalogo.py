@@ -57,6 +57,16 @@ WHATSAPP = "34661192472"
 TELEFONO_ENLACE = "+34933195921"
 TELEFONO_VISIBLE = "933 19 59 21"
 WHATSAPP_VISIBLE = "661 192 472"
+# El perfil de Instagram. Va en el pie de todas las páginas: en la portada
+# como icono de .sociales, aquí como icono más arroba, que así es un dato
+# de contacto y no sólo un adorno. La portada lo lleva escrito a mano en
+# index.html; si cambia la cuenta, hay que tocar los dos sitios.
+# El aria-label del enlace repite la arroba que se ve a propósito: un nombre
+# accesible que no contenga el texto visible rompe el «Label in Name» de la
+# WCAG. Lo que añade es la palabra Instagram, que el icono dice de un vistazo
+# y un lector de pantalla no.
+INSTAGRAM = "https://www.instagram.com/farmacia.agramonte/"
+INSTAGRAM_VISIBLE = "@farmacia.agramonte"
 CORREO = "farmacia.lallana@gmail.com"
 
 # El idioma que vive en la raíz y al que se recurre cuando falta una traducción.
@@ -197,6 +207,11 @@ ICONO_WHATSAPP = (
     '-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7'
     '-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>'
 )
+
+ICONO_INSTAGRAM = (
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" '
+    'rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" '
+    'fill="currentColor" stroke="none"/></svg>')
 
 ICONO_CESTA = (
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l-1.4 11a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8Z"/>'
@@ -639,6 +654,7 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
 <footer class="pie">
   <div class="contenedor">
     <p>%s</p>
+    <p class="pie-social"><a href="%s" aria-label="Instagram: %s" target="_blank" rel="noopener">%s<span>%s</span></a></p>
     <p>
       <a href="aviso-legal.html">%s</a> ·
       <a href="privacidad.html">%s</a> ·
@@ -664,6 +680,7 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
        aviso_plantilla(idioma) if es_plantilla else "",
        contenido,
        escapa(T("pie_derechos", idioma)),
+       INSTAGRAM, INSTAGRAM_VISIBLE, ICONO_INSTAGRAM, INSTAGRAM_VISIBLE,
        escapa(T("pie_aviso", idioma)),
        escapa(T("pie_privacidad", idioma)),
        escapa(T("pie_cookies", idioma)))

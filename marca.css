@@ -79,6 +79,14 @@ a { color: inherit; text-decoration: none; }
 .pie .contenedor { padding-block: 2.25rem; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; font-size: .85rem; }
 .pie a { border-bottom: 1px solid rgba(201,160,85,.3); }
 .pie a:hover { color: var(--oro-claro); }
+/* El Instagram. Va en medio de la fila, entre el copyright y las legales, y
+   con la arroba al lado del icono: así es un dato de contacto y no un adorno.
+   El subrayado del pie se queda, que es lo que hace que se vea que es un
+   enlace, pero se aparta del icono para no cruzarlo por debajo. */
+.pie-social a { display: inline-flex; align-items: center; gap: .45rem; border-bottom: 0; }
+.pie-social a span { border-bottom: 1px solid rgba(201,160,85,.3); }
+.pie-social a:hover span { border-bottom-color: var(--oro-claro); }
+.pie-social svg { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.4; }
 
 /* ---------- Adaptación a pantallas pequeñas ---------- */
 @media (max-width: 900px) {
