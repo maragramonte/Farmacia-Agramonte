@@ -337,7 +337,14 @@ a { color: inherit; text-decoration: none; }
 }
 .pie h3 { font-family: var(--display); font-size: 1.35rem; color: var(--oro-claro); margin-bottom: .8rem; }
 .pie h4 { font-family: var(--display); font-size: 1rem; color: var(--oro); margin: 0 0 .9rem; font-weight: 500; }
-.pie p { font-size: .9rem; max-width: 32ch; }
+/* Ojo con el selector: tiene que ser .pie-rejilla y no .pie. Esta regla es
+   para el párrafo de marca de la primera columna -«Desde 1890 cuidando de tu
+   salud...»-, que se lee mejor estrecho. Escrita como «.pie p» alcanzaba
+   también a las dos líneas del .pie-legal, y ahí hacía daño: 32ch sin
+   márgenes automáticos deja la caja pegada a la izquierda, con el texto
+   centrado dentro de ella y medio pie vacío a la derecha. De paso les comía
+   el font-size, que es .8rem y salía a .9rem. */
+.pie-rejilla p { font-size: .9rem; max-width: 32ch; }
 .pie ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
 .pie li a { font-size: .89rem; transition: color .18s ease; }
 .pie li a:hover { color: var(--oro-claro); }
