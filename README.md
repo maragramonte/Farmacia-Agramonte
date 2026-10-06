@@ -701,12 +701,10 @@ estar fuera del `sitemap.xml` no lo impide, sólo deja de invitarlo. El aviso
 amarillo es lo único que dice que no son de verdad.
 
 Por lo mismo hay otra cosa que corre prisa y no es de catálogo: **los datos del
-titular**, que son los que la LSSI obliga a publicar. El nombre y el número de
-colegiada ya están —Zoila Agramonte Bucho, col. 17594, en el pie de la portada
-y en `aviso-legal.html`—, pero siguen en amarillo, sin rellenar, y con la web
-ya publicada:
+titular**, que son los que la LSSI obliga a publicar. El nombre, el número de
+colegiada y el NIF ya están —Zoila Agramonte Bucho, col. 17594, NIF
+35756987Z—, pero siguen en amarillo, sin rellenar, y con la web ya publicada:
 
-- el **NIF/CIF**, en el aviso legal y en la privacidad;
 - el **número de autorización sanitaria**;
 - la referencia de **homologación en España** del título. El título es
   *Licenciada en Farmacia por la Universidad de La Habana*, y la ley pide el
@@ -737,10 +735,9 @@ los 144 KB que ocuparían sueltos. Al dejar de pedirle nada a Google, las
 políticas de privacidad y de cookies se simplificaron: ya no hay ninguna
 transferencia de datos por el mero hecho de visitar la página.
 
-Los datos que todavía no tenemos —el NIF, la autorización sanitaria y la
-homologación del título— aparecen marcados en amarillo con la clase
-`.pendiente`. El nombre de la titular y su número de colegiada ya están
-puestos.
+Los datos que todavía no tenemos —la autorización sanitaria y la homologación
+del título— aparecen marcados en amarillo con la clase `.pendiente`. El nombre
+de la titular, su número de colegiada y su NIF ya están puestos.
 Se ven a la legua a propósito: así nadie publica la página dándolos por buenos.
 Al rellenarlos, hay que quitar también el `<span>` que los envuelve.
 
@@ -748,14 +745,15 @@ Al rellenarlos, hay que quitar también el `<span>` que los envuelve.
 
 Ordenado por lo que más urge antes de enseñar la web a nadie.
 
-- **NIF**, en `aviso-legal.html` y en `privacidad.html`. Y en `aviso-legal.html`
-  faltan además el **número de autorización sanitaria** y la **homologación en
-  España** del título. Son **tres datos** y, con los tres idiomas, **12
-  recuadros amarillos**: el NIF aparece en el aviso legal y en la privacidad de
-  cada idioma, y los otros dos sólo en el aviso legal. Se rellenan todos o
-  ninguno: dejar un idioma puesto y otro en amarillo es peor que tenerlos
-  todos vacíos. (El número de colegiada, que era el cuarto, ya está: 17594, en
-  el pie de la portada y en el aviso legal de los tres idiomas.)
+- En `aviso-legal.html` faltan el **número de autorización sanitaria** y la
+  **homologación en España** del título. Son **dos datos** y, con los tres
+  idiomas, **6 recuadros amarillos**, los dos sólo en el aviso legal. Se
+  rellenan los dos o ninguno: dejar un idioma puesto y otro en amarillo es
+  peor que tenerlos todos vacíos. De los cuatro que eran, ya están puestos el
+  **número de colegiada** (17594, en el pie de la portada y en el aviso legal
+  de los tres idiomas) y el **NIF** (35756987Z, en el aviso legal y en la
+  privacidad de los tres). Los dos se comprobaron con su dígito de control
+  antes de escribirlos.
 - **Fotos.** El hero lleva una ilustración provisional del mostrador, dibujada
   en SVG y con un aviso encima. Hay que sustituirla por la foto real.
 - **Blog.** Los tres artículos («Cómo cuidar tu piel en primavera» y los otros
