@@ -192,15 +192,27 @@
             <rect x="160" y="288" width="80" height="42" rx="2"/>
             <rect x="262" y="288" width="80" height="42" rx="2"/>
           </g>
-          <!-- Sello: desde 1890 -->
-          <g transform="translate(330,54)">
-            <circle r="40" fill="#241811" stroke="#c9a055" stroke-width="1.5"/>
-            <circle r="33" fill="none" stroke="#c9a055" stroke-opacity=".45"/>
-            <path id="arcoSello" d="M 0,-25 A 25,25 0 0 1 0,25 A 25,25 0 0 1 0,-25" fill="none"/>
-            <text fill="#c9a055" font-family="Karla, sans-serif" font-size="7.5" letter-spacing="2.4">
-              <textPath href="#arcoSello" startOffset="6%">DESDE · FARMÀCIA AGRAMONTE ·</textPath>
+        </svg>
+
+        <!-- El sello va FUERA del dibujo del mostrador a propósito. La
+             ilustración es provisional y se va el día que llegue la foto; el
+             sello es marca y se queda, encima de la foto, que es justo donde
+             lo pone el diseño. Mientras vivió dentro del otro <svg> era un
+             grupo más del decorado y se habría ido con él. -->
+        <svg class="sello" viewBox="0 0 92 92" role="img" aria-label="Pharmacy seal: Farmàcia Agramonte, since 1890">
+          <g transform="translate(46,46)">
+            <circle r="45" fill="#241811" stroke="#c9a055" stroke-width="1.5"/>
+            <circle r="37" fill="none" stroke="#c9a055" stroke-opacity=".45"/>
+            <!-- El arco empieza ABAJO y da la vuelta entera. Así el 50% del
+                 recorrido cae justo arriba, y con text-anchor="middle" el
+                 rótulo se centra solo mida lo que mida: es lo que hace que no
+                 se salga al traducirlo. -->
+            <path id="arcoSello" d="M 0,28 A 28,28 0 0 1 0,-28 A 28,28 0 0 1 0,28" fill="none"/>
+            <text text-anchor="middle" fill="#c9a055" font-family="Karla, sans-serif" font-size="7.5" letter-spacing="1.8">
+              <textPath href="#arcoSello" startOffset="50%">· FARMÀCIA AGRAMONTE ·</textPath>
             </text>
-            <text y="7" text-anchor="middle" fill="#e0c285" font-family="Playfair Display, serif" font-size="19">1890</text>
+            <text y="-3" text-anchor="middle" fill="#c9a055" font-family="Karla, sans-serif" font-size="6.5" letter-spacing="2.2">SINCE</text>
+            <text y="17" text-anchor="middle" fill="#e0c285" font-family="Playfair Display, serif" font-size="22">1890</text>
           </g>
         </svg>
         <span class="nota-foto">Provisional illustration — to be replaced by the photo of the counter</span>
@@ -349,7 +361,6 @@
   <div class="contenedor">
     <div class="pie-rejilla">
       <div>
-        <div class="monograma" aria-hidden="true">A</div>
         <h3>Farmàcia Agramonte</h3>
         <p>Caring for your health in the heart of Barcelona since 1890.</p>
         <div class="sociales">
@@ -396,6 +407,11 @@
           <li><a href="cookies.html">Cookie policy</a></li>
         </ul>
       </div>
+
+      <!-- El monograma no es una columna de enlaces: es el sello del pie. Por
+           eso va suelto al final de la rejilla, en su propia columna, y no
+           apretado encima del nombre como estaba. -->
+      <div class="monograma" aria-hidden="true">A</div>
     </div>
   </div>
   <div class="pie-legal">
