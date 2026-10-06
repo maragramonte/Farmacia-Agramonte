@@ -95,8 +95,8 @@ Dos apuntes:
 ## Estructura
 
 ```
-index.html          La landing completa. Se edita ESTA: la catalana se
-                    genera a partir de ella
+index.html          La landing completa. Se edita ESTA: la catalana y la
+                    inglesa se generan a partir de ella
 404.html            Lo que se ve al abrir una dirección que no existe.
                     Bilingüe: Pages sirve el mismo para todo el sitio
 tipografias.css     Declara las tipografías propias (@font-face)
@@ -314,6 +314,14 @@ solapan entre sí, **cada una lleva a su página de catálogo** · tres
 motivos para elegir la farmacia ·
 datos de contacto y horario · pie con enlaces legales e información de contacto.
 
+**La portada alterna fondos de arriba abajo**: tinta en el hero, crema en las
+categorías, tinta otra vez en los motivos para elegir la farmacia, crema en el
+contacto y tinta en el pie. Lo que separa una sección de la siguiente es ese
+cambio de fondo y no un filete, que es lo que había antes. La sección oscura
+lleva la clase `.banda`, y su `.contenedor` va **dentro** de la sección y no en
+ella, como en el hero y en el pie, porque el fondo tiene que llegar de borde a
+borde.
+
 En el móvil el menú no se esconde: la cabecera pasa a dos filas y los enlaces
 quedan en una tira que se desliza si no caben. Las anclas se paran por debajo de
 la cabecera, que va fija, para que el título de la sección no quede tapado: eso
@@ -361,10 +369,12 @@ se genera en vez de escribirse a mano porque es una página del menú principal:
 escrita aparte habría una tercera copia de la cabecera, y el día que cambie el
 menú se quedaría atrás sin que nadie se entere.
 
-Un desajuste que conviene resolver algún día: la portada dice **«Desde 1890»**
-en seis sitios —el `og:description`, el `foundingDate` del JSON-LD que lee
-Google, el sello dibujado y el pie— y 1890 no aparece en esta historia. Se dejó
-así a propósito, pendiente de decidir qué fecha es la buena.
+Un desajuste que conviene resolver algún día: la portada dice **1890** en seis
+sitios —el `og:description`, la `description` y el `foundingDate` del JSON-LD
+que lee Google, el `aria-label` del sello, el año dibujado dentro del sello y
+el párrafo del pie— y **1890 no aparece ni una vez en esta historia**, cuya
+cronología va de 1600 a 2019. Se dejó así a propósito, pendiente de decidir qué
+fecha es la buena.
 
 ## Datos de la farmacia
 
@@ -618,8 +628,8 @@ el recuadro de «Foto pendiente». Se ponen dejando el fichero con el nombre de 
 página del producto, sin el `catalogo-` de delante ni el `.html` de detrás:
 
 ```
-catalogo-solares-stick-labial-spf-50.html   la página
-fotos/solares-stick-labial-spf-50.jpg       su foto
+catalogo-solares-cleanance-solaire-spf50.html   la página
+fotos/solares-cleanance-solaire-spf50.jpg       su foto
 ```
 
 Y ya está: se ejecuta el script y aparece en la tarjeta y en la ficha, sin tocar
@@ -635,10 +645,11 @@ tarjeta y a 1:1 en la ficha, así que lo que vaya pegado a un borde se pierde en
 uno de los dos recortes. El resto —tamaño, fondo, y de quién tienen que ser las
 fotos antes de publicarlas— está en `fotos/LEEME.txt`.
 
-La URL del producto sale de su nombre (`Stick labial SPF 50` →
-`catalogo-solares-stick-labial-spf-50.html`). Se puede fijar con una clave `id`
-en el JSON, y **hay que hacerlo antes de renombrar un producto que ya esté en
-Google**. Si dos productos de la misma categoría dan la misma URL, el script
+La URL del producto sale de su nombre (`Crema hidratante corporal` →
+`catalogo-cosmetica-corporal-crema-hidratante-corporal.html`). Se puede fijar
+con una clave `id` en el JSON, y **hay que hacerlo antes de renombrar un
+producto que ya esté en Google**: así lo llevan los cinco productos reales,
+mientras que los 42 de muestra sacan su URL del nombre. Si dos productos de la misma categoría dan la misma URL, el script
 para y lo dice en vez de pisar el fichero en silencio.
 
 Mientras la categoría lleve `"plantilla": true`, **ni ella ni sus fichas entran
@@ -730,6 +741,55 @@ un único fichero por familia cubre todos los pesos: 82 KB en total en lugar de
 los 144 KB que ocuparían sueltos. Al dejar de pedirle nada a Google, las
 políticas de privacidad y de cookies se simplificaron: ya no hay ninguna
 transferencia de datos por el mero hecho de visitar la página.
+
+**Las categorías son cajones de botica**, no píldoras. Diez píldoras en fila se
+leían como una nube de etiquetas de blog, que era lo más genérico que tenía la
+página. Cada una es ahora el frente de un cajón: fondo crema, moldura interior
+en oro, el icono grande, el rótulo en versalitas y un tirador debajo; al pasar
+por encima el cajón «se abre». Las clases son `.cajonera` y `.cajon`, en la
+línea del resto de nombres de esta web —`.escaparate`, `.marca`, `.migas`,
+`.tira`—, y la moldura y el tirador los dibuja el CSS con `::before` y
+`::after`, así que en el HTML un cajón sigue siendo un `<a>` con su icono y su
+nombre. La tira de categorías del catálogo **sí sigue siendo de píldoras**, a
+propósito: ahí no se elige destino, se cambia entre hermanas con una marcada
+como actual, y es la forma correcta para un filtro.
+
+**El sello de 1890 vive fuera de la ilustración del mostrador.** Mientras
+estuvo dentro de aquel `<svg>` era un grupo más del decorado, y el decorado es
+provisional: el día que llegue la foto real ese dibujo se borra entero y se
+habría llevado por delante la única marca propia de la página. Ahora es su
+propio `<svg class="sello">`, colocado encima del escaparate por CSS, que es
+donde lo pone el diseño. Su aro de texto se centra solo —el arco empieza abajo
+y da la vuelta entera, de modo que `startOffset="50%"` con
+`text-anchor="middle"` deja el rótulo arriba mida lo que mida—, y la única
+palabra traducible, el «desde», está dentro del círculo en recto y no en el
+aro, para que al traducirla no pueda romperlo. Antes de eso el aro se salía: el
+texto medía 176,7 px sobre un arco de 157,1, y en SVG lo que se sale del
+recorrido no se dibuja.
+
+**El monograma del pie es un sello, no un adorno de columna.** Era un circulito
+de 62 px encima del nombre; ahora es una columna propia al final de la rejilla.
+Columna y no posición absoluta a propósito: absoluto se le montaría encima a los
+enlaces de «Información», que llegan hasta el borde derecho.
+
+**La cronología de «Quiénes somos» es una línea de tiempo**, no una tabla de
+filas: el hilo baja por la izquierda y cada etapa cuelga de su nudo, con la
+fecha en Playfair y cifras tabulares. El último nudo va macizo porque es la
+etapa que no se ha cerrado. Hilo y nudo son `::before` y `::after` del `<li>`,
+así que el generador no cambia.
+
+**Dos trampas de especificidad que costaron un fallo visible cada una**, y que
+conviene no «simplificar» de vuelta. `.detalle ul` (0,1,1) le ganaba a
+`.cronologia` (0,1,0) y le colaba la sangría de viñeta y el hueco entre puntos
+de las listas del catálogo, que con un hilo continuo lo habría partido en
+trozos: el selector es `ul.cronologia` por eso. Y `.pie p` alcanzaba a los dos
+párrafos del `.pie-legal` y les imponía un `max-width: 32ch`; como un bloque con
+`max-width` y sin márgenes automáticos no se centra, las dos líneas legales
+salían arrimadas a la izquierda con medio pie vacío, con el texto centrado
+dentro de esa caja estrecha. El selector es `.pie-rejilla p`. La forma es la
+misma en los dos casos: una regla de elemento dentro de un contenedor le gana a
+la clase del hijo, y lo que hereda el padre no sirve de nada frente a una regla
+que apunta al elemento.
 
 Los datos del titular ya están todos puestos. La clase `.pendiente` —el
 recuadro amarillo— sigue en uso para lo que todavía no es real: hoy, los
