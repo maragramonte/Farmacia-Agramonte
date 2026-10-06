@@ -705,7 +705,7 @@ prisa: son los que la LSSI obliga a publicar y durante un tiempo estuvieron en
 amarillo con la web ya publicada. Zoila Agramonte Bucho, colegiada 17594, NIF
 35756987Z, autorización sanitaria 08/3254, y el título —*Licenciada en
 Farmacia por la Universidad de La Habana*— con su homologación, la resolución
-2015/08432 del Ministerio de Educación. Esto último hacía falta porque la ley
+2015/08432 del Ministerio de Educación, Cultura y Deporte. Esto último hacía falta porque la ley
 pide el título y el Estado que lo expidió, y aquí ese Estado no es España.
 
 ## Decisiones de diseño
