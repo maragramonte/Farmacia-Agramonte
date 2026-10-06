@@ -945,6 +945,10 @@
     "historia_cronologia": {
       "es": [
         [
+          "1600",
+          "La fecha más antigua de la que hay referencia."
+        ],
+        [
           "Hasta 1747",
           "Los Saurina, los primeros en regentarla."
         ],
@@ -959,6 +963,10 @@
       ],
       "ca": [
         [
+          "1600",
+          "La data més antiga de què es té referència."
+        ],
+        [
           "Fins al 1747",
           "Els Saurina, els primers a regentar-la."
         ],
@@ -972,6 +980,10 @@
         ]
       ],
       "en": [
+        [
+          "1600",
+          "The earliest date on record."
+        ],
         [
           "Until 1747",
           "The Saurina family, the first to run it."

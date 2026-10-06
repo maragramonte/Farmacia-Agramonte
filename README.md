@@ -758,9 +758,14 @@ Ordenado por lo que más urge antes de enseñar la web a nadie.
   farmacéutico que nadie ha escrito no debe publicarse. El CSS sigue en su
   sitio y la maquetación está en el historial (`git show 4bd4d10:index.html`),
   lista para volver en cuanto haya un artículo de verdad.
-- **Perfiles de redes sociales.** Los iconos de Instagram y Facebook están
-  comentados en el pie, con la URL de ejemplo lista para sustituir. Un icono que
-  no lleva a ninguna parte es peor que no tenerlo.
+- **Perfil de Facebook.** El icono sigue comentado en el pie, con la URL de
+  ejemplo lista para sustituir. Un icono que no lleva a ninguna parte es peor
+  que no tenerlo. El de **Instagram ya está puesto**
+  (`@farmacia.agramonte`), en el pie de la portada y en el `sameAs` del
+  JSON-LD, que es por donde Google ata la ficha de la farmacia a su cuenta.
+  Ojo: el pie de las páginas generadas —catálogo, fichas, historia y cesta— es
+  el corto, el de copyright y legales, y ahí no hay iconos; el de Instagram
+  sólo sale en la portada.
 - **Catálogo y venta en línea.** Están las **diez categorías** montadas,
   enlazadas desde la portada y **sin `noindex`**: Google puede indexarlas.
   **Dos ya tienen productos reales**, Solares y Cosmética facial, con cinco
