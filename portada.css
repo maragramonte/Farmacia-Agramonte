@@ -181,31 +181,80 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(1.55rem, 2.6vw, 2rem);
   margin-bottom: 2rem;
 }
-.pastillas { display: flex; flex-wrap: wrap; gap: .9rem; }
-.pastilla {
-  display: inline-flex; align-items: center; gap: .6rem;
+/* Eran diez píldoras en fila, y diez píldoras seguidas se leen como una nube
+   de etiquetas de blog. Ahora cada categoría es el frente de un cajón de
+   botica: la moldura, el rótulo y el tirador. La moldura y el tirador los
+   dibuja esta hoja con ::before y ::after, así que en el HTML un cajón sigue
+   siendo lo que era: un <a> con su icono y su nombre. */
+.cajonera {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(196px, 1fr));
+  gap: 1rem;
+}
+.cajon {
+  position: relative;
+  /* Tres filas: el icono, el rótulo y el tirador. La de en medio se come el
+     hueco sobrante, que es lo que mantiene los tiradores alineados cuando un
+     rótulo ocupa dos líneas y el de al lado una. */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  align-items: center;
+  gap: .8rem;
+  padding: 1.75rem 1.1rem 1.4rem;
+  background: var(--crema-2);
   border: 1px solid var(--crema-3);
-  border-radius: 999px;
-  padding: .75rem 1.4rem;
-  font-size: .92rem;
-  background: transparent;
+  text-align: center;
+  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600; line-height: 1.35;
   transition: border-color .18s ease, background .18s ease, transform .18s ease;
 }
-.pastilla:hover { border-color: var(--oro); background: var(--crema-2); transform: translateY(-2px); }
-.pastilla svg { width: 19px; height: 19px; flex: none; stroke: var(--oro); fill: none; stroke-width: 1.4; }
-
-.filete { border: 0; border-top: 1px solid var(--crema-3); margin: 0; }
+/* La moldura del frente. Absoluta a propósito: si ocupara celda, sería una
+   cuarta fila y descuadraría las tres de arriba. */
+.cajon::before {
+  content: "";
+  position: absolute; inset: 7px;
+  border: 1px solid rgba(201,160,85,.3);
+  pointer-events: none;
+  transition: border-color .18s ease;
+}
+/* El tirador. */
+.cajon::after {
+  content: "";
+  width: 30px; height: 6px;
+  border-radius: 999px;
+  background: var(--oro);
+  opacity: .5;
+  transition: opacity .18s ease;
+}
+.cajon:hover { border-color: var(--oro); background: var(--crema); transform: translateY(-2px); }
+.cajon:hover::before { border-color: rgba(201,160,85,.55); }
+.cajon:hover::after { opacity: 1; }
+.cajon svg { width: 26px; height: 26px; flex: none; stroke: var(--oro); fill: none; stroke-width: 1.3; }
 
 .apunte { margin-top: 1.4rem; color: var(--texto-tenue); font-size: .93rem; max-width: 60ch; }
 .apunte a { border-bottom: 1px solid var(--crema-3); }
 .apunte a:hover { color: var(--oro-hondo); border-bottom-color: var(--oro); }
 
+/* ---------- Banda oscura ----------
+   El respiro de tinta entre dos secciones de crema: de arriba abajo la
+   portada va tinta (hero), crema (categorías), tinta (ésta), crema
+   (contacto) y tinta (pie). El .contenedor va DENTRO de la sección, no en
+   ella, para que el fondo llegue de borde a borde. */
+.banda { background: var(--tinta); color: var(--tenue-tinta); }
+.banda h2 { color: var(--sobre-tinta); }
+.banda .valores { --raya: rgba(201,160,85,.22); }
+.banda .valor h3 { color: var(--sobre-tinta); }
+.banda .valor p { color: var(--tenue-tinta); }
+
 /* ---------- Por qué elegirnos ---------- */
-.valores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+/* La raya entre valores, en una variable: es vertical en pantalla ancha y
+   horizontal en el móvil, y así el color se escribe una vez. */
+.valores { --raya: var(--crema-3); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
 .valor { display: flex; gap: 1.1rem; padding-inline: 2rem; }
 .valor:first-child { padding-left: 0; }
 .valor:last-child { padding-right: 0; }
-.valor + .valor { border-left: 1px solid var(--crema-3); }
+.valor + .valor { border-left: 1px solid var(--raya); }
 .valor svg { width: 38px; height: 38px; flex: none; stroke: var(--oro); fill: none; stroke-width: 1.2; }
 .valor h3 { font-family: var(--cuerpo); font-size: 1rem; font-weight: 600; margin-bottom: .35rem; }
 .valor p { color: var(--texto-tenue); font-size: .93rem; }
@@ -336,7 +385,7 @@ a { color: inherit; text-decoration: none; }
   .hero .contenedor { grid-template-columns: 1fr; gap: 2.5rem; padding-block: 3rem; }
   .valores { grid-template-columns: 1fr; gap: 2rem; }
   .valor { padding-inline: 0; }
-  .valor + .valor { border-left: 0; border-top: 1px solid var(--crema-3); padding-top: 2rem; }
+  .valor + .valor { border-left: 0; border-top: 1px solid var(--raya); padding-top: 2rem; }
   .rejilla-blog { grid-template-columns: 1fr; }
   .destacado { grid-template-columns: 1fr; }
   .datos { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
@@ -354,20 +403,22 @@ a { color: inherit; text-decoration: none; }
   .marca { font-size: 1.12rem; }
   .cabecera .boton { padding: .7rem 1.05rem; letter-spacing: .1em; }
   .seccion { padding-block: 3rem; }
-  /* Con doce categorías, una por fila son casi 800px de scroll sólo aquí.
-     En rejilla de dos caben en la mitad y se leen igual de bien.
-     min-width:0 e hyphens hacen falta porque «Dermocosmética» es una palabra
-     más ancha que su columna: sin ellos la rejilla se desborda. */
-  .pastillas { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
-  .pastilla {
+  /* Con diez categorías, un cajón por fila son casi 800px de scroll sólo
+     aquí. En dos columnas caben en la mitad y se leen igual de bien.
+     min-width:0 e hyphens hacen falta porque «Nutrición y vitaminas» trae
+     palabras más anchas que su columna: sin ellos la rejilla se desborda. */
+  .cajonera { grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .cajon {
     min-width: 0;
-    padding: .7rem .8rem;
-    font-size: .82rem;
-    gap: .45rem;
-    line-height: 1.3;
+    padding: 1.15rem .7rem 1rem;
+    font-size: .7rem;
+    letter-spacing: .07em;
+    gap: .6rem;
     hyphens: auto;
   }
-  .pastilla svg { width: 16px; height: 16px; }
+  .cajon::before { inset: 5px; }
+  .cajon::after { width: 24px; height: 5px; }
+  .cajon svg { width: 22px; height: 22px; }
   .consejos { padding: 1.5rem; }
   .datos { grid-template-columns: 1fr; padding: 1.75rem 1.5rem; }
   .secundario { grid-template-columns: 1fr; }

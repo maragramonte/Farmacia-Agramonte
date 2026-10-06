@@ -667,9 +667,10 @@ Para añadir un producto o una categoría se edita el JSON y se ejecuta el
 script. La tira se rehace sola en las diez páginas, y la ficha del producto
 nuevo aparece con él.
 
-Las pastillas de la portada llevan a estas páginas. Esa lista está escrita a
-mano en `index.html`, así que el generador comprueba al ejecutarse que coincide
-con el JSON y avisa si sobra o falta alguna.
+Los cajones de la portada —la rejilla de «¿Qué estás buscando?»— llevan a
+estas páginas. Esa lista está escrita a mano en `index.html`, así que el
+generador comprueba al ejecutarse que coincide con el JSON y avisa si sobra o
+falta alguna.
 
 **Lo que falta para que esto deje de ser una maqueta**, por orden:
 

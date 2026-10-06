@@ -210,49 +210,49 @@
 
   <section class="seccion contenedor" id="categorias">
     <h2>What are you looking for?</h2>
-    <div class="pastillas">
-      <a class="pastilla" href="catalogo-medicamentos.html">
+    <div class="cajonera">
+      <a class="cajon" href="catalogo-medicamentos.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
         Medicines
       </a>
-      <a class="pastilla" href="catalogo-cosmetica-facial.html">
+      <a class="cajon" href="catalogo-cosmetica-facial.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15v6"/><path d="M9 21h6"/></svg>
         Facial skincare
       </a>
-      <a class="pastilla" href="catalogo-cosmetica-corporal.html">
+      <a class="cajon" href="catalogo-cosmetica-corporal.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4v4l2 3v11H8V9l2-3Z"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
         Body care
       </a>
-      <a class="pastilla" href="catalogo-solares.html">
+      <a class="cajon" href="catalogo-solares.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>
         Sun care
       </a>
-      <a class="pastilla" href="catalogo-cabello.html">
+      <a class="cajon" href="catalogo-cabello.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M8 9V5M12 9V5M16 9V5"/></svg>
         Hair care
       </a>
-      <a class="pastilla" href="catalogo-bebe-e-infantil.html">
+      <a class="cajon" href="catalogo-bebe-e-infantil.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/><path d="M9 15c1.8 1.4 4.2 1.4 6 0"/></svg>
         Baby and child
       </a>
-      <a class="pastilla" href="catalogo-salud-intima.html">
+      <a class="cajon" href="catalogo-salud-intima.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg>
         Intimate health
       </a>
-      <a class="pastilla" href="catalogo-nutricion-y-vitaminas.html">
+      <a class="cajon" href="catalogo-nutricion-y-vitaminas.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8c-3 0-5 2.4-5 5.8S9.5 21 12 21s5-3.8 5-7.2S15 8 12 8Z"/><path d="M12 8V5"/><path d="M12 6c1.6 0 3-1.2 3-3-1.6 0-3 1.2-3 3Z"/></svg>
         Nutrition and vitamins
       </a>
-      <a class="pastilla" href="catalogo-fitoterapia.html">
+      <a class="cajon" href="catalogo-fitoterapia.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/></svg>
         Herbal medicine
       </a>
-      <a class="pastilla" href="catalogo-ortopedia.html">
+      <a class="cajon" href="catalogo-ortopedia.html">
         <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
         Orthopaedics
       </a>
     </div>
-    <!-- Cada pastilla lleva a su página de catálogo. Los identificadores salen
+    <!-- Cada cajón lleva a su página de catálogo. Los identificadores salen
          de herramientas/catalogo-datos.json: si añades una categoría allí,
          añádela también aquí. El generador avisa si se descuadran. -->
     <p class="apunte">Each one opens its own page. If you would rather ask
@@ -260,30 +260,36 @@
       or call us on <a href="tel:+34933195921">933 19 59 21</a>.</p>
   </section>
 
-  <hr class="filete">
-
-  <section class="seccion contenedor">
-    <h2>Why choose Farmàcia Agramonte?</h2>
-    <div class="valores">
-      <div class="valor">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 14h24a12 12 0 0 1-12 12A12 12 0 0 1 8 14Z"/><line x1="20" y1="26" x2="20" y2="33"/><line x1="13" y1="33" x2="27" y2="33"/><line x1="24" y1="8" x2="16" y2="14"/></svg>
-        <div>
-          <h3>Personal attention</h3>
-          <p>We listen to you and advise you according to what you need.</p>
+  <!-- Banda oscura. Lo que separa esta sección de la anterior ya no es un
+       filete de un píxel, es el cambio de fondo: tinta, crema, tinta, crema,
+       tinta de arriba abajo. De paso, el oro de los iconos sólo rinde sobre
+       tinta — sobre crema se quedaba en un gris amarillento.
+       Ojo: aquí el .contenedor va DENTRO, como en el hero y en el pie, porque
+       el fondo tiene que llegar de borde a borde. -->
+  <section class="seccion banda">
+    <div class="contenedor">
+      <h2>Why choose Farmàcia Agramonte?</h2>
+      <div class="valores">
+        <div class="valor">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 14h24a12 12 0 0 1-12 12A12 12 0 0 1 8 14Z"/><line x1="20" y1="26" x2="20" y2="33"/><line x1="13" y1="33" x2="27" y2="33"/><line x1="24" y1="8" x2="16" y2="14"/></svg>
+          <div>
+            <h3>Personal attention</h3>
+            <p>We listen to you and advise you according to what you need.</p>
+          </div>
         </div>
-      </div>
-      <div class="valor">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M16 6h8v6l4 6v16H12V18l4-6Z"/><line x1="12" y1="24" x2="28" y2="24"/></svg>
-        <div>
-          <h3>Experience and trust</h3>
-          <p>More than 130 years serving our neighbourhood.</p>
+        <div class="valor">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M16 6h8v6l4 6v16H12V18l4-6Z"/><line x1="12" y1="24" x2="28" y2="24"/></svg>
+          <div>
+            <h3>Experience and trust</h3>
+            <p>More than 130 years serving our neighbourhood.</p>
+          </div>
         </div>
-      </div>
-      <div class="valor">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 34s-10-7.6-10-15a10 10 0 0 1 20 0c0 7.4-10 15-10 15Z"/><circle cx="20" cy="19" r="4"/></svg>
-        <div>
-          <h3>Closeness and quality</h3>
-          <p>Carefully chosen products and a human touch, one to one.</p>
+        <div class="valor">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 34s-10-7.6-10-15a10 10 0 0 1 20 0c0 7.4-10 15-10 15Z"/><circle cx="20" cy="19" r="4"/></svg>
+          <div>
+            <h3>Closeness and quality</h3>
+            <p>Carefully chosen products and a human touch, one to one.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -298,7 +304,7 @@
        El CSS (.consejos, .rejilla-blog, .destacado, .secundario, .hueco) sigue
        en su sitio esperándola. -->
 
-  <section class="contenedor" id="contacto" style="padding-bottom:4.5rem">
+  <section class="seccion contenedor" id="contacto">
     <div class="datos">
       <div class="dato">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
