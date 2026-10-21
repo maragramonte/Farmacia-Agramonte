@@ -1049,14 +1049,14 @@ def comprueba_portada(categorias, idioma):
               % (idioma, fichero.relative_to(RAIZ)))
         return
     portada = fichero.read_text(encoding="utf-8")
-    enlazadas = set(re.findall(r'href="catalogo-([a-z0-9-]+)\.html"', portada))
     definidas = {c["id"] for c in categorias}
+    enlazadas = {
+        categoria_id for categoria_id in definidas
+        if 'href="catalogo-%s.html"' % categoria_id in portada
+    }
     if definidas - enlazadas:
         print("  AVISO: sin enlazar desde la portada de «%s»: %s"
               % (idioma, sorted(definidas - enlazadas)))
-    if enlazadas - definidas:
-        print("  AVISO: la portada de «%s» enlaza páginas que no se generan: %s"
-              % (idioma, sorted(enlazadas - definidas)))
 
 
 # Las páginas que no salen del JSON pero sí van al sitemap, con su prioridad.

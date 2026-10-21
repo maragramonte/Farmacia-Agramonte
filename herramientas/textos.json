@@ -253,6 +253,55 @@
         "Ortopèdia"
       ],
       [
+        "<h2>Servicios de la farmacia</h2>",
+        "<h2>Serveis de la farmàcia</h2>"
+      ],
+      [
+        "Además de dispensar medicamentos, ponemos a tu disposición servicios y asesoramiento en la farmacia.",
+        "A més de dispensar medicaments, posem a la teva disposició serveis i assessorament a la farmàcia."
+      ],
+      ["<h3>Ortopedia</h3>", "<h3>Ortopèdia</h3>"],
+      ["Surtido de ortopedia menor y posibilidad de encargar productos de ortopedia.", "Disposem d'articles d'ortopèdia menor i pots encarregar productes d'ortopèdia."],
+      ["<h3>Fitoterapia</h3>", "<h3>Fitoteràpia</h3>"],
+      ["Selección y orientación sobre productos de fitoterapia.", "Selecció i orientació sobre productes de fitoteràpia."],
+      ["<h3>Dietética y nutrición</h3>", "<h3>Dietètica i nutrició</h3>"],
+      ["Consejo en dietética y nutrición por personal acreditado.", "Consell en dietètica i nutrició per part de personal acreditat."],
+      ["<h3>Dermocosmética</h3>", "<h3>Dermocosmètica</h3>"],
+      ["Marcas y productos especializados para el cuidado de la piel.", "Marques i productes especialitzats per a la cura de la pell."],
+      ["<h3>Control de la tensión</h3>", "<h3>Control de la tensió</h3>"],
+      ["Medición y seguimiento personalizado de la presión arterial.", "Mesurament i seguiment personalitzat de la pressió arterial."],
+      ["<h3>Homeopatía</h3>", "<h3>Homeopatia</h3>"],
+      ["Asesoramiento y posibilidad de encargar productos de homeopatía.", "Assessorament i possibilitat d'encarregar productes d'homeopatia."],
+      ["<h3>Cosmética bio y vegana</h3>", "<h3>Cosmètica bio i vegana</h3>"],
+      ["Opciones de cosmética bio, orgánica y vegana.", "Opcions de cosmètica bio, orgànica i vegana."],
+      ["<h3>Cestas de regalo</h3>", "<h3>Cistelles de regal</h3>"],
+      ["Cestas de regalo por encargo con productos de parafarmacia.", "Cistelles de regal per encàrrec amb productes de parafarmàcia."],
+      ["<h3>También, a un clic de distancia</h3>", "<h3>També, a un clic de distància</h3>"],
+      ["A través de Take Care puedes gestionar recetas, recibir asesoramiento y solicitar la entrega a domicilio de medicamentos y productos de salud.", "A través de Take Care pots gestionar receptes, rebre assessorament i sol·licitar el lliurament a domicili de medicaments i productes de salut."],
+      ["Conocer Take Care", "Conèixer Take Care"],
+      ["<h2>Novedades</h2>", "<h2>Novetats</h2>"],
+      ["Una selección de productos destacados de la tienda online. Consulta en la farmacia el precio y la disponibilidad.", "Una selecció de productes destacats de la botiga en línia. Consulta a la farmàcia el preu i la disponibilitat."],
+      ["<p class=\"novedad-categoria\">Nutrición</p>", "<p class=\"novedad-categoria\">Nutrició</p>"],
+      ["45 cápsulas. Complemento alimenticio con extractos vegetales y vitaminas.", "45 càpsules. Complement alimentari amb extractes vegetals i vitamines."],
+      ["<p class=\"novedad-categoria\">Cosmética corporal</p>", "<p class=\"novedad-categoria\">Cosmètica corporal</p>"],
+      ["200 ml. Loción corporal con extracto de alga, aloe vera y jengibre.", "200 ml. Loció corporal amb extracte d'alga, àloe vera i gingebre."],
+      ["<p class=\"novedad-categoria\">Fotoprotección</p>", "<p class=\"novedad-categoria\">Fotoprotecció</p>"],
+      ["50 ml. Crema facial con color y protección solar SPF 50.", "50 ml. Crema facial amb color i protecció solar SPF 50."],
+      ["50 ml. Fotoprotector facial SPF 30 con filtros minerales.", "50 ml. Fotoprotector facial SPF 30 amb filtres minerals."],
+      ["Ver producto <span>→</span>", "Veure producte <span>→</span>"],
+      ["Del blog", "Del blog"],
+      ["Ver todos <span>→</span>", "Veure'ls tots <span>→</span>"],
+      ["<time datetime=\"2025-04-09\">9 abr 2025</time>", "<time datetime=\"2025-04-09\">9 abr. 2025</time>"],
+      ["<h3><a href=\"https://farmaciaagramonte.com/como-manejar-el-estres-y-la-ansiedad-de-forma-natural/\" target=\"_blank\" rel=\"noopener\">Cómo manejar el estrés y la ansiedad de forma natural</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/como-manejar-el-estres-y-la-ansiedad-de-forma-natural/\" target=\"_blank\" rel=\"noopener\">Com gestionar l'estrès i l'ansietat de manera natural</a></h3>"],
+      ["El estrés y la ansiedad son respuestas normales ante situaciones desafiantes; el artículo comparte pautas de cuidado.", "L'estrès i l'ansietat són respostes normals davant situacions difícils; l'article comparteix pautes de cura."],
+      ["<time datetime=\"2025-03-07\">7 mar 2025</time>", "<time datetime=\"2025-03-07\">7 març 2025</time>"],
+      ["<h3><a href=\"https://farmaciaagramonte.com/las-claves-para-elegir-un-buen-cepillo-de-dientes/\" target=\"_blank\" rel=\"noopener\">¡Las claves para elegir un buen cepillo de dientes!</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/las-claves-para-elegir-un-buen-cepillo-de-dientes/\" target=\"_blank\" rel=\"noopener\">Claus per triar un bon raspall de dents</a></h3>"],
+      ["Claves para escoger un cepillo adecuado para la rutina de higiene bucal.", "Claus per triar un raspall adequat per a la rutina d'higiene bucal."],
+      ["<time datetime=\"2025-02-03\">3 feb 2025</time>", "<time datetime=\"2025-02-03\">3 febr. 2025</time>"],
+      ["<h3><a href=\"https://farmaciaagramonte.com/cuidado-ocular-en-invierno-evita-la-sequedad-y-protege-tus-ojos-del-frio/\" target=\"_blank\" rel=\"noopener\">Cuidado ocular en invierno: evita la sequedad y protege tus ojos del frío</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/cuidado-ocular-en-invierno-evita-la-sequedad-y-protege-tus-ojos-del-frio/\" target=\"_blank\" rel=\"noopener\">Cura ocular a l'hivern: evita la sequedat i protegeix els ulls del fred</a></h3>"],
+      ["El frío, el viento y la calefacción pueden favorecer la sequedad ocular.", "El fred, el vent i la calefacció poden afavorir la sequedat ocular."],
+      ["Leer artículo <span>→</span>", "Llegir l'article <span>→</span>"],
+      [
         "Solares",
         "Solars"
       ],
@@ -490,6 +539,49 @@
         "Ortopedia",
         "Orthopaedics"
       ],
+      ["<h2>Servicios de la farmacia</h2>", "<h2>Pharmacy services</h2>"],
+      ["Además de dispensar medicamentos, ponemos a tu disposición servicios y asesoramiento en la farmacia.", "Alongside dispensing medicines, we offer a range of services and advice at the pharmacy."],
+      ["<h3>Ortopedia</h3>", "<h3>Orthopaedics</h3>"],
+      ["Surtido de ortopedia menor y posibilidad de encargar productos de ortopedia.", "A selection of minor orthopaedic products, with other items available to order."],
+      ["<h3>Fitoterapia</h3>", "<h3>Herbal medicine</h3>"],
+      ["Selección y orientación sobre productos de fitoterapia.", "A selection of herbal products and guidance on choosing them."],
+      ["<h3>Dietética y nutrición</h3>", "<h3>Diet and nutrition</h3>"],
+      ["Consejo en dietética y nutrición por personal acreditado.", "Diet and nutrition advice from qualified staff."],
+      ["<h3>Dermocosmética</h3>", "<h3>Dermocosmetics</h3>"],
+      ["Marcas y productos especializados para el cuidado de la piel.", "Specialist brands and products for skin care."],
+      ["<h3>Control de la tensión</h3>", "<h3>Blood pressure checks</h3>"],
+      ["Medición y seguimiento personalizado de la presión arterial.", "Blood pressure checks and personalised monitoring."],
+      ["<h3>Homeopatía</h3>", "<h3>Homeopathy</h3>"],
+      ["Asesoramiento y posibilidad de encargar productos de homeopatía.", "Advice and the option to order homeopathic products."],
+      ["<h3>Cosmética bio y vegana</h3>", "<h3>Organic and vegan cosmetics</h3>"],
+      ["Opciones de cosmética bio, orgánica y vegana.", "A selection of organic and vegan cosmetics."],
+      ["<h3>Cestas de regalo</h3>", "<h3>Gift baskets</h3>"],
+      ["Cestas de regalo por encargo con productos de parafarmacia.", "Made-to-order gift baskets with pharmacy and personal care products."],
+      ["<h3>También, a un clic de distancia</h3>", "<h3>Care, one click away</h3>"],
+      ["A través de Take Care puedes gestionar recetas, recibir asesoramiento y solicitar la entrega a domicilio de medicamentos y productos de salud.", "With Take Care, you can manage prescriptions, get advice and request home delivery of medicines and health products."],
+      ["Conocer Take Care", "Discover Take Care"],
+      ["<h2>Novedades</h2>", "<h2>New arrivals</h2>"],
+      ["Una selección de productos destacados de la tienda online. Consulta en la farmacia el precio y la disponibilidad.", "A selection of featured products from the online shop. Ask the pharmacy about price and availability."],
+      ["<p class=\"novedad-categoria\">Nutrición</p>", "<p class=\"novedad-categoria\">Nutrition</p>"],
+      ["45 cápsulas. Complemento alimenticio con extractos vegetales y vitaminas.", "45 capsules. Food supplement with plant extracts and vitamins."],
+      ["<p class=\"novedad-categoria\">Cosmética corporal</p>", "<p class=\"novedad-categoria\">Body care</p>"],
+      ["200 ml. Loción corporal con extracto de alga, aloe vera y jengibre.", "200 ml. Body lotion with algae, aloe vera and ginger extracts."],
+      ["<p class=\"novedad-categoria\">Fotoprotección</p>", "<p class=\"novedad-categoria\">Sun care</p>"],
+      ["50 ml. Crema facial con color y protección solar SPF 50.", "50 ml. Tinted facial sunscreen with SPF 50."],
+      ["50 ml. Fotoprotector facial SPF 30 con filtros minerales.", "50 ml. Facial SPF 30 sun protection with mineral filters."],
+      ["Ver producto <span>→</span>", "View product <span>→</span>"],
+      ["Del blog", "From the blog"],
+      ["Ver todos <span>→</span>", "View all <span>→</span>"],
+      ["<time datetime=\"2025-04-09\">9 abr 2025</time>", "<time datetime=\"2025-04-09\">9 Apr 2025</time>"],
+      ["<h3><a href=\"https://farmaciaagramonte.com/como-manejar-el-estres-y-la-ansiedad-de-forma-natural/\" target=\"_blank\" rel=\"noopener\">Cómo manejar el estrés y la ansiedad de forma natural</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/como-manejar-el-estres-y-la-ansiedad-de-forma-natural/\" target=\"_blank\" rel=\"noopener\">Managing stress and anxiety naturally</a></h3>"],
+      ["El estrés y la ansiedad son respuestas normales ante situaciones desafiantes; el artículo comparte pautas de cuidado.", "Stress and anxiety are normal responses to challenging situations; the article shares self-care guidance."],
+      ["<time datetime=\"2025-03-07\">7 mar 2025</time>", "<time datetime=\"2025-03-07\">7 Mar 2025</time>"],
+      ["<h3><a href=\"https://farmaciaagramonte.com/las-claves-para-elegir-un-buen-cepillo-de-dientes/\" target=\"_blank\" rel=\"noopener\">¡Las claves para elegir un buen cepillo de dientes!</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/las-claves-para-elegir-un-buen-cepillo-de-dientes/\" target=\"_blank\" rel=\"noopener\">How to choose a good toothbrush</a></h3>"],
+      ["Claves para escoger un cepillo adecuado para la rutina de higiene bucal.", "Tips for choosing a toothbrush that suits your oral care routine."],
+      ["<time datetime=\"2025-02-03\">3 feb 2025</time>", "<time datetime=\"2025-02-03\">3 Feb 2025</time>"],
+      ["<h3><a href=\"https://farmaciaagramonte.com/cuidado-ocular-en-invierno-evita-la-sequedad-y-protege-tus-ojos-del-frio/\" target=\"_blank\" rel=\"noopener\">Cuidado ocular en invierno: evita la sequedad y protege tus ojos del frío</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/cuidado-ocular-en-invierno-evita-la-sequedad-y-protege-tus-ojos-del-frio/\" target=\"_blank\" rel=\"noopener\">Eye care in winter: prevent dryness and protect your eyes from the cold</a></h3>"],
+      ["El frío, el viento y la calefacción pueden favorecer la sequedad ocular.", "Cold weather, wind and indoor heating can contribute to dry eyes."],
+      ["Leer artículo <span>→</span>", "Read article <span>→</span>"],
       [
         "Solares",
         "Sun care"
@@ -949,6 +1041,10 @@
           "La familia Cases, propietaria durante siglo y medio."
         ],
         [
+          "1880",
+          "La reforma modernista de la que viene la decoración actual."
+        ],
+        [
           "Desde 2019",
           "Zoila Agramonte Bucho, nueva titular."
         ]
@@ -967,6 +1063,10 @@
           "La família Cases, propietària durant segle i mig."
         ],
         [
+          "1880",
+          "La reforma modernista de la qual ve la decoració actual."
+        ],
+        [
           "Des del 2019",
           "Zoila Agramonte Bucho, nova titular."
         ]
@@ -983,6 +1083,10 @@
         [
           "1864 – 2014",
           "The Cases family, owners for a century and a half."
+        ],
+        [
+          "1880",
+          "The Modernista refurbishment the interior comes from."
         ],
         [
           "Since 2019",
