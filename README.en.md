@@ -2,11 +2,12 @@
 
 ### 👉 **<https://maragramonte.github.io/Farmacia-Agramonte/>**
 
-> **The full documentation is [`README.md`](README.md), in Spanish, and it is
-> the authoritative one.** This page is a short orientation for anyone who runs
-> into the repository: what it is, how to run it and where to edit what. It
-> deliberately repeats no counts, no legal reasoning and no history of past
-> fixes — those live in the Spanish document and would go stale here.
+> **The full documentation is [`README.md`](README.md) and [`docs/`](docs/),
+> in Spanish, and they are the authoritative ones.** This page is a short
+> orientation for anyone who runs into the repository: what it is, how to run
+> it and where to edit what. It deliberately repeats no counts, no legal
+> reasoning and no history of past fixes — those live in the Spanish documents
+> and would go stale here.
 
 Landing site for a neighbourhood pharmacy in Plaça de la Llana (El Born,
 Barcelona). In **Spanish, Catalan and English**.
@@ -98,7 +99,23 @@ Playfair Display for headings and Karla for body text, both self-hosted under
 
 Note that the site has **three headers and three footers**, one per family of
 pages, which do not share a stylesheet. Anything meant to appear "everywhere"
-has to be written in all three. The Spanish README maps them.
+has to be written in all three. [`docs/ESTRUCTURA.md`](docs/ESTRUCTURA.md)
+maps them.
+
+## Where to read more
+
+All in Spanish, under [`docs/`](docs/):
+
+| Document | What it covers |
+|---|---|
+| [ESTRUCTURA.md](docs/ESTRUCTURA.md) | Every file, what is generated, the three headers and footers |
+| [CATALOGO.md](docs/CATALOGO.md) | Categories, the generator, prices, product pages, photos |
+| [IDIOMAS.md](docs/IDIOMAS.md) | Translation, what the languages share, adding a fourth |
+| [CESTA.md](docs/CESTA.md) | The basket, why it does not charge, what charging would take |
+| [IMPORTAR.md](docs/IMPORTAR.md) | Importing a CSV export from the pharmacy software |
+| [DISENO.md](docs/DISENO.md) | Palette, type, and the CSS rules that must not be "simplified" |
+| [PUBLICAR.md](docs/PUBLICAR.md) | Local server, GitHub Pages, renaming the repo, custom domain |
+| [LA-FARMACIA.md](docs/LA-FARMACIA.md) | Contact details, the pharmacist, history, legal pages, rights |
 
 ## Licence
 

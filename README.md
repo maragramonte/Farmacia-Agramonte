@@ -1,835 +1,289 @@
-# Farmàcia Agramonte — web
+# Farmàcia Agramonte
+
+Web de una farmacia de barrio real, en la Plaça de la Llana (El Born,
+Barcelona). Enseña lo que hay en el mostrador, deja apuntar un encargo y lo
+manda por WhatsApp. No cobra nada, no pide datos y no depende de nadie: son
+ficheros estáticos publicados desde este repositorio.
+
+`HTML` · `CSS` · `JavaScript` · `Python 3` · `GitHub Pages`
 
 ### 👉 **<https://maragramonte.github.io/Farmacia-Agramonte/>**
 
 *A short English orientation for developers: [`README.en.md`](README.en.md).
-Este documento, en español, es el completo y el que manda.*
+Este documento, en español, es el que manda.*
 
-**La web está publicada y en marcha.** Ese enlace es el bueno: es lo que ve
-cualquiera que la abra. Cada `git push` a `main` la republica sola, en un par
-de minutos y sin tocar nada más.
+![Tarjeta de la web: sobre fondo tinta, «Consejo de siempre, de tu barrio» en Playfair Display con «de tu barrio» en itálica dorada, el lema «Envíanos la receta, la preparamos y te avisamos» y el pie «Farmàcia Agramonte · desde 1890»](og.png)
 
-Landing de la Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona),
-maquetada a partir del boceto y del diseño visual, que se guardan **fuera del
-repositorio**: son lo único que no ve quien visita la web, así que no viajan
-con ella.
+---
 
-Está en **español, catalán e inglés**: el español en la raíz, el catalán en
-<https://maragramonte.github.io/Farmacia-Agramonte/ca/> y el inglés en
-<https://maragramonte.github.io/Farmacia-Agramonte/en/>, con un selector en la
-cabecera que lleva de cada página a su traducción. El inglés está porque la
-Plaça de la Llana es de las zonas con más turismo de Barcelona. Ver «Idiomas»,
-abajo.
+## El problema
 
-Es una web **estática**: HTML y CSS, sin dependencias, sin proceso de
-compilación y sin servidor de aplicación. No hace falta contratar a nadie ni
-instalar nada para verla, y tampoco para publicarla.
+Una farmacia de barrio no necesita un comercio electrónico. Necesita que quien
+pasa por delante sepa qué encuentra dentro, que quien busca «farmacia El Born»
+en el móvil dé con el horario y el teléfono, y que quien ya sabe lo que quiere
+pueda pedirlo sin llamar en mitad del turno.
 
-Lo único que se ejecuta en el navegador de quien la visita es `cesta.js`, y se
-explica abajo en «La cesta». Son poco más de quinientas líneas sin
-dependencias: **no hay `npm`, ni `node_modules`, ni nada que compilar**. Para
-trabajar en la web sigue bastando un editor de texto y Python.
+Lo que normalmente se contrata para eso —un CMS, un hosting, un mantenimiento
+mensual— se come el presupuesto de un negocio pequeño y, a los dos años, es
+una web vieja que nadie sabe actualizar.
 
-## Verla en tu ordenador
+La decisión de producto que define el proyecto es **no ser una tienda**. Hay
+cesta, pero no hay pasarela: el encargo sale por WhatsApp y se paga en el
+mostrador. Eso mantiene la web fuera del régimen de venta a distancia, evita
+tratar datos de nadie y deja el sitio en algo que **se publica gratis y no se
+cae nunca**.
 
-La forma más rápida es **doble clic en `servir.bat`**. Se abre una ventana
-negra, arranca el servidor y se abre el navegador solo. Para pararlo, cierra la
-ventana o pulsa `Ctrl+C`.
+---
 
-Desde la terminal, lo mismo:
+## Verla
 
-```
-python servir.py            # puerto 8000, abre el navegador
-python servir.py 3000       # otro puerto, por si el 8000 está ocupado
-python servir.py --no-abrir # sin abrir el navegador
-```
+**▶ [La web está publicada y en marcha](https://maragramonte.github.io/Farmacia-Agramonte/).**
+Ese enlace es el bueno: es lo que ve cualquiera que la abra. Cada `git push` a
+`main` la republica sola, en un par de minutos y sin tocar nada más.
 
-Al arrancar imprime dos direcciones: la de este equipo (`localhost`) y la de la
-red local, con la IP. **Esa segunda sirve para verla en el móvil** con solo
-escribirla, estando en la misma wifi — útil para comprobar cómo queda de verdad
-en una pantalla pequeña.
+Está en **español, catalán e inglés** —el español en la raíz, el catalán en
+[`/ca/`](https://maragramonte.github.io/Farmacia-Agramonte/ca/) y el inglés en
+[`/en/`](https://maragramonte.github.io/Farmacia-Agramonte/en/)— con un
+selector en la cabecera que lleva de cada página a su traducción. El inglés
+está porque la Plaça de la Llana es de las zonas con más turismo de Barcelona.
 
-También se puede abrir `index.html` con doble clic, sin servidor. Funciona, pero
-la ruta será `file://` y algunas cosas no se comportan igual que en producción,
-así que para comprobar cambios es mejor el servidor.
+**Para verlo en un minuto:** entra en una categoría, pulsa «Añadir» en un par
+de productos y abre la cesta. El mensaje de WhatsApp se escribe solo, con la
+lista entera; enviarlo o no es cosa de quien lo lee.
 
-## Publicarla en internet
+---
 
-**Ya está hecho.** La web está publicada en GitHub Pages, en
-<https://maragramonte.github.io/Farmacia-Agramonte/>, y no cuesta nada: ni
-hosting, ni agencia, ni panel de control. Esto queda escrito por si algún día
-hay que rehacerlo o entenderlo, no porque haya algo pendiente.
+## Qué hace
 
-Para publicar un cambio, el único paso es subirlo:
+- **Portada** con el horario, la dirección, el teléfono y el botón de WhatsApp
+  siempre a la vista, más las novedades, los servicios de mostrador y los tres
+  últimos artículos del blog de la farmacia.
+- **Catálogo de diez categorías** que no se solapan, con **35 productos
+  reales** y una ficha por producto: formato, resumen y los epígrafes de
+  consejo cuando los tenga.
+- **Cesta sin pago**: se apunta lo que se quiera, se cambian las cantidades y
+  el encargo se manda por WhatsApp. No hay pasarela, ni cuentas, ni datos
+  personales en ninguna parte.
+- **Trilingüe de verdad**, no un traductor encima: 154 páginas con su
+  `canonical`, sus `hreflang` y su sitemap.
+- **Ficha de Google** montada desde el JSON-LD `Pharmacy` de la portada:
+  dirección, teléfono y los dos tramos de horario.
+- **Las tres páginas legales**, con los datos del titular que exige la LSSI.
 
-```
-git add -A
-git commit -m "..."
-git push
-```
+**Medicamentos es la única categoría vacía, y lo es a propósito**: enseñarlos
+en un catálogo es publicidad de medicamentos, que la ley prohíbe al público
+para los de receta. Su página explica en su lugar cómo se encarga una receta.
 
-**Cada `git push` a `main` republica la web sola**, en un par de minutos. No hay
-más pasos, no hay botón que pulsar y no hay nada que avisar. Si acabas de
-empujar y no ves el cambio, recarga sin caché (`Ctrl+Shift+R`): suele ser el
-navegador, no el despliegue.
+---
 
-Cómo quedó montado, que es lo que habría que repetir en un repositorio nuevo:
+## Cómo está construida
 
-1. El repositorio es **público**. Pages gratis sólo publica los públicos; en los
-   privados es una función de pago. Eso significa que **el código se ve**, y es
-   asumido: ver «Derechos», más abajo.
-2. En GitHub, repositorio → **Settings** → **Pages**.
-3. En *Source*, **Deploy from a branch**; rama `main` y carpeta `/ (root)`.
-4. Un par de minutos y la dirección responde.
+Una web **estática**: HTML y CSS, sin dependencias, sin proceso de compilación
+y sin servidor de aplicación. No hay `npm`, ni `node_modules`, ni nada que
+compilar; para trabajar en ella bastan un editor de texto y Python.
 
-Dos apuntes:
-
-- La URL sale del nombre del repositorio, que ahora es `Farmacia-Agramonte`.
-  Si se vuelve a renombrar (Settings → General → Repository name), hay que
-  **actualizar la dirección en seis sitios**: en `index.html` el `canonical`,
-  el `og:url`, el `og:image` y el `url` y el `image` del JSON-LD; y además
-  `robots.txt` y `sitemap.xml`. GitHub redirige el nombre viejo, pero una web
-  que se anuncia a sí misma con una dirección que ya no es la suya confunde a
-  los buscadores.
-- Cuando haya un dominio propio (`farmaciaagramonte.com` o similar), se apunta
-  a GitHub Pages desde el registrador y se añade un fichero `CNAME` en la raíz
-  con el dominio dentro. El único gasto sería el dominio, unos 12 €/año.
-
-## Estructura
+Pero casi nada se escribe a mano. **143 de las 154 páginas las escribe un
+generador** a partir de dos JSON:
 
 ```
-index.html          La landing completa. Se edita ESTA: la catalana y la
-                    inglesa se generan a partir de ella
-404.html            Lo que se ve al abrir una dirección que no existe.
-                    Bilingüe: Pages sirve el mismo para todo el sitio
-tipografias.css     Declara las tipografías propias (@font-face)
-portada.css         Lo propio de la portada. La cargan las tres portadas
-aviso-legal.html    Titular, datos profesionales y condiciones de uso
-privacidad.html     Qué datos se tratan, para qué y con qué base legal
-cookies.html        No hay cookies; explica la cesta y que no hay terceros
-legal.css           Estilo compartido de esas páginas de texto y del 404
+catalogo-datos.json  ─┐
+                      ├─→  [ catalogo.py ]  ─→  154 páginas en 3 idiomas
+textos.json          ─┘          │               + sitemap.xml
+                                 │
+index.html (a mano)  ────────────┘  (de aquí salen ca/index.html y en/index.html)
+```
 
-ca/                 Toda la web en catalán. index.html, las catalogo-*,
-                    historia.html y cesta.html SE GENERAN; las tres
-                    legales están a mano
-en/                 Lo mismo en inglés, con las mismas reglas
-idiomas.css         El selector de idioma de la cabecera
+Lo único que se ejecuta en el navegador de quien la visita es `cesta.js`: 566
+líneas sin dependencias. No hay analítica, no hay cookies y no se pide nada a
+ningún tercero — ni siquiera las tipografías, que viajan en el repositorio.
 
-catalogo-*.html     Las diez categorías y las fichas de sus productos.
-                    SE GENERAN, no se editan a mano
-historia.html       Quiénes somos y la historia de la farmacia. SE GENERA:
-                    el texto está en herramientas/textos.json
-cesta.html          La lista de lo que alguien quiere encargar. SE GENERA
-catalogo.css        Lo propio del catálogo: aviso, tira, rejilla y ficha
-cesta.css           Lo propio de la cesta: contador, botón y lista
-cesta.js            La cesta. Lo único de la web que se ejecuta al visitarla
-marca.css           Paleta, cabecera, botón y pie: la identidad compartida
+**→ [docs/ESTRUCTURA.md](docs/ESTRUCTURA.md)** — qué hay en cada fichero, qué
+se genera y qué se edita.
 
-servir.py           Servidor local (sólo necesita Python)
-servir.bat          Doble clic para lo mismo, en Windows
+---
 
-fotos/              Las fotos de los productos. Hoy vacía: ver su LEEME.txt
+## Decisiones técnicas
 
-favicon.svg         Icono de la pestaña: el monograma en oro sobre tinta
-og.png              Imagen que se ve al compartir el enlace (1200×630)
-robots.txt          Permite indexar y apunta al sitemap
-sitemap.xml         Las páginas indexables de los tres idiomas. SE GENERA
-.nojekyll           Le dice a GitHub Pages que sirva los ficheros tal cual
+**El sitio se genera, y el generador para en vez de escribir algo mal.** La
+tira de categorías que va arriba las lista todas, así que añadir una obligaba
+a tocar diez ficheros a mano: una errata esperando a ocurrir. Ahora hay una
+sola fuente de verdad y el script se niega a continuar si dos productos dan la
+misma URL, si falta un icono, si los cajones de la portada no cuadran con el
+JSON o si una portada traducida se ha quedado vieja. Lo que no puede
+comprobar, lo cuenta al terminar: fotos que faltan, textos sin traducir y
+páginas huérfanas, con el `git rm` ya escrito.
+[→](docs/CATALOGO.md#el-generador)
 
-LICENSE             Qué se puede hacer con este código y qué no
+**El español se queda en la raíz y los idiomas se añaden encima.** Mover el
+español a `/es/` habría roto todas las URL ya indexadas, a cambio de nada.
+Añadir el inglés no cambió ni una URL existente, y la URL de un producto no se
+traduce porque los nombres son marcas. Las traducciones que falten salen en
+español en lugar de dejar un hueco, y el generador dice cuántas son.
+[→](docs/IDIOMAS.md)
 
-tipografias/
-  playfair-display-variable.woff2  Los títulos. Fuente variable: un solo
-                                   fichero cubre del peso 400 al 500
-  playfair-display-cursiva.woff2   La itálica de «de tu barrio»
-  karla-variable.woff2             El texto, del 400 al 600
-  LICENCIA-karla.txt               SIL Open Font License 1.1
-  LICENCIA-playfairdisplay.txt     La OFL exige distribuirla con la fuente
+**La cesta vive en el navegador, y no cobrar es una decisión legal además de
+técnica.** El `localStorage` de quien mira la web: nada que administrar, nada
+que respaldar, ningún dato de nadie. El botón de añadir nace con `hidden` y lo
+destapa el JavaScript, así que si `cesta.js` no carga lo que queda es el
+enlace de WhatsApp, que funciona siempre. Y como aquí no se paga, la web sigue
+fuera del régimen de venta a distancia y el aviso legal de hoy sigue siendo
+cierto.
+[→](docs/CESTA.md)
 
-herramientas/
-  catalogo.py           Escribe el catálogo, la historia, la cesta, las
-                        portadas traducidas y el sitemap, en los tres
-                        idiomas
-  textos.json           TODOS los textos de la interfaz, en cada idioma
-  acentos.py            Comprueba la ortografía que se confunde entre el
-                        español y el catalán. El inglés no entra: no
-                        comparte esos errores
-  catalogo-datos.json   Los productos. Se edita ESTE
-  importar.py           Vuelca un export en CSV al JSON de arriba
-  tarjeta-social.py     Regenera og.png si cambia el lema o los datos
+**Ni una petición externa.** Playfair Display y Karla se sirven desde
+`tipografias/`, no desde Google Fonts: son OFL, son variables y pesan 82 KB en
+total en lugar de los 144 KB que ocuparían sueltas. Sin terceros no hay
+transferencia de datos por el mero hecho de visitar la página, y por eso la
+política de cookies puede decir la verdad más corta posible: no hay.
+[→](docs/DISENO.md#la-web-no-pide-nada-a-nadie)
+
+---
+
+## El estado real
+
+Lo que está hecho y lo que no, sin adornos.
+
+**Hecho.** Las 154 páginas están publicadas e indexables, las diez categorías
+tienen página propia, los 35 productos son reales y llevan su URL fijada, los
+74 textos de interfaz están traducidos a los tres idiomas, los datos del
+titular están completos y la cesta funciona entera, incluido el aviso de
+recorte cuando la lista no cabe en un enlace de WhatsApp.
+
+**No hecho.**
+
+- **`fotos/` está vacía**: las 35 fichas enseñan el recuadro de «Foto
+  pendiente». El mecanismo está montado — basta dejar el fichero con el nombre
+  de la página.
+- **Ningún producto trae los epígrafes de consejo** (para qué es, modo de
+  empleo, composición, advertencias). Son opcionales a propósito: en una
+  farmacia eso lo firma la casa, y una ficha corta es mejor que un epígrafe
+  rellenado a ojo.
+- **A cuatro productos les falta el formato**, y salen con la marca amarilla.
+- **Las legales en catalán e inglés están traducidas pero sin revisar**, y lo
+  dicen arriba: la española es la que prevalece.
+- **La fecha de fundación se contradice**: la portada dice 1890 en seis
+  sitios y la cronología de «Quiénes somos» va de 1600 a 2019. Falta decidir
+  cuál es la buena.
+
+---
+
+## Puesta en marcha
+
+Sólo hace falta **Python 3**. No hay dependencias que instalar.
+
+```
+python servir.py                   # ver la web en http://localhost:8000
+python herramientas/catalogo.py    # regenerar las 143 páginas y el sitemap
+python herramientas/acentos.py     # avisos de ortografía español/catalán
+```
+
+En Windows, doble clic en `servir.bat` hace lo primero. El servidor imprime
+también la IP de este equipo en la red local, que sirve para abrir la web en
+el móvil estando en la misma wifi.
+
+Para publicar un cambio no hay más paso que subirlo: **cada `git push` a
+`main` republica la web sola**.
+
+**→ [docs/PUBLICAR.md](docs/PUBLICAR.md)** — cómo quedó montado Pages, qué
+tocar si se renombra el repositorio y qué haría falta para un dominio propio.
+
+---
+
+## Estructura del repositorio
+
+```
+.
+├── index.html            La portada española. Se edita ESTA: la catalana y
+│                         la inglesa se generan de ella
+├── catalogo-*.html       Las diez categorías y las 35 fichas. SE GENERAN
+├── historia.html         Quiénes somos. SE GENERA
+├── cesta.html            La cesta. SE GENERA
+├── aviso-legal.html · privacidad.html · cookies.html · 404.html   A mano
+├── ca/ · en/             Todo lo anterior otra vez. Sólo las legales a mano
+├── *.css                 marca · portada · catalogo · cesta · legal · idiomas
+├── cesta.js              Lo único que se ejecuta al visitar la web
+├── herramientas/
+│   ├── catalogo.py            El generador
+│   ├── catalogo-datos.json    Los productos. Se edita ESTE
+│   ├── textos.json            Todos los textos de interfaz, en cada idioma
+│   ├── importar.py            Vuelca un export del programa de gestión
+│   ├── acentos.py             Ortografía que se confunde entre es y ca
+│   └── tarjeta-social.py      Regenera og.png
+├── tipografias/          Playfair Display y Karla, con sus licencias OFL
+├── fotos/                Las fotos de producto. Hoy vacía
+├── docs/                 Esta documentación
+├── servir.py · servir.bat     Servidor local
+└── sitemap.xml · robots.txt · .nojekyll
 ```
 
 El boceto y el diseño visual (`diseno/`) están ignorados por git y viven sólo
-en el ordenador. Conviene tener una copia de seguridad aparte, porque el
-repositorio ya no hace esa función.
+en el ordenador. Conviene tener una copia aparte: el repositorio ya no hace
+esa función.
 
-## Idiomas
+---
 
-**El español vive en la raíz, el catalán en `ca/` y el inglés en `en/`.** No es
-un detalle de gusto: las URL en español llevan tiempo publicadas, están en
-Google y en el sitemap, y mover el español a `/es/` las rompería todas.
-Dejándolo donde está no se pierde nada y los idiomas se añaden encima, que es
-exactamente lo que pasó con el inglés: no hubo que tocar ni una URL existente.
+## Documentación
 
-El sitio son **190 páginas HTML**: 64 en español —la raíz, con el 404 dentro—,
-63 en catalán y 63 en inglés. **Sólo once se escriben a mano**: la portada
-española, el 404 y las tres legales de cada idioma. Las 179 restantes las
-escribe el generador, y salen de un sitio u otro:
-
-| Dónde se escribe | Qué sale de ahí |
+| Documento | Contenido |
 |---|---|
-| `herramientas/textos.json` | Todo lo que no es un producto: menú, botones, pie, la cesta y la historia completa |
-| `herramientas/catalogo-datos.json` | Los productos: nombres, resúmenes, formatos |
-| `index.html` | La portada española. La catalana y la inglesa se generan **de ella** |
-| `aviso-legal.html` y compañía | Las tres legales en español, y el `404.html`, a mano |
-| `ca/…` y `en/…` | Las tres legales de cada idioma, a mano |
-
-### Cómo se traduce un texto
-
-En `textos.json`, cada clave lleva sus idiomas juntos, para que se vea de un
-golpe el que falta:
-
-```json
-"nav_inicio": { "es": "Inicio", "ca": "Inici" }
-```
-
-En `catalogo-datos.json` un campo acepta **las dos formas**:
-
-```json
-"resumen": "Hidratante en gel para piel deshidratada."
-"resumen": { "es": "Hidratante en gel...", "ca": "Hidratant en gel..." }
-```
-
-La cadena suelta vale para todos los idiomas, que es lo correcto en el nombre
-de una marca. En un resumen o en una intro significa que **está sin traducir**,
-y el generador lo cuenta al terminar. Así se traduce producto a producto sin
-tocar los 47 de golpe, y **nada se queda en blanco por el camino**: lo que
-falta sale en español.
-
-### La portada, que es el caso raro
-
-`index.html` está escrita a mano —lleva su hero en SVG y el JSON-LD que lee
-Google— y **las otras dos se generan de ella**, sustituyendo los trozos de texto
-que están en la lista `portada` de `textos.json`, una lista por idioma. Ni tres
-ficheros de cuatrocientas líneas que se separan, ni una plantilla de Python que
-impide editar la portada como HTML.
-
-Lo que hace que no envejezca en silencio: **si cambias un texto español de la
-portada, el generador para** y dice qué par de `textos.json` se ha quedado
-viejo. Es a propósito; sin eso, las portadas traducidas se irían quedando atrás
-sin que nadie se enterara. Y es la razón de que añadir un idioma dé trabajo una
-vez y no cada vez.
-
-Dos cosas de la cabeza de la portada **no son traducción y se sustituyen
-aparte**: el selector de idioma, que se escribe entero según los idiomas que
-haya, y el `og:locale`, que sale de la clave `og_locale` de cada idioma en
-`textos.json` y no se deduce del código de idioma, que daría locales que no
-existen.
-
-### Lo que comparten los tres idiomas
-
-Las hojas de estilo, las tipografías, `cesta.js` y las fotos **no se duplican**:
-viven en la raíz y desde `ca/` y `en/` se piden con `../`, que lo pone el
-generador.
-Se calcula en vez de usar rutas absolutas porque ésas llevan dentro el nombre
-del repositorio y se romperían al renombrarlo o al poner un dominio propio.
-
-La **cesta también es una sola**: su clave de `localStorage` no lleva el idioma,
-así que quien añade algo en español y cambia de idioma encuentra su cesta y no
-otra vacía. Con un matiz: cada línea guarda el nombre y el formato **tal como
-se veían al añadirla**, así que una cesta montada en varios idiomas sale
-mezclada. Arreglarlo exigiría llevar el catálogo entero también en JavaScript,
-que es justo lo que esta web no hace.
-
-El `404.html` lleva **los tres idiomas en un solo fichero**, porque GitHub Pages
-sirve el mismo para todo el sitio y no hay manera de saber en qué idioma estaba
-quien se ha perdido. Al añadir un idioma se le añade su bloque, con su `lang`
-para que el comprobador de acentos sepa saltárselo.
-
-### Para los buscadores
-
-Cada página lleva su `canonical` y los `hreflang` de todas sus traducciones,
-con `x-default` al español. Eso le dice a Google que son la misma página en
-otro idioma y no contenido duplicado. **La URL de un producto no se traduce**:
-`ca/catalogo-solares-cleanance-solaire-spf50.html` tiene el mismo nombre que la
-española, porque los nombres de producto son marcas y porque traducir los slugs
-duplicaría el trabajo de mantener URL estables.
-
-### Comprobar los acentos
-
-El catalán y el español se parecen lo justo para equivocarse:
-
-```
-python herramientas/acentos.py
-```
-
-Busca los errores concretos que se cometen al traducir entre los dos —el acento
-grave que el español pone agudo (`interès`, `època`, `Amèrica`), la ela geminada
-escrita como `ll` o `l.l`, y las palabras de un idioma colándose en el otro— y
-avisa de cada uno con su contexto. **No es un corrector**: son avisos que hay
-que mirar. Se salta los comentarios del código, que van en español en los tres
-idiomas a propósito, y los bloques marcados con otro `lang`, que es como se
-salta el inglés: no comparte estos errores, así que no entra en la comprobación.
-
-### Añadir otro idioma
-
-El inglés se añadió así, y quedó documentado aquí porque el cuarto costará lo
-mismo. Son **304 textos** y nueve pasos; los seis primeros los lleva el
-generador, los tres últimos van a mano porque no pasan por él.
-
-1. En `textos.json`, mete el idioma en `idiomas`, con su `carpeta`, su
-   `etiqueta_html`, su `corto` para el selector y su `og_locale`.
-2. Añade su clave a cada uno de los **74 textos**. Lo que no traduzcas sale en
-   español y el generador dice cuántos faltan, así que se puede ir por partes.
-3. Una lista con su nombre en `portada`, con los **57 pares** de la portada.
-4. En `catalogo-datos.json`, su clave en los campos traducibles: las 10
-   categorías, sus intros, la página de Medicamentos y los 47 productos; **150
-   textos**. Una cadena suelta se deja como está: significa «vale para todos
-   los idiomas», que es lo correcto en una marca.
-5. En `cesta.js`, su bloque en `TEXTOS`: **23 claves**. No están en
-   `textos.json` a propósito, que esto se ejecuta en el navegador.
-6. En `catalogo.css`, su regla del rótulo «Foto pendiente», que lo pone el CSS
-   y no el generador.
-7. Ejecuta el generador: escribe la carpeta entera, con sus `hreflang`, su
-   selector y su parte del sitemap.
-8. Las tres legales hay que escribirlas a mano, y el aviso de traducción sin
-   revisar va puesto hasta que alguien las firme.
-9. Y a mano también, porque no se generan: el bloque del idioma en `404.html`,
-   y su `hreflang` y su enlace en el selector de las **seis legales que ya
-   existían** más `index.html`. Es lo único que el generador no toca.
-
-### Lo que falta de las traducciones
-
-Vale igual para el catalán y para el inglés:
-
-- **Las tres páginas legales de cada idioma están traducidas pero sin
-  revisar**, y lo dicen arriba en amarillo: la versión española es la original
-  y la que prevalece. Son textos jurídicos, así que conviene que los lea
-  alguien antes de quitar ese aviso.
-- Los textos de salud de los productos están traducidos **sin revisar**. En
-  una farmacia eso es consejo, así que hay que mirarlos igual que los
-  españoles.
-
-## Secciones de la landing
-
-Cabecera fija con acceso directo a WhatsApp · hero con la propuesta («envíanos
-la receta, la preparamos y te avisamos») · diez categorías de producto que no se
-solapan entre sí, **cada una lleva a su página de catálogo** · tres
-motivos para elegir la farmacia ·
-datos de contacto y horario · pie con enlaces legales e información de contacto.
-
-**La portada alterna fondos de arriba abajo**: tinta en el hero, crema en las
-categorías, tinta otra vez en los motivos para elegir la farmacia, crema en el
-contacto y tinta en el pie. Lo que separa una sección de la siguiente es ese
-cambio de fondo y no un filete, que es lo que había antes. La sección oscura
-lleva la clase `.banda`, y su `.contenedor` va **dentro** de la sección y no en
-ella, como en el hero y en el pie, porque el fondo tiene que llegar de borde a
-borde.
-
-En el móvil el menú no se esconde: la cabecera pasa a dos filas y los enlaces
-quedan en una tira que se desliza si no caben. Las anclas se paran por debajo de
-la cabecera, que va fija, para que el título de la sección no quede tapado: eso
-lo hace `scroll-padding-top` con la variable `--alto-cabecera`, y conviene saber
-que **pasarse de largo ahí es inocuo y quedarse corto no**, porque corto deja el
-título debajo de la cabecera.
-
-**Hay tres cabeceras, no una**: la de la portada (`portada.css`), la del
-catálogo (`marca.css`) y la de las páginas de texto (`legal.css`), que no
-comparten hoja. Las tres llevan trato de móvil y `flex-wrap`; la de `legal.css`
-fue la última en tenerlo y es **la primera que hay que mirar si algún día se
-añade un cuarto idioma**, porque es la más justa de sitio a 320 px: la marca,
-el «Volver» y los códigos de idioma en una sola fila.
-
-Y **tres pies**, por el mismo reparto: el largo de la portada, con sus cuatro
-columnas de enlaces y el monograma (`portada.css`); el de una fila de las
-páginas generadas, con el copyright, el Instagram y las legales (`marca.css`,
-y el HTML lo pone `documento()` en `catalogo.py`); y el de una sola línea
-centrada de las páginas de texto y el 404 (`legal.css`, escrito a mano en cada
-uno de esos diez ficheros). Lo que vaya en «todos los pies» hay que ponerlo
-tres veces: el enlace a `@farmacia.agramonte`, que está en las 190 páginas, es
-el ejemplo vivo. **Si cambia la cuenta, hay que tocar los tres.**
-
-**El menú está escrito en dos sitios**, y hay que tocar los dos o se descuadra:
-a mano en `index.html`, y generado en `documento()` de
-`herramientas/catalogo.py` para las 177 que genera. Hoy son cuatro
-entradas: Inicio, Categorías, **Historia** y Contacto, más la cesta y el botón
-de pedir.
-
-## Quiénes somos
-
-`historia.html` cuenta de dónde viene la farmacia: que es la antigua Farmàcia
-Joaquim Cases, tienda modernista protegida como Bien Cultural de Interés Local,
-con referencias documentadas desde 1600, los Saurina hasta 1747, los Cases de
-1864 a 2014 y Zoila Agramonte Bucho como titular desde 2019. Lleva además el
-enlace al reportaje de *La República* sobre el barrio de Santa Caterina durante
-la pandemia, que es **el único enlace a un sitio ajeno de toda la web** aparte
-de los de WhatsApp.
-
-**El texto se edita en `pagina_historia()`, dentro de
-`herramientas/catalogo.py`**, no en el HTML, que se pierde al regenerar. Está en
-el generador y no en `catalogo-datos.json` porque ese JSON es de productos y
-esto es prosa, igual que el `CIERRE_PEDIDO` que va al pie de las categorías. Y
-se genera en vez de escribirse a mano porque es una página del menú principal:
-escrita aparte habría una tercera copia de la cabecera, y el día que cambie el
-menú se quedaría atrás sin que nadie se entere.
-
-Un desajuste que conviene resolver algún día: la portada dice **1890** en seis
-sitios —el `og:description`, la `description` y el `foundingDate` del JSON-LD
-que lee Google, el `aria-label` del sello, el año dibujado dentro del sello y
-el párrafo del pie— y **1890 no aparece ni una vez en esta historia**, cuya
-cronología va de 1600 a 2019. Se dejó así a propósito, pendiente de decidir qué
-fecha es la buena.
-
-## Datos de la farmacia
-
-| | |
-|---|---|
-| Dirección | Plaça de la Llana, 11 — 08003 Barcelona (El Born) |
-| Teléfono | 933 19 59 21 |
-| WhatsApp | 661 192 472 |
-| Correo | farmacia.lallana@gmail.com |
-| Horario | Lunes a Sábado, 9:00–14:30 y 16:00–20:30 |
-| Desde | 1890 |
-
-Estos datos están además en `index.html` como **JSON-LD de tipo `Pharmacy`**,
-que es lo que lee Google para montar la ficha de la farmacia en los resultados
-de búsqueda y en Maps: dirección, teléfono y los dos tramos de horario. Si
-cambia un horario o un teléfono, hay que tocarlo **en los dos sitios**: en el
-texto visible y en ese bloque `<script type="application/ld+json">`.
-
-## Derechos
-
-El código, los textos y el diseño son de la farmacia: `LICENSE` dice qué se
-puede hacer con ellos y qué no. No es una licencia libre.
-
-Que el repositorio sea público no regala nada: una web estática se descarga
-entera en el navegador de quien la abre, con su HTML y su CSS, así que eso es
-copiable de todos modos y lo es en cualquier web del mundo. Lo que protege el
-trabajo no es esconderlo, es el derecho de autor —automático, sin registrar
-nada— y el hecho de que lo copiable es la maqueta, no el negocio: el nombre, la
-licencia de oficina de farmacia, la Plaça de la Llana y la ficha de Google no
-se clonan.
-
-## Las categorías
-
-Son diez y **no se solapan**, que es la única condición que importa si algún día
-cuelga de ellas un catálogo: si dos cajones valen para el mismo producto, nadie
-sabe dónde buscarlo ni dónde guardarlo.
-
-| Categoría | Qué recoge |
-|---|---|
-| Medicamentos | Sin receta y encargos de receta, siempre para recoger en el mostrador |
-| Cosmética facial | Cremas, limpiadores, tratamientos de rostro |
-| Cosmética corporal | Cuerpo, manos, higiene |
-| Solares | Fotoprotección, adulta e infantil |
-| Cabello | Champús, anticaída, cuero cabelludo |
-| Bebé e infantil | Pañal, lactancia, higiene y cuidado del niño |
-| Salud íntima | Higiene íntima, anticoncepción, menopausia |
-| Nutrición y vitaminas | Complementos alimenticios y nutrición específica |
-| Fitoterapia | Plantas medicinales y derivados |
-| Ortopedia | Vendajes, plantillas, ayudas técnicas |
-
-Tres decisiones que conviene no deshacer sin pensarlo:
-
-- **«Dermocosmética» ya no está** como categoría suelta: era el paraguas de
-  facial, corporal, solares y cabello, así que convivir con ellas creaba cuatro
-  solapamientos. Se parte en facial y corporal, que es donde iban sus productos.
-- **Bebés e infantil van juntas**, y las **vitaminas dentro de nutrición**: eran
-  la misma estantería partida en dos.
-- **«Fitoterapia», no «medicina natural».** Lo segundo atribuye propiedades
-  medicinales a productos que no son medicamentos, y eso choca con las normas de
-  declaraciones de salud de los complementos alimenticios.
-
-## El catálogo
-
-Están las **diez categorías**, una página cada una, y dentro una ficha por
-producto. **Dos ya tienen productos reales** —Solares y Cosmética facial, cinco
-entre las dos— y están publicadas sin aviso y sin `noindex`. Las otras siete
-siguen con seis productos de muestra y su franja amarilla. **Medicamentos no
-lleva ninguno**, y eso es deliberado: enseñar
-medicamentos en un catálogo es publicidad de medicamentos, que la ley prohíbe al
-público para los de receta y sólo permite con advertencias obligatorias para el
-resto. Su página explica en su lugar cómo se encarga una receta.
-
-**Las páginas se generan.** No se editan a mano:
-
-```
-python herramientas/catalogo.py
-```
-
-Lee `herramientas/catalogo-datos.json` y escribe dos cosas:
-
-```
-catalogo-<id>.html              la rejilla de tarjetas de la categoría
-catalogo-<id>-<producto>.html   la ficha de cada uno de sus productos
-historia.html                   quiénes somos
-cesta.html                      la cesta, que comparte cabecera con ellas
-ca/…                            todo lo anterior otra vez, en catalán
-ca/index.html                   la portada catalana, hecha desde index.html
-sitemap.xml                     las páginas indexables de los tres idiomas
-```
-
-Hoy son 177 páginas: 10 de categoría, 47 fichas, la historia y la cesta, en
-cada uno de los tres idiomas; con las dos portadas traducidas, 179. Es lo mismo
-que hace
-`tarjeta-social.py` con `og.png`: las páginas se escriben cuando cambian los
-productos, no cuando alguien las visita. Existe por una razón
-concreta: la tira de categorías que va arriba las lista todas, así que añadir
-una obligaba a tocar las diez a mano, y eso es una errata esperando a ocurrir.
-Con una ficha por producto, escribirlas a mano ya no es ni discutible.
-
-Para cambiar productos o fotos se edita **el JSON**, y se vuelve a ejecutar el
-script.
-
-### Los precios
-
-**No se publican.** La decisión es de la farmacia y la razón es doble: un precio
-expuesto al público es una oferta, y mantener decenas al día en una web estática
-es de esas cosas que se quedan viejas sin que nadie se entere. El catálogo
-enseña lo que hay y el precio se pregunta; para eso está el botón.
-
-Un producto sin precio no deja hueco ni marca amarilla: sencillamente no lleva
-esa línea, y la tarjeta se queda con el nombre, el formato y «Preguntar». Eso es
-deliberado. El amarillo de `.pendiente` quiere decir «esto falta», y aquí no
-falta nada.
-
-La clave `precio` sigue existiendo en el JSON: al ponérsela a un producto
-(`"precio": "12,95 €"`) el precio sale, y sólo en ése. Antes de usarla, acuérdate
-de lo de la oferta.
-
-### La ficha de producto
-
-La tarjeta de la rejilla lleva al título enlazado; el botón «Preguntar» sigue
-yendo directo a WhatsApp, que quien ya sabe lo que quiere no tiene por qué dar
-un rodeo. La ficha repite foto, formato, precio y botón, y debajo cuatro
-epígrafes que salen del JSON:
-
-| Clave | Epígrafe | Se pinta como |
-|---|---|---|
-| `descripcion` | Para qué es | párrafos |
-| `modo_empleo` | Modo de empleo | lista numerada |
-| `composicion` | Composición | párrafos |
-| `advertencias` | Advertencias | lista, y en un recuadro aparte |
-
-**Los cuatro son opcionales y el que falta no se pinta.** Es a propósito: en una
-farmacia esto es consejo de salud y lo firma la casa, así que una ficha corta es
-mejor que un epígrafe rellenado a ojo. **Ahora mismo no los trae ninguno**: los
-que tenía Solares eran de muestra y se fueron con sus productos inventados. Hay
-un ejemplo montado en `git show b215896:herramientas/catalogo-datos.json`, por
-si sirve de plantilla al escribir los de verdad.
-
-El **formato** sí lleva marca amarilla cuando falta: todo producto tiene uno, y
-no tenerlo es una ficha a medias. Es lo contrario que el precio, que no lleva
-marca porque no es que falte, es que no se publica.
-
-### La cesta
-
-Cada tarjeta y cada ficha llevan un botón **«Añadir»** que apunta el producto en
-una cesta. La cesta se ve en `cesta.html`, con el contador en la cabecera de
-todas las páginas, y desde ahí se cambian las cantidades, se quitan cosas y se
-manda el encargo: **el mensaje de WhatsApp se escribe solo** con la lista
-entera, y lo envía la persona desde su móvil.
-
-**Aquí no se paga, y eso es lo que importa entender.** No hay pasarela, no se
-piden datos, no se cobra nada y la farmacia no recibe nada hasta que alguien le
-manda el mensaje. El encargo se confirma, se valora y se paga **en el
-mostrador**. Por eso la web sigue fuera del régimen de venta a distancia y el
-aviso legal de hoy sigue siendo cierto. Los precios, que no se publican,
-tampoco salen en la cesta: se confirman al contestar.
-
-Todo vive en dos ficheros, `cesta.js` y `cesta.css`, y el HTML lo pone el mismo
-generador que el resto. Cuatro decisiones que conviene no deshacer:
-
-- **La cesta se guarda en el `localStorage` de quien mira la web**, no en un
-  servidor. No hay nada que administrar, nada que respaldar y ningún dato de
-  nadie en ninguna parte. A cambio, la cesta es de ese navegador: no sigue a la
-  persona de un dispositivo a otro, y se pierde al borrar los datos del sitio.
-  Para una lista de la compra que se manda en el momento, es el trato bueno.
-- **El botón de añadir nace con `hidden` y lo destapa el JavaScript.** Si
-  `cesta.js` no carga, no aparece: lo que se ve es el botón de WhatsApp, que es
-  un enlace de verdad y funciona siempre. `cesta.html` tiene su propio aviso para
-  ese caso, y nace visible a propósito.
-- **No hay nada que no se pueda hacer con el teclado.** Las cantidades son
-  botones, el foco no se pierde al quitar una línea y lo que cambia se anuncia
-  en una región `aria-live`, que es lo que lee un lector de pantalla.
-- **Un `wa.me` con un texto larguísimo falla sin avisar.** Así que la cesta
-  recorta la lista al llegar al tope, lo dice dentro del propio mensaje y
-  **avisa en la página** de cuántos productos se han quedado fuera, con «Copiar
-  la lista» y el correo al lado, que esos sí van enteros. Son unos quince
-  productos con nombre de laboratorio; de ahí para arriba se avisa.
-
-Los medicamentos no entran en la cesta porque no hay catálogo de medicamentos:
-su página explica cómo se encarga una receta, y eso no cambia.
-
-**El día que se quiera cobrar de verdad** —Stripe Checkout, o el TPV virtual del
-banco— el carrito ya está hecho y lo que hay que cambiar es el botón final de
-`cesta.html`. Lo que hace falta antes no es código:
-
-- **Dejar Medicamentos fuera.** No puede venderse a distancia sin notificarlo a
-  la autoridad sanitaria, aparecer en el registro DISTAFARMA de la AEMPS y
-  mostrar el logotipo europeo; y los de receta no pueden venderse a distancia
-  nunca. El resto de categorías son parafarmacia y no tienen esa limitación.
-- **Rehacer el aviso legal**, que hoy dice que esto no es una tienda, y añadir
-  condiciones de venta, desistimiento de catorce días, envíos y formas de pago.
-  También la privacidad.
-- **Publicar precios**, con lo que eso implica (ver «Los precios»). Y la clave secreta de la pasarela no
-puede vivir en GitHub Pages, así que haría falta además una función en servidor
-(Cloudflare Workers o Netlify, gratis en este volumen). Es una decisión del
-negocio, no una tarde de trabajo.
-
-### Importar desde el programa de gestión
-
-Meter cuarenta productos a mano en el JSON es la misma errata esperando a
-ocurrir que llevó a generar las páginas en vez de copiarlas. Para eso está
-`herramientas/importar.py`, que lee un CSV exportado de Farmatic, Unycop,
-Nixfarma o el que sea:
-
-```
-python herramientas/importar.py export.csv
-python herramientas/importar.py export.csv --mapa mapa.json --seleccion sel.csv
-python herramientas/importar.py export.csv --mapa mapa.json --seleccion sel.csv --escribir
-```
-
-Son **dos filtros seguidos**, y ninguno lo decide el script:
-
-1. **El mapa**, por familias. Sin `--mapa` no escribe nada: dice qué columnas ha
-   reconocido, lista las familias que trae el CSV y deja al lado un
-   `mapa-catalogo.json` con esas familias sin asignar. Se rellena a mano —qué
-   familia va a qué categoría— y las que queden en `null` se quedan fuera.
-2. **La selección**, producto a producto. Con `--seleccion` deja un CSV con una
-   fila por candidato y una columna `incluir` vacía. Se abre en Excel, se
-   escribe `si` en los que entran, y sólo ésos se importan. **El catálogo lleva
-   una selección, no el fichero de artículos entero**: un export de farmacia son
-   miles de referencias, y cuarenta fichas bien escritas valen más que tres mil
-   con «Resumen pendiente». Por eso, importar más de 50 productos sin lista de
-   selección lo rechaza en vez de hacerlo.
-
-Cuando llegue otro export más adelante se repite con el mismo CSV de selección:
-conserva lo ya marcado y añade lo nuevo sin marcar, así que sólo hay que mirar
-lo que ha aparecido desde la última vez.
-
-Sin `--escribir` no toca nada en ningún caso: cuenta qué haría y para. Adivina
-la codificación (los export de un Windows español suelen salir en cp1252) y el
-separador (suele ser `;`, no `,`), y dice cuál ha usado para que se note si ha
-adivinado mal. Si no acierta con alguna columna, se le fuerza con
-`--columna formato=PRESENTACION`.
-
-**Cinco cosas que no hace, y todas a propósito:**
-
-- **No toca los precios.** Aunque el CSV traiga el PVP, se ignora: ya está
-  decidido que no se publican.
-- **No escribe resúmenes.** Un export trae nombres, no frases. Los productos
-  entran sin resumen y salen con la marca amarilla hasta que alguien lo
-  escriba.
-- **No toca `plantilla`.** Una categoría que era plantilla lo sigue siendo
-  después de importar, así que nada se publica hasta que alguien lo mira y lo
-  quita a mano.
-- **No importa a Medicamentos.** Si el mapa manda algo ahí, para y lo dice.
-- **No borra las páginas** de los productos que desaparezcan. Eso lo avisa
-  `catalogo.py`, con el `git rm` ya escrito.
-
-Quita los productos repetidos —en un export es normal que el mismo artículo
-salga dos veces— y, si el CSV trae el laboratorio en una columna aparte, lo
-pone delante del nombre salvo que ya estuviera dentro.
-
-### Las fotos
-
-Van en `fotos/`, que **hoy está vacía**: por eso las 47 fichas siguen enseñando
-el recuadro de «Foto pendiente». Se ponen dejando el fichero con el nombre de la
-página del producto, sin el `catalogo-` de delante ni el `.html` de detrás:
-
-```
-catalogo-solares-cleanance-solaire-spf50.html   la página
-fotos/solares-cleanance-solaire-spf50.jpg       su foto
-```
-
-Y ya está: se ejecuta el script y aparece en la tarjeta y en la ficha, sin tocar
-el JSON. Escribir 47 claves `foto` a mano es la misma errata esperando a ocurrir
-que llevó a generar las páginas en vez de copiarlas. La clave `foto` del JSON
-sigue existiendo para el fichero que no siga el convenio, y manda por encima de
-él; si apunta a algo que no está, el script avisa en lugar de dejar una imagen
-rota. Al terminar dice cuántas fotos hay puestas de los 47 productos.
-
-Valen `.webp`, `.avif`, `.jpg`, `.jpeg` y `.png`, en ese orden de preferencia.
-**Cuadradas y con el producto centrado**: la misma foto se recorta a 4:3 en la
-tarjeta y a 1:1 en la ficha, así que lo que vaya pegado a un borde se pierde en
-uno de los dos recortes. El resto —tamaño, fondo, y de quién tienen que ser las
-fotos antes de publicarlas— está en `fotos/LEEME.txt`.
-
-La URL del producto sale de su nombre (`Crema hidratante corporal` →
-`catalogo-cosmetica-corporal-crema-hidratante-corporal.html`). Se puede fijar
-con una clave `id` en el JSON, y **hay que hacerlo antes de renombrar un
-producto que ya esté en Google**: así lo llevan los cinco productos reales,
-mientras que los 42 de muestra sacan su URL del nombre. Si dos productos de la misma categoría dan la misma URL, el script
-para y lo dice en vez de pisar el fichero en silencio.
-
-Mientras la categoría lleve `"plantilla": true`, **ni ella ni sus fichas entran
-en `sitemap.xml`**, y las fichas salen además con `noindex`. Ninguna de las diez
-páginas de categoría lleva `noindex` —eso fue una decisión tomada a sabiendas—,
-pero en el sitemap sólo están las tres que no llevan muestras: cuarenta y dos
-fichas inventadas son otra cosa, páginas flacas, con nombres de productos que no
-existen y con texto de salud que no ha escrito nadie. Al quitar `plantilla`, la
-categoría y sus fichas entran en `sitemap.xml` y se indexan solas, sin que haya
-que tocar nada: lo escribe el generador.
-
-El estilo va en dos hojas: `marca.css` con la identidad compartida —paleta,
-cabecera, botón y pie— y `catalogo.css` con lo que sólo existe aquí. Hay que
-cargar `marca.css` primero.
-
-Tres cosas que hay que entender antes de tocarla:
-
-- **Siete categorías siguen inventadas.** Seis productos genéricos cada una,
-  sin marca, con el aviso grande arriba en la página y en cada ficha, y con
-  `noindex` en las fichas. **Las diez páginas de categoría están enlazadas
-  desde la portada y ninguna lleva `noindex`**, así que cualquiera llega a
-  ellas y Google puede indexarlas aunque las siete de muestra se queden fuera
-  del `sitemap.xml`. No las des por buenas hasta poner productos reales.
-- **Hay cesta, pero no hay pago.** Se puede apuntar lo que se quiera y el
-  encargo sale por WhatsApp; desde la web no se cobra nada y no se piden datos.
-  Eso es deliberado: mientras no se pueda **pagar** aquí, la web sigue fuera del
-  régimen de venta a distancia y el aviso legal actual sigue siendo cierto. Está
-  explicado abajo, en «La cesta».
-- **La tira de arriba enlaza las diez**, con la categoría en la que estás la
-  primera y en tinta rellena. Antes las demás iban en texto porque no tenían
-  página; ya la tienen.
-
-Para añadir un producto o una categoría se edita el JSON y se ejecuta el
-script. La tira se rehace sola en las diez páginas, y la ficha del producto
-nuevo aparece con él.
-
-Los cajones de la portada —la rejilla de «¿Qué estás buscando?»— llevan a
-estas páginas. Esa lista está escrita a mano en `index.html`, así que el
-generador comprueba al ejecutarse que coincide con el JSON y avisa si sobra o
-falta alguna.
-
-**Lo que falta para que esto deje de ser una maqueta**, por orden:
-
-1. Productos reales, en el JSON. Sin precios: eso ya está decidido.
-2. Las fotos, en `fotos/`. La carpeta y el mecanismo ya están; falta meterlas.
-3. Los formatos que faltan: cuatro de los cinco productos reales están sin él
-   y salen con la marca amarilla.
-4. Los epígrafes de cada ficha, escritos por quien pueda firmarlos. Hoy no los
-   tiene ninguno.
-5. Quitar `"plantilla": true` de las siete que quedan: con ello se va el aviso
-   amarillo y sus fichas dejan de llevar `noindex`.
-6. Borrar las páginas de los productos que hayan salido: el script dice
-   cuáles sobran y da el `git rm` escrito. El `sitemap.xml` ya no hay que
-   tocarlo, que lo escribe el generador.
-
-Y **esto no es hipotético: la web está publicada**. Las páginas de categoría
-están enlazadas desde la portada y ninguna lleva `noindex`, así que un visitante
-cualquiera llega hoy mismo a las siete de muestra y Google puede indexarlas:
-estar fuera del `sitemap.xml` no lo impide, sólo deja de invitarlo. El aviso
-amarillo es lo único que dice que no son de verdad.
-
-**Los datos del titular ya están completos**, que eran lo otro que corría
-prisa: son los que la LSSI obliga a publicar y durante un tiempo estuvieron en
-amarillo con la web ya publicada. Zoila Agramonte Bucho, colegiada 17594, NIF
-35756987Z, autorización sanitaria 08/3254, y el título —*Licenciada en
-Farmacia por la Universidad de La Habana*— con su homologación, la resolución
-2015/08432 del Ministerio de Educación, Cultura y Deporte. Esto último hacía falta porque la ley
-pide el título y el Estado que lo expidió, y aquí ese Estado no es España.
-
-## Decisiones de diseño
-
-La paleta y las tipografías salen del diseño visual: tinta `#2a1d12`, crema
-`#f5f0e6` y oro `#c9a055`, con **Playfair Display** para los títulos —incluida
-su itálica en «de tu barrio»— y **Karla** para el texto.
-
-Es un **tema único**, no claro/oscuro: al ser una identidad de marca debe verse
-igual para todo el mundo, así que la página fija sus colores explícitamente en
-lugar de seguir la preferencia del sistema.
-
-**No hace falta ninguna clave de API.** Las opiniones de Google, que sí la
-necesitarían, quedaron fuera igual que en el diseño acabado.
-
-Y **la web no hace ninguna petición externa**: las tipografías se sirven desde
-`tipografias/`, no desde Google Fonts. Son de licencia libre (OFL), así que
-redistribuirlas es legal siempre que viaje con ellas su licencia, y por eso
-están los dos `LICENCIA-*.txt`. Sólo se incluye el subconjunto latino, que cubre
-todo el texto del sitio; y como Playfair Display y Karla son fuentes variables,
-un único fichero por familia cubre todos los pesos: 82 KB en total en lugar de
-los 144 KB que ocuparían sueltos. Al dejar de pedirle nada a Google, las
-políticas de privacidad y de cookies se simplificaron: ya no hay ninguna
-transferencia de datos por el mero hecho de visitar la página.
-
-**Las categorías son cajones de botica**, no píldoras. Diez píldoras en fila se
-leían como una nube de etiquetas de blog, que era lo más genérico que tenía la
-página. Cada una es ahora el frente de un cajón: fondo crema, moldura interior
-en oro, el icono grande, el rótulo en versalitas y un tirador debajo; al pasar
-por encima el cajón «se abre». Las clases son `.cajonera` y `.cajon`, y la
-moldura y el tirador los dibuja el CSS con `::before` y `::after`, así que en
-el HTML un cajón sigue siendo un `<a>` con su icono y su nombre. La tira de
-categorías del catálogo **sí sigue siendo de píldoras**, a
-propósito: ahí no se elige destino, se cambia entre hermanas con una marcada
-como actual, y es la forma correcta para un filtro.
-
-**El sello de 1890 vive fuera de la ilustración del mostrador.** Mientras
-estuvo dentro de aquel `<svg>` era un grupo más del decorado, y el decorado es
-provisional: el día que llegue la foto real ese dibujo se borra entero y se
-habría llevado por delante la única marca propia de la página. Ahora es su
-propio `<svg class="sello">`, colocado encima del escaparate por CSS, que es
-donde lo pone el diseño. Su aro de texto se centra solo —el arco empieza abajo
-y da la vuelta entera, de modo que `startOffset="50%"` con
-`text-anchor="middle"` deja el rótulo arriba mida lo que mida—, y la única
-palabra traducible, el «desde», está dentro del círculo en recto y no en el
-aro. Las dos cosas son por lo mismo: en SVG, lo que se sale del recorrido no se
-dibuja, así que un aro que no se centre solo se recorta al traducirlo.
-
-**El monograma del pie es un sello, no un adorno de columna.** Era un circulito
-de 62 px encima del nombre; ahora es una columna propia al final de la rejilla.
-Columna y no posición absoluta a propósito: absoluto se le montaría encima a los
-enlaces de «Información», que llegan hasta el borde derecho.
-
-**La cronología de «Quiénes somos» es una línea de tiempo**, no una tabla de
-filas: el hilo baja por la izquierda y cada etapa cuelga de su nudo, con la
-fecha en Playfair y cifras tabulares. El último nudo va macizo porque es la
-etapa que no se ha cerrado. Hilo y nudo son `::before` y `::after` del `<li>`,
-así que el generador no cambia.
-
-**Dos selectores llevan el elemento delante a propósito, y no hay que
-«simplificarlos»**: `ul.cronologia` en `catalogo.css` y `.pie-rejilla p` en
-`portada.css`. Escritos como `.cronologia` y `.pie p` los gana una regla de
-elemento de más arriba en su propia hoja, que les cuela una sangría y un
-`max-width` ajenos; cada uno costó un fallo visible antes de verse. Misma forma
-las dos veces: una regla de elemento dentro de un contenedor le gana a la clase
-del hijo, y lo que hereda el padre no sirve de nada frente a una regla que
-apunta al elemento. Los dos llevan su comentario en la hoja.
-
-Los datos del titular ya están todos puestos. La clase `.pendiente` —el
-recuadro amarillo— sigue en uso para lo que todavía no es real: hoy, los
-formatos que les faltan a los productos de muestra. Se ve a la legua a
-propósito, así nadie publica la página dándolo por bueno, y al rellenar un
-dato hay que quitar también el `<span>` que lo envuelve.
-
-La regla que se siguió con los cuatro datos del titular, por si vuelve a hacer
-falta: **un dato se rellena en los tres idiomas a la vez**, porque dejarlo
-puesto en español y en amarillo en catalán es peor que tenerlo vacío en los
-tres. Y lo que tenga dígito de control se comprueba antes de escribirlo: del
-NIF llegó primero uno que no validaba, y no se escribió.
-
-## Qué falta
-
-Ordenado por lo que más urge antes de enseñar la web a nadie. Cada punto se
-explica entero en su sección; esto es sólo la lista.
-
-- **Llenar las siete categorías de muestra.** Es, con diferencia, lo más
-  urgente del proyecto: ver «El catálogo».
-- **Las fotos.** Las de producto van en `fotos/` —ver «Las fotos»—, y la del
-  mostrador sustituye a la ilustración provisional del hero, que lleva su aviso
-  encima a la espera.
-- **Decidir qué fecha es la buena**, 1890 o la de la cronología: ver «Quiénes
-  somos».
-- **Antes de poder cobrar aquí**, lo que hay que decidir y cambiar está en «La
-  cesta». No es código.
-- **Blog.** Salió de la portada porque sus tres artículos eran relleno, y un
-  consejo de salud que no ha escrito nadie no se publica. Vuelve en cuanto haya
-  uno de verdad: la maquetación está en `git show 4bd4d10:index.html` y su CSS
-  sigue en `portada.css`.
-- **Perfil de Facebook.** Su icono sigue comentado en el pie de la portada, con
-  la URL de ejemplo lista para sustituir. Un icono que no lleva a ninguna parte
-  es peor que no tenerlo. El de Instagram ya está puesto.
-- **Tienda.** Cuenta, checkout, formas de pago, devoluciones y envíos están
-  comentados en el pie a la espera del catálogo; la cesta, que sí existe, no es
-  ninguna de esas cosas. Buscador, destacados y CMS quedaron fuera de esta
-  primera versión, tal y como ya preveía el wireframe.
+| [ESTRUCTURA.md](docs/ESTRUCTURA.md) | Qué hay en cada fichero, qué se genera, las tres cabeceras y los tres pies |
+| [CATALOGO.md](docs/CATALOGO.md) | Las diez categorías, el generador, los precios, las fichas y las fotos |
+| [IDIOMAS.md](docs/IDIOMAS.md) | Cómo se traduce, qué comparten los tres idiomas y cómo se añade un cuarto |
+| [CESTA.md](docs/CESTA.md) | Cómo funciona, por qué no cobra y qué haría falta para que cobrara |
+| [IMPORTAR.md](docs/IMPORTAR.md) | Volcar un export de Farmatic, Unycop o Nixfarma al catálogo |
+| [DISENO.md](docs/DISENO.md) | Paleta, tipografías, los cajones, el sello y las dos reglas CSS que no se tocan |
+| [PUBLICAR.md](docs/PUBLICAR.md) | Verla en local, GitHub Pages, renombrar el repositorio y el dominio propio |
+| [LA-FARMACIA.md](docs/LA-FARMACIA.md) | Datos, titular, historia, páginas legales y derechos |
+
+---
+
+## Hacia dónde va
+
+- [ ] Las 35 fotos de producto, en `fotos/`
+- [ ] Los epígrafes de consejo de cada ficha, escritos por quien pueda
+      firmarlos
+- [ ] Decidir la fecha de fundación: 1890 o la cronología
+- [ ] Revisar las legales traducidas y quitarles el aviso amarillo
+- [ ] Perfil de Facebook: el icono sigue comentado en el pie, con la URL de
+      ejemplo lista. Un icono que no lleva a ninguna parte es peor que no
+      tenerlo
+- [x] Llenar las categorías de productos reales — hecho: los 35 que hay
+      sustituyen a los de muestra, y ya no queda ninguna marcada como
+      plantilla
+
+---
+
+## Sobre mí
+
+Soy **Mar Agramonte**, desarrolladora recién graduada en el Ciclo Superior de
+**Desarrollo de Aplicaciones Multiplataforma**.
+
+Vengo de administración y he hecho la transición a desarrollo construyendo
+proyectos reales, no sólo ejercicios de clase. Éste es uno: una web para un
+negocio de verdad, con sus datos de verdad, publicada y en marcha. El otro es
+[**Dr. Agramonte**](https://github.com/maragramonte/dr-agramonte), una
+plataforma de gestión de citas médicas en Java y Spring Boot.
+
+Los dos tienen en común lo que más me interesa: que la decisión técnica salga
+del problema del negocio. Aquí, no cobrar no es una limitación del stack —es
+lo que mantiene la web fuera del régimen de venta a distancia y hace que una
+farmacia pueda tenerla sin pagar mantenimiento.
+
+Trabajo con **Java, JavaScript, HTML, CSS y Python**. Busco mi **primera
+oportunidad como desarrolladora junior**, en Mallorca, en Barcelona o en
+remoto.
+
+---
+
+## Licencia
+
+© 2026 Farmàcia Agramonte. Todos los derechos reservados.
+
+El código, los textos y el diseño son de la farmacia. [`LICENSE`](LICENSE)
+dice qué se puede hacer con ellos y qué no: **no es una licencia libre**.
+
+Que el repositorio sea público no regala nada. Una web estática se descarga
+entera en el navegador de quien la abre, así que la maqueta es copiable de
+todos modos, como en cualquier web del mundo. Lo que no se clona es el
+negocio: el nombre, la licencia de oficina de farmacia, la Plaça de la Llana y
+la ficha de Google.
