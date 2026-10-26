@@ -1058,6 +1058,12 @@ def pagina_portada(idioma, pares):
         clave, valor = ruta.split('="', 1)
         t = t.replace(ruta, '%s="%s%s' % (clave, prefijo(idioma), valor))
 
+    # La foto del mostrador, el día que sustituya a la ilustración. Vive en la
+    # raíz como el resto, así que desde ca/ hay que pedirla con ../. Va aparte
+    # de RAIZ_PORTADA porque su nombre de fichero lo elige quien hace la foto,
+    # no nosotros, así que se busca por el prefijo y no por la ruta entera.
+    t = t.replace('src="fotos/', 'src="%sfotos/' % prefijo(idioma))
+
     # La cabeza: idioma del documento, canonical, og:url y og:locale.
     car = carpeta(idioma)
     t = t.replace('<html lang="es">',
@@ -1171,6 +1177,37 @@ def comprueba_fotos(categorias):
     print("  fotos puestas: %d de %d productos" % (puestas, total))
 
 
+def comprueba_mostrador():
+    """Avisa si la foto del mostrador y la portada no se han puesto de acuerdo.
+
+    La portada se edita a mano, así que la ilustración provisional no se va
+    sola el día que llegue la foto: hay que cambiarle el bloque, y el recambio
+    está escrito en fotos/LEEME.txt para que sea un copia-pega.
+
+    Lo que esto vigila es quedarse a medias, que son los dos únicos estados
+    que no se notan al generar y sí en la web: la foto ya en fotos/ y la
+    portada todavía con el dibujo, o un <img> apuntando a un fichero que no
+    está. Aquí no se puede hacer lo de los productos —mirar si el fichero
+    existe y decidir— porque index.html es a la vez la fuente y la página en
+    español: si lo decidiera el generador, el español enseñaría el dibujo y
+    los otros dos idiomas la foto."""
+    t = (RAIZ / "index.html").read_text(encoding="utf-8")
+    pide = re.search(r'<img[^>]*src="fotos/([^"]+)"', t)
+    if pide:
+        if (CARPETA_FOTOS / pide.group(1)).exists():
+            print("  mostrador: foto puesta (fotos/%s)" % pide.group(1))
+        else:
+            print("  AVISO: la portada pide fotos/%s y ese fichero no está en "
+                  "fotos/. En la web se ve una imagen rota." % pide.group(1))
+        return
+    for ext in EXTENSIONES_FOTO:
+        if (CARPETA_FOTOS / ("mostrador" + ext)).exists():
+            print("  AVISO: hay fotos/mostrador%s pero la portada sigue "
+                  "enseñando la ilustración provisional. El bloque que hay que "
+                  "cambiar en index.html está en fotos/LEEME.txt." % ext)
+            return
+
+
 def comprueba_huerfanas(escritas):
     """Avisa de las catalogo-*.html que este script ya no genera, en cualquier
     idioma.
@@ -1238,6 +1275,7 @@ def main():
 
     comprueba_urls_unicas(categorias)
     comprueba_fotos(categorias)
+    comprueba_mostrador()
 
     indexables, escritas = [], []
     for idioma in IDIOMAS:

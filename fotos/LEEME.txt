@@ -51,6 +51,61 @@ Fondo claro y liso, en la línea de la crema del sitio (#f5f0e6). Las fotos con
 fondo de estantería o de mostrador quedan sucias al recortarlas en cuadrado.
 
 
+La foto del mostrador
+---------------------
+
+Ésta no va por el nombre del fichero como las de producto, porque no vive en
+una ficha generada sino en la portada, y la portada se escribe a mano. Son dos
+pasos y el generador avisa si te dejas alguno a medias.
+
+PRIMERO, deja la foto aquí como `mostrador.webp` (o .jpg).
+
+SEGUNDO, en `index.html` busca `<div class="escaparate">` y cambia el `<svg
+viewBox="0 0 400 340">` entero —desde esa etiqueta hasta su `</svg>`, que son
+unas cincuenta lineas de dibujo— por esto:
+
+    <img src="fotos/mostrador.webp"
+         alt="El mostrador de la Farmàcia Agramonte con las estanterías de botes">
+
+Y borra la última línea del bloque, la del aviso:
+
+    <span class="nota-foto">Ilustración provisional — sustituir por la foto del mostrador</span>
+
+El `<svg class="sello">` NO se toca: el sello de 1890 va encima de la foto,
+que es donde lo pone el diseño.
+
+TERCERO, en `herramientas/textos.json`, dentro de "portada", hay DOS pares que
+hablan del dibujo y se quedan huérfanos al quitarlo. El generador para hasta
+que los arregles, y para a propósito: es como avisa de que la traducción se ha
+quedado vieja. Hay que tocar los dos, en la lista "ca" y en la "en".
+
+El del texto alternativo: cámbiale el lado español por el del `alt` nuevo, y
+quítale el «Ilustración» a la traducción, que ya es una foto.
+
+    [
+      "El mostrador de la Farmàcia Agramonte con las estanterías de botes",
+      "El taulell de la Farmàcia Agramonte amb les estanteries de pots"
+    ]
+
+    [
+      "El mostrador de la Farmàcia Agramonte con las estanterías de botes",
+      "The counter at Farmàcia Agramonte with its shelves of jars"
+    ]
+
+Y el del aviso provisional: ese par se borra entero, porque el aviso ya no
+existe en ningún idioma.
+
+    [
+      "Ilustración provisional — sustituir por la foto del mostrador",
+      ...
+    ]
+
+Luego `python herramientas/catalogo.py`. La ruta se corrige sola a
+`../fotos/` en catalán y en inglés, y el `alt` sale traducido; de eso no te
+tienes que acordar. El generador dice «mostrador: foto puesta» cuando está
+bien, y avisa si te has dejado algo a medias.
+
+
 Antes de subirlas
 -----------------
 
