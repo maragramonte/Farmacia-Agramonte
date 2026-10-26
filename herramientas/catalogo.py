@@ -52,6 +52,11 @@ CARPETA_FOTOS = RAIZ / "fotos"
 # primero de la lista.
 EXTENSIONES_FOTO = (".webp", ".avif", ".jpg", ".jpeg", ".png")
 
+# Lo que cabe en una meta description antes de que Google la corte. No es una
+# penalización: la corta donde le toca y deja la frase a medias, así que más
+# vale decidir aquí dónde acaba. Ver recorta() y descripcion_meta().
+LARGO_META = 160
+
 BASE = "https://maragramonte.github.io/Farmacia-Agramonte/"
 WHATSAPP = "34661192472"
 TELEFONO_ENLACE = "+34933195921"
@@ -361,13 +366,53 @@ def consulta_de(p, idioma):
     return texto_de(p.get("consulta"), idioma) or nombre_de(p, idioma)
 
 
+def recorta(texto, largo):
+    """Recorta un texto a lo que cabe, cortando por donde no se note.
+
+    Corta por el final de frase si ese final aprovecha al menos dos tercios
+    del sitio; si cae antes, es que dejaría demasiado hueco sin usar, y
+    entonces llena el sitio y acaba en puntos suspensivos. Lo que no hace
+    nunca es cortar a mitad de palabra, que es lo que se ve cuando lo recorta
+    Google."""
+    if len(texto) <= largo:
+        return texto
+    cabe = texto[:largo]
+    punto = cabe.rfind(". ")
+    if punto >= largo * 2 // 3:
+        return cabe[:punto + 1]
+    espacio = cabe.rfind(" ")
+    corte = cabe[:espacio if espacio > 0 else largo].rstrip(" ,;:·—-")
+    # Y si lo último que queda es «y», «de» o «el», fuera también: una frase
+    # que acaba en preposición queda peor cortada que una palabra más corta.
+    while " " in corte and len(corte.rsplit(" ", 1)[1]) <= 2:
+        corte = corte.rsplit(" ", 1)[0].rstrip(" ,;:·—-")
+    return corte + "…"
+
+
 def descripcion_meta(p, idioma):
-    """La meta description de la ficha. Se salta lo que falte, que si no queda
-    un doble espacio o una frase que empieza por la nada."""
-    trozos = [t for t in (texto_de(p.get("resumen"), idioma),
-                          texto_de(p.get("formato"), idioma)) if t]
-    return T("desc_producto", idioma) % (
-        " ".join(trozos) if trozos else nombre_de(p, idioma))
+    """La meta description de la ficha: nombre, formato y resumen, en ese orden.
+
+    El nombre va delante porque es lo que la gente busca y, sobre todo, porque
+    es lo único que distingue a dos fichas que comparten resumen y formato:
+    cuatro solares de 50 ml salían con la misma description palabra por palabra
+    en los tres idiomas, y una description repetida es una ficha que Google
+    cuenta como relleno. El formato va detrás por lo mismo, que también
+    identifica. El resumen cierra porque es lo primero que sobra al recortar,
+    y en las fichas a medias es justo la frase de relleno.
+
+    Se salta lo que falte, que si no queda un doble espacio o una frase que
+    empieza por la nada."""
+    nombre = nombre_de(p, idioma)
+    formato = texto_de(p.get("formato"), idioma)
+    resumen = texto_de(p.get("resumen"), idioma)
+
+    cuerpo = nombre + (", %s" % formato if formato else "")
+    cuerpo = "%s. %s" % (cuerpo, resumen) if resumen else cuerpo + "."
+
+    # La plantilla lleva un %s, así que lo que ocupa de verdad son sus
+    # caracteres menos esos dos.
+    plantilla = T("desc_producto", idioma)
+    return plantilla % recorta(cuerpo, LARGO_META - (len(plantilla) - 2))
 
 
 def foto_de(c, p):
@@ -779,7 +824,10 @@ def pagina_producto(c, p, idioma):
     return documento(
         idioma=idioma,
         fichero=ruta_producto(c, p),
-        titulo=T("titulo_producto", idioma) % (nombre, coletilla, nombre_de(c, idioma)),
+        # Sin la categoría: con ella los títulos llegaban a 93 caracteres y
+        # Google los cortaba por detrás o los reescribía él. La categoría ya
+        # está en las migas y en la URL, así que no se pierde nada.
+        titulo=T("titulo_producto", idioma) % (nombre, coletilla),
         descripcion=descripcion_meta(p, idioma),
         contenido=contenido,
         es_plantilla=es_plantilla,

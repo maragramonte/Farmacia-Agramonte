@@ -65,6 +65,10 @@
   "portada": {
     "ca": [
       [
+        "<title>Farmàcia Agramonte — farmacia en El Born, Barcelona</title>",
+        "<title>Farmàcia Agramonte — farmàcia al Born, Barcelona</title>"
+      ],
+      [
         "Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
         "Farmàcia Agramonte, a la Plaça de la Llana (el Born, Barcelona). Envia'ns la teva recepta per WhatsApp, la preparem i t'avisem."
       ],
@@ -351,6 +355,10 @@
       ]
     ],
     "en": [
+      [
+        "<title>Farmàcia Agramonte — farmacia en El Born, Barcelona</title>",
+        "<title>Farmàcia Agramonte — pharmacy in El Born, Barcelona</title>"
+      ],
       [
         "Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
         "Farmàcia Agramonte, on Plaça de la Llana (El Born, Barcelona). Send us your prescription on WhatsApp, we prepare it and let you know."
@@ -827,14 +835,14 @@
       "en": "%s at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
     },
     "titulo_producto": {
-      "es": "%s%s — %s — Farmàcia Agramonte",
-      "ca": "%s%s — %s — Farmàcia Agramonte",
-      "en": "%s%s — %s — Farmàcia Agramonte"
+      "es": "%s%s — Farmàcia Agramonte",
+      "ca": "%s%s — Farmàcia Agramonte",
+      "en": "%s%s — Farmàcia Agramonte"
     },
     "desc_producto": {
-      "es": "%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
-      "ca": "%s a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).",
-      "en": "%s at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
+      "es": "%s En la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
+      "ca": "%s A la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).",
+      "en": "%s At Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
     },
     "cesta_titulo_pagina": {
       "es": "Tu cesta — Farmàcia Agramonte",

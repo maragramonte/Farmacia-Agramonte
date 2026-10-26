@@ -3,7 +3,7 @@ Fotos de los productos del catálogo
 
 Aquí van las fotos que se ven en las tarjetas del catálogo y en la ficha de
 cada producto. Ahora mismo la carpeta está vacía —este fichero es lo único que
-hay— y por eso las 47 fichas siguen enseñando el recuadro de «Foto pendiente».
+hay— y por eso las 35 fichas siguen enseñando el recuadro de «Foto pendiente».
 
 
 Cómo se pone una foto
@@ -20,7 +20,7 @@ Y ya está. No hay que tocar el JSON ni editar el HTML: se ejecuta
     python herramientas/catalogo.py
 
 y la foto aparece en la tarjeta y en la ficha. El script dice al terminar
-cuántas fotos hay puestas de los 47 productos.
+cuántas fotos hay puestas de los 35 productos.
 
 Si prefieres otro nombre para algún fichero, ponle al producto la clave "foto"
 en herramientas/catalogo-datos.json con el nombre tal cual:

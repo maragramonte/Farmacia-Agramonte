@@ -332,11 +332,7 @@
             "ca": "Fotoprotector solar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
             "en": "Sun protection product. Ask the pharmacy about format, price and availability."
           },
-          "formato": {
-            "es": "Consultar formato",
-            "ca": "Consulta'n el format",
-            "en": "Ask about format"
-          }
+          "formato": null
         },
         {
           "id": "rilastil-sunlaude-comfort-100-emulsion-75-ml",
