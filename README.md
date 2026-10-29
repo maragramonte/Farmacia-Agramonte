@@ -2,44 +2,39 @@
 
 Web de una farmacia de barrio real, en la Plaça de la Llana (El Born,
 Barcelona). Enseña lo que hay en el mostrador, deja apuntar un encargo y lo
-manda por WhatsApp. No cobra nada, no pide datos y no depende de nadie: son
-ficheros estáticos publicados desde este repositorio.
+manda por WhatsApp. Son ficheros estáticos publicados desde este repositorio,
+sin servidor ni base de datos.
 
 `HTML` · `CSS` · `JavaScript` · `Python 3` · `GitHub Pages`
 
-### 👉 **<https://maragramonte.github.io/Farmacia-Agramonte/>**
+Web: <https://maragramonte.github.io/Farmacia-Agramonte/>
 
-*A short English orientation for developers: [`README.en.md`](README.en.md).
-Este documento, en español, es el que manda.*
+*English summary: [`README.en.md`](README.en.md).*
 
 ![Tarjeta de la web: sobre fondo tinta, «Consejo de siempre, de tu barrio» en Playfair Display con «de tu barrio» en itálica dorada, el lema «Envíanos la receta, la preparamos y te avisamos» y el pie «Farmàcia Agramonte · desde 1890»](og.png)
 
 ---
 
-## El problema
+## Qué necesita una farmacia de barrio
 
-Una farmacia de barrio no necesita un comercio electrónico. Necesita que quien
-pasa por delante sepa qué encuentra dentro, que quien busca «farmacia El Born»
-en el móvil dé con el horario y el teléfono, y que quien ya sabe lo que quiere
-pueda pedirlo sin llamar en mitad del turno.
+Que quien pasa por delante sepa qué hay dentro. Que quien busca «farmacia El
+Born» en el móvil encuentre el horario y el teléfono. Y que quien ya sabe lo
+que quiere pueda pedirlo sin llamar en mitad del turno.
 
-Lo que normalmente se contrata para eso (un CMS, un hosting, un mantenimiento
-mensual) se come el presupuesto de un negocio pequeño y, a los dos años, es
-una web vieja que nadie sabe actualizar.
+La web anterior era un WordPress con Divi: hosting, plantilla y mantenimiento
+que se pagan cada mes, y una web que con los años nadie sabe actualizar.
 
-La decisión de producto que define el proyecto es **no ser una tienda**. Hay
-cesta, pero no hay pasarela: el encargo sale por WhatsApp y se paga en el
-mostrador. Eso mantiene la web fuera del régimen de venta a distancia, evita
-tratar datos de nadie y deja el sitio en algo que **se publica gratis y no se
-cae nunca**.
+Por eso no es una tienda. Hay cesta, pero no pasarela de pago: el encargo sale
+por WhatsApp y se paga en el mostrador. Así la web queda fuera del régimen de
+venta a distancia, no trata datos personales y se publica gratis en GitHub
+Pages.
 
 ---
 
 ## Verla
 
-**▶ [La web está publicada y en marcha](https://maragramonte.github.io/Farmacia-Agramonte/).**
-Ese enlace es el bueno: es lo que ve cualquiera que la abra. Cada `git push` a
-`main` la republica sola, en un par de minutos y sin tocar nada más.
+[La web está publicada](https://maragramonte.github.io/Farmacia-Agramonte/) y cada
+`git push` a `main` la vuelve a publicar en un par de minutos.
 
 Está en **español, catalán e inglés** (el español en la raíz, el catalán en
 [`/ca/`](https://maragramonte.github.io/Farmacia-Agramonte/ca/) y el inglés en

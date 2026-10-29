@@ -1,13 +1,9 @@
 # Farmàcia Agramonte: website
 
-### 👉 **<https://maragramonte.github.io/Farmacia-Agramonte/>**
+Website: <https://maragramonte.github.io/Farmacia-Agramonte/>
 
-> **The full documentation is [`README.md`](README.md) and [`docs/`](docs/),
-> in Spanish, and they are the authoritative ones.** This page is a short
-> orientation for anyone who runs into the repository: what it is, how to run
-> it and where to edit what. It deliberately repeats no counts, no legal
-> reasoning and no history of past fixes: those live in the Spanish documents
-> and would go stale here.
+Short English summary. The full documentation is in Spanish, in
+[`README.md`](README.md) and [`docs/`](docs/).
 
 Landing site for a neighbourhood pharmacy in Plaça de la Llana (El Born,
 Barcelona). In **Spanish, Catalan and English**.
