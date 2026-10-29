@@ -7,11 +7,13 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
-# El diseno original. Se queda en este ordenador, fuera del repositorio: es lo
-# unico que no ve quien visita la web, y es lo que haria falta para rehacer el
-# trabajo. Copia de seguridad aparte, que aqui git ya no lo guarda.
+# Diseño original: solo en local, con copia aparte
 diseno/
 
-# Python. Lo crea importar herramientas/catalogo.py, cosa que se hace al
-# comprobar cosas del catalogo sin generarlo entero.
+# Python
 __pycache__/
+
+# Herramientas locales
+.claude/
+.gstack/
+.codex/
