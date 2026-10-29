@@ -7,7 +7,7 @@ cambian.
 
 | | |
 |---|---|
-| Dirección | Plaça de la Llana, 11 — 08003 Barcelona (El Born) |
+| Dirección | Plaça de la Llana, 11: 08003 Barcelona (El Born) |
 | Teléfono | 933 19 59 21 |
 | WhatsApp | 661 192 472 |
 | Correo | farmacia.lallana@gmail.com |
@@ -33,7 +33,7 @@ Son los que la LSSI obliga a publicar, y están completos en `aviso-legal.html`:
 - NIF **35756987Z**
 - Autorización sanitaria **08/3254**
 - Título: *Licenciada en Farmacia por la Universidad de La Habana*, con su
-  homologación — resolución **2015/08432** del Ministerio de Educación,
+  homologación: resolución **2015/08432** del Ministerio de Educación,
   Cultura y Deporte
 
 Lo último hacía falta porque la ley pide el título y el Estado que lo expidió,
@@ -58,9 +58,9 @@ que cambie el menú se quedaría atrás sin que nadie se entere.
 
 ### El desajuste de 1890
 
-La portada dice **1890** en seis sitios —el `og:description`, la
+La portada dice **1890** en seis sitios (el `og:description`, la
 `description` y el `foundingDate` del JSON-LD que lee Google, el `aria-label`
-del sello, el año dibujado dentro del sello y el párrafo del pie— y **1890 no
+del sello, el año dibujado dentro del sello y el párrafo del pie) y **1890 no
 aparece ni una vez en esta historia**, cuya cronología va de 1600 a 2019. La
 sección «¿Por qué elegirnos?» añade un tercer dato, «más de 130 años», que
 cuadra con 1890 y no con 1600.
@@ -100,7 +100,7 @@ dice qué se puede hacer con ellos y qué no. **No es una licencia libre.**
 Que el repositorio sea público no regala nada: una web estática se descarga
 entera en el navegador de quien la abre, con su HTML y su CSS, así que eso es
 copiable de todos modos y lo es en cualquier web del mundo. Lo que protege el
-trabajo no es esconderlo, es el derecho de autor —automático, sin registrar
-nada— y el hecho de que lo copiable es la maqueta, no el negocio: el nombre,
+trabajo no es esconderlo, es el derecho de autor (automático, sin registrar
+nada) y el hecho de que lo copiable es la maqueta, no el negocio: el nombre,
 la licencia de oficina de farmacia, la Plaça de la Llana y la ficha de Google
 no se clonan.

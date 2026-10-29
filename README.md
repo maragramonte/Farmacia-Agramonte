@@ -2,48 +2,43 @@
 
 Web de una farmacia de barrio real, en la Plaça de la Llana (El Born,
 Barcelona). Enseña lo que hay en el mostrador, deja apuntar un encargo y lo
-manda por WhatsApp. No cobra nada, no pide datos y no depende de nadie: son
-ficheros estáticos publicados desde este repositorio.
+manda por WhatsApp. Son ficheros estáticos publicados desde este repositorio,
+sin servidor ni base de datos.
 
 `HTML` · `CSS` · `JavaScript` · `Python 3` · `GitHub Pages`
 
-### 👉 **<https://maragramonte.github.io/Farmacia-Agramonte/>**
+Web: <https://maragramonte.github.io/Farmacia-Agramonte/>
 
-*A short English orientation for developers: [`README.en.md`](README.en.md).
-Este documento, en español, es el que manda.*
+*English summary: [`README.en.md`](README.en.md).*
 
 ![Tarjeta de la web: sobre fondo tinta, «Consejo de siempre, de tu barrio» en Playfair Display con «de tu barrio» en itálica dorada, el lema «Envíanos la receta, la preparamos y te avisamos» y el pie «Farmàcia Agramonte · desde 1890»](og.png)
 
 ---
 
-## El problema
+## Qué necesita una farmacia de barrio
 
-Una farmacia de barrio no necesita un comercio electrónico. Necesita que quien
-pasa por delante sepa qué encuentra dentro, que quien busca «farmacia El Born»
-en el móvil dé con el horario y el teléfono, y que quien ya sabe lo que quiere
-pueda pedirlo sin llamar en mitad del turno.
+Que quien pasa por delante sepa qué hay dentro. Que quien busca «farmacia El
+Born» en el móvil encuentre el horario y el teléfono. Y que quien ya sabe lo
+que quiere pueda pedirlo sin llamar en mitad del turno.
 
-Lo que normalmente se contrata para eso —un CMS, un hosting, un mantenimiento
-mensual— se come el presupuesto de un negocio pequeño y, a los dos años, es
-una web vieja que nadie sabe actualizar.
+La web anterior era un WordPress con Divi: hosting, plantilla y mantenimiento
+que se pagan cada mes, y una web que con los años nadie sabe actualizar.
 
-La decisión de producto que define el proyecto es **no ser una tienda**. Hay
-cesta, pero no hay pasarela: el encargo sale por WhatsApp y se paga en el
-mostrador. Eso mantiene la web fuera del régimen de venta a distancia, evita
-tratar datos de nadie y deja el sitio en algo que **se publica gratis y no se
-cae nunca**.
+Por eso no es una tienda. Hay cesta, pero no pasarela de pago: el encargo sale
+por WhatsApp y se paga en el mostrador. Así la web queda fuera del régimen de
+venta a distancia, no trata datos personales y se publica gratis en GitHub
+Pages.
 
 ---
 
 ## Verla
 
-**▶ [La web está publicada y en marcha](https://maragramonte.github.io/Farmacia-Agramonte/).**
-Ese enlace es el bueno: es lo que ve cualquiera que la abra. Cada `git push` a
-`main` la republica sola, en un par de minutos y sin tocar nada más.
+[La web está publicada](https://maragramonte.github.io/Farmacia-Agramonte/) y cada
+`git push` a `main` la vuelve a publicar en un par de minutos.
 
-Está en **español, catalán e inglés** —el español en la raíz, el catalán en
+Está en **español, catalán e inglés** (el español en la raíz, el catalán en
 [`/ca/`](https://maragramonte.github.io/Farmacia-Agramonte/ca/) y el inglés en
-[`/en/`](https://maragramonte.github.io/Farmacia-Agramonte/en/)— con un
+[`/en/`](https://maragramonte.github.io/Farmacia-Agramonte/en/)) con un
 selector en la cabecera que lleva de cada página a su traducción. El inglés
 está porque la Plaça de la Llana es de las zonas con más turismo de Barcelona.
 
@@ -95,9 +90,9 @@ index.html (a mano)  ────────────┘  (de aquí salen ca
 
 Lo único que se ejecuta en el navegador de quien la visita es `cesta.js`: 566
 líneas sin dependencias. No hay analítica, no hay cookies y no se pide nada a
-ningún tercero — ni siquiera las tipografías, que viajan en el repositorio.
+ningún tercero: ni siquiera las tipografías, que viajan en el repositorio.
 
-**→ [docs/ESTRUCTURA.md](docs/ESTRUCTURA.md)** — qué hay en cada fichero, qué
+**→ [docs/ESTRUCTURA.md](docs/ESTRUCTURA.md)**: qué hay en cada fichero, qué
 se genera y qué se edita.
 
 ---
@@ -152,7 +147,7 @@ recorte cuando la lista no cabe en un enlace de WhatsApp.
 **No hecho.**
 
 - **`fotos/` está vacía**: las 35 fichas enseñan el recuadro de «Foto
-  pendiente». El mecanismo está montado — basta dejar el fichero con el nombre
+  pendiente». El mecanismo está montado: basta dejar el fichero con el nombre
   de la página.
 - **Ningún producto trae los epígrafes de consejo** (para qué es, modo de
   empleo, composición, advertencias). Son opcionales a propósito: en una
@@ -184,7 +179,7 @@ el móvil estando en la misma wifi.
 Para publicar un cambio no hay más paso que subirlo: **cada `git push` a
 `main` republica la web sola**.
 
-**→ [docs/PUBLICAR.md](docs/PUBLICAR.md)** — cómo quedó montado Pages, qué
+**→ [docs/PUBLICAR.md](docs/PUBLICAR.md)**: cómo quedó montado Pages, qué
 tocar si se renombra el repositorio y qué haría falta para un dominio propio.
 
 ---
@@ -247,7 +242,7 @@ esa función.
 - [ ] Perfil de Facebook: el icono sigue comentado en el pie, con la URL de
       ejemplo lista. Un icono que no lleva a ninguna parte es peor que no
       tenerlo
-- [x] Llenar las categorías de productos reales — hecho: los 35 que hay
+- [x] Llenar las categorías de productos reales, hecho: los 35 que hay
       sustituyen a los de muestra, y ya no queda ninguna marcada como
       plantilla
 
@@ -265,7 +260,7 @@ negocio de verdad, con sus datos de verdad, publicada y en marcha. El otro es
 plataforma de gestión de citas médicas en Java y Spring Boot.
 
 Los dos tienen en común lo que más me interesa: que la decisión técnica salga
-del problema del negocio. Aquí, no cobrar no es una limitación del stack —es
+del problema del negocio. Aquí, no cobrar no es una limitación del stack: es
 lo que mantiene la web fuera del régimen de venta a distancia y hace que una
 farmacia pueda tenerla sin pagar mantenimiento.
 

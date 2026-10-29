@@ -88,7 +88,7 @@ Es lo que más justifica que el sitio se genere y no se copie:
 - **Una clave `foto` que apunte a algo que no está**: avisa, en lugar de dejar
   una imagen rota que sólo se ve abriendo esa ficha.
 - **Páginas de productos que ya no se generan y siguen en el disco**: las
-  lista con el `git rm` ya escrito. No las borra solo — un borrado en cadena
+  lista con el `git rm` ya escrito. No las borra solo: un borrado en cadena
   por una errata del JSON sería peor.
 - **Los cajones de la portada**, que están escritos a mano en `index.html`:
   comprueba que la lista coincide con el JSON y avisa si sobra o falta alguna.
@@ -160,8 +160,8 @@ productos.
 Valen `.webp`, `.avif`, `.jpg`, `.jpeg` y `.png`, en ese orden de preferencia.
 **Cuadradas y con el producto centrado**: la misma foto se recorta a 4:3 en la
 tarjeta y a 1:1 en la ficha, así que lo que vaya pegado a un borde se pierde
-en uno de los dos recortes. El resto —tamaño, fondo, y de quién tienen que ser
-las fotos antes de publicarlas— está en `fotos/LEEME.txt`.
+en uno de los dos recortes. El resto (tamaño, fondo, y de quién tienen que ser
+las fotos antes de publicarlas) está en `fotos/LEEME.txt`.
 
 ## La URL de un producto
 
@@ -197,6 +197,6 @@ Por orden:
 4. **Los resúmenes y las intros** que todavía salgan en español por no estar
    traducidos: el generador los cuenta al terminar.
 
-El estilo va en dos hojas: `marca.css` con la identidad compartida —paleta,
-cabecera, botón y pie— y `catalogo.css` con lo que sólo existe aquí. Hay que
+El estilo va en dos hojas: `marca.css` con la identidad compartida (paleta,
+cabecera, botón y pie) y `catalogo.css` con lo que sólo existe aquí. Hay que
 cargar `marca.css` primero.
