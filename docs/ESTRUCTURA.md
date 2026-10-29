@@ -4,8 +4,8 @@ Qué hay en cada fichero, qué se escribe a mano y qué lo escribe el generador.
 
 ## Lo que se edita y lo que se genera
 
-El sitio son **154 páginas HTML**: 52 en español —la raíz, con el `404.html`
-dentro—, 51 en catalán y 51 en inglés. **Sólo once se escriben a mano**: la
+El sitio son **154 páginas HTML**: 52 en español (la raíz, con el `404.html`
+dentro), 51 en catalán y 51 en inglés. **Sólo once se escriben a mano**: la
 portada española, el 404 y las tres legales de cada idioma. Las **143
 restantes** las escribe `herramientas/catalogo.py`, y llevan un comentario
 arriba que lo dice.

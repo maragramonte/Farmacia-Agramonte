@@ -42,8 +42,8 @@ Hoy el catálogo tiene **121 campos traducibles** y los únicos sueltos son los
 
 ## La portada, que es el caso raro
 
-`index.html` está escrita a mano —lleva su hero en SVG y el JSON-LD que lee
-Google— y **las otras dos se generan de ella**, sustituyendo los trozos de
+`index.html` está escrita a mano (lleva su hero en SVG y el JSON-LD que lee
+Google) y **las otras dos se generan de ella**, sustituyendo los trozos de
 texto que están en la lista `portada` de `textos.json`, una lista por idioma.
 Hoy son **102 pares por idioma**. Ni tres ficheros de cuatrocientas líneas que
 se separan, ni una plantilla de Python que impide editar la portada como HTML.
@@ -99,10 +99,10 @@ El catalán y el español se parecen lo justo para equivocarse:
 python herramientas/acentos.py
 ```
 
-Busca los errores concretos que se cometen al traducir entre los dos —el
+Busca los errores concretos que se cometen al traducir entre los dos (el
 acento grave que el español pone agudo (`interès`, `època`, `Amèrica`), la ela
 geminada escrita como `ll` o `l.l`, y las palabras de un idioma colándose en
-el otro— y avisa de cada uno con su contexto. **No es un corrector**: son
+el otro) y avisa de cada uno con su contexto. **No es un corrector**: son
 avisos que hay que mirar. Se salta los comentarios del código, que van en
 español en los tres idiomas a propósito, y los bloques marcados con otro
 `lang`, que es como se salta el inglés: no comparte estos errores, así que no

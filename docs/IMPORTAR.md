@@ -15,8 +15,8 @@ python herramientas/importar.py export.csv --mapa mapa.json --seleccion sel.csv 
 
 1. **El mapa, por familias.** Sin `--mapa` no escribe nada: dice qué columnas
    ha reconocido, lista las familias que trae el CSV y deja al lado un
-   `mapa-catalogo.json` con esas familias sin asignar. Se rellena a mano —qué
-   familia va a qué categoría— y las que queden en `null` se quedan fuera.
+   `mapa-catalogo.json` con esas familias sin asignar. Se rellena a mano (qué
+   familia va a qué categoría) y las que queden en `null` se quedan fuera.
 2. **La selección, producto a producto.** Con `--seleccion` deja un CSV con
    una fila por candidato y una columna `incluir` vacía. Se abre en Excel, se
    escribe `si` en los que entran, y sólo ésos se importan. **El catálogo
@@ -59,6 +59,6 @@ acierta con alguna columna, se le fuerza con `--columna formato=PRESENTACION`.
 - **No borra las páginas** de los productos que desaparezcan. Eso lo avisa
   `catalogo.py`, con el `git rm` ya escrito.
 
-Quita los productos repetidos —en un export es normal que el mismo artículo
-salga dos veces— y, si el CSV trae el laboratorio en una columna aparte, lo
+Quita los productos repetidos (en un export es normal que el mismo artículo
+salga dos veces) y, si el CSV trae el laboratorio en una columna aparte, lo
 pone delante del nombre salvo que ya estuviera dentro.

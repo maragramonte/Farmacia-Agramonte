@@ -2,7 +2,7 @@
 
 La paleta y las tipografías salen del diseño visual, que vive fuera del
 repositorio: tinta `#2a1d12`, crema `#f5f0e6` y oro `#c9a055`, con **Playfair
-Display** para los títulos —incluida su itálica en «de tu barrio»— y **Karla**
+Display** para los títulos (incluida su itálica en «de tu barrio») y **Karla**
 para el texto.
 
 ## Un tema único, no claro/oscuro
@@ -55,9 +55,9 @@ entero y se habría llevado por delante la única marca propia de la página.
 Ahora es su propio `<svg class="sello">`, colocado encima del escaparate por
 CSS, que es donde lo pone el diseño.
 
-Su aro de texto se centra solo —el arco empieza abajo y da la vuelta entera,
+Su aro de texto se centra solo (el arco empieza abajo y da la vuelta entera,
 de modo que `startOffset="50%"` con `text-anchor="middle"` deja el rótulo
-arriba mida lo que mida—, y la única palabra traducible, el «desde», está
+arriba mida lo que mida), y la única palabra traducible, el «desde», está
 dentro del círculo en recto y no en el aro. Las dos cosas son por lo mismo: en
 SVG, lo que se sale del recorrido no se dibuja, así que un aro que no se
 centre solo se recorta al traducirlo.

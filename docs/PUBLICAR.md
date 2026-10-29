@@ -16,7 +16,7 @@ python servir.py --no-abrir # sin abrir el navegador
 
 Al arrancar imprime dos direcciones: la de este equipo (`localhost`) y la de
 la red local, con la IP. **Esa segunda sirve para verla en el móvil** con sólo
-escribirla, estando en la misma wifi — útil para comprobar cómo queda de
+escribirla, estando en la misma wifi: útil para comprobar cómo queda de
 verdad en una pantalla pequeña.
 
 También se puede abrir `index.html` con doble clic, sin servidor. Funciona,
