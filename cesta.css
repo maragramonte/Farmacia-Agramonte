@@ -212,6 +212,7 @@
      tres columnas dejan el nombre partido letra a letra. */
   .cesta-linea { grid-template-columns: 1fr auto; gap: .6rem 1rem; }
   .cesta-que { grid-column: 1 / -1; }
+  .cesta-cantidad { justify-self: start; }
   .cesta-sinjs, .cesta-vacia { padding: 1.5rem; }
   .cesta-vaciar { margin-left: 0; }
   /* La cabecera del móvil ya va apretada: el contador se queda en el icono y

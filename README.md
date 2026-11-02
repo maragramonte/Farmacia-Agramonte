@@ -11,7 +11,7 @@ Web: <https://maragramonte.github.io/Farmacia-Agramonte/>
 
 *English summary: [`README.en.md`](README.en.md).*
 
-![Tarjeta de la web: sobre fondo tinta, «Consejo de siempre, de tu barrio» en Playfair Display con «de tu barrio» en itálica dorada, el lema «Envíanos la receta, la preparamos y te avisamos» y el pie «Farmàcia Agramonte · desde 1890»](og.png)
+![Tarjeta de la web: sobre fondo verde, «Consejo de siempre, de tu barrio» en Instrument Serif con «de tu barrio» en cursiva ámbar, el lema «Envíanos la receta, la preparamos y te avisamos» y el pie «Farmàcia Agramonte · desde 1890»](og.png)
 
 ---
 
@@ -125,9 +125,9 @@ fuera del régimen de venta a distancia y el aviso legal de hoy sigue siendo
 cierto.
 [→](docs/CESTA.md)
 
-**Ni una petición externa.** Playfair Display y Karla se sirven desde
-`tipografias/`, no desde Google Fonts: son OFL, son variables y pesan 82 KB en
-total en lugar de los 144 KB que ocuparían sueltas. Sin terceros no hay
+**Ni una petición externa.** Instrument Serif, Cinzel, Karla y Caveat se
+sirven desde `tipografias/`, no desde Google Fonts: son OFL y sólo llevan el
+subconjunto latino. Sin terceros no hay
 transferencia de datos por el mero hecho de visitar la página, y por eso la
 política de cookies puede decir la verdad más corta posible: no hay.
 [→](docs/DISENO.md#la-web-no-pide-nada-a-nadie)
@@ -204,7 +204,7 @@ tocar si se renombra el repositorio y qué haría falta para un dominio propio.
 │   ├── importar.py            Vuelca un export del programa de gestión
 │   ├── acentos.py             Ortografía que se confunde entre es y ca
 │   └── tarjeta-social.py      Regenera og.png
-├── tipografias/          Playfair Display y Karla, con sus licencias OFL
+├── tipografias/          Instrument Serif, Cinzel, Karla y Caveat, con sus OFL
 ├── fotos/                Las fotos de producto. Hoy vacía
 ├── docs/                 Esta documentación
 ├── servir.py · servir.bat     Servidor local

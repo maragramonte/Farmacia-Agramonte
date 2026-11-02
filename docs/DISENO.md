@@ -1,9 +1,11 @@
 # Decisiones de diseño
 
 La paleta y las tipografías salen del diseño visual, que vive fuera del
-repositorio: tinta `#2a1d12`, crema `#f5f0e6` y oro `#c9a055`, con **Playfair
-Display** para los títulos (incluida su itálica en «de tu barrio») y **Karla**
-para el texto.
+repositorio. Es la paleta 07: verde `#3f5649` en cabecera y pie, crema
+`#f6ece0` de fondo y ámbar `#f0a24a` de acento. Para los títulos va
+**Instrument Serif** (con su cursiva en «de tu barrio»); para los rótulos en
+versalitas, **Cinzel**; para el texto, **Karla**; y **Caveat**, la letra de
+tiza, sólo en la pizarra.
 
 ## Un tema único, no claro/oscuro
 
@@ -19,10 +21,11 @@ necesitarían, quedaron fuera igual que en el diseño acabado.
 Y **no hay ninguna petición externa**: las tipografías se sirven desde
 `tipografias/`, no desde Google Fonts. Son de licencia libre (OFL), así que
 redistribuirlas es legal siempre que viaje con ellas su licencia, y por eso
-están los dos `LICENCIA-*.txt`. Sólo se incluye el subconjunto latino, que
-cubre todo el texto del sitio; y como Playfair Display y Karla son fuentes
-variables, un único fichero por familia cubre todos los pesos: **82 KB en
-total** en lugar de los 144 KB que ocuparían sueltos.
+están los `LICENCIA-*.txt`. Sólo se incluye el subconjunto latino, que
+cubre todo el texto del sitio; y como Karla, Cinzel y Caveat son fuentes
+variables, un único fichero por familia cubre todos los pesos. Son cinco
+ficheros, unos 165 KB en total, y casi la mitad es Caveat, que el navegador
+sólo descarga en la página que lo usa.
 
 Al dejar de pedirle nada a Google, las políticas de privacidad y de cookies se
 simplificaron: ya no hay ninguna transferencia de datos por el mero hecho de
@@ -72,7 +75,7 @@ derecho.
 ## La cronología de «Quiénes somos» es una línea de tiempo
 
 No una tabla de filas: el hilo baja por la izquierda y cada etapa cuelga de su
-nudo, con la fecha en Playfair y cifras tabulares. El último nudo va macizo
+nudo, con la fecha en Instrument Serif y cifras tabulares. El último nudo va macizo
 porque es la etapa que no se ha cerrado. Hilo y nudo son `::before` y
 `::after` del `<li>`, así que el generador no cambia.
 

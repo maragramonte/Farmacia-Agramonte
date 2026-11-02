@@ -63,12 +63,13 @@ LICENSE             Qué se puede hacer con este código y qué no
 docs/               Esta documentación
 
 tipografias/
-  playfair-display-variable.woff2  Los títulos. Fuente variable: un solo
-                                   fichero cubre del peso 400 al 500
-  playfair-display-cursiva.woff2   La itálica de «de tu barrio»
-  karla-variable.woff2             El texto, del 400 al 600
-  LICENCIA-karla.txt               SIL Open Font License 1.1
-  LICENCIA-playfairdisplay.txt     La OFL exige distribuirla con la fuente
+  instrument-serif.woff2           Los títulos. Un solo peso
+  instrument-serif-cursiva.woff2   La cursiva de «de tu barrio»
+  cinzel-variable.woff2            Los rótulos en versalitas. Variable
+  karla-variable.woff2             El texto, del 400 al 600. Variable
+  caveat-variable.woff2            La letra de tiza de la pizarra
+  LICENCIA-*.txt                   SIL Open Font License 1.1, una por
+                                   familia: la OFL exige que viaje con ella
 
 herramientas/
   catalogo.py           Escribe el catálogo, la historia, la cesta, las
