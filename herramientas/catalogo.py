@@ -18,14 +18,14 @@ Y dos más, que no dependen del JSON pero comparten con ellas cabecera y pie:
                                     navegador; aquí sólo se escribe el molde.
 
 IDIOMAS. El español se escribe en la raíz y cada idioma más en su carpeta
-(ca/, y en/ el día que se añada). Eso es deliberado: las URL en español llevan
+(ca/, en/). Eso es deliberado: las URL en español llevan
 tiempo publicadas y están en Google y en el sitemap, así que mover el español a
 /es/ las rompería todas. Los idiomas se declaran en textos.json, y lo que no
 esté traducido sale en español avisando al ejecutar esto.
 
 Existe por una razón muy concreta: la tira de categorías que va arriba de cada
 página tiene que listarlas todas, así que añadir una obligaba a tocar las diez a
-mano. Ahora que además hay una ficha por producto y dos idiomas, escribir esto a
+mano. Ahora que además hay una ficha por producto y tres idiomas, escribir esto a
 mano sería una errata esperando a ocurrir.
 
 La web sigue siendo estática: esto no se ejecuta al visitarla, sólo cuando
@@ -126,7 +126,7 @@ def texto_de(valor, idioma, clave=None):
         "resumen": {"es": "Hidratante...", "ca": "Hidra..."} uno por idioma
 
     Las dos formas conviven a propósito: así se puede traducir producto a
-    producto sin tocar los cuarenta de golpe, y lo que ya estaba escrito sigue
+    producto sin tocarlos todos de golpe, y lo que ya estaba escrito sigue
     valiendo tal cual. Vale igual para las listas de los epígrafes.
 
     El "clave" es para avisar. Una cadena suelta en un campo que se traduce
@@ -383,7 +383,7 @@ def consulta_de(p, idioma):
 
     Si el JSON no la trae, se saca del nombre. Sale un poco más seca que una
     escrita a mano —«el La Roche-Posay Anthelios...»— pero un mensaje algo tieso
-    es mejor que cuarenta productos sin botón que funcione."""
+    es mejor que un catálogo entero sin botón que funcione."""
     return texto_de(p.get("consulta"), idioma) or nombre_de(p, idioma)
 
 
@@ -441,8 +441,8 @@ def foto_de(c, p):
 
     Dos maneras. Si el JSON trae "foto", manda ésa. Si no, se busca en fotos/ un
     fichero que se llame igual que la página del producto, y ésa es la buena el
-    día que lleguen las cuarenta y siete: basta con dejar el fichero bien
-    nombrado y aparece sola. Escribir a mano cuarenta y siete claves "foto" es
+    día que lleguen todas: basta con dejar el fichero bien
+    nombrado y aparece sola. Escribir a mano una clave "foto" por producto es
     una errata esperando a ocurrir, que es la misma razón por la que existe este
     script.
 
@@ -483,17 +483,14 @@ def nombre_corto(p, idioma):
     return " ".join(nombre.split()) or nombre_de(p, idioma)
 
 
-def foto_html(c, p, icono, idioma):
+def foto_html(c, p, idioma):
     """La foto, o el bote mientras no la hay.
 
     El bote es una etiqueta de farmacia dibujada en CSS: marco marrón doble,
     la marca en Cinzel, el nombre corto en la serif y «Foto en camino». Antes
     salía un icono gris con «Foto pendiente», que parecía un hueco; esto tiene
     que parecer hecho a propósito. Va con aria-hidden porque no dice nada que
-    no diga ya el título de la tarjeta. Si no hay marca, va la categoría.
-
-    El icono de la categoría ya no se usa aquí; se deja el parámetro para no
-    tocar a quien llama."""
+    no diga ya el título de la tarjeta. Si no hay marca, va la categoría."""
     ruta = foto_de(c, p)
     if ruta:
         return ('<div class="foto foto-real"><img src="%s%s" alt="%s" loading="lazy"></div>'
@@ -510,18 +507,16 @@ def foto_html(c, p, icono, idioma):
 def tira(categorias, actual, idioma):
     """La tira de arriba, con las diez categorías del idioma en que estemos."""
     filas = []
-    for c in categorias:
+    # La actual va primera, que es donde el ojo la busca. sorted es estable:
+    # las demás conservan el orden del JSON.
+    for c in sorted(categorias, key=lambda c: c["id"] != actual):
         nombre = escapa(nombre_de(c, idioma, "nombre de categoria"))
-        if c["id"] == actual:
-            filas.append('    <a href="catalogo-%s.html" aria-current="page">%s</a>' % (c["id"], nombre))
-        else:
-            filas.append('    <a href="catalogo-%s.html">%s</a>' % (c["id"], nombre))
-    # La actual va primera, que es donde el ojo la busca.
-    orden = [f for f in filas if 'aria-current' in f] + [f for f in filas if 'aria-current' not in f]
-    return "\n".join(orden)
+        actual_attr = ' aria-current="page"' if c["id"] == actual else ""
+        filas.append('    <a href="catalogo-%s.html"%s>%s</a>' % (c["id"], actual_attr, nombre))
+    return "\n".join(filas)
 
 
-def ficha(c, p, icono, idioma):
+def ficha(c, p, idioma):
     """Una tarjeta de la rejilla.
 
     El título lleva a la ficha del producto. Debajo, las dos maneras de pedirlo:
@@ -545,7 +540,7 @@ def ficha(c, p, icono, idioma):
         </div>
       </div>
     </article>""" % (
-        foto_html(c, p, icono, idioma), escapa(ruta_producto(c, p)),
+        foto_html(c, p, idioma), escapa(ruta_producto(c, p)),
         escapa(nombre_de(p, idioma)),
         resumen_html(p, idioma), formato_html(p, idioma), precio_html(p, " " * 8),
         boton_anadir(c, p, idioma),
@@ -599,13 +594,13 @@ def cierre_pedido(idioma):
        p3 % (TELEFONO_ENLACE, TELEFONO_VISIBLE))
 
 
-def cuerpo_categoria(c, icono, idioma):
+def cuerpo_categoria(c, idioma):
     """Las fichas, o —si la categoría no lleva lista— la explicación de por qué.
 
     En ese segundo caso no se añade además el cierre de «cómo se pide»: diría
     lo mismo dos veces seguidas. El teléfono se mete aquí en su lugar."""
     if c["productos"]:
-        fichas = "\n\n".join(ficha(c, p, icono, idioma) for p in c["productos"])
+        fichas = "\n\n".join(ficha(c, p, idioma) for p in c["productos"])
         return ('  <div class="productos">\n\n%s\n\n  </div>\n' % fichas) + "\n" + cierre_pedido(idioma)
 
     sp = c["sin_productos"]
@@ -709,7 +704,7 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
     la historia y la cesta: cabeza, cabecera, aviso, <main> y pie. Lo de dentro
     de <main> lo pone quien llama. Nació al montar las fichas, para no tener dos
     copias de la cabecera que se separasen a la primera de cambio, y ahora
-    sostiene además los dos idiomas.
+    sostiene además los tres idiomas.
 
     "aqui" dice en qué entrada del menú estamos, para marcarla con aria-current:
     "historia", "cesta" o nada."""
@@ -818,7 +813,6 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
 
 def pagina(c, categorias, idioma):
     """La página de una categoría: portada, tira y rejilla."""
-    icono = ICONOS[c["icono"]]
     es_plantilla = c.get("plantilla", False)
     coletilla = T("coletilla_plantilla", idioma) if es_plantilla else ""
     nombre = nombre_de(c, idioma, "nombre de categoria")
@@ -839,7 +833,7 @@ def pagina(c, categorias, idioma):
          escapa(nombre), escapa(nombre),
          escapa(texto_de(c["intro"], idioma, "intro")),
          escapa(T("nav_categorias", idioma)),
-         tira(categorias, c["id"], idioma), cuerpo_categoria(c, icono, idioma))
+         tira(categorias, c["id"], idioma), cuerpo_categoria(c, idioma))
 
     # Ninguna de las diez lleva noindex: se llega a ellas desde la portada y
     # Google puede indexarlas. Decisión de la farmacia, tomada a sabiendas de
@@ -862,7 +856,6 @@ def pagina_producto(c, p, idioma):
     resumen, un <dl> con formato, precio y recogida, y la compra (cantidad y
     «Añadir a la cesta»), que es la acción principal. El WhatsApp queda como
     enlace de dudas: sin JavaScript es lo único que se ve, y funciona."""
-    icono = ICONOS[c["icono"]]
     es_plantilla = c.get("plantilla", False)
     coletilla = T("coletilla_plantilla", idioma) if es_plantilla else ""
     nombre = nombre_de(p, idioma)
@@ -908,7 +901,7 @@ def pagina_producto(c, p, idioma):
 %s%s""" % (
         escapa(T("nav_inicio", idioma)), escapa(T("nav_categorias", idioma)),
         c["id"], escapa(nombre_de(c, idioma)), escapa(nombre),
-        foto_html(c, p, icono, idioma),
+        foto_html(c, p, idioma),
         escapa(etiqueta), escapa(nombre), resumen_html(p, idioma),
         escapa(T("ficha_formato", idioma)), formato_html(p, idioma),
         escapa(T("ficha_precio", idioma)), precio,
@@ -1039,8 +1032,8 @@ def pagina_historia(idioma):
 
     Se genera en vez de escribirse a mano por una razón concreta: es una página
     del menú principal, así que comparte cabecera, menú y contador de la cesta
-    con las cincuenta y ocho de catálogo, en los dos idiomas. Escrita a mano
-    habría cuatro copias de esa cabecera y el día que el menú cambie se
+    con las de catálogo, en los tres idiomas. Escrita a mano habría una copia
+    de esa cabecera por idioma y el día que el menú cambie se
     quedarían atrás sin que nadie lo note."""
     s1 = T("historia_s1", idioma)
     s2 = T("historia_s2", idioma)
@@ -1222,7 +1215,7 @@ def comprueba_portada(categorias, idioma):
 
 
 # Las páginas que no salen del JSON pero sí van al sitemap, con su prioridad.
-# La portada es "" porque su URL es la de la carpeta: / y /ca/.
+# La portada es "" porque su URL es la de la carpeta: /, /ca/ y /en/.
 PAGINAS_FIJAS = (
     ("", "1.0"),
     ("historia.html", "0.8"),
@@ -1235,8 +1228,8 @@ PAGINAS_FIJAS = (
 def escribe_sitemap(indexables, hoy):
     """Escribe sitemap.xml entero.
 
-    Antes estaba a mano y el script sólo avisaba de lo que faltaba. Con dos
-    idiomas son decenas de URL y la lista crece cada vez que se quita un
+    Antes estaba a mano y el script sólo avisaba de lo que faltaba. Con tres
+    idiomas son más de cien URL y la lista crece cada vez que se quita un
     "plantilla": true, así que mantenerla a mano era la errata esperando a
     ocurrir de siempre. Lo que NO entra: la cesta, que lleva noindex porque es
     distinta para cada visitante.
@@ -1395,9 +1388,10 @@ def main():
             if pares:
                 destino(idioma, "index.html").write_text(
                     pagina_portada(idioma, pares), encoding="utf-8")
+                escritas.append(ruta_publica(idioma, "index.html"))
             else:
                 print("  AVISO: «%s» no tiene lista \"portada\" en textos.json, "
-                      "asi que no hay portada en ese idioma." % idioma)
+                      "así que no hay portada en ese idioma." % idioma)
         comprueba_portada(categorias, idioma)
         print("  --- %s ---" % IDIOMAS[idioma]["nombre"])
 
@@ -1424,6 +1418,8 @@ def main():
                                                     encoding="utf-8")
         destino(idioma, "cesta.html").write_text(pagina_cesta(idioma),
                                                  encoding="utf-8")
+        escritas += [ruta_publica(idioma, "historia.html"),
+                     ruta_publica(idioma, "cesta.html")]
         print("      %d páginas de categoría, %d fichas, la historia y la cesta"
               % (paginas, fichas))
 
@@ -1431,7 +1427,7 @@ def main():
     escribe_sitemap(indexables, datetime.date.today().isoformat())
     avisa_sin_traducir()
     print("\n%d páginas escritas en %d idiomas desde %s y %s"
-          % (len(escritas) + 2 * len(IDIOMAS), len(IDIOMAS), DATOS.name, TEXTOS.name))
+          % (len(escritas), len(IDIOMAS), DATOS.name, TEXTOS.name))
 
 
 if __name__ == "__main__":
