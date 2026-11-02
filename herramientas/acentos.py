@@ -72,7 +72,7 @@ PERDONADAS = {
     "Generalitat", "Salut", "Llei", "Avène", "Cases", "Joaquim", "Agramonte",
     "Caterina", "República", "Havana", "Barcelona", "Born", "Anthelios",
     "Hydrance", "Hydraphase", "Cleanance", "Solaire", "Dermo", "Pediatrics",
-    "Posay", "Roche", "Solución", "Casas", "Bucho", "Zoila", "Saurina",
+    "Posay", "Roche", "Solución", "Casas", "Buchó", "Zoila", "Saurina",
     "cofb", "gencat", "aepd", "boe", "portaljuridic", "salutweb",
 }
 

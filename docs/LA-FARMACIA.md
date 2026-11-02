@@ -29,8 +29,8 @@ distintos**: ver
 
 Son los que la LSSI obliga a publicar, y están completos en `aviso-legal.html`:
 
-- Zoila Agramonte Bucho, colegiada **17594**
-- NIF **35756987Z**
+- Zoila Agramonte Buchó, colegiada **9036**
+- NIF **47733022H**
 - Autorización sanitaria **08/3254**
 - Título: *Licenciada en Farmacia por la Universidad de La Habana*, con su
   homologación: resolución **2015/08432** del Ministerio de Educación,
@@ -44,7 +44,7 @@ y aquí ese Estado no es España.
 `historia.html` cuenta de dónde viene la farmacia: que es la antigua Farmàcia
 Joaquim Cases, tienda modernista protegida como Bien Cultural de Interés
 Local, con referencias documentadas desde 1600, los Saurina hasta 1747, los
-Cases de 1864 a 2014 y Zoila Agramonte Bucho como titular desde 2019. Lleva
+Cases de 1864 a 2014 y Zoila Agramonte Buchó como titular desde 2019. Lleva
 además el enlace al reportaje de *La República* sobre el barrio de Santa
 Caterina durante la pandemia.
 
