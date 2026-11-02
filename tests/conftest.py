@@ -33,3 +33,12 @@ def acentos():
 @pytest.fixture(scope="session")
 def importar():
     return carga("importar")
+
+
+@pytest.fixture
+def tarjeta():
+    # Sin scope de sesión: los tests le cambian las carpetas de fuentes.
+    # Pillow sólo lo usa este script: sin él, sus tests se saltan en vez de
+    # fallar, y el resto sigue pidiendo nada más que pytest.
+    pytest.importorskip("PIL")
+    return carga("tarjeta-social")
