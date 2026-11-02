@@ -47,6 +47,8 @@ LO QUE ESTE SCRIPT NO HACE, a propósito
   de medicamentos, y esa página existe precisamente para no tener lista.
 - No borra las páginas de los productos que desaparezcan. Eso lo dice
   catalogo.py al ejecutarse, con el git rm hecho.
+- No pisa las fichas que ya están en el JSON. Un producto que ya estaba se
+  queda como estaba, con lo que se le haya escrito a mano. Ver fusiona().
 """
 
 import argparse
@@ -171,20 +173,21 @@ def escribe_mapa_ejemplo(familias, categorias, destino):
     rellena a mano: nadie más que la farmacia sabe qué va dónde."""
     mapa = OrderedDict()
     mapa["_leeme"] = [
-        "Pon al lado de cada familia del programa de gestion el id de la",
-        "categoria del catalogo a la que va. Las que queden en null se",
+        "Pon al lado de cada familia del programa de gestión el id de la",
+        "categoría del catálogo a la que va. Las que queden en null se",
         "quedan fuera de la web.",
         "",
-        "Categorias disponibles: %s" % ", ".join(
+        "Categorías disponibles: %s" % ", ".join(
             c for c in categorias if c not in PROHIBIDAS),
         "",
-        "Medicamentos no admite productos: esa pagina existe para no tener",
-        "lista. Si mapeas algo ahi, el script para.",
+        "Medicamentos no admite productos: esa página existe para no tener",
+        "lista. Si mapeas algo ahí, el script para.",
     ]
     mapa["familias"] = OrderedDict((f, None) for f, _ in familias.most_common())
     Path(destino).write_text(
         json.dumps(mapa, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("\n  Escrito %s con %d familias sin asignar." % (destino, len(familias)))
+    print("\n  Escrito %s con %d familia%s sin asignar."
+          % (destino, len(familias), "s" if len(familias) != 1 else ""))
     print("  Rellénalo y vuelve a ejecutar esto con --mapa %s" % destino)
 
 
@@ -300,6 +303,34 @@ def aplica_seleccion(por_categoria, marcados):
             del por_categoria[cid]
 
 
+def clave_de(p):
+    """La URL del producto, que es lo que lo identifica: el "id" si lo trae o,
+    si no, el nombre en español, igual que slug_producto() en catalogo.py."""
+    if p.get("id"):
+        return p["id"]
+    nombre = p["nombre"]
+    return slug(nombre.get("es", "") if isinstance(nombre, dict) else nombre)
+
+
+def fusiona(existentes, importados, anadir):
+    """Junta lo que ya hay en la categoría con lo que llega del export.
+
+    Un producto que ya estaba se queda como estaba: su ficha la ha escrito la
+    farmacia a mano (resumen, traducciones, epígrafes) y el export sólo trae
+    nombre y formato. Sin esto, reimportar dejaba el catálogo entero en
+    «Resumen pendiente».
+
+    Al sustituir, lo que ya no viene en el export sale. Al añadir, lo que ya
+    estaba no se repite: dos fichas con la misma URL harían parar a catalogo.py.
+
+    Devuelve la lista nueva y cuántos productos se han conservado."""
+    por_clave = {clave_de(p): p for p in existentes}
+    conservados = sum(1 for p in importados if p["id"] in por_clave)
+    if anadir:
+        return existentes + [p for p in importados if p["id"] not in por_clave], conservados
+    return [por_clave.get(p["id"], p) for p in importados], conservados
+
+
 def quita_repetidos(por_categoria):
     """Dos filas que den el mismo id se pisarían la página. Se queda la primera
     y se avisa: en un export es normal que el mismo artículo salga dos veces."""
@@ -399,13 +430,13 @@ def main():
             % (candidatos, candidatos))
 
     print("\n  Qué haría:")
+    nuevas = {}
     for cid, productos in por_categoria.items():
         c = categorias[cid]
-        antes = len(c["productos"])
-        sin_formato = sum(1 for p in productos if not p.get("formato"))
-        accion = "añade a" if args.anadir else "sustituye"
-        print("    %-22s %s %d por %d  (%d sin formato)"
-              % (cid, accion, antes, len(productos), sin_formato))
+        nuevas[cid], conservados = fusiona(c["productos"], productos, args.anadir)
+        sin_formato = sum(1 for p in nuevas[cid] if not p.get("formato"))
+        print("    %-22s %d → %d productos  (fichas conservadas: %d, sin formato: %d)"
+              % (cid, len(c["productos"]), len(nuevas[cid]), conservados, sin_formato))
         if c.get("plantilla"):
             print("      ojo: sigue siendo plantilla, así que no se publica")
 
@@ -422,9 +453,8 @@ def main():
         print("\n  NO he tocado nada. Cuando cuadre, repítelo con --escribir.")
         return
 
-    for cid, productos in por_categoria.items():
-        c = categorias[cid]
-        c["productos"] = c["productos"] + productos if args.anadir else productos
+    for cid, productos in nuevas.items():
+        categorias[cid]["productos"] = productos
 
     texto = json.dumps(datos, ensure_ascii=False, indent=2)
     texto = re.sub(r'\n  \],\n  "categorias"', '\n  ],\n\n  "categorias"', texto, count=1)
