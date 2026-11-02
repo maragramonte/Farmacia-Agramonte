@@ -340,8 +340,11 @@ ul.cronologia {
   .producto .boton { font-size: .68rem; letter-spacing: .08em; padding: .6rem .4rem; }
   .bote { width: 84%; padding: .5rem .45rem .45rem; gap: .2rem; border-width: 3px; }
   .bote-marca { font-size: .56rem; letter-spacing: .12em; }
-  .bote-nombre { font-size: .92rem; }
+  /* Una línea más que en escritorio: en el móvil el bote es estrecho y, con
+     dos, «Anthelios Shaka Fluido Color SPF 50+» perdía justo el «SPF 50+». */
+  .bote-nombre { font-size: .92rem; -webkit-line-clamp: 3; }
   .bote-pie { font-size: .52rem; letter-spacing: .1em; padding-top: .2rem; }
+  .ficha-producto .bote-nombre { font-size: 1.4rem; -webkit-line-clamp: 4; }
 
   .ficha-datos > div { grid-template-columns: 6.5rem minmax(0, 1fr); gap: .7rem; }
   .cierre { padding: 1.4rem; }
