@@ -71,7 +71,7 @@
         },
         "parrafos": {
           "es": [
-            "La ley no permite anunciar al público los medicamentos que necesitan receta, y los que no la necesitan solo pueden anunciarse con advertencias obligatorias. Por eso esta página no lleva catálogo: sería publicidad de medicamentos, que es otra cosa distinta a enseñar una crema.",
+            "La ley no permite anunciar al público los medicamentos que necesitan receta, y los que no la necesitan solo pueden anunciarse con advertencias obligatorias. Por eso esta página no lleva catálogo: sería publicidad de medicamentos, que no es lo mismo que enseñar una crema.",
             "Lo que sí puedes hacer es encargarlos. Envíanos la receta o el nombre de lo que buscas por WhatsApp o por teléfono, lo preparamos y te avisamos cuando esté. La dispensación y la comprobación de la receta se hacen en el mostrador, como manda la normativa y como conviene: es donde podemos preguntarte si tomas algo más.",
             "Ante cualquier síntoma que preocupe, lo primero es el médico. Lo que hacemos aquí es consejo farmacéutico, no diagnóstico."
           ],
@@ -575,8 +575,8 @@
       "icono": "corazon",
       "plantilla": false,
       "intro": {
-        "es": "Higiene, anticoncepción y cuidado íntimo. Se puede preguntar con discreción: por WhatsApp, por teléfono o en el mostrador, apartados del resto.",
-        "ca": "Higiene, anticoncepció i cura íntima. Es pot preguntar amb discreció: per WhatsApp, per telèfon o al taulell, apartats de la resta.",
+        "es": "Higiene, anticoncepción y cuidado íntimo. Se puede preguntar con discreción: por WhatsApp, por teléfono o en el mostrador, aparte del resto de clientes.",
+        "ca": "Higiene, anticoncepció i cura íntima. Es pot preguntar amb discreció: per WhatsApp, per telèfon o al taulell, a part de la resta de clients.",
         "en": "Hygiene, contraception and intimate care. You can ask discreetly: on WhatsApp, by phone, or at the counter away from everyone else."
       },
       "productos": [
@@ -646,9 +646,9 @@
       "icono": "manzana",
       "plantilla": false,
       "intro": {
-        "es": "Complementos alimenticios y nutrición específica. No sustituyen a una dieta variada ni a lo que te haya dicho tu médico: si tomas medicación, dínoslo antes, porque algunos se llevan mal entre sí.",
-        "ca": "Complements alimentaris i nutrició específica. No substitueixen una dieta variada ni el que t'hagi dit el teu metge: si prens medicació, digues-nos-ho abans, perquè alguns no es porten bé entre ells.",
-        "en": "Food supplements and specific nutrition. They are no substitute for a varied diet or for what your doctor has told you: if you are on medication, tell us first, because some of these do not mix well."
+        "es": "Complementos alimenticios y nutrición específica. No sustituyen a una dieta variada ni a lo que te haya dicho tu médico: si tomas medicación, dínoslo antes, porque algunos no combinan bien con ciertos medicamentos.",
+        "ca": "Complements alimentaris i nutrició específica. No substitueixen una dieta variada ni el que t'hagi dit el teu metge: si prens medicació, digues-nos-ho abans, perquè alguns no combinen bé amb certs medicaments.",
+        "en": "Food supplements and specific nutrition. They are no substitute for a varied diet or for what your doctor has told you: if you are on medication, tell us first, because some do not mix well with certain medicines."
       },
       "productos": [
         {

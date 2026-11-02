@@ -251,8 +251,10 @@ ICONO_AVISO = (
     '<line x1="12" y1="10" x2="12" y2="14"/><circle cx="12" cy="17" r=".6" fill="currentColor" stroke="none"/></svg>'
 )
 
-# El reportaje de prensa. Es el único enlace a un sitio ajeno que hay en la web
-# aparte de WhatsApp, y va aquí arriba para que se vea de un vistazo que existe.
+# El reportaje de prensa. Es de los pocos enlaces a sitios ajenos que hay en la
+# web (con WhatsApp, Instagram, Take Care y el blog), y va aquí arriba para que
+# se vea de un vistazo que existe. Si se añade otro, hay que contarlo en el
+# aviso legal y en la política de cookies, en los tres idiomas.
 PRENSA_URL = "https://www.larepublica.cat/coronavirus/reportatge-la-barcelona-que-no-es-resigna/"
 # El titular tal como se publicó (10/09/2020), en catalán: es una cita y no
 # se traduce, así que va con lang="ca" en las tres versiones.
