@@ -19,6 +19,11 @@ la red local, con la IP. **Esa segunda sirve para verla en el móvil** con sólo
 escribirla, estando en la misma wifi: útil para comprobar cómo queda de
 verdad en una pantalla pequeña.
 
+Que se vea desde la wifi quiere decir que la ve cualquiera conectado a ella,
+así que sólo sirve lo que se publica: nada que empiece por punto (`.git`,
+`.claude`…) ni `CLAUDE.md`, y tampoco lista las carpetas, igual que GitHub
+Pages. Todo eso da 404.
+
 También se puede abrir `index.html` con doble clic, sin servidor. Funciona,
 pero la ruta será `file://` y algunas cosas no se comportan igual que en
 producción, así que para comprobar cambios es mejor el servidor.
