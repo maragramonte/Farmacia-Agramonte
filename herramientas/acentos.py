@@ -34,8 +34,7 @@ EN_CATALAN = {
     # Acento agudo donde el catalán lleva grave
     "interés": "interès", "época": "època", "América": "Amèrica",
     "farmacéutic*": "farmacèutic", "telefón*": "telèfon", "teléfon*": "telèfon",
-    "própolis": "pròpolis", "diagnóstic": "diagnòstic", 
-     
+    "própolis": "pròpolis", "diagnóstic": "diagnòstic",
     # Ela geminada escrita mal
     "colegi": "col·legi", "coleg*": "col·leg", "paliar": "pal·liar",
     "tila": "til·la", "intelectual": "intel·lectual",
@@ -67,6 +66,10 @@ EN_ESPANOL = {
 
 # Lo que no hay que avisar aunque aparezca: nombres propios, marcas y las
 # palabras catalanas que la farmacia usa a propósito también en español.
+# Perdonan sólo lo que cae dentro de ellas («col·legi» en «Col·legi»), así que
+# la mayoría no hace nada hasta que una palabra de las tablas les coincide
+# dentro. Una cita entera en otro idioma no va aquí: se marca con lang en el
+# HTML, que además le dice al lector de pantalla cómo pronunciarla.
 PERDONADAS = {
     "Farmàcia", "Plaça", "Llana", "Col·legi", "Farmacèutics", "Catalunya",
     "Generalitat", "Salut", "Llei", "Avène", "Cases", "Joaquim", "Agramonte",
@@ -138,10 +141,18 @@ def texto_visible(html):
     return " ".join(v.trozos)
 
 
+def tramos_perdonados(texto):
+    """Dónde están, en el texto, los nombres de PERDONADAS."""
+    return [(m.start(), m.end())
+            for p in PERDONADAS for m in re.finditer(re.escape(p), texto)]
+
+
 def busca(texto, tabla, donde, avisos):
+    # Se perdona lo que cae DENTRO de un nombre propio («Col·legi» en «Col·legi
+    # de Farmacèutics»), no lo que tiene al lado: «Farmàcia Agramonte» sale en
+    # todas las páginas, y perdonar su alrededor tapaba los errores de ahí.
+    perdonados = tramos_perdonados(texto)
     for mala, buena in tabla.items():
-        if buena is None:
-            continue
         # Palabra entera, salvo las que acaban en * que son raíces: así
         # «cabell» no casa dentro de «cabelludo», y «farmacéutic*» sí coge
         # tanto «farmacéutico» como «farmacéutica».
@@ -150,10 +161,10 @@ def busca(texto, tabla, donde, avisos):
         else:
             patron = r"\b%s\b" % re.escape(mala)
         for m in re.finditer(patron, texto, re.IGNORECASE):
+            if any(ini <= m.start() and m.end() <= fin for ini, fin in perdonados):
+                continue
             trozo = texto[max(0, m.start() - 30):m.end() + 30]
             trozo = " ".join(trozo.split())
-            if any(p in trozo for p in PERDONADAS):
-                continue
             avisos.append((donde, mala, buena, trozo))
 
 
