@@ -145,8 +145,7 @@ mismo. Son nueve pasos; los seis primeros los lleva el generador, los tres
    y no el generador.
 7. Ejecuta el generador: escribe la carpeta entera, con sus `hreflang`, su
    selector y su parte del sitemap.
-8. Las tres legales hay que escribirlas a mano, con la nota de arriba que
-   dice que la española es la original y la que prevalece.
+8. Las tres legales hay que escribirlas a mano.
 9. Y a mano también, porque no se generan: el bloque del idioma en
    `404.html`, y su `hreflang` y su enlace en el selector de las **seis
    legales que ya existían** más `index.html`. Es lo único que el generador no
@@ -156,10 +155,6 @@ mismo. Son nueve pasos; los seis primeros los lleva el generador, los tres
 
 Vale igual para el catalán y para el inglés:
 
-- **Las tres páginas legales de cada idioma están traducidas pero sin
-  revisar**, y lo dicen arriba en amarillo: la versión española es la original
-  y la que prevalece. Son textos jurídicos, así que conviene que los lea
-  alguien antes de quitar ese aviso.
 - Los textos de salud de los productos están traducidos **sin revisar**. En
   una farmacia eso es consejo, así que hay que mirarlos igual que los
   españoles.

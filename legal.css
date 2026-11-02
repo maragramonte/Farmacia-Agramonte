@@ -148,18 +148,6 @@ dl.ficha dd { margin: 0; }
   .horizonte { height: 22px; background-size: 180px 21px, auto; }
 }
 
-/* En las legales traducidas, cuál es la versión que prevalece. En un texto
-   legal eso no es un detalle, pero tampoco un aviso: va discreto, debajo de
-   la fecha, y sin el amarillo de lo que falta. */
-.nota-traduccion {
-  border-left: 3px solid var(--crema-3);
-  padding: .2rem 0 .2rem 1rem;
-  margin-bottom: 2.5rem;
-  font-size: .9rem;
-  font-style: italic;
-}
-.nota-traduccion a { border-bottom: 1px solid rgba(46, 36, 32, .3); }
-
 /* Dato que todavía no tenemos. Se ve a la legua para que nadie publique
    la página dándolo por bueno. */
 .pendiente {
