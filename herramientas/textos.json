@@ -185,7 +185,7 @@
       ],
       [
         "Desde 1890 cuidando de tu salud en el corazón de Barcelona.",
-        "Des del 1890 cuidant de la teva salut al cor de Barcelona."
+        "Des del 1890 tenint cura de la teva salut al cor de Barcelona."
       ],
       [
         "Atención al cliente",
@@ -1121,7 +1121,7 @@
     },
     "historia_s3_p2": {
       "es": "En 2019 Zoila decide poner en valor el inmenso patrimonio histórico y artístico que tiene la farmacia y, al mismo tiempo, dotarla de dinamismo y modernidad.",
-      "ca": "El 2019 la Zoila decideix posar en valor l'immens patrimoni històric i artístic que té la farmàcia i, al mateix temps, dotar-la de dinamisme i modernitat.",
+      "ca": "El 2019 la Zoila decideix revalorar l'immens patrimoni històric i artístic que té la farmàcia i, al mateix temps, dotar-la de dinamisme i modernitat.",
       "en": "In 2019 Zoila decided to bring out the immense historical and artistic heritage of the pharmacy and, at the same time, give it energy and a modern outlook."
     },
     "historia_cronologia": {
@@ -1200,7 +1200,7 @@
     "historia_s4_p1": {
       "es": "La revista digital %s nos contactó para hacer un reportaje sobre la farmacia y sobre cómo había afectado la pandemia de covid-19 al barrio de Santa Caterina.",
       "ca": "La revista digital %s ens va contactar per fer un reportatge sobre la farmàcia i sobre com havia afectat la pandèmia de covid-19 al barri de Santa Caterina.",
-      "en": "The digital magazine %s got in touch with us to run a feature on the pharmacy and on how the impact of the covid-19 pandemic had been felt in the Santa Caterina neighbourhood."
+      "en": "The digital magazine %s got in touch with us to run a feature on the pharmacy and on how the impact of the COVID-19 pandemic had been felt in the Santa Caterina neighbourhood."
     },
     "historia_prensa_sufijo": {
       "es": "%s · Reportaje",
