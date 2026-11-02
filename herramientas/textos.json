@@ -23,6 +23,7 @@
   "idiomas": {
     "es": {
       "nombre": "Español",
+      "en_frase": "español",
       "corto": "ES",
       "carpeta": "",
       "etiqueta_html": "es",
@@ -30,6 +31,7 @@
     },
     "ca": {
       "nombre": "Català",
+      "en_frase": "català",
       "corto": "CA",
       "carpeta": "ca",
       "etiqueta_html": "ca",
@@ -37,6 +39,7 @@
     },
     "en": {
       "nombre": "English",
+      "en_frase": "English",
       "corto": "EN",
       "carpeta": "en",
       "etiqueta_html": "en",
@@ -165,7 +168,7 @@
         "Productes seleccionats i un tracte humà, de tu a tu."
       ],
       [
-        "Lunes a Sábado",
+        "Lunes a sábado",
         "Dilluns a dissabte"
       ],
       [
@@ -219,6 +222,10 @@
       [
         "Número de colegiada: ",
         "Número de col·legiada: "
+      ],
+      [
+        "Colegio Oficial de Farmacéuticos de Barcelona</p>",
+        "Col·legi de Farmacèutics de Barcelona</p>"
       ],
       [
         "© 2026 Farmàcia Agramonte. Todos los derechos reservados.",
@@ -284,7 +291,7 @@
       ["A través de Take Care puedes gestionar recetas, recibir asesoramiento y solicitar la entrega a domicilio de medicamentos y productos de salud.", "A través de Take Care pots gestionar receptes, rebre assessorament i sol·licitar el lliurament a domicili de medicaments i productes de salut."],
       ["Conocer Take Care", "Conèixer Take Care"],
       ["<h2>Novedades</h2>", "<h2>Novetats</h2>"],
-      ["Una selección de productos destacados de la tienda online. Consulta en la farmacia el precio y la disponibilidad.", "Una selecció de productes destacats de la botiga en línia. Consulta a la farmàcia el preu i la disponibilitat."],
+      ["Una selección de productos destacados de la tienda en línea. Consulta en la farmacia el precio y la disponibilidad.", "Una selecció de productes destacats de la botiga en línia. Consulta a la farmàcia el preu i la disponibilitat."],
       ["<p class=\"novedad-categoria\">Nutrición</p>", "<p class=\"novedad-categoria\">Nutrició</p>"],
       ["45 cápsulas. Complemento alimenticio con extractos vegetales y vitaminas.", "45 càpsules. Complement alimentari amb extractes vegetals i vitamines."],
       ["<p class=\"novedad-categoria\">Cosmética corporal</p>", "<p class=\"novedad-categoria\">Cosmètica corporal</p>"],
@@ -295,13 +302,13 @@
       ["Ver producto <span>→</span>", "Veure producte <span>→</span>"],
       ["Del blog", "Del blog"],
       ["Ver todos <span>→</span>", "Veure'ls tots <span>→</span>"],
-      ["<time datetime=\"2025-04-09\">9 abr 2025</time>", "<time datetime=\"2025-04-09\">9 abr. 2025</time>"],
+      ["<time datetime=\"2025-04-09\">9 abr. 2025</time>", "<time datetime=\"2025-04-09\">9 abr. 2025</time>"],
       ["<h3><a href=\"https://farmaciaagramonte.com/como-manejar-el-estres-y-la-ansiedad-de-forma-natural/\" target=\"_blank\" rel=\"noopener\">Cómo manejar el estrés y la ansiedad de forma natural</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/como-manejar-el-estres-y-la-ansiedad-de-forma-natural/\" target=\"_blank\" rel=\"noopener\">Com gestionar l'estrès i l'ansietat de manera natural</a></h3>"],
       ["El estrés y la ansiedad son respuestas normales ante situaciones desafiantes; el artículo comparte pautas de cuidado.", "L'estrès i l'ansietat són respostes normals davant situacions difícils; l'article comparteix pautes de cura."],
-      ["<time datetime=\"2025-03-07\">7 mar 2025</time>", "<time datetime=\"2025-03-07\">7 març 2025</time>"],
+      ["<time datetime=\"2025-03-07\">7 mar. 2025</time>", "<time datetime=\"2025-03-07\">7 març 2025</time>"],
       ["<h3><a href=\"https://farmaciaagramonte.com/las-claves-para-elegir-un-buen-cepillo-de-dientes/\" target=\"_blank\" rel=\"noopener\">¡Las claves para elegir un buen cepillo de dientes!</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/las-claves-para-elegir-un-buen-cepillo-de-dientes/\" target=\"_blank\" rel=\"noopener\">Claus per triar un bon raspall de dents</a></h3>"],
       ["Claves para escoger un cepillo adecuado para la rutina de higiene bucal.", "Claus per triar un raspall adequat per a la rutina d'higiene bucal."],
-      ["<time datetime=\"2025-02-03\">3 feb 2025</time>", "<time datetime=\"2025-02-03\">3 febr. 2025</time>"],
+      ["<time datetime=\"2025-02-03\">3 feb. 2025</time>", "<time datetime=\"2025-02-03\">3 febr. 2025</time>"],
       ["<h3><a href=\"https://farmaciaagramonte.com/cuidado-ocular-en-invierno-evita-la-sequedad-y-protege-tus-ojos-del-frio/\" target=\"_blank\" rel=\"noopener\">Cuidado ocular en invierno: evita la sequedad y protege tus ojos del frío</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/cuidado-ocular-en-invierno-evita-la-sequedad-y-protege-tus-ojos-del-frio/\" target=\"_blank\" rel=\"noopener\">Cura ocular a l'hivern: evita la sequedat i protegeix els ulls del fred</a></h3>"],
       ["El frío, el viento y la calefacción pueden favorecer la sequedad ocular.", "El fred, el vent i la calefacció poden afavorir la sequedat ocular."],
       ["Leer artículo <span>→</span>", "Llegir l'article <span>→</span>"],
@@ -456,7 +463,7 @@
         "Carefully chosen products and a human touch, one to one."
       ],
       [
-        "Lunes a Sábado",
+        "Lunes a sábado",
         "Monday to Saturday"
       ],
       [
@@ -510,6 +517,14 @@
       [
         "Número de colegiada: ",
         "Registration number: "
+      ],
+      [
+        "aria-label=\"Principal\"",
+        "aria-label=\"Main\""
+      ],
+      [
+        "Colegio Oficial de Farmacéuticos de Barcelona</p>",
+        "Col·legi de Farmacèutics de Barcelona</p>"
       ],
       [
         "© 2026 Farmàcia Agramonte. Todos los derechos reservados.",
@@ -569,7 +584,7 @@
       ["A través de Take Care puedes gestionar recetas, recibir asesoramiento y solicitar la entrega a domicilio de medicamentos y productos de salud.", "With Take Care, you can manage prescriptions, get advice and request home delivery of medicines and health products."],
       ["Conocer Take Care", "Discover Take Care"],
       ["<h2>Novedades</h2>", "<h2>New arrivals</h2>"],
-      ["Una selección de productos destacados de la tienda online. Consulta en la farmacia el precio y la disponibilidad.", "A selection of featured products from the online shop. Ask the pharmacy about price and availability."],
+      ["Una selección de productos destacados de la tienda en línea. Consulta en la farmacia el precio y la disponibilidad.", "A selection of featured products from the online shop. Ask the pharmacy about price and availability."],
       ["<p class=\"novedad-categoria\">Nutrición</p>", "<p class=\"novedad-categoria\">Nutrition</p>"],
       ["45 cápsulas. Complemento alimenticio con extractos vegetales y vitaminas.", "45 capsules. Food supplement with plant extracts and vitamins."],
       ["<p class=\"novedad-categoria\">Cosmética corporal</p>", "<p class=\"novedad-categoria\">Body care</p>"],
@@ -580,13 +595,13 @@
       ["Ver producto <span>→</span>", "View product <span>→</span>"],
       ["Del blog", "From the blog"],
       ["Ver todos <span>→</span>", "View all <span>→</span>"],
-      ["<time datetime=\"2025-04-09\">9 abr 2025</time>", "<time datetime=\"2025-04-09\">9 Apr 2025</time>"],
+      ["<time datetime=\"2025-04-09\">9 abr. 2025</time>", "<time datetime=\"2025-04-09\">9 Apr 2025</time>"],
       ["<h3><a href=\"https://farmaciaagramonte.com/como-manejar-el-estres-y-la-ansiedad-de-forma-natural/\" target=\"_blank\" rel=\"noopener\">Cómo manejar el estrés y la ansiedad de forma natural</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/como-manejar-el-estres-y-la-ansiedad-de-forma-natural/\" target=\"_blank\" rel=\"noopener\">Managing stress and anxiety naturally</a></h3>"],
       ["El estrés y la ansiedad son respuestas normales ante situaciones desafiantes; el artículo comparte pautas de cuidado.", "Stress and anxiety are normal responses to challenging situations; the article shares self-care guidance."],
-      ["<time datetime=\"2025-03-07\">7 mar 2025</time>", "<time datetime=\"2025-03-07\">7 Mar 2025</time>"],
+      ["<time datetime=\"2025-03-07\">7 mar. 2025</time>", "<time datetime=\"2025-03-07\">7 Mar 2025</time>"],
       ["<h3><a href=\"https://farmaciaagramonte.com/las-claves-para-elegir-un-buen-cepillo-de-dientes/\" target=\"_blank\" rel=\"noopener\">¡Las claves para elegir un buen cepillo de dientes!</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/las-claves-para-elegir-un-buen-cepillo-de-dientes/\" target=\"_blank\" rel=\"noopener\">How to choose a good toothbrush</a></h3>"],
       ["Claves para escoger un cepillo adecuado para la rutina de higiene bucal.", "Tips for choosing a toothbrush that suits your oral care routine."],
-      ["<time datetime=\"2025-02-03\">3 feb 2025</time>", "<time datetime=\"2025-02-03\">3 Feb 2025</time>"],
+      ["<time datetime=\"2025-02-03\">3 feb. 2025</time>", "<time datetime=\"2025-02-03\">3 Feb 2025</time>"],
       ["<h3><a href=\"https://farmaciaagramonte.com/cuidado-ocular-en-invierno-evita-la-sequedad-y-protege-tus-ojos-del-frio/\" target=\"_blank\" rel=\"noopener\">Cuidado ocular en invierno: evita la sequedad y protege tus ojos del frío</a></h3>", "<h3><a href=\"https://farmaciaagramonte.com/cuidado-ocular-en-invierno-evita-la-sequedad-y-protege-tus-ojos-del-frio/\" target=\"_blank\" rel=\"noopener\">Eye care in winter: prevent dryness and protect your eyes from the cold</a></h3>"],
       ["El frío, el viento y la calefacción pueden favorecer la sequedad ocular.", "Cold weather, wind and indoor heating can contribute to dry eyes."],
       ["Leer artículo <span>→</span>", "Read article <span>→</span>"],
@@ -681,6 +696,11 @@
       "es": "Idioma actual: %s",
       "ca": "Idioma actual: %s",
       "en": "Current language: %s"
+    },
+    "nav_aria": {
+      "es": "Principal",
+      "ca": "Principal",
+      "en": "Main"
     },
     "idioma_cambiar": {
       "es": "Ver esta página en %s",
@@ -830,7 +850,7 @@
       "en": "Sample template"
     },
     "aviso_plantilla_texto": {
-      "es": "Los productos y los formatos de esta página <strong>son inventados</strong> y están aquí sólo para ver la maquetación. Nada de lo que se lee abajo es el catálogo de la farmacia. No enlazar esta página ni darla por buena hasta sustituirlo por productos reales.",
+      "es": "Los productos y los formatos de esta página <strong>son inventados</strong> y están aquí solo para ver la maquetación. Nada de lo que se lee abajo es el catálogo de la farmacia. No enlazar esta página ni darla por buena hasta sustituirlo por productos reales.",
       "ca": "Els productes i els formats d'aquesta pàgina <strong>són inventats</strong> i hi són només per veure la maquetació. Res del que es llegeix a sota és el catàleg de la farmàcia. No enllaceu aquesta pàgina ni la doneu per bona fins que no se substitueixi per productes reals.",
       "en": "The products and sizes on this page <strong>are made up</strong> and are here only to show the layout. Nothing you read below is the pharmacy’s catalogue. Do not link to this page or treat it as final until it is replaced with real products."
     },
@@ -937,7 +957,7 @@
       "en": "Your basket"
     },
     "cesta_entradilla": {
-      "es": "Lo que has apuntado para encargar. Se guarda <strong>sólo en este navegador</strong>: no nos llega nada, ni lo vemos, hasta que nos mandes el mensaje tú.",
+      "es": "Lo que has apuntado para encargar. Se guarda <strong>solo en este navegador</strong>: no nos llega nada, ni lo vemos, hasta que nos mandes el mensaje tú.",
       "ca": "El que has apuntat per encarregar. Es guarda <strong>només en aquest navegador</strong>: no ens arriba res, ni ho veiem, fins que ens enviïs el missatge tu.",
       "en": "What you have noted down to order. It is kept <strong>only in this browser</strong>: nothing reaches us, and we cannot see it, until you send us the message yourself."
     },
@@ -962,7 +982,7 @@
     },
     "cesta_vacia_p": {
       "es": "Entra en una categoría y pulsa «Añadir» en lo que te interese. Puedes juntar cosas de categorías distintas: la cesta es una sola.",
-      "ca": "Entra en una categoria i prem «Afegir» en el que t'interessi. Pots ajuntar coses de categories diferents: la cistella és una de sola.",
+      "ca": "Entra en una categoria i prem «Afegir» en el que t'interessi. Pots ajuntar coses de categories diferents: només hi ha una cistella.",
       "en": "Open a category and press “Add” on whatever interests you. You can mix things from different categories: there is only one basket."
     },
     "cesta_vacia_enlace": {

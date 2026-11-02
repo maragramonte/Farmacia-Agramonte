@@ -254,7 +254,9 @@ ICONO_AVISO = (
 # El reportaje de prensa. Es el único enlace a un sitio ajeno que hay en la web
 # aparte de WhatsApp, y va aquí arriba para que se vea de un vistazo que existe.
 PRENSA_URL = "https://www.larepublica.cat/coronavirus/reportatge-la-barcelona-que-no-es-resigna/"
-PRENSA_TITULO = "Coronavirus: La Barcelona que no se resigna"
+# El titular tal como se publicó (10/09/2020), en catalán: es una cita y no
+# se traduce, así que va con lang="ca" en las tres versiones.
+PRENSA_TITULO = "La Barcelona que no es resigna"
 PRENSA_MEDIO = "La República"
 
 
@@ -692,7 +694,9 @@ def selector_idioma(idioma, fichero):
                           % (escapa(enlace_idioma(idioma, otro, fichero)),
                              IDIOMAS[otro]["etiqueta_html"],
                              IDIOMAS[otro]["etiqueta_html"],
-                             escapa(T("idioma_cambiar", idioma) % nombre), corto))
+                             # En el idioma del destino, como el lang del enlace:
+                             # «View this page in English», no «Ver esta página en English».
+                             escapa(T("idioma_cambiar", otro) % IDIOMAS[otro]["en_frase"]), corto))
     return """    <nav class="idiomas" aria-label="%s">
 %s
     </nav>""" % (escapa(T("idioma_aria", idioma)), "\n".join(trozos))
@@ -751,7 +755,7 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
 <header class="cabecera">
   <div class="contenedor">
     <a class="marca" href="index.html">Farmàcia Agramonte</a>
-    <nav class="nav" aria-label="Principal">
+    <nav class="nav" aria-label="%s">
       <a href="index.html">%s</a>
       <a href="index.html#categorias">%s</a>
       <a href="historia.html"%s>%s</a>
@@ -794,6 +798,7 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
        alternativas(idioma, fichero),
        escapa(descripcion), escapa(titulo),
        pre, pre, pre, pre, pre, pre, pre, pre, pre, pre,
+       escapa(T("nav_aria", idioma)),
        escapa(T("nav_inicio", idioma)),
        escapa(T("nav_categorias", idioma)),
        aqui_historia, escapa(T("nav_historia", idioma)),
@@ -1079,7 +1084,7 @@ def pagina_historia(idioma):
       <p>%s</p>
       <a class="prensa" href="%s" target="_blank" rel="noopener">
         <span class="prensa-medio">%s</span>
-        <strong>%s</strong>
+        <strong lang="ca">%s</strong>
         <span class="prensa-pie">%s</span>
       </a>
     </section>

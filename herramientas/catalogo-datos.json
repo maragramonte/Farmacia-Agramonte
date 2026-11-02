@@ -71,7 +71,7 @@
         },
         "parrafos": {
           "es": [
-            "La ley no permite anunciar al público los medicamentos que necesitan receta, y los que no la necesitan sólo pueden anunciarse con advertencias obligatorias. Por eso esta página no lleva catálogo: sería publicidad de medicamentos, que es otra cosa distinta a enseñar una crema.",
+            "La ley no permite anunciar al público los medicamentos que necesitan receta, y los que no la necesitan solo pueden anunciarse con advertencias obligatorias. Por eso esta página no lleva catálogo: sería publicidad de medicamentos, que es otra cosa distinta a enseñar una crema.",
             "Lo que sí puedes hacer es encargarlos. Envíanos la receta o el nombre de lo que buscas por WhatsApp o por teléfono, lo preparamos y te avisamos cuando esté. La dispensación y la comprobación de la receta se hacen en el mostrador, como manda la normativa y como conviene: es donde podemos preguntarte si tomas algo más.",
             "Ante cualquier síntoma que preocupe, lo primero es el médico. Lo que hacemos aquí es consejo farmacéutico, no diagnóstico."
           ],
@@ -114,7 +114,8 @@
           },
           "consulta": {
             "es": "el Avène Hydrance Aqua-gel",
-            "ca": "l'Avène Hydrance Aqua-gel"
+            "ca": "l'Avène Hydrance Aqua-gel",
+            "en": "the Avène Hydrance Aqua-gel"
           }
         },
         {
@@ -127,7 +128,8 @@
           },
           "consulta": {
             "es": "la Hydraphase Intense Ligera SPF 20",
-            "ca": "la Hydraphase Intense Ligera SPF 20"
+            "ca": "la Hydraphase Intense Ligera SPF 20",
+            "en": "the Hydraphase Intense Ligera SPF 20"
           }
         },
         {
@@ -263,7 +265,8 @@
           },
           "consulta": {
             "es": "el Anthelios Age Correct SPF 50",
-            "ca": "l'Anthelios Age Correct SPF 50"
+            "ca": "l'Anthelios Age Correct SPF 50",
+            "en": "the Anthelios Age Correct SPF 50"
           }
         },
         {
@@ -280,7 +283,8 @@
           },
           "consulta": {
             "es": "el Anthelios Dermo-Pediatrics SPF 50+ en espray",
-            "ca": "l'Anthelios Dermo-Pediatrics SPF 50+ en esprai"
+            "ca": "l'Anthelios Dermo-Pediatrics SPF 50+ en esprai",
+            "en": "the Anthelios Dermo-Pediatrics SPF 50+ spray"
           }
         },
         {
@@ -293,7 +297,8 @@
           },
           "consulta": {
             "es": "el Avène Cleanance Solaire SPF 50+",
-            "ca": "l'Avène Cleanance Solaire SPF 50+"
+            "ca": "l'Avène Cleanance Solaire SPF 50+",
+            "en": "the Avène Cleanance Solaire SPF 50+"
           }
         },
         {
@@ -448,7 +453,7 @@
       "plantilla": false,
       "intro": {
         "es": "Pañal, baño e higiene del bebé y del niño. Si es tu primer hijo, pregunta sin reparo: nos lo preguntan todos.",
-        "ca": "Bolquer, bany i higiene del bebè i del nen. Si és el teu primer fill, pregunta sense repares: ens ho pregunten tots.",
+        "ca": "Bolquer, bany i higiene del bebè i del nen. Si és el teu primer fill, pregunta sense recança: ens ho pregunten tots.",
         "en": "Nappies, bath time and hygiene for babies and children. If this is your first child, ask away: everybody does."
       },
       "productos": [
@@ -684,7 +689,7 @@
       "plantilla": false,
       "intro": {
         "es": "Vendajes, sujeciones y ayudas técnicas. Casi todo va por talla: si puedes, pásate a que te midamos, que acertar a ojo sale caro.",
-        "ca": "Benes, subjeccions i ajudes tècniques. Gairebé tot va per talla: si pots, passa que et prenguem mides, que encertar a ull surt car.",
+        "ca": "Benes, subjeccions i ajudes tècniques. Gairebé tot va per talla: si pots, passa per la farmàcia i et prendrem mides, que encertar a ull surt car.",
         "en": "Dressings, supports and mobility aids. Nearly everything comes in sizes: if you can, come in and let us measure you, because guessing gets expensive."
       },
       "productos": [
