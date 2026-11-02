@@ -32,6 +32,13 @@ def test_perdona_los_nombres_propios(acentos):
                      acentos.EN_ESPANOL) == []
 
 
+def test_un_nombre_propio_cerca_no_tapa_un_error(acentos):
+    # «Farmàcia Agramonte» sale en todas las páginas: si perdonar un nombre
+    # perdonase también lo que tiene al lado, ahí no se vería nada.
+    assert ("cistella", "cesta") in avisos_de(
+        acentos, "Farmàcia Agramonte: tu cistella", acentos.EN_ESPANOL)
+
+
 def test_ela_geminada_con_punto_normal(acentos):
     avisos = []
     acentos.ela_geminada("Anem al col.legi", "prueba", avisos)
