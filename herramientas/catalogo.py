@@ -1123,7 +1123,8 @@ RAIZ_PORTADA = (
     'href="cesta.css"',
     'href="idiomas.css"',
     'src="cesta.js"',
-    'href="tipografias/playfair-display-variable.woff2"',
+    'href="tipografias/instrument-serif.woff2"',
+    'href="tipografias/cinzel-variable.woff2"',
     'href="tipografias/karla-variable.woff2"',
 )
 
