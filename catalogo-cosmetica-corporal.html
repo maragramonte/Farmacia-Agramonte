@@ -14,10 +14,11 @@
 <meta name="description" content="Cosmética corporal en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
 <title>Cosmética corporal — Farmàcia Agramonte</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#2a1d12">
+<meta name="theme-color" content="#3f5649">
 <!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
      por idioma: desde ca/ se piden con ../ -->
-<link rel="preload" href="tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="tipografias/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="tipografias/cinzel-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tipografias.css">
 <link rel="stylesheet" href="marca.css">
@@ -57,10 +58,11 @@
     </a>
     <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
-      Pedir
+      <span class="boton-texto">Pedir</span>
     </a>
   </div>
 </header>
+<div class="horizonte" aria-hidden="true"></div>
 
 <main class="contenedor">
 
@@ -87,65 +89,75 @@
   <div class="productos">
 
     <article class="producto">
-      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4v4l2 3v11H8V9l2-3Z"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+      <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">CeraVe</span><span class="bote-nombre">Crema Alisadora Anti-rugosidades</span><span class="bote-pie">Foto en camino</span></div></div>
       <div class="cuerpo">
         <h2><a href="catalogo-cosmetica-corporal-cerave-crema-alisadora-anti-rugosidades-340-g.html">CeraVe Crema Alisadora Anti-rugosidades</a></h2>
         <p class="resumen">Producto de cuidado corporal. Consulta formato, precio y disponibilidad en la farmacia.</p>
         <p class="formato">340 g</p>
         <div class="acciones">
           <button type="button" class="anadir" data-cesta-anade hidden data-id="cosmetica-corporal-cerave-crema-alisadora-anti-rugosidades-340-g" data-nombre="CeraVe Crema Alisadora Anti-rugosidades" data-formato="340 g" data-url="catalogo-cosmetica-corporal-cerave-crema-alisadora-anti-rugosidades-340-g.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
-          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20CeraVe%20Crema%20Alisadora%20Anti-rugosidades." target="_blank" rel="noopener" aria-label="Preguntar por CeraVe Crema Alisadora Anti-rugosidades por WhatsApp">Preguntar</a>
+          <a class="boton boton-borde" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20CeraVe%20Crema%20Alisadora%20Anti-rugosidades." target="_blank" rel="noopener" aria-label="Preguntar por CeraVe Crema Alisadora Anti-rugosidades por WhatsApp">Preguntar</a>
         </div>
       </div>
     </article>
 
     <article class="producto">
-      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4v4l2 3v11H8V9l2-3Z"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+      <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">Ducray</span><span class="bote-nombre">Dexeryl Crema de Protección Cutánea</span><span class="bote-pie">Foto en camino</span></div></div>
       <div class="cuerpo">
         <h2><a href="catalogo-cosmetica-corporal-ducray-dexeryl-crema-proteccion-cutanea-500-ml.html">Ducray Dexeryl Crema de Protección Cutánea</a></h2>
         <p class="resumen">Producto de cuidado corporal. Consulta formato, precio y disponibilidad en la farmacia.</p>
         <p class="formato">500 ml</p>
         <div class="acciones">
           <button type="button" class="anadir" data-cesta-anade hidden data-id="cosmetica-corporal-ducray-dexeryl-crema-proteccion-cutanea-500-ml" data-nombre="Ducray Dexeryl Crema de Protección Cutánea" data-formato="500 ml" data-url="catalogo-cosmetica-corporal-ducray-dexeryl-crema-proteccion-cutanea-500-ml.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
-          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20Ducray%20Dexeryl%20Crema%20de%20Protecci%C3%B3n%20Cut%C3%A1nea." target="_blank" rel="noopener" aria-label="Preguntar por Ducray Dexeryl Crema de Protección Cutánea por WhatsApp">Preguntar</a>
+          <a class="boton boton-borde" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20Ducray%20Dexeryl%20Crema%20de%20Protecci%C3%B3n%20Cut%C3%A1nea." target="_blank" rel="noopener" aria-label="Preguntar por Ducray Dexeryl Crema de Protección Cutánea por WhatsApp">Preguntar</a>
         </div>
       </div>
     </article>
 
     <article class="producto">
-      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4v4l2 3v11H8V9l2-3Z"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+      <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">Eucerin</span><span class="bote-nombre">pH5 Desodorante Roll-on Duplo</span><span class="bote-pie">Foto en camino</span></div></div>
       <div class="cuerpo">
         <h2><a href="catalogo-cosmetica-corporal-eucerin-ph5-desodorante-roll-on-duplo.html">Eucerin pH5 Desodorante Roll-on Duplo</a></h2>
         <p class="resumen">Producto de cuidado corporal. Consulta formato, precio y disponibilidad en la farmacia.</p>
         <p class="formato">Pack doble</p>
         <div class="acciones">
           <button type="button" class="anadir" data-cesta-anade hidden data-id="cosmetica-corporal-eucerin-ph5-desodorante-roll-on-duplo" data-nombre="Eucerin pH5 Desodorante Roll-on Duplo" data-formato="Pack doble" data-url="catalogo-cosmetica-corporal-eucerin-ph5-desodorante-roll-on-duplo.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
-          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20Eucerin%20pH5%20Desodorante%20Roll-on%20Duplo." target="_blank" rel="noopener" aria-label="Preguntar por Eucerin pH5 Desodorante Roll-on Duplo por WhatsApp">Preguntar</a>
+          <a class="boton boton-borde" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20Eucerin%20pH5%20Desodorante%20Roll-on%20Duplo." target="_blank" rel="noopener" aria-label="Preguntar por Eucerin pH5 Desodorante Roll-on Duplo por WhatsApp">Preguntar</a>
         </div>
       </div>
     </article>
 
     <article class="producto">
-      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4v4l2 3v11H8V9l2-3Z"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
+      <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">NaturaBIO</span><span class="bote-nombre">Loción reductora Detox + cepillo</span><span class="bote-pie">Foto en camino</span></div></div>
       <div class="cuerpo">
         <h2><a href="catalogo-cosmetica-corporal-locion-reductora-detox-naturabio-cepillo.html">Loción reductora Detox NaturaBIO + cepillo</a></h2>
         <p class="resumen">Loción corporal con extracto de alga, aloe vera y jengibre.</p>
         <p class="formato">200 ml · incluye cepillo</p>
         <div class="acciones">
           <button type="button" class="anadir" data-cesta-anade hidden data-id="cosmetica-corporal-locion-reductora-detox-naturabio-cepillo" data-nombre="Loción reductora Detox NaturaBIO + cepillo" data-formato="200 ml · incluye cepillo" data-url="catalogo-cosmetica-corporal-locion-reductora-detox-naturabio-cepillo.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Añadir</button>
-          <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20Loci%C3%B3n%20reductora%20Detox%20NaturaBIO%20%2B%20cepillo." target="_blank" rel="noopener" aria-label="Preguntar por Loción reductora Detox NaturaBIO + cepillo por WhatsApp">Preguntar</a>
+          <a class="boton boton-borde" href="https://wa.me/34661192472?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20Loci%C3%B3n%20reductora%20Detox%20NaturaBIO%20%2B%20cepillo." target="_blank" rel="noopener" aria-label="Preguntar por Loción reductora Detox NaturaBIO + cepillo por WhatsApp">Preguntar</a>
         </div>
       </div>
     </article>
 
   </div>
 
-  <div class="cierre">
-    <h2>Cómo se pide</h2>
-    <p>Con «Añadir» vas apuntando lo que quieras en <a href="cesta.html">tu cesta</a>, que se queda guardada en este navegador y puedes cambiar cuando quieras. Al acabar, la cesta escribe sola el mensaje y nos lo mandas por WhatsApp: lo preparamos, te confirmamos el precio y lo recoges en el mostrador.</p>
-    <p><strong>Aquí no se paga nada</strong> y no te pedimos ningún dato: esto no es una tienda en línea, es la manera de encargar sin tener que escribirnos los productos uno a uno. El mostrador es además donde podemos aconsejarte.</p>
-    <p>Si prefieres llamar, el número es el <a href="tel:+34933195921">933 19 59 21</a>, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30.</p>
-  </div>
+  <section class="cierre cierre-pizarra">
+    <div class="pizarra">
+      <p class="pizarra-titulo">Aquí no se paga nada</p>
+      <ol>
+        <li>Añade lo que necesites</li>
+        <li>Mándanos la cesta por WhatsApp</li>
+        <li>Recógelo en el mostrador</li>
+      </ol>
+    </div>
+    <div class="cierre-texto">
+      <h2>Cómo se pide</h2>
+      <p>Con «Añadir» vas apuntando lo que quieras en <a href="cesta.html">tu cesta</a>, que se queda guardada en este navegador y puedes cambiar cuando quieras. Al acabar, la cesta escribe sola el mensaje y nos lo mandas por WhatsApp: lo preparamos, te confirmamos el precio y lo recoges en el mostrador.</p>
+      <p><strong>Aquí no se paga nada</strong> y no te pedimos ningún dato: esto no es una tienda en línea, es la manera de encargar sin tener que escribirnos los productos uno a uno. El mostrador es además donde podemos aconsejarte.</p>
+      <p>Si prefieres llamar, el número es el <a href="tel:+34933195921">933 19 59 21</a>, de lunes a sábado de 9:00 a 14:30 y de 16:00 a 20:30.</p>
+    </div>
+  </section>
 
 </main>
 

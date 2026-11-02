@@ -14,10 +14,11 @@
 <meta name="description" content="Aboca Coligas Fast, 50 capsules. Herbal product. Ask the pharmacy about format, price and… At Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
 <title>Aboca Coligas Fast — Farmàcia Agramonte</title>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#2a1d12">
+<meta name="theme-color" content="#3f5649">
 <!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
      por idioma: desde ca/ se piden con ../ -->
-<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/cinzel-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../tipografias.css">
 <link rel="stylesheet" href="../marca.css">
@@ -57,35 +58,42 @@
     </a>
     <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
-      Order
+      <span class="boton-texto">Order</span>
     </a>
   </div>
 </header>
+<div class="horizonte" aria-hidden="true"></div>
 
 <main class="contenedor">
 
   <p class="migas"><a href="index.html">Home</a> › <a href="index.html#categorias">Categories</a> › <a href="catalogo-fitoterapia.html">Herbal medicine</a> › Aboca Coligas Fast</p>
 
   <div class="ficha-producto">
-    <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/></svg></div>
+    <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">Aboca</span><span class="bote-nombre">Coligas Fast</span><span class="bote-pie">Photo on its way</span></div></div>
     <div class="datos">
+      <p class="etiqueta">Herbal medicine · Aboca</p>
       <h1>Aboca Coligas Fast</h1>
-      <p class="formato">50 capsules</p>
       <p class="resumen">Herbal product. Ask the pharmacy about format, price and availability.</p>
-      <div class="acciones">
-        <button type="button" class="anadir" data-cesta-anade hidden data-id="fitoterapia-aboca-coligas-fast-50-capsulas" data-nombre="Aboca Coligas Fast" data-formato="50 capsules" data-url="catalogo-fitoterapia-aboca-coligas-fast-50-capsulas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add</button>
-        <a class="boton" href="https://wa.me/34661192472?text=Hello%2C%20I%20wanted%20to%20ask%20about%20Aboca%20Coligas%20Fast." target="_blank" rel="noopener" aria-label="Ask about Aboca Coligas Fast on WhatsApp">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
-          Ask on WhatsApp
-        </a>
+      <dl class="ficha-datos">
+        <div><dt>Size</dt><dd class="formato">50 capsules</dd></div>
+        <div><dt>Price</dt><dd>We confirm it when we prepare your order</dd></div>
+        <div><dt>Collection</dt><dd>At the pharmacy counter</dd></div>
+      </dl>
+      <div class="compra" data-cesta-compra>
+        <div class="cantidad" role="group" aria-label="Quantity" data-cesta-selector hidden>
+          <button type="button" data-cesta-paso="-1" aria-label="One fewer">−</button>
+          <input type="number" inputmode="numeric" min="1" max="99" value="1" aria-label="Quantity" data-cesta-elige>
+          <button type="button" data-cesta-paso="1" aria-label="One more">+</button>
+        </div>
+        <button type="button" class="anadir" data-cesta-anade hidden data-id="fitoterapia-aboca-coligas-fast-50-capsulas" data-nombre="Aboca Coligas Fast" data-formato="50 capsules" data-url="catalogo-fitoterapia-aboca-coligas-fast-50-capsulas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to basket</button>
       </div>
       <p class="cesta-estado" data-cesta-estado="fitoterapia-aboca-coligas-fast-50-capsulas" hidden></p>
-      <p class="nota-consejo">Nothing is paid from here: “Add” notes it down in your basket and, when you have finished looking, you send it to us in one go on WhatsApp. We prepare it, confirm the price and you collect it at the counter, which is also where we can advise you. If you would rather, call us on <a href="tel:+34933195921">933 19 59 21</a>.</p>
+      <p class="dudas"><a href="https://wa.me/34661192472?text=Hello%2C%20I%20wanted%20to%20ask%20about%20Aboca%20Coligas%20Fast." target="_blank" rel="noopener" aria-label="Ask about Aboca Coligas Fast on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg> Questions? Ask us on WhatsApp</a></p>
     </div>
   </div>
 
   <section class="otros">
-    <h2>More from Herbal medicine</h2>
+    <h2>More in Herbal medicine</h2>
     <ul>
       <li><a href="catalogo-fitoterapia-aboca-grintuss-jarabe-adultos-210-g.html"><strong>Aboca Grintuss Jarabe Adultos</strong><small>210 g</small></a></li>
       <li><a href="catalogo-fitoterapia-aboca-propol2-emf-spray-oral-30-ml.html"><strong>Aboca Propol2 EMF Spray Oral</strong><small>30 ml</small></a></li>

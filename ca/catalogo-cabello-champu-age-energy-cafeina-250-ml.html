@@ -14,10 +14,11 @@
 <meta name="description" content="Champú Age Energy Cafeína, 250 ml. Producte de cura capil·lar. A la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).">
 <title>Champú Age Energy Cafeína — Farmàcia Agramonte</title>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#2a1d12">
+<meta name="theme-color" content="#3f5649">
 <!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
      por idioma: desde ca/ se piden con ../ -->
-<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/cinzel-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../tipografias.css">
 <link rel="stylesheet" href="../marca.css">
@@ -57,35 +58,42 @@
     </a>
     <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
-      Demanar
+      <span class="boton-texto">Demanar</span>
     </a>
   </div>
 </header>
+<div class="horizonte" aria-hidden="true"></div>
 
 <main class="contenedor">
 
   <p class="migas"><a href="index.html">Inici</a> › <a href="index.html#categorias">Categories</a> › <a href="catalogo-cabello.html">Cabell</a> › Champú Age Energy Cafeína</p>
 
   <div class="ficha-producto">
-    <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M8 9V5M12 9V5M16 9V5"/></svg></div>
+    <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">Cabell</span><span class="bote-nombre">Champú Age Energy Cafeína</span><span class="bote-pie">Foto en camí</span></div></div>
     <div class="datos">
+      <p class="etiqueta">Cabell</p>
       <h1>Champú Age Energy Cafeína</h1>
-      <p class="formato">250 ml</p>
       <p class="resumen">Producte de cura capil·lar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.</p>
-      <div class="acciones">
-        <button type="button" class="anadir" data-cesta-anade hidden data-id="cabello-champu-age-energy-cafeina-250-ml" data-nombre="Champú Age Energy Cafeína" data-formato="250 ml" data-url="catalogo-cabello-champu-age-energy-cafeina-250-ml.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Afegir</button>
-        <a class="boton" href="https://wa.me/34661192472?text=Hola%2C%20volia%20preguntar%20per%20Champ%C3%BA%20Age%20Energy%20Cafe%C3%ADna." target="_blank" rel="noopener" aria-label="Preguntar per Champú Age Energy Cafeína per WhatsApp">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
-          Preguntar per WhatsApp
-        </a>
+      <dl class="ficha-datos">
+        <div><dt>Format</dt><dd class="formato">250 ml</dd></div>
+        <div><dt>Preu</dt><dd>T'ho confirmem en preparar l'encàrrec</dd></div>
+        <div><dt>Recollida</dt><dd>Al taulell de la farmàcia</dd></div>
+      </dl>
+      <div class="compra" data-cesta-compra>
+        <div class="cantidad" role="group" aria-label="Quantitat" data-cesta-selector hidden>
+          <button type="button" data-cesta-paso="-1" aria-label="Una unitat menys">−</button>
+          <input type="number" inputmode="numeric" min="1" max="99" value="1" aria-label="Quantitat" data-cesta-elige>
+          <button type="button" data-cesta-paso="1" aria-label="Una unitat més">+</button>
+        </div>
+        <button type="button" class="anadir" data-cesta-anade hidden data-id="cabello-champu-age-energy-cafeina-250-ml" data-nombre="Champú Age Energy Cafeína" data-formato="250 ml" data-url="catalogo-cabello-champu-age-energy-cafeina-250-ml.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Afegir a la cistella</button>
       </div>
       <p class="cesta-estado" data-cesta-estado="cabello-champu-age-energy-cafeina-250-ml" hidden></p>
-      <p class="nota-consejo">Des d'aquí no es paga res: «Afegir» ho apunta a la teva cistella i, quan acabis de mirar, ens l'envies d'un cop per WhatsApp. Ho preparem, et confirmem el preu i el reculls al taulell, que és on a més et podem aconsellar. Si ho prefereixes, truca'ns al <a href="tel:+34933195921">933 19 59 21</a>.</p>
+      <p class="dudas"><a href="https://wa.me/34661192472?text=Hola%2C%20volia%20preguntar%20per%20Champ%C3%BA%20Age%20Energy%20Cafe%C3%ADna." target="_blank" rel="noopener" aria-label="Preguntar per Champú Age Energy Cafeína per WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg> Dubtes? Pregunta'ns per WhatsApp</a></p>
     </div>
   </div>
 
   <section class="otros">
-    <h2>Més de Cabell</h2>
+    <h2>Més a Cabell</h2>
     <ul>
       <li><a href="catalogo-cabello-klorane-champu-quinina-400-ml.html"><strong>Klorane Champú de Quinina</strong><small>400 ml</small></a></li>
       <li><a href="catalogo-cabello-isdin-nutradeica-champu-caspa-seca-200-ml.html"><strong>ISDIN Nutradeica Champú Caspa Seca</strong><small>200 ml</small></a></li>
