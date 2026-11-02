@@ -112,7 +112,7 @@ páginas huérfanas, con el `git rm` ya escrito.
 **El español se queda en la raíz y los idiomas se añaden encima.** Mover el
 español a `/es/` habría roto todas las URL ya indexadas, a cambio de nada.
 Añadir el inglés no cambió ni una URL existente, y la URL de un producto no se
-traduce porque los nombres son marcas. Las traducciones que falten salen en
+traduce aunque su nombre sí: sale siempre del nombre en español. Las traducciones que falten salen en
 español en lugar de dejar un hueco, y el generador dice cuántas son.
 [→](docs/IDIOMAS.md)
 

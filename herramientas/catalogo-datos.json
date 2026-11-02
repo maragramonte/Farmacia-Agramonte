@@ -134,7 +134,11 @@
         },
         {
           "id": "avene-agua-termal-150-ml",
-          "nombre": "Avène Agua Termal",
+          "nombre": {
+            "es": "Avène Agua Termal",
+            "ca": "Avène Aigua Termal",
+            "en": "Avène Thermal Spring Water"
+          },
           "resumen": {
             "es": "Producto de cuidado facial. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de cura facial. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -148,7 +152,11 @@
         },
         {
           "id": "cerave-limpiadora-hidratante-236-ml",
-          "nombre": "CeraVe Limpiadora Hidratante",
+          "nombre": {
+            "es": "CeraVe Limpiadora Hidratante",
+            "ca": "CeraVe Netejadora Hidratant",
+            "en": "CeraVe Hydrating Cleanser"
+          },
           "resumen": {
             "es": "Producto de cuidado facial. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de cura facial. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -179,7 +187,11 @@
       "productos": [
         {
           "id": "cerave-crema-alisadora-anti-rugosidades-340-g",
-          "nombre": "CeraVe Crema Alisadora Anti-rugosidades",
+          "nombre": {
+            "es": "CeraVe Crema Alisadora Anti-rugosidades",
+            "ca": "CeraVe Crema Allisadora Antirugositats",
+            "en": "CeraVe SA Smoothing Cream"
+          },
           "resumen": {
             "es": "Producto de cuidado corporal. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de cura corporal. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -193,7 +205,11 @@
         },
         {
           "id": "ducray-dexeryl-crema-proteccion-cutanea-500-ml",
-          "nombre": "Ducray Dexeryl Crema de Protección Cutánea",
+          "nombre": {
+            "es": "Ducray Dexeryl Crema de Protección Cutánea",
+            "ca": "Ducray Dexeryl Crema de Protecció Cutània",
+            "en": "Ducray Dexeryl Skin Protection Cream"
+          },
           "resumen": {
             "es": "Producto de cuidado corporal. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de cura corporal. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -207,7 +223,11 @@
         },
         {
           "id": "eucerin-ph5-desodorante-roll-on-duplo",
-          "nombre": "Eucerin pH5 Desodorante Roll-on Duplo",
+          "nombre": {
+            "es": "Eucerin pH5 Desodorante Roll-on Duplo",
+            "ca": "Eucerin pH5 Desodorant Roll-on Duplo",
+            "en": "Eucerin pH5 Roll-on Deodorant Duo"
+          },
           "resumen": {
             "es": "Producto de cuidado corporal. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de cura corporal. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -215,13 +235,17 @@
           },
           "formato": {
             "es": "Pack doble",
-            "ca": "Pack doble",
+            "ca": "Paquet doble",
             "en": "Twin pack"
           }
         },
         {
           "id": "locion-reductora-detox-naturabio-cepillo",
-          "nombre": "Loción reductora Detox NaturaBIO + cepillo",
+          "nombre": {
+            "es": "Loción reductora Detox NaturaBIO + cepillo",
+            "ca": "Loció reductora Detox NaturaBIO + raspall",
+            "en": "NaturaBIO Detox Slimming Lotion + Brush"
+          },
           "resumen": {
             "es": "Loción corporal con extracto de alga, aloe vera y jengibre.",
             "ca": "Loció corporal amb extracte d'alga, àloe vera i gingebre.",
@@ -331,7 +355,11 @@
         },
         {
           "id": "heliocare-maquillaje-compacto-color-oil-free-spf50",
-          "nombre": "Heliocare Maquillaje Compacto Color Oil-free SPF 50",
+          "nombre": {
+            "es": "Heliocare Maquillaje Compacto Color Oil-free SPF 50",
+            "ca": "Heliocare Maquillatge Compacte Color Oil-free SPF 50",
+            "en": "Heliocare Color Compact Oil-free SPF 50"
+          },
           "resumen": {
             "es": "Fotoprotector solar. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Fotoprotector solar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -341,7 +369,11 @@
         },
         {
           "id": "rilastil-sunlaude-comfort-100-emulsion-75-ml",
-          "nombre": "Rilastil Sunlaude Comfort 100 Emulsión Fluida",
+          "nombre": {
+            "es": "Rilastil Sunlaude Comfort 100 Emulsión Fluida",
+            "ca": "Rilastil Sunlaude Comfort 100 Emulsió Fluida",
+            "en": "Rilastil Sunlaude Comfort 100 Fluid Emulsion"
+          },
           "resumen": {
             "es": "Fotoprotector solar. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Fotoprotector solar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -355,7 +387,11 @@
         },
         {
           "id": "crema-facial-color-light-spf50",
-          "nombre": "Crema facial Color Light SPF 50",
+          "nombre": {
+            "es": "Crema facial Color Light SPF 50",
+            "ca": "Crema facial Color Light SPF 50",
+            "en": "Color Light Facial Cream SPF 50"
+          },
           "resumen": {
             "es": "Fotoprotector solar. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Fotoprotector solar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -369,7 +405,11 @@
         },
         {
           "id": "crema-solar-facial-spf30-alga-maris",
-          "nombre": "Crema solar facial SPF 30 Alga Maris",
+          "nombre": {
+            "es": "Crema solar facial SPF 30 Alga Maris",
+            "ca": "Crema solar facial SPF 30 Alga Maris",
+            "en": "Alga Maris Facial Sunscreen SPF 30"
+          },
           "resumen": {
             "es": "Fotoprotector solar. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Fotoprotector solar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -400,7 +440,11 @@
       "productos": [
         {
           "id": "klorane-champu-quinina-400-ml",
-          "nombre": "Klorane Champú de Quinina",
+          "nombre": {
+            "es": "Klorane Champú de Quinina",
+            "ca": "Klorane Xampú de Quinina",
+            "en": "Klorane Shampoo with Quinine"
+          },
           "resumen": {
             "es": "Producto de cuidado capilar. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de cura capil·lar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -414,7 +458,11 @@
         },
         {
           "id": "isdin-nutradeica-champu-caspa-seca-200-ml",
-          "nombre": "ISDIN Nutradeica Champú Caspa Seca",
+          "nombre": {
+            "es": "ISDIN Nutradeica Champú Caspa Seca",
+            "ca": "ISDIN Nutradeica Xampú Caspa Seca",
+            "en": "ISDIN Nutradeica Dry Dandruff Shampoo"
+          },
           "resumen": {
             "es": "Producto de cuidado capilar. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de cura capil·lar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -428,7 +476,11 @@
         },
         {
           "id": "champu-age-energy-cafeina-250-ml",
-          "nombre": "Champú Age Energy Cafeína",
+          "nombre": {
+            "es": "Champú Age Energy Cafeína",
+            "ca": "Xampú Age Energy Cafeïna",
+            "en": "Age Energy Caffeine Shampoo"
+          },
           "resumen": {
             "es": "Producto de cuidado capilar. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de cura capil·lar. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -459,7 +511,11 @@
       "productos": [
         {
           "id": "bepanthol-bebe-pomada-protectora-30-g",
-          "nombre": "Bepanthol Bebé Pomada Protectora",
+          "nombre": {
+            "es": "Bepanthol Bebé Pomada Protectora",
+            "ca": "Bepanthol Bebè Pomada Protectora",
+            "en": "Bepanthol Baby Protective Ointment"
+          },
           "resumen": {
             "es": "Producto infantil. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte infantil. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -473,7 +529,11 @@
         },
         {
           "id": "chelino-panal-infantil-talla-3",
-          "nombre": "Chelino Pañal Infantil Talla 3",
+          "nombre": {
+            "es": "Chelino Pañal Infantil Talla 3",
+            "ca": "Chelino Bolquer Infantil Talla 3",
+            "en": "Chelino Baby Nappy Size 3"
+          },
           "resumen": {
             "es": "Producto infantil. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte infantil. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -487,7 +547,11 @@
         },
         {
           "id": "chupete-suavinex-todosilicona-6-18-meses",
-          "nombre": "Chupete Suavinex Todosilicona",
+          "nombre": {
+            "es": "Chupete Suavinex Todosilicona",
+            "ca": "Xumet Suavinex Todosilicona",
+            "en": "Suavinex Todosilicona Dummy"
+          },
           "resumen": {
             "es": "Producto infantil. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte infantil. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -518,7 +582,11 @@
       "productos": [
         {
           "id": "ainara-gel-hidratante-vaginal-30-g",
-          "nombre": "Ainara Gel Hidratante Vaginal",
+          "nombre": {
+            "es": "Ainara Gel Hidratante Vaginal",
+            "ca": "Ainara Gel Hidratant Vaginal",
+            "en": "Ainara Vaginal Moisturising Gel"
+          },
           "resumen": {
             "es": "Producto de higiene y cuidado íntimo. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte d'higiene i cura íntima. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -532,7 +600,11 @@
         },
         {
           "id": "cumlaude-hydra-spray-emulsion-75-ml",
-          "nombre": "Cumlaude Hydra Spray Emulsión",
+          "nombre": {
+            "es": "Cumlaude Hydra Spray Emulsión",
+            "ca": "Cumlaude Hydra Spray Emulsió",
+            "en": "Cumlaude Hydra Spray Emulsion"
+          },
           "resumen": {
             "es": "Producto de higiene y cuidado íntimo. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte d'higiene i cura íntima. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -546,7 +618,11 @@
         },
         {
           "id": "melagyn-gel-higiene-intima-200-ml",
-          "nombre": "Melagyn Gel de Higiene Íntima",
+          "nombre": {
+            "es": "Melagyn Gel de Higiene Íntima",
+            "ca": "Melagyn Gel d'Higiene Íntima",
+            "en": "Melagyn Intimate Hygiene Gel"
+          },
           "resumen": {
             "es": "Producto de higiene y cuidado íntimo. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte d'higiene i cura íntima. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -636,7 +712,11 @@
       "productos": [
         {
           "id": "aboca-grintuss-jarabe-adultos-210-g",
-          "nombre": "Aboca Grintuss Jarabe Adultos",
+          "nombre": {
+            "es": "Aboca Grintuss Jarabe Adultos",
+            "ca": "Aboca Grintuss Xarop Adults",
+            "en": "Aboca Grintuss Adult Syrup"
+          },
           "resumen": {
             "es": "Producto de fitoterapia. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de fitoteràpia. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -650,7 +730,11 @@
         },
         {
           "id": "aboca-propol2-emf-spray-oral-30-ml",
-          "nombre": "Aboca Propol2 EMF Spray Oral",
+          "nombre": {
+            "es": "Aboca Propol2 EMF Spray Oral",
+            "ca": "Aboca Propol2 EMF Esprai Oral",
+            "en": "Aboca Propol2 EMF Oral Spray"
+          },
           "resumen": {
             "es": "Producto de fitoterapia. Consulta formato, precio y disponibilidad en la farmacia.",
             "ca": "Producte de fitoteràpia. Consulta'n el format, el preu i la disponibilitat a la farmàcia.",
@@ -695,7 +779,11 @@
       "productos": [
         {
           "id": "farmalastic-tobillera-talla-grande",
-          "nombre": "Farmalastic Tobillera",
+          "nombre": {
+            "es": "Farmalastic Tobillera",
+            "ca": "Farmalastic Turmellera",
+            "en": "Farmalastic Ankle Support"
+          },
           "resumen": {
             "es": "Artículo de ortopedia. Consulta talla, precio y disponibilidad en la farmacia.",
             "ca": "Article d'ortopèdia. Consulta'n la talla, el preu i la disponibilitat a la farmàcia.",
@@ -709,7 +797,11 @@
         },
         {
           "id": "munequera-farmalastic-neopreno-talla-unica",
-          "nombre": "Muñequera Farmalastic de Neopreno",
+          "nombre": {
+            "es": "Muñequera Farmalastic de Neopreno",
+            "ca": "Canellera Farmalastic de Neoprè",
+            "en": "Farmalastic Neoprene Wrist Support"
+          },
           "resumen": {
             "es": "Artículo de ortopedia. Consulta talla, precio y disponibilidad en la farmacia.",
             "ca": "Article d'ortopèdia. Consulta'n la talla, el preu i la disponibilitat a la farmàcia.",
@@ -723,7 +815,11 @@
         },
         {
           "id": "rodillera-rotuliana-farmalastic-neopreno-talla-unica",
-          "nombre": "Rodillera Rotuliana Farmalastic de Neopreno",
+          "nombre": {
+            "es": "Rodillera Rotuliana Farmalastic de Neopreno",
+            "ca": "Genollera Rotuliana Farmalastic de Neoprè",
+            "en": "Farmalastic Neoprene Patella Knee Support"
+          },
           "resumen": {
             "es": "Artículo de ortopedia. Consulta talla, precio y disponibilidad en la farmacia.",
             "ca": "Article d'ortopèdia. Consulta'n la talla, el preu i la disponibilitat a la farmàcia.",

@@ -37,8 +37,12 @@ y el generador lo cuenta al terminar. Así se traduce producto a producto sin
 tocarlos todos de golpe, y **nada se queda en blanco por el camino**: lo que
 falta sale en español.
 
-Hoy el catálogo tiene **121 campos traducibles** y los únicos sueltos son los
-**34 nombres de producto**, que son marcas y están bien así.
+Los nombres de producto van sueltos cuando son sólo marca y línea («Berocca
+Boost», «Avène Cleanance Solaire SPF 50+»). Cuando llevan una parte genérica
+(«pañal», «champú», «tobillera») se traducen esa parte y nada más: la marca y
+la línea se quedan como en el envase. «Chelino Pañal Infantil Talla 3» es
+«Chelino Bolquer Infantil Talla 3» en catalán y «Chelino Baby Nappy Size 3»
+en inglés.
 
 ## La portada, que es el caso raro
 
@@ -88,8 +92,9 @@ otro idioma y no contenido duplicado.
 
 **La URL de un producto no se traduce**:
 `ca/catalogo-solares-cleanance-solaire-spf50.html` tiene el mismo nombre que
-la española, porque los nombres de producto son marcas y porque traducir los
-slugs duplicaría el trabajo de mantener URL estables.
+la española, aunque el nombre del producto esté traducido: la URL sale
+siempre del nombre en español (o de su clave "id"), porque traducir los slugs
+duplicaría el trabajo de mantener URL estables.
 
 ## Comprobar los acentos
 

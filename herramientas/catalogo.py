@@ -281,7 +281,8 @@ def slug_producto(p):
     No depende del idioma a propósito: la misma página en catalán vive en
     ca/catalogo-solares-anthelios-age-correct-spf50.html, con el mismo nombre.
     Traducir los slugs duplicaría el trabajo de mantener URL estables y no
-    aporta nada: los nombres de producto son marcas y no se traducen."""
+    aporta nada, aunque el nombre sí se traduzca en lo que tiene de genérico
+    («Pañal» → «Bolquer»): la marca y la línea van igual en los tres."""
     if p.get("id"):
         return p["id"]
     # Del nombre en español, SIEMPRE, aunque estemos generando el catalán: la
