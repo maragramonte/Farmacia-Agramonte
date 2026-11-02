@@ -52,7 +52,7 @@ servir.bat          Doble clic para lo mismo, en Windows
 
 fotos/              Las fotos de los productos. Hoy vacía: ver su LEEME.txt
 
-favicon.svg         Icono de la pestaña: el monograma en oro sobre tinta
+favicon.svg         Icono de la pestaña: el monograma en ámbar sobre verde
 og.png              Imagen que se ve al compartir el enlace (1200×630)
 robots.txt          Permite indexar y apunta al sitemap
 sitemap.xml         Las páginas indexables de los tres idiomas. SE GENERA
