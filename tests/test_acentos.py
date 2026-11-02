@@ -54,5 +54,44 @@ def test_texto_visible_se_salta_otros_idiomas_y_scripts(acentos):
     assert "cistella" not in visible
 
 
+def test_avisa_de_una_palabra_espanola_en_un_texto_ingles(acentos):
+    assert ("receta", "prescription") in avisos_de(
+        acentos, "Send us your receta on WhatsApp", acentos.EN_INGLES)
+
+
+def test_avisa_de_una_palabra_catalana_en_un_texto_ingles(acentos):
+    assert ("cistella", "basket") in avisos_de(
+        acentos, "Add it to your cistella", acentos.EN_INGLES)
+
+
+def test_avisa_de_la_ortografia_americana(acentos):
+    # La web está en inglés británico: catalogue, neighbourhood, personalised.
+    avisos = avisos_de(acentos, "Browse the catalog of our neighborhood pharmacy",
+                       acentos.EN_INGLES)
+    assert ("catalog", "catalogue") in avisos
+    assert ("neighborhood*", "neighbourhood") in avisos
+
+
+def test_el_ingles_britanico_no_avisa(acentos):
+    assert avisos_de(acentos, "Browse the catalogue of our neighbourhood "
+                     "pharmacy: personalised advice, in colour.", acentos.EN_INGLES) == []
+
+
+def test_una_marca_con_ortografia_americana_no_avisa(acentos):
+    assert avisos_de(acentos, "Color Light Facial Cream SPF 50",
+                     acentos.EN_INGLES) == []
+
+
+def test_texto_visible_de_un_idioma_concreto(acentos):
+    # El 404 es uno para todo el sitio y lleva los tres idiomas: cada parte se
+    # revisa con la tabla de su idioma.
+    html = ('<html lang="es"><body><p>Esta página no existe</p>'
+            '<div lang="ca"><p>Aquesta pàgina no existeix</p></div>'
+            '<div lang="en"><p>This page does not exist</p></div></body></html>')
+    assert acentos.texto_visible(html, "en").strip() == "This page does not exist"
+    assert acentos.texto_visible(html, "ca").strip() == "Aquesta pàgina no existeix"
+    assert acentos.texto_visible(html).strip() == "Esta página no existe"
+
+
 def test_la_web_no_tiene_avisos(acentos, capsys):
     assert acentos.main() == 0, capsys.readouterr().out

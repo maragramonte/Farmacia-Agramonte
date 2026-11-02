@@ -84,7 +84,9 @@ falls back to Spanish and the generator reports how many are missing, so a
 language can be filled in gradually without ever leaving a blank on the page.
 
 `herramientas/acentos.py` checks the spelling mistakes Spanish and Catalan
-invite in each other. They are warnings, not corrections.
+invite in each other, and in English it looks for untranslated Spanish or
+Catalan words and for American spellings, since the site's English is
+British. They are warnings, not corrections.
 
 ## Styling
 
