@@ -56,7 +56,6 @@
         "ca": "Medicaments",
         "en": "Medicines"
       },
-      "icono": "capsula",
       "plantilla": false,
       "intro": {
         "es": "Aquí no hay lista de productos, y es a propósito.",
@@ -96,7 +95,6 @@
         "ca": "Cosmètica facial",
         "en": "Facial skincare"
       },
-      "icono": "espejo",
       "plantilla": false,
       "intro": {
         "es": "Limpieza, hidratación y cuidado del rostro. Si no sabes por dónde empezar o tu piel se ha vuelto reactiva, cuéntanoslo: media consulta se resuelve sabiendo qué te estás poniendo ya.",
@@ -177,7 +175,6 @@
         "ca": "Cosmètica corporal",
         "en": "Body care"
       },
-      "icono": "bote",
       "plantilla": false,
       "intro": {
         "es": "Cuerpo, manos e higiene diaria. La piel del cuerpo pide menos que la de la cara, pero la pide todos los días.",
@@ -266,7 +263,6 @@
         "ca": "Solars",
         "en": "Sun care"
       },
-      "icono": "sol",
       "plantilla": false,
       "intro": {
         "es": "Fotoprotección para la cara, el cuerpo y los niños. Si dudas entre dos factores o tienes la piel reactiva, pregúntanos: es de las cosas que mejor se resuelven hablando.",
@@ -430,7 +426,6 @@
         "ca": "Cabell",
         "en": "Hair care"
       },
-      "icono": "peine",
       "plantilla": false,
       "intro": {
         "es": "Champús, tratamientos y cuidado del cuero cabelludo. Si se te cae más de lo normal, cuéntanos desde cuándo: eso orienta mucho.",
@@ -501,7 +496,6 @@
         "ca": "Bebè i infantil",
         "en": "Baby and child"
       },
-      "icono": "cara",
       "plantilla": false,
       "intro": {
         "es": "Pañal, baño e higiene del bebé y del niño. Si es tu primer hijo, pregunta sin reparo: nos lo preguntan todos.",
@@ -572,7 +566,6 @@
         "ca": "Salut íntima",
         "en": "Intimate health"
       },
-      "icono": "corazon",
       "plantilla": false,
       "intro": {
         "es": "Higiene, anticoncepción y cuidado íntimo. Se puede preguntar con discreción: por WhatsApp, por teléfono o en el mostrador, aparte del resto de clientes.",
@@ -643,7 +636,6 @@
         "ca": "Nutrició i vitamines",
         "en": "Nutrition and vitamins"
       },
-      "icono": "manzana",
       "plantilla": false,
       "intro": {
         "es": "Complementos alimenticios y nutrición específica. No sustituyen a una dieta variada ni a lo que te haya dicho tu médico: si tomas medicación, dínoslo antes, porque algunos no combinan bien con ciertos medicamentos.",
@@ -702,7 +694,6 @@
         "ca": "Fitoteràpia",
         "en": "Herbal medicine"
       },
-      "icono": "hoja",
       "plantilla": false,
       "intro": {
         "es": "Plantas medicinales, infusiones y derivados. Que sea natural no quiere decir que sea inocuo: hay plantas que interfieren con medicamentos, así que pregúntanos antes si tomas algo.",
@@ -769,7 +760,6 @@
         "ca": "Ortopèdia",
         "en": "Orthopaedics"
       },
-      "icono": "cruz",
       "plantilla": false,
       "intro": {
         "es": "Vendajes, sujeciones y ayudas técnicas. Casi todo va por talla: si puedes, pásate a que te midamos, que acertar a ojo sale caro.",

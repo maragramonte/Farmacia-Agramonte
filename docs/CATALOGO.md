@@ -84,7 +84,6 @@ Es lo que más justifica que el sitio se genere y no se copie:
   y dice qué par de `textos.json` se ha quedado viejo.
 - **Dos productos de la misma categoría que den la misma URL**: para y pide
   una clave `id` distinta, en vez de pisar el fichero en silencio.
-- **Un icono de categoría que no existe**: para.
 - **Una clave `foto` que apunte a algo que no está**: avisa, en lugar de dejar
   una imagen rota que sólo se ve abriendo esa ficha.
 - **Páginas de productos que ya no se generan y siguen en el disco**: las

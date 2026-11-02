@@ -103,10 +103,9 @@ se genera y qué se edita.
 tira de categorías que va arriba las lista todas, así que añadir una obligaba
 a tocar diez ficheros a mano: una errata esperando a ocurrir. Ahora hay una
 sola fuente de verdad y el script se niega a continuar si dos productos dan la
-misma URL, si falta un icono, si los cajones de la portada no cuadran con el
-JSON o si una portada traducida se ha quedado vieja. Lo que no puede
-comprobar, lo cuenta al terminar: fotos que faltan, textos sin traducir y
-páginas huérfanas, con el `git rm` ya escrito.
+misma URL o si una portada traducida se ha quedado vieja. Lo demás lo cuenta
+al terminar: categorías que la portada no enlaza, fotos que faltan, textos sin
+traducir y páginas huérfanas, con el `git rm` ya escrito.
 [→](docs/CATALOGO.md#el-generador)
 
 **El español se queda en la raíz y los idiomas se añaden encima.** Mover el
