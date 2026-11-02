@@ -29,6 +29,13 @@
      [data-cesta-anade]      Botón de añadir. Nace con hidden, por lo mismo.
                              Lleva data-id, data-nombre, data-formato y
                              data-url.
+     [data-cesta-compra]     En la ficha: el bloque que junta el selector de
+                             cantidad y el botón de añadir. El botón añade las
+                             unidades que diga el selector de su bloque; fuera
+                             de un bloque así (en la rejilla), añade una.
+     [data-cesta-selector]   El selector − / +. Nace con hidden, como el botón.
+     [data-cesta-elige]      Su <input> con el número de unidades.
+     [data-cesta-paso]       Sus botones: -1 o 1.
      [data-cesta-estado]     Línea junto al botón de la ficha: «ya tienes 2».
                              El valor del atributo es el id del producto.
      [data-cesta-sinjs]      El aviso de que esto necesita JavaScript. Nace
@@ -223,11 +230,12 @@
   }
 
   /* ---------- Las cuatro cosas que se pueden hacer ---------- */
-  function anade(datos) {
+  function anade(datos, n) {
+    n = acota(n);
     var items = leer();
     for (var i = 0; i < items.length; i++) {
       if (items[i].id === datos.id) {
-        items[i].cantidad = acota(items[i].cantidad + 1);
+        items[i].cantidad = acota(items[i].cantidad + n);
         guardar(items);
         return items[i].cantidad;
       }
@@ -237,10 +245,10 @@
       nombre: datos.nombre,
       formato: datos.formato || "",
       url: datos.url || "",
-      cantidad: 1
+      cantidad: n
     });
     guardar(items);
-    return 1;
+    return n;
   }
 
   function cambia(id, delta) {
@@ -347,6 +355,8 @@
   function pintaBotones(items) {
     var botones = document.querySelectorAll("[data-cesta-anade]");
     for (var i = 0; i < botones.length; i++) botones[i].hidden = false;
+    var selectores = document.querySelectorAll("[data-cesta-selector]");
+    for (var s = 0; s < selectores.length; s++) selectores[s].hidden = false;
 
     /* La línea de «ya tienes 2 en la cesta» que va junto al botón de la ficha. */
     var estados = document.querySelectorAll("[data-cesta-estado]");
@@ -496,10 +506,23 @@
     var b = e.target.closest("button, a");
     if (!b) return;
 
+    var paso = b.getAttribute("data-cesta-paso");
+    if (paso) {
+      var bloque = b.closest("[data-cesta-compra]");
+      var campo = bloque && bloque.querySelector("[data-cesta-elige]");
+      if (campo) campo.value = acota(acota(campo.value) + parseInt(paso, 10));
+      return;
+    }
+
     if (b.hasAttribute("data-cesta-anade")) {
       e.preventDefault();
       if (!b.getAttribute("data-id")) return;
-      anade(cosa(b));
+      /* En la ficha, las unidades del selector; en la rejilla, una. Después el
+         selector vuelve a 1, para que un segundo clic no repita sin querer. */
+      var compra = b.closest("[data-cesta-compra]");
+      var elige = compra && compra.querySelector("[data-cesta-elige]");
+      anade(cosa(b), elige ? elige.value : 1);
+      if (elige) elige.value = 1;
       pinta();
       avisa(t("anadido", b.getAttribute("data-nombre"),
               plural(unidades(leer()))));

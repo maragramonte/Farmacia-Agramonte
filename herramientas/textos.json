@@ -727,25 +727,97 @@
       "ca": "Afegir",
       "en": "Add"
     },
+    "boton_anadir_cesta": {
+      "es": "Añadir a la cesta",
+      "ca": "Afegir a la cistella",
+      "en": "Add to basket"
+    },
+    "cantidad": {
+      "es": "Cantidad",
+      "ca": "Quantitat",
+      "en": "Quantity"
+    },
+    "cantidad_menos": {
+      "es": "Una unidad menos",
+      "ca": "Una unitat menys",
+      "en": "One fewer"
+    },
+    "cantidad_mas": {
+      "es": "Una unidad más",
+      "ca": "Una unitat més",
+      "en": "One more"
+    },
+    "ficha_formato": {
+      "es": "Formato",
+      "ca": "Format",
+      "en": "Size"
+    },
+    "ficha_precio": {
+      "es": "Precio",
+      "ca": "Preu",
+      "en": "Price"
+    },
+    "ficha_precio_texto": {
+      "es": "Te lo confirmamos al preparar el encargo",
+      "ca": "T'ho confirmem en preparar l'encàrrec",
+      "en": "We confirm it when we prepare your order"
+    },
+    "ficha_recogida": {
+      "es": "Recogida",
+      "ca": "Recollida",
+      "en": "Collection"
+    },
+    "ficha_recogida_texto": {
+      "es": "En el mostrador de la farmacia",
+      "ca": "Al taulell de la farmàcia",
+      "en": "At the pharmacy counter"
+    },
+    "ficha_dudas": {
+      "es": "¿Dudas? Pregúntanos por WhatsApp",
+      "ca": "Dubtes? Pregunta'ns per WhatsApp",
+      "en": "Questions? Ask us on WhatsApp"
+    },
+    "pizarra_titulo": {
+      "es": "Aquí no se paga nada",
+      "ca": "Aquí no es paga res",
+      "en": "Nothing is paid here"
+    },
+    "pizarra_pasos": {
+      "es": [
+        "Añade lo que necesites",
+        "Mándanos la cesta por WhatsApp",
+        "Recógelo en el mostrador"
+      ],
+      "ca": [
+        "Afegeix el que necessitis",
+        "Envia'ns la cistella per WhatsApp",
+        "Recull-ho al taulell"
+      ],
+      "en": [
+        "Add what you need",
+        "Send us the basket on WhatsApp",
+        "Collect it at the counter"
+      ]
+    },
     "whatsapp_consulta": {
       "es": "Hola, quería preguntar por %s.",
       "ca": "Hola, volia preguntar per %s.",
       "en": "Hello, I wanted to ask about %s."
     },
     "pendiente_formato": {
-      "es": "Formato pendiente",
-      "ca": "Format pendent",
-      "en": "Size pending"
+      "es": "Formato por confirmar",
+      "ca": "Format per confirmar",
+      "en": "Size to be confirmed"
     },
     "pendiente_resumen": {
       "es": "Resumen pendiente",
       "ca": "Resum pendent",
       "en": "Description pending"
     },
-    "pendiente_foto": {
-      "es": "Foto pendiente",
-      "ca": "Foto pendent",
-      "en": "Photo pending"
+    "foto_en_camino": {
+      "es": "Foto en camino",
+      "ca": "Foto en camí",
+      "en": "Photo on its way"
     },
     "coletilla_plantilla": {
       "es": " (plantilla)",
@@ -783,9 +855,9 @@
       "en": "Warnings"
     },
     "otros_titulo": {
-      "es": "Más de %s",
-      "ca": "Més de %s",
-      "en": "More from %s"
+      "es": "Más en %s",
+      "ca": "Més a %s",
+      "en": "More in %s"
     },
     "otros_volver": {
       "es": "Ver toda la categoría",
