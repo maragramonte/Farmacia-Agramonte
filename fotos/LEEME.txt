@@ -67,20 +67,15 @@ unas cincuenta lineas de dibujo— por esto:
     <img src="fotos/mostrador.webp"
          alt="El mostrador de la Farmàcia Agramonte con las estanterías de botes">
 
-Y borra la última línea del bloque, la del aviso:
-
-    <span class="nota-foto">Ilustración provisional — sustituir por la foto del mostrador</span>
-
 El `<svg class="sello">` NO se toca: el sello de 1890 va encima de la foto,
 que es donde lo pone el diseño.
 
-TERCERO, en `herramientas/textos.json`, dentro de "portada", hay DOS pares que
-hablan del dibujo y se quedan huérfanos al quitarlo. El generador para hasta
-que los arregles, y para a propósito: es como avisa de que la traducción se ha
-quedado vieja. Hay que tocar los dos, en la lista "ca" y en la "en".
-
-El del texto alternativo: cámbiale el lado español por el del `alt` nuevo, y
-quítale el «Ilustración» a la traducción, que ya es una foto.
+TERCERO, en `herramientas/textos.json`, dentro de "portada", el par del texto
+alternativo habla del dibujo y se queda huérfano al quitarlo. El generador
+para hasta que lo arregles, y para a propósito: es como avisa de que la
+traducción se ha quedado vieja. Hay que tocarlo en las dos listas, la "ca" y
+la "en": cámbiale el lado español por el del `alt` nuevo, y quítale el
+«Ilustración» a la traducción, que ya es una foto.
 
     [
       "El mostrador de la Farmàcia Agramonte con las estanterías de botes",
@@ -90,14 +85,6 @@ quítale el «Ilustración» a la traducción, que ya es una foto.
     [
       "El mostrador de la Farmàcia Agramonte con las estanterías de botes",
       "The counter at Farmàcia Agramonte with its shelves of jars"
-    ]
-
-Y el del aviso provisional: ese par se borra entero, porque el aviso ya no
-existe en ningún idioma.
-
-    [
-      "Ilustración provisional — sustituir por la foto del mostrador",
-      ...
     ]
 
 Luego `python herramientas/catalogo.py`. La ruta se corrige sola a
