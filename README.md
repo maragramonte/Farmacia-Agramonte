@@ -169,7 +169,7 @@ pytest. **→ [docs/TESTS.md](docs/TESTS.md)**
 ```
 python servir.py                   # ver la web en http://localhost:8000
 python herramientas/catalogo.py    # regenerar las 143 páginas y el sitemap
-python herramientas/acentos.py     # avisos de ortografía español/catalán
+python herramientas/acentos.py     # avisos de ortografía es/ca/en
 python -m pytest                   # los tests (pip install pytest, una vez)
 ```
 
@@ -203,7 +203,7 @@ tocar si se renombra el repositorio y qué haría falta para un dominio propio.
 │   ├── catalogo-datos.json    Los productos. Se edita ESTE
 │   ├── textos.json            Todos los textos de interfaz, en cada idioma
 │   ├── importar.py            Vuelca un export del programa de gestión
-│   ├── acentos.py             Ortografía que se confunde entre es y ca
+│   ├── acentos.py             Ortografía que se confunde entre es, ca y en
 │   └── tarjeta-social.py      Regenera og.png
 ├── tests/                Los tests (python -m pytest)
 ├── tipografias/          Instrument Serif, Cinzel, Karla y Caveat, con sus OFL

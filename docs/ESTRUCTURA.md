@@ -77,8 +77,7 @@ herramientas/
                         idiomas
   textos.json           TODOS los textos de la interfaz, en cada idioma
   acentos.py            Comprueba la ortografía que se confunde entre el
-                        español y el catalán. El inglés no entra: no
-                        comparte esos errores
+                        español, el catalán y el inglés
   catalogo-datos.json   Los productos. Se edita ESTE
   importar.py           Vuelca un export en CSV al JSON de arriba
   tarjeta-social.py     Regenera og.png si cambia el lema o los datos

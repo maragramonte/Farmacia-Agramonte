@@ -98,20 +98,31 @@ duplicaría el trabajo de mantener URL estables.
 
 ## Comprobar los acentos
 
-El catalán y el español se parecen lo justo para equivocarse:
+El catalán y el español se parecen lo justo para equivocarse, y al inglés se
+le cuelan los dos:
 
 ```
 python herramientas/acentos.py
 ```
 
-Busca los errores concretos que se cometen al traducir entre los dos (el
-acento grave que el español pone agudo (`interès`, `època`, `Amèrica`), la ela
-geminada escrita como `ll` o `l.l`, y las palabras de un idioma colándose en
-el otro) y avisa de cada uno con su contexto. **No es un corrector**: son
-avisos que hay que mirar. Se salta los comentarios del código, que van en
-español en los tres idiomas a propósito, y los bloques marcados con otro
-`lang`, que es como se salta el inglés: no comparte estos errores, así que no
-entra en la comprobación.
+Busca los errores concretos que se cometen al traducir entre los tres y avisa
+de cada uno con su contexto:
+
+- **Catalán:** el acento grave que el español pone agudo (`interès`, `època`,
+  `Amèrica`), la ela geminada escrita como `ll` o `l.l`, y palabras españolas
+  que se cuelan.
+- **Español:** palabras catalanas que se cuelan (`cistella`, `taulell`).
+- **Inglés:** palabras españolas o catalanas sin traducir (`receta`,
+  `mostrador`, `cistella`) y la ortografía americana, porque el inglés de la
+  web es británico (`catalogue`, `neighbourhood`, `personalised`).
+
+**No es un corrector**: son avisos que hay que mirar. Cada texto se revisa con
+la tabla de su idioma: el de cada página, el de las claves `"es"`, `"ca"` y
+`"en"` de los JSON, y el de las traducciones de la portada. El 404, que lleva
+los tres idiomas, se revisa parte por parte. Se salta los comentarios del
+código, que van en español a propósito, y los bloques marcados con otro
+`lang`. Los nombres propios que contienen una palabra de las tablas (una marca
+como «Color Light», el correo `farmacia.lallana@…`) van en `PERDONADAS`.
 
 ## Añadir otro idioma
 
