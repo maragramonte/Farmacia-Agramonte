@@ -179,20 +179,6 @@ def enlace_idioma(desde, hacia, fichero):
     return prefijo(desde) + ("%s/%s" % (car, fichero) if car else fichero)
 
 
-# Los iconos, en la misma línea que los del resto del sitio: trazo, sin relleno.
-ICONOS = {
-    "capsula": '<rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/>',
-    "espejo":  '<circle cx="12" cy="9" r="6"/><path d="M12 15v6"/><path d="M9 21h6"/>',
-    "bote":    '<path d="M10 2h4v4l2 3v11H8V9l2-3Z"/><line x1="8" y1="13" x2="16" y2="13"/>',
-    "sol":     '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/>',
-    "peine":   '<path d="M4 9h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M8 9V5M12 9V5M16 9V5"/>',
-    "cara":    '<circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/><path d="M9 15c1.8 1.4 4.2 1.4 6 0"/>',
-    "corazon": '<path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/>',
-    "manzana": '<path d="M12 8c-3 0-5 2.4-5 5.8S9.5 21 12 21s5-3.8 5-7.2S15 8 12 8Z"/><path d="M12 8V5"/><path d="M12 6c1.6 0 3-1.2 3-3-1.6 0-3 1.2-3 3Z"/>',
-    "hoja":    '<path d="M20 4C10 4 4 9 4 16c0 2 1 4 1 4s6-1 9-4c3-3 6-8 6-12Z"/><path d="M5 20c3-6 7-9 11-11"/>',
-    "cruz":    '<line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/>',
-}
-
 # Las marcas que se reconocen en el nombre del producto, para la etiqueta de la
 # ficha («Solares · La Roche-Posay») y para el bote que sale mientras no hay
 # foto. La primera columna es lo que se busca en el nombre; la segunda, la marca
@@ -1371,10 +1357,6 @@ def main():
     carga_textos()
     datos = json.loads(DATOS.read_text(encoding="utf-8"))
     categorias = datos["categorias"]
-
-    faltan = [c["icono"] for c in categorias if c["icono"] not in ICONOS]
-    if faltan:
-        raise SystemExit("Iconos que no existen en ICONOS: %s" % faltan)
 
     comprueba_urls_unicas(categorias)
     comprueba_fotos(categorias)
