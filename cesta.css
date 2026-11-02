@@ -32,12 +32,14 @@
   display: inline-flex; align-items: center; gap: .5rem;
   font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
   font-weight: 600; color: var(--sobre-tinta);
-  border: 1px solid rgba(201,160,85,.45);
-  padding: .62rem .9rem;
+  border: 1px solid rgba(246,236,224,.4); border-radius: 3px;
+  min-height: 44px; padding: .5rem .9rem;
   transition: border-color .18s ease, color .18s ease;
 }
 .cesta-enlace:hover { color: var(--oro-claro); border-color: var(--oro); }
-.cesta-enlace[aria-current="page"] { color: var(--oro); border-color: var(--oro); }
+/* En claro y con el borde en acento: el acento como texto sobre el verde de
+   la cabecera no llega a 4,5:1. */
+.cesta-enlace[aria-current="page"] { color: var(--oro-claro); border-color: var(--oro); }
 .cesta-enlace svg {
   width: 17px; height: 17px; flex: none;
   stroke: currentColor; fill: none; stroke-width: 1.5;
@@ -49,32 +51,33 @@
   display: inline-grid; place-items: center;
   min-width: 1.45rem; height: 1.45rem; padding-inline: .25rem;
   border-radius: 999px;
-  background: var(--oro); color: var(--tinta);
+  background: var(--oro); color: var(--texto);
   font-variant-numeric: tabular-nums; letter-spacing: 0;
 }
 .cesta-enlace-vacio .cesta-cuenta {
   background: transparent; color: var(--tenue-tinta);
-  box-shadow: inset 0 0 0 1px rgba(201,160,85,.4);
+  box-shadow: inset 0 0 0 1px rgba(246,236,224,.45);
 }
 
 /* ---------- El botón de añadir ----------
-   Secundario a propósito: el oro relleno sigue siendo el de WhatsApp, que es
-   lo único que existe sin JavaScript y lo que de verdad cierra el encargo. */
+   Es la acción principal: va en el acento relleno, con el texto oscuro
+   (7,2:1). «Preguntar» queda al lado con sólo borde. Nace con hidden y lo
+   destapa cesta.js; sin JavaScript queda el de WhatsApp, que funciona. */
 .anadir {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-  width: 100%;
-  background: transparent; color: var(--texto);
-  border: 1px solid var(--crema-3);
+  width: 100%; min-height: 44px;
+  background: var(--oro); color: var(--texto);
+  border: 1px solid var(--oro); border-radius: 3px;
   font-family: inherit;
-  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-  font-weight: 600;
-  padding: .7rem 1rem; cursor: pointer;
+  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 700;
+  padding: .65rem 1rem; cursor: pointer;
   transition: border-color .18s ease, color .18s ease, background .18s ease;
 }
-.anadir:hover { border-color: var(--oro); color: var(--oro-hondo); }
+.anadir:hover { background: var(--oro-claro); border-color: var(--oro-claro); }
 .anadir svg {
   width: 15px; height: 15px; flex: none;
-  stroke: currentColor; fill: none; stroke-width: 1.6;
+  stroke: currentColor; fill: none; stroke-width: 2;
 }
 /* Un segundo tras pulsar. Es la única confirmación visible de que ha entrado
    en la cesta sin mirar a la cabecera; lo que se le dice al lector de pantalla
@@ -89,10 +92,30 @@
 .producto .acciones { margin-top: auto; display: grid; gap: .5rem; }
 .producto .acciones .boton { margin-top: 0; }
 
-/* En la ficha del producto los botones no ocupan el ancho entero: ahí hay sitio
-   y una fila de dos se lee mejor que dos filas. */
-.ficha-producto .acciones { display: flex; flex-wrap: wrap; gap: .7rem; }
-.ficha-producto .anadir { width: auto; padding-inline: 1.3rem; }
+/* En la ficha: el selector de cantidad y «Añadir a la cesta» en una fila.
+   El selector nace con hidden, como el botón, y lo destapa cesta.js. */
+.compra { display: flex; flex-wrap: wrap; gap: .7rem; align-items: stretch; }
+.ficha-producto .anadir { width: auto; flex: 1 1 12rem; font-size: .8rem; padding-inline: 1.4rem; }
+.cantidad {
+  display: inline-flex; align-items: stretch;
+  border: 1px solid var(--oro-hondo); border-radius: 3px; background: var(--papel, #fdf8f1);
+}
+.cantidad button {
+  width: 44px; min-height: 44px;
+  background: transparent; border: 0; cursor: pointer;
+  font-family: inherit; font-size: 1.3rem; line-height: 1; color: var(--texto);
+  transition: background .18s ease, color .18s ease;
+}
+.cantidad button:hover { background: var(--crema-2); color: var(--oro-hondo); }
+.cantidad input {
+  width: 3rem; min-height: 44px; border: 0; background: transparent;
+  border-inline: 1px solid var(--crema-3);
+  text-align: center; font-family: inherit; font-size: 1.05rem; font-weight: 700;
+  color: var(--texto); font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield; appearance: textfield;
+}
+.cantidad input::-webkit-outer-spin-button,
+.cantidad input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
 .cesta-estado { font-size: .85rem; color: var(--texto-tenue); margin-top: .8rem; }
 .cesta-estado a { border-bottom: 1px solid var(--crema-3); }
@@ -129,10 +152,10 @@
 
 .cesta-cantidad {
   display: inline-flex; align-items: center;
-  border: 1px solid var(--crema-3); background: #fbf8f2;
+  border: 1px solid var(--crema-3); background: var(--papel, #fbf8f2); border-radius: 3px;
 }
 .cesta-cantidad button {
-  width: 2.4rem; height: 2.4rem;
+  width: 44px; height: 44px;
   background: transparent; border: 0; cursor: pointer;
   font-family: inherit; font-size: 1.1rem; color: var(--texto);
   transition: background .18s ease, color .18s ease;
@@ -150,7 +173,7 @@
   background: transparent; border: 0; cursor: pointer;
   font-family: inherit; font-size: .74rem; letter-spacing: .1em;
   text-transform: uppercase; font-weight: 600;
-  color: var(--texto-tenue); padding: .5rem;
+  color: var(--texto-tenue); padding: .5rem; min-height: 44px;
   border-bottom: 1px solid transparent;
   transition: color .18s ease, border-color .18s ease;
 }
@@ -166,7 +189,7 @@
 /* Sale sólo cuando la cesta no cabe en un mensaje de WhatsApp. Va en el
    amarillo de .pendiente, que en esta web quiere decir «mira esto». */
 .cesta-recorte {
-  background: #f6e3bd; color: var(--tinta);
+  background: #f6e3bd; color: var(--texto);
   border-left: 3px solid var(--oro);
   padding: .9rem 1.1rem; margin-bottom: 1.25rem;
   font-size: .9rem; max-width: 70ch;
@@ -176,7 +199,7 @@
 /* Los secundarios son enlaces y botones de texto, no botones a medias: el oro
    relleno es el de enviar el encargo, y sólo ése. */
 .cesta-secundario {
-  background: transparent; border: 0; cursor: pointer; padding: .5rem 0;
+  background: transparent; border: 0; cursor: pointer; padding: .5rem 0; min-height: 44px;
   font-family: inherit; font-size: .88rem; color: var(--texto-tenue);
   border-bottom: 1px solid var(--crema-3);
   transition: color .18s ease, border-color .18s ease;
@@ -189,11 +212,16 @@
      tres columnas dejan el nombre partido letra a letra. */
   .cesta-linea { grid-template-columns: 1fr auto; gap: .6rem 1rem; }
   .cesta-que { grid-column: 1 / -1; }
+  .cesta-cantidad { justify-self: start; }
   .cesta-sinjs, .cesta-vacia { padding: 1.5rem; }
   .cesta-vaciar { margin-left: 0; }
   /* La cabecera del móvil ya va apretada: el contador se queda en el icono y
      la cuenta, que el rótulo lo dice el aria-label. */
-  .cesta-enlace { padding: .62rem .7rem; gap: .4rem; }
+  .cesta-enlace { padding: .5rem .6rem; gap: .4rem; }
   .cesta-enlace .cesta-rotulo { display: none; }
-  .ficha-producto .anadir { width: 100%; }
+  .ficha-producto .anadir { flex-basis: 100%; }
 }
+
+/* El «Qué pasa al enviarlo» va justo después de la lista: sin este margen se
+   pegaba a los botones de enviar y copiar. */
+[data-cesta-llena] + .cierre, [data-cesta-vacia] ~ .cierre { margin-top: 2.5rem; }

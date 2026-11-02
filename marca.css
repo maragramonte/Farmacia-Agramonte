@@ -1,30 +1,55 @@
 /* ---------------------------------------------------------------
-   Farmàcia Agramonte — la identidad compartida
+   Farmàcia Agramonte — la identidad compartida (rediseño 07)
 
    Paleta, tipografías, cabecera, botón y pie: lo que es igual en todas
-   las páginas del catálogo. Nació al montar la segunda categoría, para
-   no copiar la paleta una cuarta vez.
+   las páginas que salen del generador (catálogo, fichas, historia, cesta).
 
-   Queda pendiente que index.html y legal.css tiren también de aquí. Hoy
-   siguen con su propia copia de los colores: si cambias uno, míralos.
+   Los NOMBRES de las variables son los de antes (--tinta, --oro, --crema…)
+   a propósito: cesta.css e idiomas.css se cargan también en la portada y
+   en las legales, que declaran su propia copia de esos nombres. Si se
+   renombraran aquí, esas dos hojas se quedarían sin color en un sitio o
+   en el otro. Lo que cambia es lo que valen:
+
+     --tinta      verde del pie y la cabecera     #3f5649
+     --oro        el acento, el de «Añadir»       #f0a24a
+     --oro-hondo  el marrón, para texto de marca  #6a3420
+     --crema      el fondo                        #f6ece0
+     --crema-2    la sección alterna              #ecd3b9
+     --crema-3    las líneas                      #dcc6ad
+
+   Contrastes comprobados (AA pide 4,5:1 en texto normal):
+     texto #2e2420 sobre fondo ......... 14,5   verde sobre fondo ...... 4,8
+     texto sobre acento ................  7,2   verde sobre papel ...... 5,4
+     claro #f6ece0 sobre verde pie .....  6,8   marrón sobre #ecd3b9 ... 6,8
+     tenue #5e4a3e sobre #ecd3b9 .......  5,8   #d9c7b0 sobre pie ...... 4,8
+   El verde #536d5c NO llega sobre #ecd3b9 (3,9): sobre la sección alterna
+   el texto va en marrón o en tenue, nunca en verde.
+
+   index.html y legal.css siguen con su propia copia de los colores, y aún
+   con la paleta anterior.
    --------------------------------------------------------------- */
 :root {
-  --tinta:        #2a1d12;
-  --crema:        #f5f0e6;
-  --crema-2:      #eae2d2;
-  --crema-3:      #e0d6c2;
-  --oro:          #c9a055;
-  --oro-claro:    #e0c285;
-  --oro-hondo:    #7a5a21;
-  --texto:        #3a2c1f;
-  --texto-tenue:  #6e5d4b;
-  --sobre-tinta:  #f0e8db;
-  --tenue-tinta:  #b6a48c;
+  --tinta:        #3f5649;   /* pie, cabecera, píldora activa */
+  --verde:        #536d5c;   /* formatos, detalles */
+  --crema:        #f6ece0;   /* fondo */
+  --crema-2:      #ecd3b9;   /* sección alterna */
+  --crema-3:      #dcc6ad;   /* líneas */
+  --papel:        #fdf8f1;   /* tarjetas */
+  --oro:          #f0a24a;   /* acento */
+  --oro-claro:    #f6c07f;
+  --oro-hondo:    #6a3420;   /* marrón */
+  --texto:        #2e2420;
+  --texto-tenue:  #5e4a3e;
+  --sobre-tinta:  #f6ece0;
+  --tenue-tinta:  #d9c7b0;
+  --pizarra:      #2c3630;
 
   --ancho: 1120px;
   --alto-cabecera: 96px;
-  --display: "Playfair Display", "Iowan Old Style", Georgia, serif;
-  --cuerpo: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --rotulo:  "Cinzel", "Trajan Pro", Georgia, serif;
+  --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --cuerpo:  "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --tiza:    "Caveat", "Segoe Print", cursive;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -42,71 +67,142 @@ body {
 h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }
-:where(a, button):focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; border-radius: 2px; }
+/* El foco en marrón sobre lo claro y en acento sobre lo verde: el acento
+   sobre la crema se queda en 1,9:1 y no se vería. */
+:where(a, button, input):focus-visible { outline: 2px solid var(--oro-hondo); outline-offset: 3px; border-radius: 2px; }
+:where(.cabecera, .pie, .pizarra) :where(a, button):focus-visible { outline-color: var(--oro); }
 
 .contenedor { width: min(100% - 3rem, var(--ancho)); margin-inline: auto; }
 
+/* Las etiquetas pequeñas en Cinzel: rótulo de categoría, «Foto en camino»… */
+.etiqueta {
+  font-family: var(--rotulo); font-size: .74rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--oro-hondo);
+}
+
 /* ---------- Cabecera ---------- */
-.cabecera { position: sticky; top: 0; z-index: 20; background: var(--tinta); border-bottom: 1px solid rgba(201,160,85,.22); }
-.cabecera .contenedor { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem 2rem; min-height: 76px; }
-.marca { font-family: var(--display); font-size: 1.5rem; color: var(--oro-claro); margin-right: auto; }
-.nav { display: flex; gap: 2.25rem; }
+.cabecera { position: sticky; top: 0; z-index: 20; background: var(--tinta); }
+.cabecera .contenedor { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem 1.6rem; min-height: 76px; }
+.marca {
+  font-family: var(--rotulo); font-weight: 600; font-size: 1.3rem; letter-spacing: .06em;
+  color: var(--sobre-tinta); margin-right: auto;
+}
+.nav { display: flex; gap: 2rem; }
 .nav a {
+  display: inline-flex; align-items: center; min-height: 44px;
   font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600;
-  color: var(--sobre-tinta); padding-block: .35rem;
+  color: var(--sobre-tinta);
   border-bottom: 1px solid transparent;
   transition: color .18s ease, border-color .18s ease;
 }
 .nav a:hover { color: var(--oro-claro); border-bottom-color: var(--oro); }
-.nav a[aria-current="page"] { color: var(--oro); }
+/* El acento sobre el verde se queda en 3,8:1: la entrada actual va en claro
+   y se marca con el subrayado, que no es texto. */
+.nav a[aria-current="page"] { color: var(--sobre-tinta); border-bottom: 2px solid var(--oro); }
 
-/* ---------- Botón ---------- */
-.boton {
-  display: inline-flex; align-items: center; gap: .6rem;
-  background: var(--oro); color: var(--tinta);
-  font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-  padding: .8rem 1.5rem; border: 0; cursor: pointer;
-  transition: background .18s ease, transform .18s ease;
+/* El selector de idioma (idiomas.css) y la cesta (cesta.css), retocados para
+   la cabecera verde. Lo que cambia es el color y el alto, no cómo funcionan. */
+.cabecera .idiomas a, .cabecera .idiomas span { min-height: 44px; }
+.cabecera .idiomas a { color: var(--tenue-tinta); }
+.cabecera .idiomas a:hover { color: var(--oro-claro); }
+.cabecera .idiomas span[aria-current] { color: var(--sobre-tinta); border-bottom: 2px solid var(--oro); }
+
+/* La franja de horizonte: los tejados del barrio en verde sobre la sección
+   alterna. Es puro adorno, y por eso es un fondo y no una imagen. No va
+   pegada a la cabecera: al bajar se queda arriba, que es donde se lee. */
+.horizonte {
+  height: 30px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 28' preserveAspectRatio='none'%3E%3Cpath fill='%23536d5c' d='M0 28V18h14v-6h8V8h4v4h14v4h12v-6l8-6 8 6v6h16v4h12v-6h12V6h4V2h2v4h4v8h14v4h18v-7h12v4h14V9q8-6 16 0v8h14v-5h12v6h22v10Z'/%3E%3C/svg%3E") bottom left / 240px 28px repeat-x,
+    linear-gradient(var(--crema-2), var(--crema-2));
+  border-bottom: 4px solid var(--tinta);
 }
-.boton:hover { background: var(--oro-claro); transform: translateY(-1px); }
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 44px;
+  background: var(--oro); color: var(--texto);
+  font-family: var(--cuerpo);
+  font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
+  padding: .7rem 1.4rem; border: 1px solid var(--oro); border-radius: 3px; cursor: pointer;
+  transition: background .18s ease, transform .18s ease, border-color .18s ease;
+}
+.boton:hover { background: var(--oro-claro); border-color: var(--oro-claro); transform: translateY(-1px); }
 .boton svg { width: 17px; height: 17px; flex: none; }
+/* El segundo botón: sólo borde. El marrón llega a 3:1 de sobra como borde de
+   un control, y el texto en --texto. */
+.boton-borde { background: transparent; border-color: var(--oro-hondo); color: var(--texto); }
+.boton-borde:hover { background: var(--papel); border-color: var(--oro-hondo); color: var(--oro-hondo); }
 
 /* Dato que todavía no es real. Se ve a la legua a propósito. */
-.pendiente { background: #f6e3bd; color: var(--tinta); padding: .05rem .4rem; font-weight: 600; letter-spacing: .04em; }
+.pendiente { background: #f6e3bd; color: var(--texto); padding: .05rem .4rem; font-weight: 600; letter-spacing: .04em; }
 
 /* ---------- Pie ---------- */
 .pie { background: var(--tinta); color: var(--tenue-tinta); }
 .pie .contenedor { padding-block: 2.25rem; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; font-size: .85rem; }
-.pie a { border-bottom: 1px solid rgba(201,160,85,.3); }
+.pie a { border-bottom: 1px solid rgba(246,236,224,.35); }
 .pie a:hover { color: var(--oro-claro); }
 /* El Instagram. Va en medio de la fila, entre el copyright y las legales, y
-   con la arroba al lado del icono: así es un dato de contacto y no un adorno.
-   El subrayado del pie se queda, que es lo que hace que se vea que es un
-   enlace, pero se aparta del icono para no cruzarlo por debajo. */
+   con la arroba al lado del icono: así es un dato de contacto y no un adorno. */
 .pie-social a { display: inline-flex; align-items: center; gap: .45rem; border-bottom: 0; }
-.pie-social a span { border-bottom: 1px solid rgba(201,160,85,.3); }
+.pie-social a span { border-bottom: 1px solid rgba(246,236,224,.35); }
 .pie-social a:hover span { border-bottom-color: var(--oro-claro); }
 .pie-social svg { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.4; }
 
 /* ---------- Adaptación a pantallas pequeñas ---------- */
 @media (max-width: 900px) {
-  :root { --alto-cabecera: 116px; }
-  .cabecera .contenedor { min-height: 60px; padding-block: .55rem; }
-  .marca { font-size: 1.25rem; }
+  :root { --alto-cabecera: 124px; }
+  .cabecera .contenedor { min-height: 60px; padding-block: .4rem; }
+  .marca { font-size: 1.1rem; }
   .nav {
     order: 3; width: 100%; gap: 1.5rem;
     overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
-    padding-bottom: .15rem;
   }
   .nav::-webkit-scrollbar { display: none; }
   .nav a { white-space: nowrap; }
 }
 @media (max-width: 560px) {
-  :root { --alto-cabecera: 120px; }
+  :root { --alto-cabecera: 128px; }
   .contenedor { width: min(100% - 2rem, var(--ancho)); }
+  .cabecera .contenedor { gap: .3rem .7rem; }
+  .marca { font-size: 1rem; letter-spacing: .03em; }
+  .cabecera .boton { padding: .6rem .8rem; letter-spacing: .08em; }
+  .horizonte { height: 22px; background-size: 180px 21px, auto; }
+}
+/* A 400 px no caben marca, idiomas, cesta y WhatsApp en una fila: el botón de
+   WhatsApp se queda en el icono (lleva su texto para lectores de pantalla). */
+@media (max-width: 440px) {
+  .cabecera .boton .boton-texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .cabecera .boton { padding: .6rem .7rem; }
+}
+
+/* En el móvil la cabecera va en dos filas y no en tres: arriba la marca, la
+   cesta y WhatsApp; abajo el menú, que se desliza, y los idiomas a su
+   derecha. En tres filas, fija arriba, se comía un quinto de la pantalla. */
+@media (max-width: 900px) {
+  /* La base del menú no cabe en la primera fila, así que salta a la
+     segunda; los idiomas (unos 6,5rem más el hueco) caben a su lado. */
+  .cabecera .nav { flex: 1 1 calc(100% - 10rem); width: auto; min-width: 0; gap: 1.1rem; }
+  .cabecera .idiomas { order: 4; }
+}
+@media (max-width: 360px) {
+  .marca { font-size: .82rem; letter-spacing: .02em; }
+  .cabecera .contenedor { gap: .3rem .5rem; }
+}
+/* Hasta 700 px la cesta va sólo con icono y cuenta: en catalán «Cistella» y
+   «Demanar» no caben en la primera fila junto a la marca. */
+@media (max-width: 700px) {
+  .cesta-enlace .cesta-rotulo { display: none; }
+}
+/* Entre 900 y 1100 px (tabletas apaisadas, portátiles pequeños) la cabecera
+   va en una fila, pero justa: menos aire, la marca algo menor y la cesta
+   sólo con el icono y la cuenta (el rótulo lo dice su aria-label). */
+@media (min-width: 901px) and (max-width: 1100px) {
   .cabecera .contenedor { gap: .4rem 1rem; }
+  .nav { gap: 1.3rem; }
   .marca { font-size: 1.12rem; }
-  .cabecera .boton { padding: .7rem 1.05rem; letter-spacing: .1em; }
+  .cesta-enlace .cesta-rotulo { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

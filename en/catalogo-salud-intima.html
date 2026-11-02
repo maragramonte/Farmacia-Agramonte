@@ -14,10 +14,11 @@
 <meta name="description" content="Intimate health at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).">
 <title>Intimate health — Farmàcia Agramonte</title>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#2a1d12">
+<meta name="theme-color" content="#3f5649">
 <!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
      por idioma: desde ca/ se piden con ../ -->
-<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/cinzel-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../tipografias.css">
 <link rel="stylesheet" href="../marca.css">
@@ -39,15 +40,15 @@
 <header class="cabecera">
   <div class="contenedor">
     <a class="marca" href="index.html">Farmàcia Agramonte</a>
-    <nav class="nav" aria-label="Principal">
+    <nav class="nav" aria-label="Main">
       <a href="index.html">Home</a>
       <a href="index.html#categorias">Categories</a>
       <a href="historia.html">About us</a>
       <a href="index.html#contacto">Contact</a>
     </nav>
     <nav class="idiomas" aria-label="Language">
-      <a href="../catalogo-salud-intima.html" lang="es" hreflang="es" title="View this page in Español">ES</a>
-      <a href="../ca/catalogo-salud-intima.html" lang="ca" hreflang="ca" title="View this page in Català">CA</a>
+      <a href="../catalogo-salud-intima.html" lang="es" hreflang="es" title="Ver esta página en español">ES</a>
+      <a href="../ca/catalogo-salud-intima.html" lang="ca" hreflang="ca" title="Veure aquesta pàgina en català">CA</a>
       <span aria-current="true" title="Current language: English">EN</span>
     </nav>
     <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
@@ -57,10 +58,11 @@
     </a>
     <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
-      Order
+      <span class="boton-texto">Order</span>
     </a>
   </div>
 </header>
+<div class="horizonte" aria-hidden="true"></div>
 
 <main class="contenedor">
 
@@ -87,52 +89,62 @@
   <div class="productos">
 
     <article class="producto">
-      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div>
+      <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">Intimate health</span><span class="bote-nombre">Ainara Vaginal Moisturising Gel</span><span class="bote-pie">Photo on its way</span></div></div>
       <div class="cuerpo">
-        <h2><a href="catalogo-salud-intima-ainara-gel-hidratante-vaginal-30-g.html">Ainara Gel Hidratante Vaginal</a></h2>
+        <h2><a href="catalogo-salud-intima-ainara-gel-hidratante-vaginal-30-g.html">Ainara Vaginal Moisturising Gel</a></h2>
         <p class="resumen">Intimate care product. Ask the pharmacy about format, price and availability.</p>
         <p class="formato">30 g</p>
         <div class="acciones">
-          <button type="button" class="anadir" data-cesta-anade hidden data-id="salud-intima-ainara-gel-hidratante-vaginal-30-g" data-nombre="Ainara Gel Hidratante Vaginal" data-formato="30 g" data-url="catalogo-salud-intima-ainara-gel-hidratante-vaginal-30-g.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add</button>
-          <a class="boton" href="https://wa.me/34661192472?text=Hello%2C%20I%20wanted%20to%20ask%20about%20Ainara%20Gel%20Hidratante%20Vaginal." target="_blank" rel="noopener" aria-label="Ask about Ainara Gel Hidratante Vaginal on WhatsApp">Ask</a>
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="salud-intima-ainara-gel-hidratante-vaginal-30-g" data-nombre="Ainara Vaginal Moisturising Gel" data-formato="30 g" data-url="catalogo-salud-intima-ainara-gel-hidratante-vaginal-30-g.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add</button>
+          <a class="boton boton-borde" href="https://wa.me/34661192472?text=Hello%2C%20I%20wanted%20to%20ask%20about%20Ainara%20Vaginal%20Moisturising%20Gel." target="_blank" rel="noopener" aria-label="Ask about Ainara Vaginal Moisturising Gel on WhatsApp">Ask</a>
         </div>
       </div>
     </article>
 
     <article class="producto">
-      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div>
+      <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">Cumlaude</span><span class="bote-nombre">Hydra Spray Emulsion</span><span class="bote-pie">Photo on its way</span></div></div>
       <div class="cuerpo">
-        <h2><a href="catalogo-salud-intima-cumlaude-hydra-spray-emulsion-75-ml.html">Cumlaude Hydra Spray Emulsión</a></h2>
+        <h2><a href="catalogo-salud-intima-cumlaude-hydra-spray-emulsion-75-ml.html">Cumlaude Hydra Spray Emulsion</a></h2>
         <p class="resumen">Intimate care product. Ask the pharmacy about format, price and availability.</p>
         <p class="formato">75 ml</p>
         <div class="acciones">
-          <button type="button" class="anadir" data-cesta-anade hidden data-id="salud-intima-cumlaude-hydra-spray-emulsion-75-ml" data-nombre="Cumlaude Hydra Spray Emulsión" data-formato="75 ml" data-url="catalogo-salud-intima-cumlaude-hydra-spray-emulsion-75-ml.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add</button>
-          <a class="boton" href="https://wa.me/34661192472?text=Hello%2C%20I%20wanted%20to%20ask%20about%20Cumlaude%20Hydra%20Spray%20Emulsi%C3%B3n." target="_blank" rel="noopener" aria-label="Ask about Cumlaude Hydra Spray Emulsión on WhatsApp">Ask</a>
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="salud-intima-cumlaude-hydra-spray-emulsion-75-ml" data-nombre="Cumlaude Hydra Spray Emulsion" data-formato="75 ml" data-url="catalogo-salud-intima-cumlaude-hydra-spray-emulsion-75-ml.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add</button>
+          <a class="boton boton-borde" href="https://wa.me/34661192472?text=Hello%2C%20I%20wanted%20to%20ask%20about%20Cumlaude%20Hydra%20Spray%20Emulsion." target="_blank" rel="noopener" aria-label="Ask about Cumlaude Hydra Spray Emulsion on WhatsApp">Ask</a>
         </div>
       </div>
     </article>
 
     <article class="producto">
-      <div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div>
+      <div class="foto foto-bote"><div class="bote" aria-hidden="true"><span class="bote-marca">Intimate health</span><span class="bote-nombre">Melagyn Intimate Hygiene Gel</span><span class="bote-pie">Photo on its way</span></div></div>
       <div class="cuerpo">
-        <h2><a href="catalogo-salud-intima-melagyn-gel-higiene-intima-200-ml.html">Melagyn Gel de Higiene Íntima</a></h2>
+        <h2><a href="catalogo-salud-intima-melagyn-gel-higiene-intima-200-ml.html">Melagyn Intimate Hygiene Gel</a></h2>
         <p class="resumen">Intimate care product. Ask the pharmacy about format, price and availability.</p>
         <p class="formato">200 ml</p>
         <div class="acciones">
-          <button type="button" class="anadir" data-cesta-anade hidden data-id="salud-intima-melagyn-gel-higiene-intima-200-ml" data-nombre="Melagyn Gel de Higiene Íntima" data-formato="200 ml" data-url="catalogo-salud-intima-melagyn-gel-higiene-intima-200-ml.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add</button>
-          <a class="boton" href="https://wa.me/34661192472?text=Hello%2C%20I%20wanted%20to%20ask%20about%20Melagyn%20Gel%20de%20Higiene%20%C3%8Dntima." target="_blank" rel="noopener" aria-label="Ask about Melagyn Gel de Higiene Íntima on WhatsApp">Ask</a>
+          <button type="button" class="anadir" data-cesta-anade hidden data-id="salud-intima-melagyn-gel-higiene-intima-200-ml" data-nombre="Melagyn Intimate Hygiene Gel" data-formato="200 ml" data-url="catalogo-salud-intima-melagyn-gel-higiene-intima-200-ml.html"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add</button>
+          <a class="boton boton-borde" href="https://wa.me/34661192472?text=Hello%2C%20I%20wanted%20to%20ask%20about%20Melagyn%20Intimate%20Hygiene%20Gel." target="_blank" rel="noopener" aria-label="Ask about Melagyn Intimate Hygiene Gel on WhatsApp">Ask</a>
         </div>
       </div>
     </article>
 
   </div>
 
-  <div class="cierre">
-    <h2>How to order</h2>
-    <p>With “Add” you note down whatever you like in <a href="cesta.html">your basket</a>, which stays saved in this browser and you can change whenever you want. When you are done, the basket writes the message for you and you send it to us on WhatsApp: we prepare it, confirm the price and you collect it at the counter.</p>
-    <p><strong>Nothing is paid here</strong> and we do not ask you for any personal details: this is not an online shop, it is a way to order without having to type the products out one by one. The counter is also where we can advise you.</p>
-    <p>If you would rather call, the number is <a href="tel:+34933195921">933 19 59 21</a>, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30.</p>
-  </div>
+  <section class="cierre cierre-pizarra">
+    <div class="pizarra">
+      <p class="pizarra-titulo">Nothing is paid here</p>
+      <ol>
+        <li>Add what you need</li>
+        <li>Send us the basket on WhatsApp</li>
+        <li>Collect it at the counter</li>
+      </ol>
+    </div>
+    <div class="cierre-texto">
+      <h2>How to order</h2>
+      <p>With “Add” you note down whatever you like in <a href="cesta.html">your basket</a>, which stays saved in this browser and you can change whenever you want. When you are done, the basket writes the message for you and you send it to us on WhatsApp: we prepare it, confirm the price and you collect it at the counter.</p>
+      <p><strong>Nothing is paid here</strong> and we do not ask you for any personal details: this is not an online shop, it is a way to order without having to type the products out one by one. The counter is also where we can advise you.</p>
+      <p>If you would rather call, the number is <a href="tel:+34933195921">933 19 59 21</a>, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30.</p>
+    </div>
+  </section>
 
 </main>
 

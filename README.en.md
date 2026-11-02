@@ -89,9 +89,10 @@ invite in each other. They are warnings, not corrections.
 ## Styling
 
 A single intentional theme, not light/dark: it is a brand identity, so it looks
-the same for everyone. Ink `#2a1d12`, cream `#f5f0e6`, gold `#c9a055`, with
-Playfair Display for headings and Karla for body text, both self-hosted under
-`tipografias/` with their OFL licences.
+the same for everyone. Green `#3f5649`, cream `#f6ece0`, amber `#f0a24a`, with
+Instrument Serif for headings, Cinzel for small-caps labels, Karla for body
+text and Caveat for the chalkboard, all self-hosted under `tipografias/` with
+their OFL licences.
 
 Note that the site has **three headers and three footers**, one per family of
 pages, which do not share a stylesheet. Anything meant to appear "everywhere"

@@ -8,36 +8,17 @@
    página no le pide nada a nadie: ni una sola petición externa.
 
    Son de licencia libre (SIL Open Font License 1.1), así que se pueden
-   redistribuir. El texto completo de las dos licencias está en
-   tipografias/, como la propia licencia exige.
+   redistribuir. El texto completo de cada licencia está en tipografias/,
+   como la propia licencia exige.
 
-   Playfair Display y Karla son fuentes VARIABLES: un mismo fichero
-   cubre todo el rango de pesos, así que 400 y 500 —o 400 y 600— no
-   son dos descargas, sino una. De ahí que basten tres ficheros.
+   Karla, Cinzel y Caveat son fuentes VARIABLES: un mismo fichero cubre
+   todo el rango de pesos. Instrument Serif tiene un solo peso, y su
+   cursiva va en fichero aparte.
 
    Sólo se incluye el subconjunto latino. El texto de la web cabe
    entero en él; los únicos caracteres que se salen son las flechas
-   ← y →, que ya antes se dibujaban con la tipografía del sistema.
+   ← y →, que se dibujan con la tipografía del sistema.
    --------------------------------------------------------------- */
-
-@font-face {
-  font-family: "Playfair Display";
-  font-style: normal;
-  font-weight: 400 500;              /* variable: cubre el rango de una vez */
-  font-display: swap;
-  src: url(tipografias/playfair-display-variable.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* La itálica de «de tu barrio», en el titular. */
-@font-face {
-  font-family: "Playfair Display";
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(tipografias/playfair-display-cursiva.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 @font-face {
   font-family: "Karla";
@@ -45,5 +26,49 @@
   font-weight: 400 600;              /* 400 el texto, 600 las mayusculillas */
   font-display: swap;
   src: url(tipografias/karla-variable.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Rediseño 07 ----------
+   Las tres del catálogo nuevo, también OFL y también sólo el subconjunto
+   latino. Una @font-face no descarga nada hasta que algo la usa, así que
+   la portada, que aún no las usa, no paga por ellas.
+     Cinzel            el rótulo y las etiquetas (variable, 400–900)
+     Instrument Serif  los titulares (un solo peso, y su cursiva)
+     Caveat            la pizarra, y sólo la pizarra (variable) */
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url(tipografias/cinzel-variable.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(tipografias/instrument-serif.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* La cursiva, para el «de tu barrio» del titular de la portada. */
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(tipografias/instrument-serif-cursiva.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Caveat";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(tipografias/caveat-variable.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }

@@ -17,35 +17,39 @@
 
 /* ---------------------------------------------------------------
    Farmàcia Agramonte — landing
-   Paleta y tipografía tomadas del diseño original (Diseño del boceto.png).
+   Paleta y tipografía del rediseño 07, las mismas que el catálogo.
    Tema único e intencionado: la identidad de marca se ve igual para todos.
    --------------------------------------------------------------- */
 :root {
-  --tinta:        #2a1d12;
-  --tinta-honda:  #1e140c;
-  --tinta-clara:  #3d2c1c;
-  --crema:        #f5f0e6;
-  --crema-2:      #eae2d2;
-  --crema-3:      #e0d6c2;
-  --oro:          #c9a055;
-  --oro-claro:    #e0c285;
-  --texto:        #3a2c1f;
-  --texto-tenue:  #6e5d4b;
-  --sobre-tinta:  #f0e8db;
-  --tenue-tinta:  #b6a48c;
-
-  /* Oro para texto pequeño sobre crema. El de marca se queda en 2,1:1 de
-     contraste y no hay quien lo lea; este da 5,6:1 sobre --crema y 4,9:1
-     sobre --crema-2 (el fondo de la tarjeta de contacto), así que cumple la
-     AA en los dos sin salirse del tono. Sobre tinta el bueno sigue
-     siendo --oro. */
-  --oro-hondo:    #7a5a21;
+  /* Paleta 07: la misma que marca.css, con los mismos nombres. Los
+     contrastes están comprobados en la cabecera de marca.css; los que
+     importan aquí: el acento sobre el verde se queda en 3,8:1, así que
+     como texto sólo va en tamaños grandes (el «de tu barrio», el
+     monograma) y para texto pequeño sobre verde se usa --oro-claro. */
+  --tinta:        #3f5649;   /* verde del pie, la cabecera y el hero */
+  --tinta-honda:  #34483d;
+  --tinta-clara:  #4a6354;
+  --verde:        #536d5c;
+  --crema:        #f6ece0;   /* fondo */
+  --crema-2:      #ecd3b9;   /* sección alterna */
+  --crema-3:      #dcc6ad;   /* líneas */
+  --papel:        #fdf8f1;
+  --oro:          #f0a24a;   /* acento */
+  --oro-claro:    #f6c07f;
+  --texto:        #2e2420;
+  --texto-tenue:  #5e4a3e;
+  --sobre-tinta:  #f6ece0;
+  --tenue-tinta:  #d9c7b0;
+  /* El marrón, para texto pequeño de marca sobre lo claro: 6,8:1 sobre
+     --crema-2 y más sobre --crema. */
+  --oro-hondo:    #6a3420;
 
   --ancho: 1120px;
   /* Lo que mide la cabecera fija, más un respiro. Las anclas se paran ahí. */
   --alto-cabecera: 96px;
-  --display: "Playfair Display", "Iowan Old Style", Georgia, serif;
-  --cuerpo: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --rotulo:  "Cinzel", "Trajan Pro", Georgia, serif;
+  --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --cuerpo:  "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -71,58 +75,76 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; 
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }
 
+/* El foco en marrón sobre lo claro y en acento sobre lo verde: el acento
+   sobre la crema se queda en 1,9:1 y no se vería. */
 :where(a, button):focus-visible {
-  outline: 2px solid var(--oro);
+  outline: 2px solid var(--oro-hondo);
   outline-offset: 3px;
   border-radius: 2px;
 }
+:where(.cabecera, .hero, .banda, .pie) :where(a, button):focus-visible { outline-color: var(--oro); }
 
 .contenedor { width: min(100% - 3rem, var(--ancho)); margin-inline: auto; }
 
 .etiqueta {
+  font-family: var(--rotulo);
   font-size: .72rem;
   letter-spacing: .16em;
   text-transform: uppercase;
   font-weight: 600;
 }
 
-/* ---------- Cabecera ---------- */
-.cabecera {
-  position: sticky; top: 0; z-index: 20;
-  background: var(--tinta);
-  border-bottom: 1px solid rgba(201,160,85,.22);
-}
+/* ---------- Cabecera ----------
+   La misma que la del catálogo (marca.css): verde, el rótulo en Cinzel y,
+   debajo, la franja de horizonte. */
+.cabecera { position: sticky; top: 0; z-index: 20; background: var(--tinta); }
 .cabecera .contenedor {
-  display: flex; align-items: center; flex-wrap: wrap; gap: .4rem 2rem;
+  display: flex; align-items: center; flex-wrap: wrap; gap: .4rem 1.6rem;
   min-height: 76px;
 }
 .marca {
-  font-family: var(--display);
-  font-size: 1.5rem;
-  color: var(--oro-claro);
-  letter-spacing: .01em;
+  font-family: var(--rotulo); font-weight: 600;
+  font-size: 1.3rem; letter-spacing: .06em;
+  color: var(--sobre-tinta);
   margin-right: auto;
 }
-.nav { display: flex; gap: 2.25rem; }
+.nav { display: flex; gap: 2rem; }
 .nav a {
+  display: inline-flex; align-items: center; min-height: 44px;
   font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
   font-weight: 600; color: var(--sobre-tinta);
-  padding-block: .35rem;
   border-bottom: 1px solid transparent;
   transition: color .18s ease, border-color .18s ease;
 }
 .nav a:hover { color: var(--oro-claro); border-bottom-color: var(--oro); }
-.nav a[aria-current="page"] { color: var(--oro); }
+.nav a[aria-current="page"] { color: var(--sobre-tinta); border-bottom: 2px solid var(--oro); }
+
+.cabecera .idiomas a, .cabecera .idiomas span { min-height: 44px; }
+.cabecera .idiomas a { color: var(--tenue-tinta); }
+.cabecera .idiomas a:hover { color: var(--oro-claro); }
+.cabecera .idiomas span[aria-current] { color: var(--sobre-tinta); border-bottom: 2px solid var(--oro); }
+
+/* La franja de horizonte: los tejados del barrio. Copia de la de marca.css;
+   si cambias una, cambia la otra. */
+.horizonte {
+  height: 30px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 28' preserveAspectRatio='none'%3E%3Cpath fill='%23536d5c' d='M0 28V18h14v-6h8V8h4v4h14v4h12v-6l8-6 8 6v6h16v4h12v-6h12V6h4V2h2v4h4v8h14v4h18v-7h12v4h14V9q8-6 16 0v8h14v-5h12v6h22v10Z'/%3E%3C/svg%3E") bottom left / 240px 28px repeat-x,
+    linear-gradient(var(--crema-2), var(--crema-2));
+  border-bottom: 4px solid var(--tinta);
+}
 
 .boton {
-  display: inline-flex; align-items: center; gap: .6rem;
-  background: var(--oro); color: var(--tinta);
-  font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-  padding: .8rem 1.5rem;
-  border: 0; cursor: pointer;
-  transition: background .18s ease, transform .18s ease;
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 44px;
+  background: var(--oro); color: var(--texto);
+  font-family: var(--cuerpo);
+  font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
+  padding: .7rem 1.4rem;
+  border: 1px solid var(--oro); border-radius: 3px; cursor: pointer;
+  transition: background .18s ease, transform .18s ease, border-color .18s ease;
 }
-.boton:hover { background: var(--oro-claro); transform: translateY(-1px); }
+.boton:hover { background: var(--oro-claro); border-color: var(--oro-claro); transform: translateY(-1px); }
 .boton svg { width: 17px; height: 17px; flex: none; }
 
 /* ---------- Hero ---------- */
@@ -134,17 +156,19 @@ a { color: inherit; text-decoration: none; }
 }
 .lugar {
   display: inline-block;
-  border: 1px solid rgba(201,160,85,.5);
+  border: 1px solid rgba(240,162,74,.55);
   color: var(--oro-claro);
   padding: .45rem 1rem;
   margin-bottom: 1.75rem;
 }
 .hero h1 {
-  font-size: clamp(2.6rem, 5.2vw, 4rem);
-  line-height: 1.06;
+  font-size: clamp(2.9rem, 6vw, 4.6rem);
+  line-height: 1;
   color: var(--sobre-tinta);
   margin-bottom: 1.9rem;
 }
+/* En el acento: 3,8:1 sobre el verde, que vale porque es texto grande
+   (la AA pide 3:1 a partir de 24 px). En la cursiva de Instrument Serif. */
 .hero h1 em { font-style: italic; color: var(--oro); display: block; }
 
 .microcopia {
@@ -162,8 +186,8 @@ a { color: inherit; text-decoration: none; }
 .escaparate {
   position: relative;
   aspect-ratio: 4 / 3.4;
-  background: linear-gradient(160deg, #3b2a1a, #241811);
-  border: 1px solid rgba(201,160,85,.2);
+  background: linear-gradient(160deg, #6a3420, #3d1f13);
+  border: 6px double rgba(246,236,224,.55); border-radius: 4px;
   overflow: hidden;
 }
 .escaparate svg { width: 100%; height: 100%; display: block; }
@@ -177,7 +201,7 @@ a { color: inherit; text-decoration: none; }
 }
 .nota-foto {
   position: absolute; left: 0; bottom: 0;
-  background: rgba(30,20,12,.82);
+  background: rgba(46,36,32,.84);
   color: var(--tenue-tinta);
   font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
   padding: .5rem .85rem;
@@ -222,7 +246,7 @@ a { color: inherit; text-decoration: none; }
 .cajon::before {
   content: "";
   position: absolute; inset: 7px;
-  border: 1px solid rgba(201,160,85,.3);
+  border: 1px solid rgba(106,52,32,.3);
   pointer-events: none;
   transition: border-color .18s ease;
 }
@@ -231,18 +255,18 @@ a { color: inherit; text-decoration: none; }
   content: "";
   width: 30px; height: 6px;
   border-radius: 999px;
-  background: var(--oro);
+  background: var(--oro-hondo);
   opacity: .5;
   transition: opacity .18s ease;
 }
-.cajon:hover { border-color: var(--oro); background: var(--crema); transform: translateY(-2px); }
-.cajon:hover::before { border-color: rgba(201,160,85,.55); }
+.cajon:hover { border-color: var(--oro-hondo); background: var(--papel); transform: translateY(-2px); }
+.cajon:hover::before { border-color: rgba(106,52,32,.55); }
 .cajon:hover::after { opacity: 1; }
-.cajon svg { width: 26px; height: 26px; flex: none; stroke: var(--oro); fill: none; stroke-width: 1.3; }
+.cajon svg { width: 26px; height: 26px; flex: none; stroke: var(--verde); fill: none; stroke-width: 1.4; }
 
 .apunte { margin-top: 1.4rem; color: var(--texto-tenue); font-size: .93rem; max-width: 60ch; }
 .apunte a { border-bottom: 1px solid var(--crema-3); }
-.apunte a:hover { color: var(--oro-hondo); border-bottom-color: var(--oro); }
+.apunte a:hover { color: var(--oro-hondo); border-bottom-color: var(--oro-hondo); }
 
 /* ---------- Servicios de la farmacia ---------- */
 .servicios-intro { max-width: 64ch; color: var(--texto-tenue); margin: -1.2rem 0 1.8rem; }
@@ -250,21 +274,21 @@ a { color: inherit; text-decoration: none; }
 .servicio { min-height: 150px; padding: 1.35rem; border: 1px solid var(--crema-3); background: var(--crema-2); }
 .servicio h3, .take-care h3 { font-family: var(--cuerpo); font-size: 1rem; font-weight: 600; margin-bottom: .55rem; }
 .servicio p, .take-care p { color: var(--texto-tenue); font-size: .92rem; }
-.take-care { margin-top: 1.5rem; padding: 1.6rem 1.8rem; border-left: 3px solid var(--oro); background: var(--crema-2); }
+.take-care { margin-top: 1.5rem; padding: 1.6rem 1.8rem; border-left: 3px solid var(--verde); background: var(--crema-2); }
 .take-care .leer { display: inline-block; margin-top: .8rem; }
 
 /* ---------- Novedades y consejos ---------- */
 .novedades-intro { max-width: 64ch; color: var(--texto-tenue); margin: -1.2rem 0 1.8rem; }
 .novedades-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .novedad { display: flex; flex-direction: column; min-height: 220px; padding: 1.35rem; border: 1px solid var(--crema-3); background: var(--crema-2); }
-.novedad-categoria { color: var(--oro-hondo); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: .8rem; }
-.novedad h3 { font-size: 1.18rem; line-height: 1.3; margin-bottom: .7rem; }
+.novedad-categoria { font-family: var(--rotulo); color: var(--oro-hondo); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: .8rem; }
+.novedad h3 { font-size: 1.4rem; line-height: 1.3; margin-bottom: .7rem; }
 .novedad > p:not(.novedad-categoria) { color: var(--texto-tenue); font-size: .9rem; margin-bottom: 1rem; }
 .novedad .leer, .articulo-novedad .leer { display: inline-block; margin-top: auto; }
 .articulos-novedades { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.articulo-novedad { display: flex; flex-direction: column; min-height: 250px; padding: 1.5rem; border: 1px solid var(--crema-3); border-top: 3px solid var(--oro); background: var(--crema-2); }
+.articulo-novedad { display: flex; flex-direction: column; min-height: 250px; padding: 1.5rem; border: 1px solid var(--crema-3); border-top: 3px solid var(--verde); background: var(--crema-2); }
 .articulo-novedad time { color: var(--texto-tenue); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .7rem; }
-.articulo-novedad h3 { font-size: 1.15rem; line-height: 1.3; margin-bottom: .7rem; }
+.articulo-novedad h3 { font-size: 1.4rem; line-height: 1.3; margin-bottom: .7rem; }
 .articulo-novedad p { color: var(--texto-tenue); font-size: .9rem; margin-bottom: 1rem; }
 
 /* ---------- Banda oscura ----------
@@ -274,7 +298,7 @@ a { color: inherit; text-decoration: none; }
    ella, para que el fondo llegue de borde a borde. */
 .banda { background: var(--tinta); color: var(--tenue-tinta); }
 .banda h2 { color: var(--sobre-tinta); }
-.banda .valores { --raya: rgba(201,160,85,.22); }
+.banda .valores { --raya: rgba(246,236,224,.2); }
 .banda .valor h3 { color: var(--sobre-tinta); }
 .banda .valor p { color: var(--tenue-tinta); }
 
@@ -328,13 +352,11 @@ a { color: inherit; text-decoration: none; }
 
 /* Huecos de imagen del blog */
 .hueco {
-  background:
-    radial-gradient(120% 90% at 30% 20%, rgba(201,160,85,.16), transparent 60%),
-    linear-gradient(150deg, var(--crema-3), #cdbfa6);
+  background: var(--crema-2);
   display: grid; place-items: center;
   min-height: 150px;
 }
-.hueco svg { width: 40px; height: 40px; stroke: rgba(58,44,31,.4); fill: none; stroke-width: 1.1; }
+.hueco svg { width: 40px; height: 40px; stroke: rgba(106,52,32,.45); fill: none; stroke-width: 1.1; }
 
 /* ---------- Barra de datos ---------- */
 .datos {
@@ -343,7 +365,7 @@ a { color: inherit; text-decoration: none; }
   padding: 2.5rem 3rem;
 }
 .dato { display: flex; gap: .9rem; }
-.dato svg { width: 26px; height: 26px; flex: none; stroke: var(--oro); fill: none; stroke-width: 1.3; }
+.dato svg { width: 26px; height: 26px; flex: none; stroke: var(--verde); fill: none; stroke-width: 1.3; }
 .dato h3 { font-family: var(--cuerpo); font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
 .dato p, .dato a { font-size: .89rem; color: var(--texto-tenue); }
 .dato a:hover { color: var(--oro-hondo); }
@@ -358,8 +380,9 @@ a { color: inherit; text-decoration: none; }
   align-items: start;
   padding-bottom: 3rem;
 }
-.pie h3 { font-family: var(--display); font-size: 1.35rem; color: var(--oro-claro); margin-bottom: .8rem; }
-.pie h4 { font-family: var(--display); font-size: 1rem; color: var(--oro); margin: 0 0 .9rem; font-weight: 500; }
+.pie h3 { font-family: var(--rotulo); font-weight: 600; font-size: 1.15rem; letter-spacing: .06em; color: var(--sobre-tinta); margin-bottom: .8rem; }
+/* En --oro-claro: el acento a este tamaño se queda en 3,8:1 sobre el verde. */
+.pie h4 { font-family: var(--rotulo); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-claro); margin: 0 0 .9rem; font-weight: 600; }
 /* Ojo con el selector: tiene que ser .pie-rejilla y no .pie. Esta regla es
    para el párrafo de marca de la primera columna -«Desde 1890 cuidando de tu
    salud...»-, que se lee mejor estrecho. Escrita como «.pie p» alcanzaba
@@ -372,7 +395,7 @@ a { color: inherit; text-decoration: none; }
 .pie li a { font-size: .89rem; transition: color .18s ease; }
 .pie li a:hover { color: var(--oro-claro); }
 .sociales { display: flex; gap: 1rem; margin-top: 1.4rem; }
-.sociales a { display: grid; place-items: center; width: 22px; height: 22px; transition: color .18s ease; }
+.sociales a { display: grid; place-items: center; width: 44px; height: 44px; margin: -11px; transition: color .18s ease; }
 .sociales a:hover { color: var(--oro); }
 .sociales svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.4; }
 
@@ -384,14 +407,14 @@ a { color: inherit; text-decoration: none; }
   justify-self: end; align-self: center;
   width: clamp(96px, 11vw, 136px); aspect-ratio: 1;
   border-radius: 50%;
-  border: 1px solid rgba(201,160,85,.4);
+  border: 4px double rgba(240,162,74,.6);
   display: grid; place-items: center;
   font-family: var(--display); font-size: clamp(2.6rem, 5vw, 3.6rem);
   line-height: 1; color: var(--oro);
 }
 
 .pie-legal {
-  border-top: 1px solid rgba(201,160,85,.18);
+  border-top: 1px solid rgba(246,236,224,.18);
   padding: 1.4rem 1.5rem;
   text-align: center;
   font-size: .8rem;
@@ -402,7 +425,7 @@ a { color: inherit; text-decoration: none; }
    página dándolo por bueno. Al rellenarlo, quitar también el <span>. */
 .pendiente {
   background: #f6e3bd;
-  color: var(--tinta);
+  color: var(--texto);
   padding: .05rem .4rem;
   font-weight: 600;
   letter-spacing: .04em;
@@ -413,16 +436,15 @@ a { color: inherit; text-decoration: none; }
   /* La cabecera pasa a dos filas: marca y botón arriba, el menú debajo en una
      tira que se desliza si no cabe. Antes el menú se ocultaba del todo y en el
      móvil no había manera de llegar a las secciones. */
-  :root { --alto-cabecera: 116px; }
-  .cabecera .contenedor { min-height: 60px; padding-block: .55rem; }
-  .marca { font-size: 1.25rem; }
+  :root { --alto-cabecera: 124px; }
+  .cabecera .contenedor { min-height: 60px; padding-block: .4rem; }
+  .marca { font-size: 1.1rem; }
   .nav {
     order: 3; width: 100%;
     gap: 1.5rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
-    padding-bottom: .15rem;
   }
   .nav::-webkit-scrollbar { display: none; }
   .nav a { white-space: nowrap; }
@@ -444,13 +466,14 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 560px) {
   /* Con 3rem de aire a los lados, en una pantalla de 320px el contenido se
      queda sin sitio y la cabecera se desborda. */
-  :root { --alto-cabecera: 120px; }
+  :root { --alto-cabecera: 128px; }
   .contenedor { width: min(100% - 2rem, var(--ancho)); }
   /* En 320px la marca y el botón suman más que el ancho disponible si el
      hueco entre ellos sigue siendo de 2rem, y el botón se cae de fila. */
-  .cabecera .contenedor { gap: .4rem 1rem; }
-  .marca { font-size: 1.12rem; }
-  .cabecera .boton { padding: .7rem 1.05rem; letter-spacing: .1em; }
+  .cabecera .contenedor { gap: .3rem .7rem; }
+  .marca { font-size: 1rem; letter-spacing: .03em; }
+  .cabecera .boton { padding: .6rem .8rem; letter-spacing: .08em; }
+  .horizonte { height: 22px; background-size: 180px 21px, auto; }
   .seccion { padding-block: 3rem; }
   /* Con diez categorías, un cajón por fila son casi 800px de scroll sólo
      aquí. En dos columnas caben en la mitad y se leen igual de bien.
@@ -470,11 +493,53 @@ a { color: inherit; text-decoration: none; }
   .cajon svg { width: 22px; height: 22px; }
   .consejos { padding: 1.5rem; }
   .datos { grid-template-columns: 1fr; padding: 1.75rem 1.5rem; }
+  .servicios-grid, .novedades-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .servicio, .novedad { min-width: 0; overflow-wrap: break-word; hyphens: auto; }
   .servicio { min-height: 0; padding: 1rem; }
   .novedad { min-height: 0; padding: 1rem; }
   .take-care { padding: 1.3rem; }
   .secundario { grid-template-columns: 1fr; }
   .pie-rejilla { grid-template-columns: 1fr; }
+}
+
+/* A 400 px no caben marca, idiomas, cesta y WhatsApp en una fila: el botón
+   de la cabecera se queda en el icono (el texto sigue para lectores). */
+@media (max-width: 400px) {
+  /* En 320-400 px media pantalla no da para «Fotoprotección» en versalitas:
+     novedades y servicios pasan a una columna. */
+  .servicios-grid, .novedades-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 440px) {
+  .cabecera .boton .boton-texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .cabecera .boton { padding: .6rem .7rem; }
+}
+
+/* En el móvil la cabecera va en dos filas y no en tres: arriba la marca, la
+   cesta y WhatsApp; abajo el menú, que se desliza, y los idiomas a su
+   derecha. En tres filas, fija arriba, se comía un quinto de la pantalla. */
+@media (max-width: 900px) {
+  /* La base del menú no cabe en la primera fila, así que salta a la
+     segunda; los idiomas (unos 6,5rem más el hueco) caben a su lado. */
+  .cabecera .nav { flex: 1 1 calc(100% - 10rem); width: auto; min-width: 0; gap: 1.1rem; }
+  .cabecera .idiomas { order: 4; }
+}
+@media (max-width: 360px) {
+  .marca { font-size: .82rem; letter-spacing: .02em; }
+  .cabecera .contenedor { gap: .3rem .5rem; }
+}
+/* Hasta 700 px la cesta va sólo con icono y cuenta: en catalán «Cistella» y
+   «Demanar» no caben en la primera fila junto a la marca. */
+@media (max-width: 700px) {
+  .cesta-enlace .cesta-rotulo { display: none; }
+}
+/* Entre 900 y 1100 px (tabletas apaisadas, portátiles pequeños) la cabecera
+   va en una fila, pero justa: menos aire, la marca algo menor y la cesta
+   sólo con el icono y la cuenta (el rótulo lo dice su aria-label). */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .cabecera .contenedor { gap: .4rem 1rem; }
+  .nav { gap: 1.3rem; }
+  .marca { font-size: 1.12rem; }
+  .cesta-enlace .cesta-rotulo { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

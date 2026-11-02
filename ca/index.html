@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="en" href="https://maragramonte.github.io/Farmacia-Agramonte/en/">
 <link rel="alternate" hreflang="x-default" href="https://maragramonte.github.io/Farmacia-Agramonte/">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#2a1d12">
+<meta name="theme-color" content="#3f5649">
 
 <!-- Tarjeta al compartir el enlace (WhatsApp, Facebook, LinkedIn...).
      La imagen se regenera con: python herramientas/tarjeta-social.py -->
@@ -41,7 +41,8 @@
 
 <!-- Tipografías propias, servidas desde este mismo repositorio. Antes se
      pedían a Google Fonts, que era la única petición externa de la web. -->
-<link rel="preload" href="../tipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../tipografias/cinzel-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../tipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../tipografias.css">
 
@@ -101,7 +102,7 @@
 
 <header class="cabecera">
   <div class="contenedor">
-    <span class="marca">Farmacia Agramonte</span>
+    <span class="marca">Farmàcia Agramonte</span>
     <nav class="nav" aria-label="Principal">
       <a href="#inicio" aria-current="page">Inici</a>
       <a href="#categorias">Categories</a>
@@ -114,9 +115,9 @@
       <a href="#contacto">Contacte</a>
     </nav>
     <nav class="idiomas" aria-label="Idioma">
-      <a href="../index.html" lang="es" hreflang="es" title="Veure aquesta pàgina en Español">ES</a>
+      <a href="../index.html" lang="es" hreflang="es" title="Ver esta página en español">ES</a>
       <span aria-current="true" title="Idioma actual: Català">CA</span>
-      <a href="../en/index.html" lang="en" hreflang="en" title="Veure aquesta pàgina en English">EN</a>
+      <a href="../en/index.html" lang="en" hreflang="en" title="View this page in English">EN</a>
     </nav>
     <!-- Nace con hidden y lo destapa cesta.js: sin JavaScript no hay cesta. -->
     <a class="cesta-enlace" href="cesta.html" data-cesta-contador hidden>
@@ -126,10 +127,11 @@
     </a>
     <a class="boton" href="https://wa.me/34661192472" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5-4.6-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l1 2.3c0 .2 0 .4-.1.6l-.4.5c-.2.2-.4.3-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2 0 .4 0 .6-.2l.9-1c.2-.2.4-.2.7-.1l2.2 1c.3.2.4.3.5.4.1.2.1.7-.2 1.3Z"/></svg>
-      Demanar
+      <span class="boton-texto">Demanar</span>
     </a>
   </div>
 </header>
+<div class="horizonte" aria-hidden="true"></div>
 
 <main id="inicio">
 
@@ -153,17 +155,17 @@
         <svg viewBox="0 0 400 340" role="img" aria-label="Il·lustració del taulell de la farmàcia amb les estanteries de pots">
           <defs>
             <linearGradient id="madera" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#4a3521"/><stop offset="1" stop-color="#2c1e12"/>
+              <stop offset="0" stop-color="#6a3420"/><stop offset="1" stop-color="#3d1f13"/>
             </linearGradient>
           </defs>
           <rect width="400" height="340" fill="url(#madera)"/>
           <!-- Estanterías con botes -->
-          <g stroke="#c9a055" stroke-opacity=".55" fill="none">
+          <g stroke="#f0a24a" stroke-opacity=".55" fill="none">
             <line x1="30" y1="96"  x2="370" y2="96"  stroke-width="2"/>
             <line x1="30" y1="164" x2="370" y2="164" stroke-width="2"/>
             <line x1="30" y1="232" x2="370" y2="232" stroke-width="2"/>
           </g>
-          <g fill="#e6dcc8" fill-opacity=".82">
+          <g fill="#f6ece0" fill-opacity=".82">
             <!--
               Cada fila: botes de botica. Se generan por posición fija para que
               el dibujo sea estable y no dependa de JavaScript.
@@ -191,9 +193,9 @@
             </g>
           </g>
           <!-- Mostrador de mármol -->
-          <rect x="20" y="258" width="360" height="14" rx="3" fill="#d9cfba"/>
-          <rect x="34" y="272" width="332" height="68" fill="#3a2918"/>
-          <g stroke="#c9a055" stroke-opacity=".35" fill="none" stroke-width="1.5">
+          <rect x="20" y="258" width="360" height="14" rx="3" fill="#dcc6ad"/>
+          <rect x="34" y="272" width="332" height="68" fill="#4a2617"/>
+          <g stroke="#f0a24a" stroke-opacity=".35" fill="none" stroke-width="1.5">
             <rect x="58" y="288" width="80" height="42" rx="2"/>
             <rect x="160" y="288" width="80" height="42" rx="2"/>
             <rect x="262" y="288" width="80" height="42" rx="2"/>
@@ -207,18 +209,18 @@
              grupo más del decorado y se habría ido con él. -->
         <svg class="sello" viewBox="0 0 92 92" role="img" aria-label="Segell de la farmàcia: Farmàcia Agramonte, des del 1890">
           <g transform="translate(46,46)">
-            <circle r="45" fill="#241811" stroke="#c9a055" stroke-width="1.5"/>
-            <circle r="37" fill="none" stroke="#c9a055" stroke-opacity=".45"/>
+            <circle r="45" fill="#3f5649" stroke="#f0a24a" stroke-width="1.5"/>
+            <circle r="37" fill="none" stroke="#f0a24a" stroke-opacity=".45"/>
             <!-- El arco empieza ABAJO y da la vuelta entera. Así el 50% del
                  recorrido cae justo arriba, y con text-anchor="middle" el
                  rótulo se centra solo mida lo que mida: es lo que hace que no
                  se salga al traducirlo. -->
             <path id="arcoSello" d="M 0,28 A 28,28 0 0 1 0,-28 A 28,28 0 0 1 0,28" fill="none"/>
-            <text text-anchor="middle" fill="#c9a055" font-family="Karla, sans-serif" font-size="7.5" letter-spacing="1.8">
+            <text text-anchor="middle" fill="#f6c07f" font-family="Karla, sans-serif" font-size="7.5" letter-spacing="1.8">
               <textPath href="#arcoSello" startOffset="50%">· FARMÀCIA AGRAMONTE ·</textPath>
             </text>
-            <text y="-3" text-anchor="middle" fill="#c9a055" font-family="Karla, sans-serif" font-size="6.5" letter-spacing="2.2">DES DEL</text>
-            <text y="17" text-anchor="middle" fill="#e0c285" font-family="Playfair Display, serif" font-size="22">1890</text>
+            <text y="-3" text-anchor="middle" fill="#f6c07f" font-family="Karla, sans-serif" font-size="6.5" letter-spacing="2.2">DES DEL</text>
+            <text y="17" text-anchor="middle" fill="#f6ece0" font-family="Instrument Serif, serif" font-size="24">1890</text>
           </g>
         </svg>
         <span class="nota-foto">Il·lustració provisional — substituir per la foto del taulell</span>
@@ -290,7 +292,7 @@
       </article>
       <article class="novedad">
         <p class="novedad-categoria">Cosmètica corporal</p>
-        <h3><a href="catalogo-cosmetica-corporal-locion-reductora-detox-naturabio-cepillo.html">Loción reductora Detox NaturaBIO + cepillo</a></h3>
+        <h3><a href="catalogo-cosmetica-corporal-locion-reductora-detox-naturabio-cepillo.html">Loció reductora Detox NaturaBIO + raspall</a></h3>
         <p>200 ml. Loció corporal amb extracte d'alga, àloe vera i gingebre.</p>
         <a class="leer" href="catalogo-cosmetica-corporal-locion-reductora-detox-naturabio-cepillo.html">Veure producte <span>→</span></a>
       </article>
@@ -493,8 +495,8 @@
   <div class="pie-legal">
     <!-- «Número» va escrito entero a propósito: Karla dibuja la ordinal º como
          una o normal, así que «Nº de colegiada» se leía «No de colegiada». -->
-    <p>Farmacèutica titular: Zoila Agramonte Bucho ·
-       Número de col·legiada: 17594 ·
+    <p>Farmacèutica titular: Zoila Agramonte Buchó ·
+       Número de col·legiada: 9036 ·
        Col·legi de Farmacèutics de Barcelona</p>
     <p>© 2026 Farmàcia Agramonte. Tots els drets reservats.</p>
   </div>

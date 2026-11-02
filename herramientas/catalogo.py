@@ -193,6 +193,24 @@ ICONOS = {
     "cruz":    '<line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/>',
 }
 
+# Las marcas que se reconocen en el nombre del producto, para la etiqueta de la
+# ficha («Solares · La Roche-Posay») y para el bote que sale mientras no hay
+# foto. La primera columna es lo que se busca en el nombre; la segunda, la marca
+# que se escribe. Anthelios es una gama, no una marca: se reconoce, pero no se
+# quita del nombre corto. Un producto puede traer "marca" en el JSON, y entonces
+# manda ésa; si no trae y no se reconoce, la etiqueta va sin marca. Mejor eso
+# que una marca adivinada.
+MARCAS = [
+    ("La Roche-Posay", "La Roche-Posay"), ("Anthelios", "La Roche-Posay"),
+    ("Avène", "Avène"), ("CeraVe", "CeraVe"), ("Ducray", "Ducray"),
+    ("Eucerin", "Eucerin"), ("NaturaBIO", "NaturaBIO"), ("Heliocare", "Heliocare"),
+    ("Rilastil", "Rilastil"), ("Klorane", "Klorane"), ("ISDIN", "ISDIN"),
+    ("Bepanthol", "Bepanthol"), ("Chelino", "Chelino"), ("Suavinex", "Suavinex"),
+    ("Cumlaude", "Cumlaude"), ("Berocca", "Berocca"), ("Aboca", "Aboca"),
+    ("Farmalastic", "Farmalastic"), ("Alga Maris", "Alga Maris"),
+]
+GAMAS = {"Anthelios"}
+
 # Las secciones de la ficha, en el orden en que se leen, con la clave del JSON
 # de productos, la del título en textos.json y con qué se pinta cada una. Todas
 # son opcionales: si el producto no trae la clave, la sección no aparece. Una
@@ -236,7 +254,9 @@ ICONO_AVISO = (
 # El reportaje de prensa. Es el único enlace a un sitio ajeno que hay en la web
 # aparte de WhatsApp, y va aquí arriba para que se vea de un vistazo que existe.
 PRENSA_URL = "https://www.larepublica.cat/coronavirus/reportatge-la-barcelona-que-no-es-resigna/"
-PRENSA_TITULO = "Coronavirus: La Barcelona que no se resigna"
+# El titular tal como se publicó (10/09/2020), en catalán: es una cita y no
+# se traduce, así que va con lang="ca" en las tres versiones.
+PRENSA_TITULO = "La Barcelona que no es resigna"
 PRENSA_MEDIO = "La República"
 
 
@@ -261,7 +281,8 @@ def slug_producto(p):
     No depende del idioma a propósito: la misma página en catalán vive en
     ca/catalogo-solares-anthelios-age-correct-spf50.html, con el mismo nombre.
     Traducir los slugs duplicaría el trabajo de mantener URL estables y no
-    aporta nada: los nombres de producto son marcas y no se traducen."""
+    aporta nada, aunque el nombre sí se traduzca en lo que tiene de genérico
+    («Pañal» → «Bolquer»): la marca y la línea van igual en los tres."""
     if p.get("id"):
         return p["id"]
     # Del nombre en español, SIEMPRE, aunque estemos generando el catalán: la
@@ -300,7 +321,7 @@ def nombre_de(c_o_p, idioma, clave=None):
     return texto_de(c_o_p["nombre"], idioma, clave)
 
 
-def boton_anadir(c, p, idioma):
+def boton_anadir(c, p, idioma, rotulo="boton_anadir"):
     """El botón de añadir a la cesta.
 
     Nace con hidden y lo destapa cesta.js. Sin JavaScript no hay cesta, y un
@@ -314,7 +335,7 @@ def boton_anadir(c, p, idioma):
             % (escapa(id_cesta(c, p)), escapa(nombre_de(p, idioma)),
                escapa(texto_de(p.get("formato"), idioma) or ""),
                escapa(ruta_producto(c, p)),
-               ICONO_MAS, escapa(T("boton_anadir", idioma))))
+               ICONO_MAS, escapa(T(rotulo, idioma))))
 
 
 def precio_html(p, sangria):
@@ -435,12 +456,55 @@ def foto_de(c, p):
     return None
 
 
+def marca_de(p, idioma):
+    """La marca del producto: la del JSON si la trae, o la que se reconozca en
+    el nombre (ver MARCAS). Cadena vacía si no hay ninguna."""
+    if p.get("marca"):
+        return texto_de(p["marca"], idioma)
+    nombre = nombre_de(p, idioma).lower()
+    for busca, marca in MARCAS:
+        if busca.lower() in nombre:
+            return marca
+    return ""
+
+
+def nombre_corto(p, idioma):
+    """El nombre sin la marca, para el bote: la marca ya va encima en Cinzel y
+    repetida se come el sitio. «Muñequera Farmalastic de Neopreno» se queda en
+    «Muñequera de Neopreno». Las gamas (Anthelios) no se quitan."""
+    nombre = nombre_de(p, idioma)
+    for busca, _ in MARCAS:
+        if busca in GAMAS:
+            continue
+        i = nombre.lower().find(busca.lower())
+        if i >= 0:
+            nombre = nombre[:i] + nombre[i + len(busca):]
+            break
+    return " ".join(nombre.split()) or nombre_de(p, idioma)
+
+
 def foto_html(c, p, icono, idioma):
+    """La foto, o el bote mientras no la hay.
+
+    El bote es una etiqueta de farmacia dibujada en CSS: marco marrón doble,
+    la marca en Cinzel, el nombre corto en la serif y «Foto en camino». Antes
+    salía un icono gris con «Foto pendiente», que parecía un hueco; esto tiene
+    que parecer hecho a propósito. Va con aria-hidden porque no dice nada que
+    no diga ya el título de la tarjeta. Si no hay marca, va la categoría.
+
+    El icono de la categoría ya no se usa aquí; se deja el parámetro para no
+    tocar a quien llama."""
     ruta = foto_de(c, p)
     if ruta:
         return ('<div class="foto foto-real"><img src="%s%s" alt="%s" loading="lazy"></div>'
                 % (prefijo(idioma), escapa(ruta), escapa(nombre_de(p, idioma))))
-    return '<div class="foto"><svg viewBox="0 0 24 24" aria-hidden="true">%s</svg></div>' % icono
+    arriba = marca_de(p, idioma) or nombre_de(c, idioma, "nombre de categoria")
+    return ('<div class="foto foto-bote"><div class="bote" aria-hidden="true">'
+            '<span class="bote-marca">%s</span>'
+            '<span class="bote-nombre">%s</span>'
+            '<span class="bote-pie">%s</span></div></div>'
+            % (escapa(arriba), escapa(nombre_corto(p, idioma)),
+               escapa(T("foto_en_camino", idioma))))
 
 
 def tira(categorias, actual, idioma):
@@ -477,7 +541,7 @@ def ficha(c, p, icono, idioma):
         <p class="formato">%s</p>%s
         <div class="acciones">
           %s
-          <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="%s">%s</a>
+          <a class="boton boton-borde" href="%s" target="_blank" rel="noopener" aria-label="%s">%s</a>
         </div>
       </div>
     </article>""" % (
@@ -506,15 +570,30 @@ def aviso_plantilla(idioma):
 
 
 def cierre_pedido(idioma):
-    """El bloque de «cómo se pide» que va al pie de cada categoría con productos."""
+    """El bloque de «cómo se pide» que va al pie de cada categoría con productos.
+
+    A la izquierda, la pizarra de tiza de la farmacia: «Aquí no se paga nada» y
+    los tres pasos, en Caveat, que es la única vez que sale. A la derecha, la
+    explicación entera. La pizarra es lo que se lee de un vistazo; el texto, lo
+    que se lee si quedan dudas."""
     p1, p2, p3 = T("cierre_parrafos", idioma)
-    return """  <div class="cierre">
-    <h2>%s</h2>
-    <p>%s</p>
-    <p>%s</p>
-    <p>%s</p>
-  </div>
-""" % (escapa(T("cierre_titulo", idioma)),
+    pasos = "\n".join("        <li>%s</li>" % escapa(t) for t in T("pizarra_pasos", idioma))
+    return """  <section class="cierre cierre-pizarra">
+    <div class="pizarra">
+      <p class="pizarra-titulo">%s</p>
+      <ol>
+%s
+      </ol>
+    </div>
+    <div class="cierre-texto">
+      <h2>%s</h2>
+      <p>%s</p>
+      <p>%s</p>
+      <p>%s</p>
+    </div>
+  </section>
+""" % (escapa(T("pizarra_titulo", idioma)), pasos,
+       escapa(T("cierre_titulo", idioma)),
        p1 % "",
        p2,
        p3 % (TELEFONO_ENLACE, TELEFONO_VISIBLE))
@@ -559,9 +638,10 @@ def seccion(p, clave, clave_titulo, envoltura, idioma):
 
 
 def otros_de(c, actual, idioma):
-    """El resto de la categoría, al pie de la ficha. Sin foto y sin precio: es
-    un índice para seguir mirando, no otra rejilla de tarjetas."""
-    resto = [p for p in c["productos"] if slug_producto(p) != slug_producto(actual)]
+    """El resto de la categoría, al pie de la ficha: cuatro como mucho, en
+    lista. Sin foto y sin precio: es un índice para seguir mirando, no otra
+    rejilla de tarjetas. El enlace de abajo lleva a la categoría entera."""
+    resto = [p for p in c["productos"] if slug_producto(p) != slug_producto(actual)][:4]
     if not resto:
         return ""
     puntos = "\n".join(
@@ -615,7 +695,9 @@ def selector_idioma(idioma, fichero):
                           % (escapa(enlace_idioma(idioma, otro, fichero)),
                              IDIOMAS[otro]["etiqueta_html"],
                              IDIOMAS[otro]["etiqueta_html"],
-                             escapa(T("idioma_cambiar", idioma) % nombre), corto))
+                             # En el idioma del destino, como el lang del enlace:
+                             # «View this page in English», no «Ver esta página en English».
+                             escapa(T("idioma_cambiar", otro) % IDIOMAS[otro]["en_frase"]), corto))
     return """    <nav class="idiomas" aria-label="%s">
 %s
     </nav>""" % (escapa(T("idioma_aria", idioma)), "\n".join(trozos))
@@ -648,10 +730,11 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
 <meta name="description" content="%s">
 <title>%s</title>
 <link rel="icon" href="%sfavicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#2a1d12">
+<meta name="theme-color" content="#3f5649">
 <!-- Tipografías propias, servidas desde este mismo repositorio. No se duplican
      por idioma: desde ca/ se piden con ../ -->
-<link rel="preload" href="%stipografias/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="%stipografias/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="%stipografias/cinzel-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="%stipografias/karla-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="%stipografias.css">
 <link rel="stylesheet" href="%smarca.css">
@@ -673,7 +756,7 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
 <header class="cabecera">
   <div class="contenedor">
     <a class="marca" href="index.html">Farmàcia Agramonte</a>
-    <nav class="nav" aria-label="Principal">
+    <nav class="nav" aria-label="%s">
       <a href="index.html">%s</a>
       <a href="index.html#categorias">%s</a>
       <a href="historia.html"%s>%s</a>
@@ -687,10 +770,11 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
     </a>
     <a class="boton" href="https://wa.me/%s" target="_blank" rel="noopener">
       %s
-      %s
+      <span class="boton-texto">%s</span>
     </a>
   </div>
 </header>
+<div class="horizonte" aria-hidden="true"></div>
 %s
 <main class="contenedor">
 %s
@@ -714,7 +798,8 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
        robots, BASE, ruta_publica(idioma, fichero),
        alternativas(idioma, fichero),
        escapa(descripcion), escapa(titulo),
-       pre, pre, pre, pre, pre, pre, pre, pre, pre,
+       pre, pre, pre, pre, pre, pre, pre, pre, pre, pre,
+       escapa(T("nav_aria", idioma)),
        escapa(T("nav_inicio", idioma)),
        escapa(T("nav_categorias", idioma)),
        aqui_historia, escapa(T("nav_historia", idioma)),
@@ -771,7 +856,12 @@ def pagina(c, categorias, idioma):
 
 
 def pagina_producto(c, p, idioma):
-    """La ficha de un producto: foto, datos, epígrafes y el resto de la categoría."""
+    """La ficha de un producto: foto, datos, epígrafes y el resto de la categoría.
+
+    A la derecha de la foto: la etiqueta «Categoría · Marca», el nombre, el
+    resumen, un <dl> con formato, precio y recogida, y la compra (cantidad y
+    «Añadir a la cesta»), que es la acción principal. El WhatsApp queda como
+    enlace de dudas: sin JavaScript es lo único que se ve, y funciona."""
     icono = ICONOS[c["icono"]]
     es_plantilla = c.get("plantilla", False)
     coletilla = T("coletilla_plantilla", idioma) if es_plantilla else ""
@@ -781,38 +871,55 @@ def pagina_producto(c, p, idioma):
     secciones = "".join(seccion(p, clave, titulo, env, idioma)
                         for clave, titulo, env in SECCIONES)
 
+    # «Categoría · Marca», o sólo la categoría si la marca no se sabe.
+    marca = marca_de(p, idioma)
+    etiqueta = nombre_de(c, idioma) + (" · " + marca if marca else "")
+    # El precio no se publica (ver precio_html): en la ficha se dice cuándo se
+    # sabe, que es al preparar el encargo. Si algún producto lo trae, sale ése.
+    precio = escapa(p["precio"]) if p.get("precio") else escapa(T("ficha_precio_texto", idioma))
+
     contenido = """
   <p class="migas"><a href="index.html">%s</a> › <a href="index.html#categorias">%s</a> › <a href="catalogo-%s.html">%s</a> › %s</p>
 
   <div class="ficha-producto">
     %s
     <div class="datos">
+      <p class="etiqueta">%s</p>
       <h1>%s</h1>
-      <p class="formato">%s</p>
-      <p class="resumen">%s</p>%s
-      <div class="acciones">
+      <p class="resumen">%s</p>
+      <dl class="ficha-datos">
+        <div><dt>%s</dt><dd class="formato">%s</dd></div>
+        <div><dt>%s</dt><dd>%s</dd></div>
+        <div><dt>%s</dt><dd>%s</dd></div>
+      </dl>
+      <div class="compra" data-cesta-compra>
+        <div class="cantidad" role="group" aria-label="%s" data-cesta-selector hidden>
+          <button type="button" data-cesta-paso="-1" aria-label="%s">−</button>
+          <input type="number" inputmode="numeric" min="1" max="99" value="1" aria-label="%s" data-cesta-elige>
+          <button type="button" data-cesta-paso="1" aria-label="%s">+</button>
+        </div>
         %s
-        <a class="boton" href="%s" target="_blank" rel="noopener" aria-label="%s">
-          %s
-          %s
-        </a>
       </div>
       <p class="cesta-estado" data-cesta-estado="%s" hidden></p>
-      <p class="nota-consejo">%s</p>
+      <p class="dudas"><a href="%s" target="_blank" rel="noopener" aria-label="%s">%s %s</a></p>
     </div>
   </div>
 
 %s%s""" % (
         escapa(T("nav_inicio", idioma)), escapa(T("nav_categorias", idioma)),
         c["id"], escapa(nombre_de(c, idioma)), escapa(nombre),
-        foto_html(c, p, icono, idioma), escapa(nombre), formato_html(p, idioma),
-        resumen_html(p, idioma), precio_html(p, " " * 6),
-        boton_anadir(c, p, idioma),
+        foto_html(c, p, icono, idioma),
+        escapa(etiqueta), escapa(nombre), resumen_html(p, idioma),
+        escapa(T("ficha_formato", idioma)), formato_html(p, idioma),
+        escapa(T("ficha_precio", idioma)), precio,
+        escapa(T("ficha_recogida", idioma)), escapa(T("ficha_recogida_texto", idioma)),
+        escapa(T("cantidad", idioma)), escapa(T("cantidad_menos", idioma)),
+        escapa(T("cantidad", idioma)), escapa(T("cantidad_mas", idioma)),
+        boton_anadir(c, p, idioma, "boton_anadir_cesta"),
+        escapa(id_cesta(c, p)),
         escapa(enlace_whatsapp(consulta, idioma)),
         escapa(T("boton_preguntar_aria", idioma) % consulta),
-        ICONO_WHATSAPP, escapa(T("boton_preguntar_whatsapp", idioma)),
-        escapa(id_cesta(c, p)),
-        T("ficha_nota_consejo", idioma) % (TELEFONO_ENLACE, TELEFONO_VISIBLE),
+        ICONO_WHATSAPP, escapa(T("ficha_dudas", idioma)),
         secciones, otros_de(c, p, idioma))
 
     # Mientras la categoría sea plantilla, sus fichas van con noindex y, como
@@ -978,7 +1085,7 @@ def pagina_historia(idioma):
       <p>%s</p>
       <a class="prensa" href="%s" target="_blank" rel="noopener">
         <span class="prensa-medio">%s</span>
-        <strong>%s</strong>
+        <strong lang="ca">%s</strong>
         <span class="prensa-pie">%s</span>
       </a>
     </section>
@@ -1022,7 +1129,8 @@ RAIZ_PORTADA = (
     'href="cesta.css"',
     'href="idiomas.css"',
     'src="cesta.js"',
-    'href="tipografias/playfair-display-variable.woff2"',
+    'href="tipografias/instrument-serif.woff2"',
+    'href="tipografias/cinzel-variable.woff2"',
     'href="tipografias/karla-variable.woff2"',
 )
 

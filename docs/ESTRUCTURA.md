@@ -52,7 +52,7 @@ servir.bat          Doble clic para lo mismo, en Windows
 
 fotos/              Las fotos de los productos. Hoy vacía: ver su LEEME.txt
 
-favicon.svg         Icono de la pestaña: el monograma en oro sobre tinta
+favicon.svg         Icono de la pestaña: el monograma en ámbar sobre verde
 og.png              Imagen que se ve al compartir el enlace (1200×630)
 robots.txt          Permite indexar y apunta al sitemap
 sitemap.xml         Las páginas indexables de los tres idiomas. SE GENERA
@@ -63,12 +63,13 @@ LICENSE             Qué se puede hacer con este código y qué no
 docs/               Esta documentación
 
 tipografias/
-  playfair-display-variable.woff2  Los títulos. Fuente variable: un solo
-                                   fichero cubre del peso 400 al 500
-  playfair-display-cursiva.woff2   La itálica de «de tu barrio»
-  karla-variable.woff2             El texto, del 400 al 600
-  LICENCIA-karla.txt               SIL Open Font License 1.1
-  LICENCIA-playfairdisplay.txt     La OFL exige distribuirla con la fuente
+  instrument-serif.woff2           Los títulos. Un solo peso
+  instrument-serif-cursiva.woff2   La cursiva de «de tu barrio»
+  cinzel-variable.woff2            Los rótulos en versalitas. Variable
+  karla-variable.woff2             El texto, del 400 al 600. Variable
+  caveat-variable.woff2            La letra de tiza de la pizarra
+  LICENCIA-*.txt                   SIL Open Font License 1.1, una por
+                                   familia: la OFL exige que viaje con ella
 
 herramientas/
   catalogo.py           Escribe el catálogo, la historia, la cesta, las
@@ -81,6 +82,10 @@ herramientas/
   catalogo-datos.json   Los productos. Se edita ESTE
   importar.py           Vuelca un export en CSV al JSON de arriba
   tarjeta-social.py     Regenera og.png si cambia el lema o los datos
+
+tests/                  Los tests: python -m pytest. Ver TESTS.md
+pytest.ini              Dónde están los tests
+.github/workflows/      Los pasa en GitHub en cada push y pull request
 ```
 
 El boceto y el diseño visual (`diseno/`) están ignorados por git y viven sólo
