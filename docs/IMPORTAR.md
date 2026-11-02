@@ -29,6 +29,11 @@ Cuando llegue otro export más adelante se repite con el mismo CSV de
 selección: conserva lo ya marcado y añade lo nuevo sin marcar, así que sólo
 hay que mirar lo que ha aparecido desde la última vez.
 
+**Reimportar no pisa las fichas escritas.** Un producto que ya está en el JSON
+(misma URL) se queda como estaba, con su resumen, sus traducciones y sus
+epígrafes: el export sólo trae nombre y formato. Lo que sí cambia al
+sustituir es qué productos hay: los que ya no vengan marcados salen.
+
 ## Las opciones
 
 | Opción | Para qué |
@@ -36,7 +41,7 @@ hay que mirar lo que ha aparecido desde la última vez.
 | `--mapa mapa.json` | Qué familia del CSV va a qué categoría. Sin él no escribe |
 | `--seleccion sel.csv` | La lista de productos marcados uno a uno |
 | `--columna campo=COLUMNA` | Forzar una columna que no haya adivinado |
-| `--anadir` | Añadir a lo que ya hay en vez de reemplazar |
+| `--anadir` | Añadir a lo que ya hay en vez de reemplazar. Lo que ya estaba no se repite |
 | `--escribir` | El único que toca el JSON. Sin él, cuenta qué haría y para |
 
 **Sin `--escribir` no toca nada en ningún caso.** Adivina la codificación (los

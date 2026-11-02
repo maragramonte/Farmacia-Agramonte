@@ -28,3 +28,8 @@ def catalogo():
 @pytest.fixture(scope="session")
 def acentos():
     return carga("acentos")
+
+
+@pytest.fixture(scope="session")
+def importar():
+    return carga("importar")
