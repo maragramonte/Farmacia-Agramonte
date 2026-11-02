@@ -2,22 +2,30 @@
    Farmàcia Agramonte — hoja de estilo de las páginas de texto legal
    (aviso legal, privacidad y cookies).
 
-   La landing lleva su CSS dentro del propio index.html porque es una
-   página única. Estas tres comparten maquetación, así que el estilo
-   vive aquí en lugar de repetirse tres veces.
+   Estas tres comparten maquetación, así que el estilo vive aquí en lugar
+   de repetirse tres veces. Paleta y tipografía del rediseño 07, las mismas
+   que marca.css (catálogo) y portada.css, con los mismos nombres: si
+   cambias un color, míralos los tres. Los contrastes están comprobados en
+   la cabecera de marca.css.
    --------------------------------------------------------------- */
 :root {
-  --tinta:       #2a1d12;
-  --crema:       #f5f0e6;
-  --oro:         #c9a055;
-  --oro-claro:   #e0c285;
-  --texto:       #3a2c1f;
-  --texto-tenue: #6e5d4b;
-  --sobre-tinta: #f0e8db;
+  --tinta:        #3f5649;   /* verde de la cabecera y el pie */
+  --verde:        #536d5c;
+  --crema:        #f6ece0;   /* fondo */
+  --crema-2:      #ecd3b9;   /* sección alterna */
+  --crema-3:      #dcc6ad;   /* líneas */
+  --oro:          #f0a24a;   /* acento */
+  --oro-claro:    #f6c07f;
+  --oro-hondo:    #6a3420;   /* marrón */
+  --texto:        #2e2420;
+  --texto-tenue:  #5e4a3e;
+  --sobre-tinta:  #f6ece0;
+  --tenue-tinta:  #d9c7b0;
 
   --ancho: 760px;
-  --display: "Playfair Display", "Iowan Old Style", Georgia, serif;
-  --cuerpo: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --rotulo:  "Cinzel", "Trajan Pro", Georgia, serif;
+  --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --cuerpo:  "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -33,72 +41,95 @@ body {
 }
 
 a { color: inherit; }
-a:focus-visible { outline: 2px solid var(--oro); outline-offset: 3px; }
+/* El foco en marrón sobre lo claro y en acento sobre lo verde: el acento
+   sobre la crema se queda en 1,9:1 y no se vería. */
+a:focus-visible { outline: 2px solid var(--oro-hondo); outline-offset: 3px; }
+.cabecera a:focus-visible, .pie-legal a:focus-visible { outline-color: var(--oro); }
 
 .contenedor { width: min(100% - 3rem, var(--ancho)); margin-inline: auto; }
 
-/* ---------- Cabecera ---------- */
-.cabecera {
-  background: var(--tinta);
-  border-bottom: 1px solid rgba(201, 160, 85, .22);
-}
+/* ---------- Cabecera ----------
+   La del catálogo y la portada: verde, el rótulo en Cinzel y, debajo, la
+   franja de horizonte. */
+.cabecera { background: var(--tinta); }
 /* flex-wrap, como en portada.css y marca.css: con ancho de sobra no parte
    nada, y cuando no lo hay la cabecera pasa a dos filas en lugar de
    desbordarse a lo ancho. */
 .cabecera .contenedor {
-  display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+  display: flex; align-items: center; flex-wrap: wrap; gap: .4rem 1.5rem;
   min-height: 76px;
 }
 .marca {
-  font-family: var(--display);
-  font-size: 1.4rem;
-  color: var(--oro-claro);
+  font-family: var(--rotulo); font-weight: 600;
+  font-size: 1.25rem; letter-spacing: .06em;
+  color: var(--sobre-tinta);
   text-decoration: none;
   margin-right: auto;
 }
 .volver {
+  display: inline-flex; align-items: center; min-height: 44px;
   font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
   font-weight: 600; color: var(--sobre-tinta); text-decoration: none;
   border-bottom: 1px solid transparent;
 }
 .volver:hover { color: var(--oro-claro); border-bottom-color: var(--oro); }
 
+/* El selector de idioma (idiomas.css), con los colores de la cabecera verde. */
+.cabecera .idiomas a, .cabecera .idiomas span { min-height: 44px; }
+.cabecera .idiomas a { color: var(--tenue-tinta); text-decoration: none; }
+.cabecera .idiomas a:hover { color: var(--oro-claro); }
+.cabecera .idiomas span[aria-current] { color: var(--sobre-tinta); border-bottom: 2px solid var(--oro); }
+
+/* La franja de horizonte. Copia de la de marca.css y portada.css; si
+   cambias una, cambia las otras. */
+.horizonte {
+  height: 30px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 28' preserveAspectRatio='none'%3E%3Cpath fill='%23536d5c' d='M0 28V18h14v-6h8V8h4v4h14v4h12v-6l8-6 8 6v6h16v4h12v-6h12V6h4V2h2v4h4v8h14v4h18v-7h12v4h14V9q8-6 16 0v8h14v-5h12v6h22v10Z'/%3E%3C/svg%3E") bottom left / 240px 28px repeat-x,
+    linear-gradient(var(--crema-2), var(--crema-2));
+  border-bottom: 4px solid var(--tinta);
+}
+
 /* ---------- Texto ---------- */
-main { padding-block: 4rem 5rem; }
+main { padding-block: 3.5rem 5rem; }
 
 h1 {
   font-family: var(--display); font-weight: 400;
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  margin: 0 0 .4rem;
+  font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1.05;
+  margin: 0 0 .5rem;
   text-wrap: balance;
 }
 .actualizado {
-  font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--texto-tenue);
+  font-family: var(--rotulo); font-weight: 600;
+  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--oro-hondo);
   margin: 0 0 3rem;
 }
 
 h2 {
   font-family: var(--display); font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 1.7rem; line-height: 1.15;
   margin: 3rem 0 .75rem;
   padding-top: 1.75rem;
-  border-top: 1px solid rgba(42, 29, 18, .12);
+  border-top: 1px solid var(--crema-3);
 }
 h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
 
 p, li { margin: 0 0 1rem; }
 ul { padding-left: 1.2rem; }
+main a { color: var(--oro-hondo); text-decoration-color: rgba(106,52,32,.4); text-underline-offset: .2em; }
+main a:hover { text-decoration-color: var(--oro-hondo); }
 
-dl.ficha { margin: 0; }
+dl.ficha { margin: 0; border-top: 1px solid var(--crema-3); }
 dl.ficha div {
   display: grid; grid-template-columns: 12rem 1fr; gap: 1rem;
   padding: .7rem 0;
-  border-bottom: 1px solid rgba(42, 29, 18, .1);
+  border-bottom: 1px solid var(--crema-3);
 }
 dl.ficha dt {
-  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
-  font-weight: 600; color: var(--texto-tenue);
+  font-family: var(--rotulo);
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600; color: var(--oro-hondo);
   padding-top: .2rem;
 }
 dl.ficha dd { margin: 0; }
@@ -108,14 +139,13 @@ dl.ficha dd { margin: 0; }
 }
 
 @media (max-width: 560px) {
-  /* Esta cabecera era la única de las tres sin trato de móvil, y se notó al
-     añadir el inglés: con «Farmàcia Agramonte» a 1.4rem, el «Volver» y tres
-     códigos de idioma no se cabe en 320 px. Se le da lo mismo que ya tenían
-     portada.css y marca.css: menos aire a los lados, menos hueco entre
-     elementos y la marca más pequeña. */
+  /* Con «Farmàcia Agramonte», el «Volver» y tres códigos de idioma no se
+     cabe en 320 px: menos aire a los lados, menos hueco entre elementos y
+     la marca más pequeña, como en portada.css y marca.css. */
   .contenedor { width: min(100% - 2rem, var(--ancho)); }
-  .cabecera .contenedor { gap: .4rem 1rem; min-height: 60px; }
-  .marca { font-size: 1.12rem; }
+  .cabecera .contenedor { gap: .2rem .8rem; min-height: 60px; }
+  .marca { font-size: 1rem; letter-spacing: .03em; }
+  .horizonte { height: 22px; background-size: 180px 21px, auto; }
 }
 
 /* El aviso de que una traducción no la ha revisado nadie. Va arriba, en el
@@ -128,7 +158,7 @@ dl.ficha dd { margin: 0; }
   margin-bottom: 2.5rem;
   font-size: .95rem;
 }
-.pendiente-aviso a { border-bottom: 1px solid rgba(42, 29, 18, .3); }
+.pendiente-aviso a { border-bottom: 1px solid rgba(46, 36, 32, .3); }
 
 /* Dato que todavía no tenemos. Se ve a la legua para que nadie publique
    la página dándolo por bueno. */
@@ -139,10 +169,12 @@ dl.ficha dd { margin: 0; }
   font-size: .92em;
 }
 
-/* ---------- Pie ---------- */
+/* ---------- Pie ----------
+   El texto en --tenue-tinta (4,8:1 sobre el verde). El claro con
+   transparencia que llevaba antes se quedaría en 3,3:1. */
 .pie-legal {
   background: var(--tinta);
-  color: rgba(240, 232, 219, .55);
+  color: var(--tenue-tinta);
   text-align: center;
   font-size: .8rem;
   padding: 2rem 1.5rem;
