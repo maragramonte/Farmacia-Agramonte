@@ -5,6 +5,10 @@ pip install pytest      # una vez
 python -m pytest        # todos, en unos segundos
 ```
 
+Los de la tarjeta social (`test_tarjeta_social.py`) necesitan además Pillow,
+igual que el script que prueban. Sin él se saltan, no fallan; el CI lo
+instala y los pasa siempre.
+
 La web no los necesita para funcionar: son para quien la mantiene. Se pasan
 solos en GitHub en cada `push` y en cada pull request
 (`.github/workflows/tests.yml`), y un pull request en rojo es un aviso de

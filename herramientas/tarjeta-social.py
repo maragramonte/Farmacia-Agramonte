@@ -8,7 +8,8 @@ Facebook, LinkedIn o Telegram.
 Usa las mismas tipografías que la web, las de tipografias/: Pillow lee los
 .woff2 directamente. Paleta del rediseño 07: el verde de la cabecera, el
 acento, la crema y la franja de horizonte abajo. Si alguna fuente no
-cargara, cae en Georgia y Calibri, que ya están en Windows.
+cargara, cae en Georgia y Calibri, que ya están en Windows, y lo avisa: así
+no se publica una tarjeta con otra tipografía sin enterarse.
 
 Sólo hay que volver a ejecutarlo si cambian el lema, los datos de la
 farmacia o la paleta.
@@ -43,15 +44,30 @@ TEJADOS = [(0, 28), (0, 18), (14, 18), (14, 12), (22, 12), (22, 8), (26, 8), (26
 
 
 def fuente(propia, respaldo, tamano, peso=None):
+    """La tipografía de la web o, si no se puede leer, la de respaldo.
+
+    Leer .woff2 exige un FreeType con brotli, y no todas las instalaciones de
+    Pillow lo traen: por eso se prueba a abrirla y no sólo a ver si existe.
+    Cuando no sale la propia se dice en voz alta, porque og.png se publica y
+    con otra tipografía no se nota hasta que alguien comparte el enlace."""
     for ruta in (TIPOS / propia, WINDOWS / respaldo):
-        if ruta.exists():
+        if not ruta.exists():
+            continue
+        try:
             f = ImageFont.truetype(str(ruta), tamano)
-            if peso:
-                try:
-                    f.set_variation_by_axes([peso])
-                except (OSError, AttributeError):
-                    pass
-            return f
+        except OSError:
+            continue
+        if peso:
+            try:
+                f.set_variation_by_axes([peso])
+            except (OSError, AttributeError):
+                pass
+        if ruta.parent != TIPOS:
+            print("  AVISO: no he podido usar tipografias/%s; sale con %s."
+                  % (propia, ruta.name))
+        return f
+    print("  AVISO: ni tipografias/%s ni %s; sale con la fuente básica de Pillow."
+          % (propia, respaldo))
     return ImageFont.load_default(tamano)
 
 
