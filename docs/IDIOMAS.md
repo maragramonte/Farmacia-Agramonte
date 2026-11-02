@@ -145,8 +145,8 @@ mismo. Son nueve pasos; los seis primeros los lleva el generador, los tres
    y no el generador.
 7. Ejecuta el generador: escribe la carpeta entera, con sus `hreflang`, su
    selector y su parte del sitemap.
-8. Las tres legales hay que escribirlas a mano, y el aviso de traducción sin
-   revisar va puesto hasta que alguien las firme.
+8. Las tres legales hay que escribirlas a mano, con la nota de arriba que
+   dice que la española es la original y la que prevalece.
 9. Y a mano también, porque no se generan: el bloque del idioma en
    `404.html`, y su `hreflang` y su enlace en el selector de las **seis
    legales que ya existían** más `index.html`. Es lo único que el generador no

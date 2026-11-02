@@ -153,8 +153,6 @@ recorte cuando la lista no cabe en un enlace de WhatsApp.
   farmacia eso lo firma la casa, y una ficha corta es mejor que un epígrafe
   rellenado a ojo.
 - **A cuatro productos les falta el formato**, y salen con la marca amarilla.
-- **Las legales en catalán e inglés están traducidas pero sin revisar**, y lo
-  dicen arriba: la española es la que prevalece.
 - **La fecha de fundación se contradice**: la portada dice 1890 en seis
   sitios y la cronología de «Quiénes somos» va de 1600 a 2019. Falta decidir
   cuál es la buena.
