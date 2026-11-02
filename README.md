@@ -164,12 +164,14 @@ recorte cuando la lista no cabe en un enlace de WhatsApp.
 
 ## Puesta en marcha
 
-Sólo hace falta **Python 3**. No hay dependencias que instalar.
+Sólo hace falta **Python 3**. La web no tiene dependencias; los tests usan
+pytest. **→ [docs/TESTS.md](docs/TESTS.md)**
 
 ```
 python servir.py                   # ver la web en http://localhost:8000
 python herramientas/catalogo.py    # regenerar las 143 páginas y el sitemap
 python herramientas/acentos.py     # avisos de ortografía español/catalán
+python -m pytest                   # los tests (pip install pytest, una vez)
 ```
 
 En Windows, doble clic en `servir.bat` hace lo primero. El servidor imprime
@@ -204,6 +206,7 @@ tocar si se renombra el repositorio y qué haría falta para un dominio propio.
 │   ├── importar.py            Vuelca un export del programa de gestión
 │   ├── acentos.py             Ortografía que se confunde entre es y ca
 │   └── tarjeta-social.py      Regenera og.png
+├── tests/                Los tests (python -m pytest)
 ├── tipografias/          Instrument Serif, Cinzel, Karla y Caveat, con sus OFL
 ├── fotos/                Las fotos de producto. Hoy vacía
 ├── docs/                 Esta documentación
@@ -227,6 +230,7 @@ esa función.
 | [CESTA.md](docs/CESTA.md) | Cómo funciona, por qué no cobra y qué haría falta para que cobrara |
 | [IMPORTAR.md](docs/IMPORTAR.md) | Volcar un export de Farmatic, Unycop o Nixfarma al catálogo |
 | [DISENO.md](docs/DISENO.md) | Paleta, tipografías, los cajones, el sello y las dos reglas CSS que no se tocan |
+| [TESTS.md](docs/TESTS.md) | Qué comprueban los tests, qué no y cómo se pasan |
 | [PUBLICAR.md](docs/PUBLICAR.md) | Verla en local, GitHub Pages, renombrar el repositorio y el dominio propio |
 | [LA-FARMACIA.md](docs/LA-FARMACIA.md) | Datos, titular, historia, páginas legales y derechos |
 

@@ -82,6 +82,10 @@ herramientas/
   catalogo-datos.json   Los productos. Se edita ESTE
   importar.py           Vuelca un export en CSV al JSON de arriba
   tarjeta-social.py     Regenera og.png si cambia el lema o los datos
+
+tests/                  Los tests: python -m pytest. Ver TESTS.md
+pytest.ini              Dónde están los tests
+.github/workflows/      Los pasa en GitHub en cada push y pull request
 ```
 
 El boceto y el diseño visual (`diseno/`) están ignorados por git y viven sólo
