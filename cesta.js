@@ -185,6 +185,14 @@
     return n > TOPE_UNIDADES ? TOPE_UNIDADES : n;
   }
 
+  /* La url acaba en el href de la cesta. Escapar el HTML no basta: un
+     «javascript:…» se ejecutaría al pulsar. Las fichas siempre enlazan a un
+     archivo hermano (catalogo-….html), así que se exige esa forma y lo demás
+     se queda sin enlace. */
+  function urlDeFicha(url) {
+    return typeof url === "string" && /^[a-z0-9-]+\.html$/i.test(url) ? url : "";
+  }
+
   function leer() {
     var crudo = null;
     try {
@@ -210,7 +218,7 @@
         id: it.id,
         nombre: it.nombre,
         formato: typeof it.formato === "string" ? it.formato : "",
-        url: typeof it.url === "string" ? it.url : "",
+        url: urlDeFicha(it.url),
         cantidad: acota(it.cantidad)
       };
     });
