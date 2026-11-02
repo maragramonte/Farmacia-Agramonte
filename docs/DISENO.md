@@ -96,8 +96,8 @@ El recuadro amarillo quiere decir «esto falta y no es real». Se ve a la legua
 a propósito, así nadie publica la página dándolo por bueno, y al rellenar un
 dato hay que quitar también el `<span>` que lo envuelve.
 
-Hoy sigue en uso para **los cuatro productos a los que les falta el formato**
-y para el aviso de las páginas legales traducidas sin revisar. Los datos del
+Hoy sigue en uso para **los cuatro productos a los que les falta el
+formato**. Los datos del
 titular, que fueron su primer uso, ya están todos puestos.
 
 La regla que se siguió con ellos, por si vuelve a hacer falta: **un dato se

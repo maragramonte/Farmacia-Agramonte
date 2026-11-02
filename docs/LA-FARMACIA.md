@@ -84,10 +84,8 @@ Google Fonts (ver [DISENO.md](DISENO.md#la-web-no-pide-nada-a-nadie)), y la
 cesta vive en el `localStorage` del navegador y no sale de ahí (ver
 [CESTA.md](CESTA.md)).
 
-Las versiones catalana e inglesa **están traducidas pero sin revisar**, y lo
-dicen arriba en amarillo: la española es la original y la que prevalece. Son
-textos jurídicos, así que conviene que los lea alguien antes de quitar ese
-aviso.
+Las versiones catalana e inglesa son traducciones, y lo dicen arriba: la
+española es la original y la que prevalece en caso de discrepancia.
 
 El día que se pueda pagar aquí, estas tres hay que rehacerlas: ver
 [CESTA.md](CESTA.md#el-día-que-se-quiera-cobrar-de-verdad).
