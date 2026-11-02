@@ -160,7 +160,9 @@ def busca(texto, tabla, donde, avisos):
 def ela_geminada(texto, donde, avisos):
     """La ela geminada escrita con punto normal en vez de punt volat. Pasa al
     copiar de un sitio que no lo tiene."""
-    for m in re.finditer(r"\bl\.l", texto):
+    # Entre letras y no tras un límite de palabra: la ela geminada va siempre
+    # dentro de la palabra (col·legi), así que con \b no saltaba nunca.
+    for m in re.finditer(r"(?<=[^\W\d_])l\.l(?=[^\W\d_])", texto):
         trozo = " ".join(texto[max(0, m.start() - 25):m.end() + 25].split())
         avisos.append((donde, "l.l", "l·l", trozo))
 
