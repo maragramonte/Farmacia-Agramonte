@@ -68,11 +68,11 @@
   "portada": {
     "ca": [
       [
-        "<title>Farmàcia Agramonte — farmacia en El Born, Barcelona</title>",
+        "<title>Farmacia Agramonte — farmacia en El Born, Barcelona</title>",
         "<title>Farmàcia Agramonte — farmàcia al Born, Barcelona</title>"
       ],
       [
-        "Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
+        "Farmacia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
         "Farmàcia Agramonte, a la Plaça de la Llana (el Born, Barcelona). Envia'ns la teva recepta per WhatsApp, la preparem i t'avisem."
       ],
       [
@@ -84,7 +84,7 @@
         "Farmàcia de barri a la Plaça de la Llana (el Born, Barcelona) des del 1890. Envia la teva recepta per WhatsApp, la preparem i t'avisem."
       ],
       [
-        "Farmàcia Agramonte — consejo de siempre, de tu barrio",
+        "Farmacia Agramonte — consejo de siempre, de tu barrio",
         "Farmàcia Agramonte — consell de sempre, del teu barri"
       ],
       [
@@ -92,7 +92,7 @@
         "Il·lustració del taulell de la farmàcia amb les estanteries de pots"
       ],
       [
-        "Sello de la farmacia: Farmàcia Agramonte, desde 1890",
+        "Sello de la farmacia: Farmacia Agramonte, desde 1890",
         "Segell de la farmàcia: Farmàcia Agramonte, des del 1890"
       ],
       [
@@ -136,7 +136,7 @@
         "o truca'ns al "
       ],
       [
-        "¿Por qué elegir Farmàcia Agramonte?",
+        "¿Por qué elegir Farmacia Agramonte?",
         "Per què triar la Farmàcia Agramonte?"
       ],
       [
@@ -228,7 +228,7 @@
         "Col·legi de Farmacèutics de Barcelona</p>"
       ],
       [
-        "© 2026 Farmàcia Agramonte. Todos los derechos reservados.",
+        "© 2026 Farmacia Agramonte. Todos los derechos reservados.",
         "© 2026 Farmàcia Agramonte. Tots els drets reservats."
       ],
       [
@@ -359,16 +359,21 @@
       [
         "Pedir",
         "Demanar"
-      ]
+      ],
+      ["<meta property=\"og:site_name\" content=\"Farmacia Agramonte\">", "<meta property=\"og:site_name\" content=\"Farmàcia Agramonte\">"],
+      ["\"name\": \"Farmacia Agramonte\",", "\"name\": \"Farmàcia Agramonte\","],
+      ["<span class=\"marca\">Farmacia Agramonte</span>", "<span class=\"marca\">Farmàcia Agramonte</span>"],
+      ["<h3>Farmacia Agramonte</h3>", "<h3>Farmàcia Agramonte</h3>"],
+      ["· FARMACIA AGRAMONTE ·", "· FARMÀCIA AGRAMONTE ·"]
     ],
     "en": [
       [
-        "<title>Farmàcia Agramonte — farmacia en El Born, Barcelona</title>",
-        "<title>Farmàcia Agramonte — pharmacy in El Born, Barcelona</title>"
+        "<title>Farmacia Agramonte — farmacia en El Born, Barcelona</title>",
+        "<title>Farmacia Agramonte — pharmacy in El Born, Barcelona</title>"
       ],
       [
-        "Farmàcia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
-        "Farmàcia Agramonte, on Plaça de la Llana (El Born, Barcelona). Send us your prescription on WhatsApp, we prepare it and let you know."
+        "Farmacia Agramonte, en la Plaça de la Llana (El Born, Barcelona). Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
+        "Farmacia Agramonte, on Plaça de la Llana (El Born, Barcelona). Send us your prescription on WhatsApp, we prepare it and let you know."
       ],
       [
         "Farmacia en la Plaça de la Llana (El Born, Barcelona) desde 1890. Envíanos tu receta por WhatsApp, la preparamos y te avisamos.",
@@ -379,16 +384,16 @@
         "Neighbourhood pharmacy on Plaça de la Llana (El Born, Barcelona) since 1890. Send your prescription on WhatsApp, we prepare it and let you know."
       ],
       [
-        "Farmàcia Agramonte — consejo de siempre, de tu barrio",
-        "Farmàcia Agramonte — timeless advice, from your neighbourhood"
+        "Farmacia Agramonte — consejo de siempre, de tu barrio",
+        "Farmacia Agramonte — timeless advice, from your neighbourhood"
       ],
       [
         "Ilustración del mostrador de la farmacia con las estanterías de botes",
         "Illustration of the pharmacy counter with its shelves of jars"
       ],
       [
-        "Sello de la farmacia: Farmàcia Agramonte, desde 1890",
-        "Pharmacy seal: Farmàcia Agramonte, since 1890"
+        "Sello de la farmacia: Farmacia Agramonte, desde 1890",
+        "Pharmacy seal: Farmacia Agramonte, since 1890"
       ],
       [
         ">DESDE</text>",
@@ -431,8 +436,8 @@
         "or call us on "
       ],
       [
-        "¿Por qué elegir Farmàcia Agramonte?",
-        "Why choose Farmàcia Agramonte?"
+        "¿Por qué elegir Farmacia Agramonte?",
+        "Why choose Farmacia Agramonte?"
       ],
       [
         "Atención personalizada",
@@ -535,8 +540,8 @@
         "Col·legi de Farmacèutics de Barcelona</p>"
       ],
       [
-        "© 2026 Farmàcia Agramonte. Todos los derechos reservados.",
-        "© 2026 Farmàcia Agramonte. All rights reserved."
+        "© 2026 Farmacia Agramonte. Todos los derechos reservados.",
+        "© 2026 Farmacia Agramonte. All rights reserved."
       ],
       [
         "Medicamentos",
@@ -715,10 +720,15 @@
       "ca": "Veure aquesta pàgina en %s",
       "en": "View this page in %s"
     },
+    "marca": {
+      "es": "Farmacia Agramonte",
+      "ca": "Farmàcia Agramonte",
+      "en": "Farmacia Agramonte"
+    },
     "pie_derechos": {
-      "es": "© 2026 Farmàcia Agramonte",
+      "es": "© 2026 Farmacia Agramonte",
       "ca": "© 2026 Farmàcia Agramonte",
-      "en": "© 2026 Farmàcia Agramonte"
+      "en": "© 2026 Farmacia Agramonte"
     },
     "pie_aviso": {
       "es": "Aviso legal",
@@ -915,34 +925,34 @@
       "en": "To order: <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> or <a href=\"tel:%s\">%s</a>, Monday to Saturday from 9:00 to 14:30 and from 16:00 to 20:30."
     },
     "titulo_categoria": {
-      "es": "%s%s — Farmàcia Agramonte",
+      "es": "%s%s — Farmacia Agramonte",
       "ca": "%s%s — Farmàcia Agramonte",
-      "en": "%s%s — Farmàcia Agramonte"
+      "en": "%s%s — Farmacia Agramonte"
     },
     "desc_categoria": {
-      "es": "%s en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
+      "es": "%s en la Farmacia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
       "ca": "%s a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).",
-      "en": "%s at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
+      "en": "%s at Farmacia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
     },
     "titulo_producto": {
-      "es": "%s%s — Farmàcia Agramonte",
+      "es": "%s%s — Farmacia Agramonte",
       "ca": "%s%s — Farmàcia Agramonte",
-      "en": "%s%s — Farmàcia Agramonte"
+      "en": "%s%s — Farmacia Agramonte"
     },
     "desc_producto": {
-      "es": "%s En la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
+      "es": "%s En la Farmacia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
       "ca": "%s A la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).",
-      "en": "%s At Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
+      "en": "%s At Farmacia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
     },
     "cesta_titulo_pagina": {
-      "es": "Tu cesta — Farmàcia Agramonte",
+      "es": "Tu cesta — Farmacia Agramonte",
       "ca": "La teva cistella — Farmàcia Agramonte",
-      "en": "Your basket — Farmàcia Agramonte"
+      "en": "Your basket — Farmacia Agramonte"
     },
     "cesta_descripcion": {
-      "es": "Lo que has apuntado para encargar en la Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
+      "es": "Lo que has apuntado para encargar en la Farmacia Agramonte, Plaça de la Llana 11, El Born (Barcelona).",
       "ca": "El que has apuntat per encarregar a la Farmàcia Agramonte, Plaça de la Llana 11, el Born (Barcelona).",
-      "en": "What you have noted down to order at Farmàcia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
+      "en": "What you have noted down to order at Farmacia Agramonte, Plaça de la Llana 11, El Born (Barcelona)."
     },
     "cesta_h1": {
       "es": "Tu cesta",
@@ -1041,14 +1051,14 @@
       ]
     },
     "historia_titulo_pagina": {
-      "es": "Quiénes somos — Farmàcia Agramonte",
+      "es": "Quiénes somos — Farmacia Agramonte",
       "ca": "Qui som — Farmàcia Agramonte",
-      "en": "About us — Farmàcia Agramonte"
+      "en": "About us — Farmacia Agramonte"
     },
     "historia_descripcion": {
-      "es": "La Farmàcia Agramonte, antigua Farmàcia Joaquim Cases: tienda modernista protegida en la Plaça de la Llana, El Born (Barcelona), con referencias desde 1600.",
+      "es": "La Farmacia Agramonte, antigua Farmacia Joaquim Cases: tienda modernista protegida en la Plaça de la Llana, El Born (Barcelona), con referencias desde 1600.",
       "ca": "La Farmàcia Agramonte, antiga Farmàcia Joaquim Cases: botiga modernista protegida a la Plaça de la Llana, el Born (Barcelona), amb referències des del 1600.",
-      "en": "Farmàcia Agramonte, formerly Farmàcia Joaquim Cases: a protected Modernista shop on Plaça de la Llana, El Born (Barcelona), with records going back to 1600."
+      "en": "Farmacia Agramonte, formerly Farmacia Joaquim Cases: a protected Modernista shop on Plaça de la Llana, El Born (Barcelona), with records going back to 1600."
     },
     "historia_h1": {
       "es": "Quiénes somos",
@@ -1061,9 +1071,9 @@
       "en": "About us"
     },
     "historia_entradilla": {
-      "es": "En la Farmàcia Agramonte nos esforzamos todos los días para que nuestros clientes reciban el mejor servicio posible.",
+      "es": "En la Farmacia Agramonte nos esforzamos todos los días para que nuestros clientes reciban el mejor servicio posible.",
       "ca": "A la Farmàcia Agramonte ens esforcem cada dia perquè els nostres clients rebin el millor servei possible.",
-      "en": "At Farmàcia Agramonte we work every day so that our customers get the best service we can give them."
+      "en": "At Farmacia Agramonte we work every day so that our customers get the best service we can give them."
     },
     "historia_s1_h2": {
       "es": "Pasión por la salud",
@@ -1072,7 +1082,7 @@
     },
     "historia_s1": {
       "es": [
-        "En la Farmàcia Agramonte tenemos pasión por la salud, y por eso nuestro objetivo es proporcionar el mejor consejo farmacéutico con el trato más humano y profesional posible. Te acompañamos y te asesoramos en todas y cada una de tus consultas y tratamientos.",
+        "En la Farmacia Agramonte tenemos pasión por la salud, y por eso nuestro objetivo es proporcionar el mejor consejo farmacéutico con el trato más humano y profesional posible. Te acompañamos y te asesoramos en todas y cada una de tus consultas y tratamientos.",
         "La farmacia la regenta <strong>Zoila Agramonte Buchó</strong>, licenciada en Farmacia por la Universidad de La Habana, farmacéutica y dietista titulada, con más de treinta años de experiencia en el sector farmacéutico."
       ],
       "ca": [
@@ -1080,7 +1090,7 @@
         "La farmàcia la regenta <strong>Zoila Agramonte Buchó</strong>, llicenciada en Farmàcia per la Universitat de l'Havana, farmacèutica i dietista titulada, amb més de trenta anys d'experiència en el sector farmacèutic."
       ],
       "en": [
-        "At Farmàcia Agramonte we have a passion for health, and that is why our aim is to give the best pharmaceutical advice with the most human and professional care possible. We support and advise you through each and every one of your questions and treatments.",
+        "At Farmacia Agramonte we have a passion for health, and that is why our aim is to give the best pharmaceutical advice with the most human and professional care possible. We support and advise you through each and every one of your questions and treatments.",
         "The pharmacy is run by <strong>Zoila Agramonte Buchó</strong>, who holds a degree in Pharmacy from the University of Havana and is a qualified pharmacist and dietitian with more than thirty years of experience in the pharmaceutical sector."
       ]
     },
@@ -1091,19 +1101,19 @@
     },
     "historia_s2": {
       "es": [
-        "La Farmàcia Agramonte, antigua <strong>Farmàcia Joaquim Cases</strong>, es una tienda modernista protegida como <strong>Bien Cultural de Interés Local</strong> y catalogada como comercio emblemático de gran interés.",
+        "La Farmacia Agramonte, antigua <strong>Farmacia Joaquim Cases</strong>, es una tienda modernista protegida como <strong>bien cultural de interés local</strong> y catalogada como comercio emblemático de gran interés.",
         "La decoración actual del local viene de una reforma modernista de 1880, la época en la que la familia Cases creó una fórmula magistral que se popularizó por toda España e incluso en América, la «Solución Cases», famosa por su capacidad de paliar múltiples enfermedades y dolores.",
         "Por fuera, en la fachada destaca un mueble de madera aplacada que ocupa toda su superficie. Por dentro, los acabados modernistas propios de la época: cristales con motivos florales grabados al ácido, pavimento de mosaico hidráulico y muebles con acabados de ebanistería de líneas curvas y motivos florales.",
         "Esos motivos modernistas conviven con restos de arquitectura medieval, como el arco de piedra de carga del interior. Es del <strong>siglo XIII</strong>, uno de los que se construían para crear espacios flexibles donde instalar talleres, comercios y demás."
       ],
       "ca": [
-        "La Farmàcia Agramonte, antiga <strong>Farmàcia Joaquim Cases</strong>, és una botiga modernista protegida com a <strong>Bé Cultural d'Interès Local</strong> i catalogada com a comerç emblemàtic de gran interès.",
+        "La Farmàcia Agramonte, antiga <strong>Farmàcia Joaquim Cases</strong>, és una botiga modernista protegida com a <strong>bé cultural d'interès local</strong> i catalogada com a comerç emblemàtic de gran interès.",
         "La decoració actual del local ve d'una reforma modernista del 1880, l'època en què la família Cases va crear una fórmula magistral que es va popularitzar per tot Espanya i fins i tot a Amèrica, la «Solución Cases», famosa per la seva capacitat de pal·liar múltiples malalties i dolors.",
         "Per fora, a la façana destaca un moble de fusta aplacada que ocupa tota la superfície. Per dins, els acabats modernistes propis de l'època: vidres amb motius florals gravats a l'àcid, paviment de mosaic hidràulic i mobles amb acabats d'ebenisteria de línies corbes i motius florals.",
         "Aquests motius modernistes conviuen amb restes d'arquitectura medieval, com l'arc de pedra de càrrega de l'interior. És del <strong>segle XIII</strong>, un dels que es construïen per crear espais flexibles on instal·lar tallers, comerços i altres."
       ],
       "en": [
-        "Farmàcia Agramonte, formerly <strong>Farmàcia Joaquim Cases</strong>, is a Modernista shop protected as a <strong>Cultural Asset of Local Interest</strong> and listed as an emblematic business of great interest.",
+        "Farmacia Agramonte, formerly <strong>Farmacia Joaquim Cases</strong>, is a Modernista shop protected as a <strong>Cultural Asset of Local Interest</strong> and listed as an emblematic business of great interest.",
         "The interior as it stands today comes from a Modernista refurbishment of 1880, the period in which the Cases family created a compounded formula that became popular throughout Spain and even in the Americas, the “Solución Cases”, known for easing a wide range of ailments and pains.",
         "Outside, the façade is dominated by a panelled wooden shopfront covering its whole surface. Inside, the Modernista finishes typical of the period: glass with acid-etched floral motifs, hydraulic mosaic flooring, and cabinetwork with curved lines and floral detail.",
         "Those Modernista motifs sit alongside remains of medieval architecture, such as the stone load-bearing arch inside. It dates from the <strong>13th century</strong>, one of those built to make flexible spaces possible for workshops, shops and the like."

@@ -102,7 +102,7 @@ def main():
 
     d.line([x, 400, x, 470], fill=ACENTO, width=3)
     d.text((x + 24, 398), "Envíanos la receta, la preparamos y te avisamos.", font=cuerpo, fill=CREMA)
-    d.text((x + 24, 438), "Farmàcia Agramonte · desde 1890", font=cuerpo, fill=TENUE)
+    d.text((x + 24, 438), "Farmacia Agramonte · desde 1890", font=cuerpo, fill=TENUE)
 
     img.save(SALIDA, "PNG", optimize=True)
     print(f"Escrito {SALIDA.relative_to(RAIZ)} ({SALIDA.stat().st_size // 1024} KB)")

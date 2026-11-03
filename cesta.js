@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------
-   Farmàcia Agramonte — la cesta
+   Farmacia Agramonte — la cesta
 
    Una lista de lo que alguien quiere encargar, que se guarda en su propio
    navegador y acaba en un mensaje de WhatsApp. NO es una tienda: aquí no se

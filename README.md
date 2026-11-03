@@ -1,4 +1,4 @@
-# Farmàcia Agramonte
+# Farmacia Agramonte
 
 Web de una farmacia de barrio real, en la Plaça de la Llana (El Born,
 Barcelona). Enseña lo que hay en el mostrador, deja apuntar un encargo y lo
@@ -11,7 +11,7 @@ Web: <https://maragramonte.github.io/Farmacia-Agramonte/>
 
 *English summary: [`README.en.md`](README.en.md).*
 
-![Tarjeta de la web: sobre fondo verde, «Consejo de siempre, de tu barrio» en Instrument Serif con «de tu barrio» en cursiva ámbar, el lema «Envíanos la receta, la preparamos y te avisamos» y el pie «Farmàcia Agramonte · desde 1890»](og.png)
+![Tarjeta de la web: sobre fondo verde, «Consejo de siempre, de tu barrio» en Instrument Serif con «de tu barrio» en cursiva ámbar, el lema «Envíanos la receta, la preparamos y te avisamos» y el pie «Farmacia Agramonte · desde 1890»](og.png)
 
 ---
 
@@ -273,7 +273,7 @@ remoto.
 
 ## Licencia
 
-© 2026 Farmàcia Agramonte. Todos los derechos reservados.
+© 2026 Farmacia Agramonte. Todos los derechos reservados.
 
 El código, los textos y el diseño son de la farmacia. [`LICENSE`](LICENSE)
 dice qué se puede hacer con ellos y qué no: **no es una licencia libre**.

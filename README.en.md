@@ -1,4 +1,4 @@
-# Farmàcia Agramonte: website
+# Farmacia Agramonte: website
 
 Website: <https://maragramonte.github.io/Farmacia-Agramonte/>
 

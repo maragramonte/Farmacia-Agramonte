@@ -738,7 +738,7 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
 
 <header class="cabecera">
   <div class="contenedor">
-    <a class="marca" href="index.html">Farmàcia Agramonte</a>
+    <a class="marca" href="index.html">%s</a>
     <nav class="nav" aria-label="%s">
       <a href="index.html">%s</a>
       <a href="index.html#categorias">%s</a>
@@ -782,6 +782,7 @@ def documento(idioma, fichero, titulo, descripcion, contenido, es_plantilla,
        alternativas(idioma, fichero),
        escapa(descripcion), escapa(titulo),
        pre, pre, pre, pre, pre, pre, pre, pre, pre, pre,
+       escapa(T("marca", idioma)),
        escapa(T("nav_aria", idioma)),
        escapa(T("nav_inicio", idioma)),
        escapa(T("nav_categorias", idioma)),

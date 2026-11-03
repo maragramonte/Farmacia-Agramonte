@@ -41,9 +41,9 @@ y aquí ese Estado no es España.
 
 ## Quiénes somos
 
-`historia.html` cuenta de dónde viene la farmacia: que es la antigua Farmàcia
-Joaquim Cases, tienda modernista protegida como Bien Cultural de Interés
-Local, con referencias documentadas desde 1600, los Saurina hasta 1747, los
+`historia.html` cuenta de dónde viene la farmacia: que es la antigua Farmacia
+Joaquim Cases, tienda modernista protegida como bien cultural de interés
+local, con referencias documentadas desde 1600, los Saurina hasta 1747, los
 Cases de 1864 a 2014 y Zoila Agramonte Buchó como titular desde 2019. Lleva
 además el enlace al reportaje de *La República* sobre el barrio de Santa
 Caterina durante la pandemia.
