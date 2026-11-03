@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Servidor local para la web de la Farmàcia Agramonte.
+Servidor local para la web de la Farmacia Agramonte.
 
     python servir.py            # arranca en el puerto 8000 y abre el navegador
     python servir.py 3000       # usa otro puerto
@@ -117,7 +117,7 @@ def main():
     ip = ip_de_la_red()
 
     print()
-    print("  Farmàcia Agramonte — servidor local")
+    print("  Farmacia Agramonte — servidor local")
     print(f"  En este equipo   {local}")
     if ip:
         print(f"  En el móvil      http://{ip}:{puerto}/   (misma wifi)")

@@ -45,6 +45,8 @@ EN_CATALAN = {
     "instalar": "instal·lar", "excelent": "excel·lent",
     "ilustració*": "il·lustració", "ilustracio": "il·lustració",
     "passarela": "passarel·la",
+    # Acento que falta: «farmàcia» lo lleva siempre, también en el nombre.
+    "farmacia": "farmàcia", "parafarmacia": "parafarmàcia",
     # Palabras españolas que se cuelan
     "cesta": "cistella", "pañal": "bolquer", "champú": "xampú",
     "jarabe": "xarop", "aceite": "oli", "cabello": "cabell",
@@ -66,6 +68,8 @@ EN_ESPANOL = {
     "col·legi": "colegio", "cabell": "cabello", "bolquer": "pañal",
     "qualsevol": "cualquiera", "aquest": "este", "aquesta": "esta",
     "també": "también", "però": "pero", "amb": "con",
+    # El nombre de la farmacia va en español sin acento: «Farmacia Agramonte».
+    "farmàcia": "farmacia", "parafarmàcia": "parafarmacia",
 }
 
 # Y en un texto INGLÉS: lo que se queda sin traducir de los otros dos, y la
@@ -78,7 +82,8 @@ EN_INGLES = {
     "horario": "opening hours", "horari": "opening hours",
     "precio": "price", "preu": "price",
     "encargo": "order", "encàrrec": "order",
-    "farmacia": "pharmacy", "farmacéutic*": "pharmacist",
+    "farmacia": "pharmacy", "farmàcia": "pharmacy",
+    "farmacéutic*": "pharmacist",
     "farmacèutic*": "pharmacist",
     "aviso": "notice", "avís": "notice",
     "privacidad": "privacy", "privacitat": "privacy", "galetes": "cookies",
@@ -93,7 +98,7 @@ EN_INGLES = {
     "neighborhood*": "neighbourhood", "center": "centre",
     "favorite*": "favourite", "personaliz*": "personalis…",
     "authoriz*": "authoris…", "organiz*": "organis…",
-    "diaper*": "nappy",
+    "diaper*": "nappy", "matte": "matt",
 }
 
 TABLAS = {"es": EN_ESPANOL, "ca": EN_CATALAN, "en": EN_INGLES}
@@ -105,7 +110,7 @@ TABLAS = {"es": EN_ESPANOL, "ca": EN_CATALAN, "en": EN_INGLES}
 # dentro. Una cita entera en otro idioma no va aquí: se marca con lang en el
 # HTML, que además le dice al lector de pantalla cómo pronunciarla.
 PERDONADAS = {
-    "Farmàcia", "Plaça", "Llana", "Col·legi", "Farmacèutics", "Catalunya",
+    "Plaça", "Llana", "Col·legi", "Farmacèutics", "Catalunya",
     "Generalitat", "Salut", "Llei", "Avène", "Cases", "Joaquim", "Agramonte",
     "Caterina", "República", "Havana", "Barcelona", "Born", "Anthelios",
     "Hydrance", "Hydraphase", "Cleanance", "Solaire", "Dermo", "Pediatrics",
@@ -115,6 +120,15 @@ PERDONADAS = {
     "farmacia.lallana", "farmacia.agramonte",
     # Marcas con ortografía americana: el nombre es suyo.
     "Color Light", "Heliocare Color",
+}
+
+# Y lo que se perdona sólo en un idioma. El nombre de la farmacia se escribe
+# como lo pide cada uno: «Farmacia Agramonte» en español y en inglés, que en
+# inglés es un nombre propio y no se traduce, y «Farmàcia Agramonte» en
+# catalán. Perdonarlo en PERDONADAS lo taparía también en catalán, que es
+# justo donde le falta el acento.
+PERDONADAS_EN = {
+    "en": {"Farmacia Agramonte", "Farmacia Joaquim Cases"},
 }
 
 ETIQUETA = re.compile(r"<[^>]+>")
@@ -179,17 +193,19 @@ def texto_visible(html, idioma=None):
     return " ".join(v.trozos)
 
 
-def tramos_perdonados(texto):
-    """Dónde están, en el texto, los nombres de PERDONADAS."""
-    return [(m.start(), m.end())
-            for p in PERDONADAS for m in re.finditer(re.escape(p), texto)]
+def tramos_perdonados(texto, perdonadas=PERDONADAS):
+    """Dónde están, en el texto, los nombres que se perdonan. Entre palabra y
+    palabra vale cualquier espacio, porque el HTML parte las frases largas y
+    un nombre puede quedar a caballo de dos líneas."""
+    return [(m.start(), m.end()) for p in perdonadas
+            for m in re.finditer(r"\s+".join(map(re.escape, p.split())), texto)]
 
 
-def busca(texto, tabla, donde, avisos):
+def busca(texto, tabla, donde, avisos, perdonadas=PERDONADAS):
     # Se perdona lo que cae DENTRO de un nombre propio («Col·legi» en «Col·legi
-    # de Farmacèutics»), no lo que tiene al lado: «Farmàcia Agramonte» sale en
-    # todas las páginas, y perdonar su alrededor tapaba los errores de ahí.
-    perdonados = tramos_perdonados(texto)
+    # de Farmacèutics»), no lo que tiene al lado: el nombre de la farmacia sale
+    # en todas las páginas, y perdonar su alrededor tapaba los errores de ahí.
+    perdonados = tramos_perdonados(texto, perdonadas)
     for mala, buena in tabla.items():
         # Palabra entera, salvo las que acaban en * que son raíces: así
         # «cabell» no casa dentro de «cabelludo», y «farmacéutic*» sí coge
@@ -218,7 +234,8 @@ def ela_geminada(texto, donde, avisos):
 
 def revisa(texto, idioma, donde, avisos):
     """Pasa a un texto la tabla de su idioma, y en catalán la ela geminada."""
-    busca(texto, TABLAS[idioma], donde, avisos)
+    busca(texto, TABLAS[idioma], donde, avisos,
+          PERDONADAS | PERDONADAS_EN.get(idioma, set()))
     if idioma == "ca":
         ela_geminada(texto, donde, avisos)
 

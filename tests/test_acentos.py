@@ -27,16 +27,48 @@ def test_palabra_entera_no_casa_dentro_de_otra(acentos):
 
 
 def test_perdona_los_nombres_propios(acentos):
-    # «Farmàcia» va así a propósito también en español
     assert avisos_de(acentos, "Col·legi de Farmacèutics de Barcelona",
                      acentos.EN_ESPANOL) == []
 
 
 def test_un_nombre_propio_cerca_no_tapa_un_error(acentos):
-    # «Farmàcia Agramonte» sale en todas las páginas: si perdonar un nombre
+    # «Plaça de la Llana» sale en todas las páginas: si perdonar un nombre
     # perdonase también lo que tiene al lado, ahí no se vería nada.
     assert ("cistella", "cesta") in avisos_de(
-        acentos, "Farmàcia Agramonte: tu cistella", acentos.EN_ESPANOL)
+        acentos, "Plaça de la Llana: tu cistella", acentos.EN_ESPANOL)
+
+
+def avisos_revisando(acentos, texto, idioma):
+    avisos = []
+    acentos.revisa(texto, idioma, "prueba", avisos)
+    return [(mala, buena) for _, mala, buena, _ in avisos]
+
+
+def test_el_nombre_en_espanol_va_sin_acento(acentos):
+    assert ("farmàcia", "farmacia") in avisos_revisando(
+        acentos, "¿Por qué elegir Farmàcia Agramonte?", "es")
+    assert avisos_revisando(
+        acentos, "¿Por qué elegir Farmacia Agramonte?", "es") == []
+
+
+def test_el_nombre_en_catalan_lleva_acento(acentos):
+    assert ("farmacia", "farmàcia") in avisos_revisando(
+        acentos, "Per què triar la Farmacia Agramonte?", "ca")
+    assert avisos_revisando(
+        acentos, "Per què triar la Farmàcia Agramonte?", "ca") == []
+
+
+def test_el_nombre_en_ingles_va_sin_acento_y_sin_traducir(acentos):
+    assert ("farmàcia", "pharmacy") in avisos_revisando(
+        acentos, "Why choose Farmàcia Agramonte?", "en")
+    assert avisos_revisando(
+        acentos, "Why choose Farmacia Agramonte, formerly Farmacia Joaquim "
+        "Cases?", "en") == []
+    # Aunque el HTML lo parta en dos líneas.
+    assert avisos_revisando(acentos, "belong to Farmacia\n    Agramonte", "en") == []
+    # Perdonar el nombre no perdona la palabra suelta.
+    assert ("farmacia", "pharmacy") in avisos_revisando(
+        acentos, "Come to the farmacia", "en")
 
 
 def test_ela_geminada_con_punto_normal(acentos):

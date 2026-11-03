@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------
-   Farmàcia Agramonte — hoja de estilo de las páginas de texto legal
+   Farmacia Agramonte — hoja de estilo de las páginas de texto legal
    (aviso legal, privacidad y cookies).
 
    Estas tres comparten maquetación, así que el estilo vive aquí en lugar
@@ -96,9 +96,12 @@ main { padding-block: 3.5rem 5rem; }
 h1 {
   font-family: var(--display); font-weight: 400;
   font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1.05;
-  margin: 0 0 .5rem;
+  margin: 0 0 3rem;
   text-wrap: balance;
 }
+/* El rótulo bajo el título («Error 404» en el 404). Las legales ya no llevan
+   fecha de actualización: nadie la cambiaba y se quedaba mintiendo. */
+h1:has(+ .actualizado) { margin-bottom: .5rem; }
 .actualizado {
   font-family: var(--rotulo); font-weight: 600;
   font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
@@ -139,7 +142,7 @@ dl.ficha dd { margin: 0; }
 }
 
 @media (max-width: 560px) {
-  /* Con «Farmàcia Agramonte», el «Volver» y tres códigos de idioma no se
+  /* Con «Farmacia Agramonte», el «Volver» y tres códigos de idioma no se
      cabe en 320 px: menos aire a los lados, menos hueco entre elementos y
      la marca más pequeña, como en portada.css y marca.css. */
   .contenedor { width: min(100% - 2rem, var(--ancho)); }
