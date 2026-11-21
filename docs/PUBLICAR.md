@@ -31,7 +31,7 @@ producción, así que para comprobar cambios es mejor el servidor.
 ## Publicarla en internet
 
 **Ya está hecho.** La web está publicada en GitHub Pages, en
-<https://maragramonte.github.io/Farmacia-Agramonte/>, y no cuesta nada: ni
+<https://farmacia.maragramonte.com/>, y no cuesta nada: ni
 hosting, ni agencia, ni panel de control. Esto queda escrito por si algún día
 hay que rehacerlo o entenderlo, no porque haya algo pendiente.
 
@@ -62,23 +62,27 @@ Es lo que habría que repetir en un repositorio nuevo:
 El fichero `.nojekyll` de la raíz le dice a Pages que sirva los ficheros tal
 cual, sin pasarlos por Jekyll.
 
-## Si se renombra el repositorio
+## La dirección de la web
 
-La URL sale del nombre del repositorio, que ahora es `Farmacia-Agramonte`. Si
-se vuelve a renombrar (Settings → General → Repository name), hay que
-**actualizar la dirección en seis sitios**: en `index.html` el `canonical`, el
-`og:url`, el `og:image` y el `url` y el `image` del JSON-LD; y además
-`robots.txt` y `sitemap.xml`.
+Se sirve en `farmacia.maragramonte.com`, un subdominio del dominio de Mar. Lo
+fija el fichero `CNAME` de la raíz, y en Cloudflare hay un registro CNAME
+`farmacia` → `maragramonte.github.io`, sin proxy. La dirección vieja,
+`maragramonte.github.io/Farmacia-Agramonte/`, redirige sola a la nueva.
 
-GitHub redirige el nombre viejo, pero una web que se anuncia a sí misma con
-una dirección que ya no es la suya confunde a los buscadores.
+Como ya no depende del nombre del repositorio, renombrarlo no cambia la URL.
+
+**Si la farmacia tiene algún día su propio dominio**, hay que cambiar la
+dirección en estos sitios:
+- `CNAME`.
+- `BASE` en `herramientas/catalogo.py`. Después, `python herramientas/catalogo.py`
+  regenera el sitemap y las páginas.
+- En `index.html`: el `canonical`, los `hreflang`, el `og:url`, el `og:image`,
+  y el `url` y el `image` del JSON-LD.
+- `robots.txt`.
+- La URL base del test del sitemap, en `tests/test_catalogo.py`.
+
+Una web que se anuncia a sí misma con una dirección que ya no es la suya
+confunde a los buscadores.
 
 Dentro del sitio no hay que tocar nada: las rutas entre páginas se calculan
-con `../` y no llevan el nombre del repositorio dentro, precisamente para
-esto.
-
-## Un dominio propio
-
-Cuando lo haya, se apunta a GitHub Pages desde el registrador y se añade un
-fichero `CNAME` en la raíz con el dominio dentro. El único gasto sería el
-dominio, unos 12 €/año.
+con `../` y no llevan la dirección dentro, precisamente para esto.

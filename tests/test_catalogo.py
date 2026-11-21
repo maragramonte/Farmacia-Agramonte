@@ -130,7 +130,7 @@ def test_descripcion_meta_cabe_en_160(catalogo):
 
 def test_sitemap_solo_apunta_a_paginas_que_existen():
     sitemap = (RAIZ / "sitemap.xml").read_text(encoding="utf-8")
-    base = "https://maragramonte.github.io/Farmacia-Agramonte/"
+    base = "https://farmacia.maragramonte.com/"
     locs = re.findall(r"<loc>([^<]+)</loc>", sitemap)
     assert locs
     for loc in locs:
