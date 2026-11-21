@@ -7,7 +7,7 @@ sin servidor ni base de datos.
 
 `HTML` · `CSS` · `JavaScript` · `Python 3` · `GitHub Pages`
 
-Web: <https://maragramonte.github.io/Farmacia-Agramonte/>
+Web: <https://farmacia.maragramonte.com/>
 
 *English summary: [`README.en.md`](README.en.md).*
 
@@ -33,12 +33,12 @@ Pages.
 
 ## Verla
 
-[La web está publicada](https://maragramonte.github.io/Farmacia-Agramonte/) y cada
+[La web está publicada](https://farmacia.maragramonte.com/) y cada
 `git push` a `main` la vuelve a publicar en un par de minutos.
 
 Está en **español, catalán e inglés** (el español en la raíz, el catalán en
-[`/ca/`](https://maragramonte.github.io/Farmacia-Agramonte/ca/) y el inglés en
-[`/en/`](https://maragramonte.github.io/Farmacia-Agramonte/en/)) con un
+[`/ca/`](https://farmacia.maragramonte.com/ca/) y el inglés en
+[`/en/`](https://farmacia.maragramonte.com/en/)) con un
 selector en la cabecera que lleva de cada página a su traducción. El inglés
 está porque la Plaça de la Llana es de las zonas con más turismo de Barcelona.
 

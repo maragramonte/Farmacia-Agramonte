@@ -57,7 +57,7 @@ EXTENSIONES_FOTO = (".webp", ".avif", ".jpg", ".jpeg", ".png")
 # vale decidir aquí dónde acaba. Ver recorta() y descripcion_meta().
 LARGO_META = 160
 
-BASE = "https://maragramonte.github.io/Farmacia-Agramonte/"
+BASE = "https://farmacia.maragramonte.com/"
 WHATSAPP = "34661192472"
 TELEFONO_ENLACE = "+34933195921"
 TELEFONO_VISIBLE = "933 19 59 21"

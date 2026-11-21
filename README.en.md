@@ -1,6 +1,6 @@
 # Farmacia Agramonte: website
 
-Website: <https://maragramonte.github.io/Farmacia-Agramonte/>
+Website: <https://farmacia.maragramonte.com/>
 
 Short English summary. The full documentation is in Spanish, in
 [`README.md`](README.md) and [`docs/`](docs/).
