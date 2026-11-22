@@ -1,0 +1,9 @@
+# Pull requests de actualización de las Actions del CI. La web no tiene dependencias, porque
+# es HTML generado. pytest y Pillow, que solo usan los tests, van fijados en tests.yml y
+# se suben a mano.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
